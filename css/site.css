@@ -1,0 +1,73 @@
+---
+---
+/* Front matter is necessary for Jekyll */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Write your styles below this line. */
+
+.padding-bottom-10 {
+    padding-bottom: 100px;
+}
+#header {
+    position: fixed;
+}
+
+#content {
+    margin-top: 100px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.post-head.main-header {
+    height: 55vh;
+    min-height: 180px;
+    background-size: cover;
+}
+
+.bg-inlets-blue-100 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-200 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-300 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-400 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-500 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-600 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-700 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-800 {
+    background-color: #029CDB;
+}
+.bg-inlets-blue-900 {
+    background-color: #029CDB;
+}
+.inlets-blue-900 {
+    color: #029CDB;
+}
+
+.border-inlets-blue-900 {
+    border-color: #029CDB;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+
+/* Write your styles above this line. */
+
+@tailwind utilities;

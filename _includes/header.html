@@ -1,0 +1,75 @@
+<!-- This example requires Tailwind CSS v1.4.0+ -->
+<div class="relative pt-6">
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
+        <nav class="relative flex items-center justify-between sm:h-10 md:justify-center">
+            <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
+                <div class="flex items-center justify-between w-full md:w-auto">
+                    <div class="-mr-2 flex items-center md:hidden">
+                        <button id="open-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" id="main-menu" aria-label="Main menu" aria-haspopup="true">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:flex md:space-x-10">
+                <a href="/#pricing" class="link-item font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
+                <a href="/#features" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Features</a>
+                <a href="/#faq" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">FAQ</a>
+                <a href="https://docs.inlets.dev" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Docs</a>
+            </div>
+            <!--
+    Mobile menu, show/hide based on mobile menu state.
+
+    Entering: "duration-200 ease-out"
+      From: "opacity-0 scale-95"
+      To: "opacity-100 scale-100"
+    Leaving: "duration-100 ease-in"
+      From: "opacity-100 scale-100"
+      To: "opacity-0 scale-95"
+  -->
+            <div id="mobile-menu" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
+                <div class="rounded-lg shadow-lg">
+                    <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
+                        <div class="pt-5 pb-6 px-5 space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div class="-mr-2">
+                                    <button id="close-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <nav class="grid row-gap-8">
+                                    <a href="/#pricing" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            Pricing
+                                        </div>
+                                    </a>
+                                    <a href="/#features" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            Features
+                                        </div>
+                                    </a>
+                                    <a href="/#faq" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            FAQ
+                                        </div>
+                                    </a>
+                                    <a href="https://docs.inlets.dev" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            Docs
+                                        </div>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

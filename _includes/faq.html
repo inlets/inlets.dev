@@ -1,0 +1,35 @@
+<div id="faq" class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-8 px-4">
+        <svg class="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4" width="404" height="784" fill="none" viewBox="0 0 404 784">
+            <defs>
+                <pattern id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                </pattern>
+            </defs>
+            <rect width="404" height="784" fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
+        </svg>
+
+        <div class="relative">
+            <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+                Frequently asked questions
+            </h3>
+        </div>
+
+        <div class="relative mt-6 border-t-2 border-gray-100 pt-10">
+            <dl class="md:grid md:grid-cols-2 md:gap-8">
+                <div>
+                    {% include faq/section.html heading="Can I try before I buy?" text="Yes, you can request a free 14-day trial at https://github.com/inlets/inlets-pro" %}
+                    {% include faq/section.html heading="How does the licensing work?" text="You purchase a license code which will be delivered as a JWT token, when it expires the software will stop working, so you should renew your license and update your key when that time approaches. The license is part of the client, so you do not have to re-create your servers." %}
+                    {% include faq/section.html heading="What is a tunnel-pair?" text="A tunnel-pair is an inlets PRO client and server. You need both to create a functioning tunnel." %}
+                    {% include faq/section.html heading="What if we need custom development, support or a proof of concept?" text="This is available at a further cost" %}
+                </div>
+                <div class="mt-12 md:mt-0">
+                    {% include faq/section.html heading="Do I have to expose my applications on the Internet for this to work?" text="No, inlets PRO can bind to a private or local ethernet adapter, so that only the control-plane is exposed, with authentication and TLS enabled." %}
+                    {% include faq/section.html heading="Can I pay for inlets PRO monthly?" text="Inlets PRO can be purchased for 6 or 12 months for personal use, for business use, it is purchased annually." %}
+                    {% include faq/section.html heading="What if I want to add more tunnel pairs during a period?" text="You can pay pro-rata to add more tunnels to your package." %}
+                    {% include faq/section.html heading="Where can I use inlets PRO?" text="Inlets PRO can be used behind HTTP proxies, NAT, captive firewalls, hotel WiFi, Carrier-grade NAT, from private VPCs and from private VM networks. If you want to test your network conditions, just take out a free 14-day trial at any time." %}
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
