@@ -97,3 +97,6 @@ exclude:
   - netlify.toml
   - bin
   - .gitignore
+  - Makefile
+  - package.json
+  - LICENSE
