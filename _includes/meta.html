@@ -3,38 +3,14 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    {% if page.description%}
-    <meta name="description" content="{{ page.excerpt| strip_html }}" />
-    <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
-    {% else %}
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
-    {% endif %}
     <meta name="author" content="{{ site.name }}" />
 
-    {% if page.title %}
-    <meta property="og:title" content="{{ page.title }}" />
-    <meta property="twitter:title" content="{{ page.title }}" />
-    {% else %}
-    <meta name="twitter:title" content="{{ site.description }}">
-    {% endif %}
-
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta name="twitter:title" content="{{ site.title }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@inletsdev">
     <meta name="twitter:creator" content="@inletsdev">
-
-    {% if page.url %}
-    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
-    {% endif %}
-
-    {% if page.description %}
-    <meta name="twitter:description" content="{{ page.description }}">
-    {% else %}
     <meta name="twitter:description" content="{{ site.description }}">
-    {% endif %}
-
-    {% if page.image %}
-    <meta name="twitter:image:src" content="{{ site.url }}/images/{{ page.image }}">
-    {% else %}
     <meta name="twitter:image:src" content="{{ site.url }}/images/inlets-pro-purple.png">
-    {% endif %}
