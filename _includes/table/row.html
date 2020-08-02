@@ -1,0 +1,49 @@
+{% if include.even %}
+    <tr class="bg-white">
+{% else %}
+    <tr class="bg-gray-50">
+{% endif %}
+    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+        {{ include.feature }}
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+        {% if include.words %}
+        {{ include.vpn }}
+        {% else %}
+        {% if include.vpn %}
+        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        {% endif %}
+        {% endif %}
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+
+        {% if include.words %}
+        {{ include.saas}}
+        {% else %}
+        {% if include.saas %}
+        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        {% endif %}
+        {% endif %}
+    </td>
+    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+        {% if include.words %}
+        {% if include.inlets == "1" %}
+        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        {% else %}
+        {{ include.inlets }}
+        {% endif %}
+        {% else %}
+        {% if include.inlets %}
+        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        {% endif %}
+        {% endif %}
+    </td>
+</tr>
