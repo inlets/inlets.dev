@@ -1,4 +1,10 @@
 <div id="comparison" class="max-w-screen-xl mx-auto py-8 px-4">
+
+    <div class="relative">
+        <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+            Feature Comparison
+        </h3>
+    </div>
     <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -20,13 +26,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% include table/row.html even="1" feature="Expose with Public IP" inlets="" %}
+                    {% include table/row.html even="1" words="" feature="Public TCP Ports" inlets="ANY" saas="Randomly Allocated/High ports" vpn="None" %}
                     {% include table/row.html feature="Expose with Domain" inlets="" saas="" %}
-                    {% include table/row.html even="1" words="" feature="Custom Domain" inlets="1" saas="(extra cost)" %}
+                    {% include table/row.html even="1" words="" feature="Custom Domains" inlets="1" saas="(extra cost)" %}
                     {% include table/row.html feature="Connect Private to Public Clusters" inlets="" vpn="" %}
-                    {% include table/row.html even="1" words="" feature="Connections Permitted" inlets="Unlimited" saas="260/minute" vpn="Unlimited" %}
+                    {% include table/row.html even="1" words="" feature="Connections Rate-Limiting" inlets="Unlimited" saas="60-260/minute" vpn="Unlimited" %}
                     {% include table/row.html feature="Kubernetes Integration" inlets="" %}
                     {% include table/row.html even="1" words="" feature="Setup Cost" inlets="Low" saas="Low" vpn="High" %}
+                    {% include table/row.html words="" feature="Compatible Network Configurations" inlets="HTTP_PROXY, NAT and Captive Portals" saas="HTTP_PROXY, NAT and Captive Portals" vpn="NAT" %}
 
                     </tbody>
                 </table>
