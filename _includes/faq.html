@@ -18,17 +18,17 @@
         <div class="relative mt-6 border-t-2 border-gray-100 pt-10">
             <dl class="md:grid md:grid-cols-2 md:gap-8">
                 <div>
-                    {% include faq/section.html heading="Can I try before I buy?" text="Yes, you can request a free 14-day trial at https://github.com/inlets/inlets-pro" %}
+                    {% include faq/section.html heading="Can I try before I buy?" text="Yes, you can request a free 14-day trial <a href=\"https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link\">here</a>" %}
                     {% include faq/section.html heading="How does the licensing work?" text="You purchase a license code which will be delivered as a JWT token, when it expires the software will stop working, so you should renew your license and update your key when that time approaches. The license is part of the client, so you do not have to re-create your servers." %}
                     {% include faq/section.html heading="What is a tunnel-pair?" text="A tunnel-pair is an inlets PRO client and server. You need both to create a functioning tunnel." %}
                     {% include faq/section.html heading="What if we need custom development, support or a proof of concept?" text="This is available at a further cost" %}
                 </div>
                 <div class="mt-12 md:mt-0">
-                    {% include faq/section.html heading="Do I have to expose my applications on the Internet for this to work?" text="No, inlets PRO can bind to a private or local ethernet adapter, so that only the control-plane is exposed, with authentication and TLS enabled." %}
-                    {% include faq/section.html heading="Can I pay for inlets PRO monthly?" text="Inlets PRO can be purchased for 6 or 12 months for personal use, for business use, it is purchased annually." %}
+                    {% include faq/section.html heading="Do I have to expose my applications on the Internet?" text="No, inlets PRO can bind to a private or local ethernet adapter, so that only the control-plane is available publicly over a secure websocket." %}
+                    {% include faq/section.html heading="Can I pay for inlets PRO monthly?" text="Inlets PRO licenses have a 12 month duration for business use, and 6 or 12-months for personal use." %}
                     {% include faq/section.html heading="What if I want to add more tunnel pairs during a period?" text="You can pay pro-rata to add more tunnels to your package." %}
-                    {% include faq/section.html heading="Where can I use inlets PRO?" text="Inlets PRO can be used behind HTTP proxies, NAT, captive firewalls, hotel WiFi, Carrier-grade NAT, from private VPCs and from private VM networks. If you want to test your network conditions, just take out a free 14-day trial at any time." %}
-                    {% include faq/section.html heading="Does inlets PRO 'call home'?" text="We trust you to purchase the correct license for your usage, and in return we make licensing simple - with a 6 or 12 month term." %}
+                    {% include faq/section.html heading="Where can I use inlets PRO?" text="Inlets PRO can be used in any network because the client makes an outbound connection first to establish its link. This includes: NAT, Carrier Grade NAT (CGN), VPCs, containers, Kubernetes and even hotel WiFi. If you want to test your network conditions, just take out a free 14-day trial at any time." %}
+                    {% include faq/section.html heading="Does inlets PRO \"call home\"?" text="We trust our users to purchase the correct license for their usage, and in return we make licensing simple with a fixed-term license." %}
                 </div>
             </dl>
         </div>

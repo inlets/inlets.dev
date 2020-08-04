@@ -698,30 +698,15 @@
                     Connect anything, anywhere.
                 </h4>
                 <p class="mt-3 text-lg leading-7 text-gray-500">
-                    Any two machines which have at one way network connectivity (such as your laptop and a Cloud VM with a public IP) can be used to establish a tunnel.
-                    Traffic sent to the exit node gets sent through a secure tunnel to the destination. You can use Inlets PRO to connect anything, from two private networks all the way to
-                    connecting your edge IoT devices to your cloud networks.
-
+                    From within your private network, the inlets PRO client makes an outbound connection to the inlets PRO server to establish a tunnel. This means that virtually any 
+                    conditions are fair game. There is no need to file a ticket to IT to open ports, or to hire a consultant to configure your VPN and IPAM range.
+                </p>
+                    <p class="mt-3 text-lg leading-7 text-gray-500">
+                    All traffic is sent over an encrypted websocket using HTTPS, meaning that a corporate HTTP proxy is not a problem for connectivity.
+                    Setup your inlets PRO server on a public VM, or in a Kubernetes cluster, and then have your client or customer run the inlets PRO client with its address and token.
                 </p>
 
                 <ul class="mt-10">
-                    <li class="mt-10">
-    <div class="flex">
-        <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-inlets-blue-900 text-white">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-            </div>
-        </div>
-        <div class="ml-4">
-            <h5 class="text-lg leading-6 font-medium text-gray-900">Expand your IP range, within minutes</h5>
-            <p class="mt-2 text-base leading-6 text-gray-500">
-                Use a cloud VM with a public IP to forward network traffic to your datacenter without buying new IPs
-            </p>
-        </div>
-    </div>
-</li>
                     <li class="mt-10">
     <div class="flex">
         <div class="flex-shrink-0">
@@ -732,26 +717,9 @@
             </div>
         </div>
         <div class="ml-4">
-            <h5 class="text-lg leading-6 font-medium text-gray-900">Save on your cloud costs by re-using your datacenter</h5>
+            <h5 class="text-lg leading-6 font-medium text-gray-900">Hybrid cloud, done right</h5>
             <p class="mt-2 text-base leading-6 text-gray-500">
-                Don't leave your on-prem compute behind when you migrate to the cloud - inlets tunnels can connect your on-prem compute to the cloud without the hassle of managing VPNs.
-            </p>
-        </div>
-    </div>
-</li>
-                    <li class="mt-10">
-    <div class="flex">
-        <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-inlets-blue-900 text-white">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-            </div>
-        </div>
-        <div class="ml-4">
-            <h5 class="text-lg leading-6 font-medium text-gray-900">Native Kubernetes support, even behind firewalls and NAT</h5>
-            <p class="mt-2 text-base leading-6 text-gray-500">
-                Inlets PRO is a cloud native tunnel. It has first class support for Kubernetes networking. Use Inlets PRO to connect private kubernetes clusters to the internet securely.
+                Whether you need to connect your customer's on-prem to your SaaS, or you have an expensive GPU sitting idle. Connect private cloud to public cloud without the hassle of a VPN.
             </p>
         </div>
     </div>
@@ -768,7 +736,41 @@
         <div class="ml-4">
             <h5 class="text-lg leading-6 font-medium text-gray-900">Stay in control of your data</h5>
             <p class="mt-2 text-base leading-6 text-gray-500">
-                With inlets PRO, you host your own tunnel server and remain in control of your data. Unlike a SaaS tunnel, you won't be rate-limited, or be limited on how much bandwidth you can use.
+                Unlike a SaaS tunnel, you remain in complete control of your data, keeping it private and under your control; as it should be.
+            </p>
+        </div>
+    </div>
+</li>
+                    <li class="mt-10">
+    <div class="flex">
+        <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-inlets-blue-900 text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+        </div>
+        <div class="ml-4">
+            <h5 class="text-lg leading-6 font-medium text-gray-900">Native Kubernetes LoadBalancer integration</h5>
+            <p class="mt-2 text-base leading-6 text-gray-500">
+                Unlike the incumbent SaaS tunnels, inlets PRO was designed for the cloud and integrates directly to Kubernetes.
+            </p>
+        </div>
+    </div>
+</li>
+                    <li class="mt-10">
+    <div class="flex">
+        <div class="flex-shrink-0">
+            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-inlets-blue-900 text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+            </div>
+        </div>
+        <div class="ml-4">
+            <h5 class="text-lg leading-6 font-medium text-gray-900">Expand your IP range, instantly</h5>
+            <p class="mt-2 text-base leading-6 text-gray-500">
+                inlets tooling can automatically provision tunnel servers on cloud VMs for you, expanding your IP range immediately
             </p>
         </div>
     </div>
@@ -930,7 +932,7 @@
     </dt>
     <dd class="mt-2">
         <p class="text-base leading-6 text-gray-500">
-            Yes, you can request a free 14-day trial at https://github.com/inlets/inlets-pro
+            Yes, you can request a free 14-day trial <a href="https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link">here</a>
         </p>
     </dd>
 </div>
@@ -968,11 +970,11 @@
                 <div class="mt-12 md:mt-0">
                     <div class="mt-12">
     <dt class="text-lg leading-6 font-medium text-gray-900">
-        Do I have to expose my applications on the Internet for this to work?
+        Do I have to expose my applications on the Internet?
     </dt>
     <dd class="mt-2">
         <p class="text-base leading-6 text-gray-500">
-            No, inlets PRO can bind to a private or local ethernet adapter, so that only the control-plane is exposed, with authentication and TLS enabled.
+            No, inlets PRO can bind to a private or local ethernet adapter, so that only the control-plane is available publicly over a secure websocket.
         </p>
     </dd>
 </div>
@@ -982,7 +984,7 @@
     </dt>
     <dd class="mt-2">
         <p class="text-base leading-6 text-gray-500">
-            Inlets PRO can be purchased for 6 or 12 months for personal use, for business use, it is purchased annually.
+            Inlets PRO licenses have a 12 month duration for business use, and 6 or 12-months for personal use.
         </p>
     </dd>
 </div>
@@ -1002,17 +1004,17 @@
     </dt>
     <dd class="mt-2">
         <p class="text-base leading-6 text-gray-500">
-            Inlets PRO can be used behind HTTP proxies, NAT, captive firewalls, hotel WiFi, Carrier-grade NAT, from private VPCs and from private VM networks. If you want to test your network conditions, just take out a free 14-day trial at any time.
+            Inlets PRO can be used in any network because the client makes an outbound connection first to establish its link. This includes: NAT, Carrier Grade NAT (CGN), VPCs, containers, Kubernetes and even hotel WiFi. If you want to test your network conditions, just take out a free 14-day trial at any time.
         </p>
     </dd>
 </div>
                     <div class="mt-12">
     <dt class="text-lg leading-6 font-medium text-gray-900">
-        Does inlets PRO 'call home'?
+        Does inlets PRO "call home"?
     </dt>
     <dd class="mt-2">
         <p class="text-base leading-6 text-gray-500">
-            We trust you to purchase the correct license for your usage, and in return we make licensing simple - with a 6 or 12 month term.
+            We trust our users to purchase the correct license for their usage, and in return we make licensing simple with a fixed-term license.
         </p>
     </dd>
 </div>
