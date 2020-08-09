@@ -4,5 +4,10 @@ module.exports = {
     extend: {},
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/ui'),
+    require("postcss-import"),
+    require("tailwindcss")("./_includes/tailwind.config.js"),
+    require("autoprefixer"),
+  ],
 }
