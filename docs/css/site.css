@@ -1667,6 +1667,10 @@ img {
     order: 2;
   }
 
+  .md\:order-3 {
+    order: 3;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
   }
