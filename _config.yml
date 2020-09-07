@@ -54,15 +54,67 @@ baseurl: ""
 # !! You don't need to change any of the configuration flags below !!
 #
 
-paginate: 5
-paginate_path: /page:num
-permalink: /:title/
+############################################################
+# Site configuration for the Jekyll 3 Pagination Gem
+# The values here represent the defaults if nothing is set
+pagination:
+
+  # Site-wide kill switch, disabled here it doesn't run at all
+  enabled: true
+
+  # Set to 'true' to enable pagination debugging. This can be enabled in the site config or only for individual pagination pages
+  debug: false
+
+  # The default document collection to paginate if nothing is specified ('posts' is default)
+  collection: 'posts'
+
+  # How many objects per paginated page, used to be `paginate` (default: 0, means all)
+  per_page: 5
+
+  # The permalink structure for the paginated pages (this can be any level deep)
+#  permalink: '/page/:num/' # Pages are index.html inside this folder (default)
+
+  # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
+#  title: ':title - page :num'
+
+  # Limit how many pagenated pages to create (default: 0, means all)
+  limit: 0
+
+  # Optional, defines the field that the posts should be sorted on (omit to default to 'date')
+  sort_field: 'date'
+
+  # Optional, sorts the posts in reverse order (omit to default decending or sort_reverse: true)
+  sort_reverse: true
+
+  # Optional, the default category to use, omit or just leave this as 'posts' to get a backwards-compatible behavior (all posts)
+  category: 'posts'
+
+  # Optional, the default tag to use, omit to disable
+  tag: ''
+
+  # Optional, the default locale to use, omit to disable (depends on a field 'locale' to be specified in the posts,
+  # in reality this can be any value, suggested are the Microsoft locale-codes (e.g. en_US, en_GB) or simply the ISO-639 language code )
+  locale: ''
+
+  # Optional,omit or set both before and after to zero to disable.
+  # Controls how the pagination trail for the paginated pages look like.
+  trail:
+    before: 2
+    after: 2
+
+  # Optional, the default file extension for generated pages (e.g html, json, xml).
+  # Internally this is set to html by default
+  extension: html
+
+  # Optional, the default name of the index file for generated pages (e.g. 'index.html')
+  # Without file extension
+#  indexpage: '/index'
 
 # Related posts
-lsi: true
+#lsi: true
 
 # The release of Jekyll Now that you're using
-version: v3.8.6
+version: v4.1.1
 
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
@@ -82,7 +134,7 @@ sass:
 plugins:
   - jekyll-postcss
   - jekyll-purgecss
-  - jekyll-paginate
+  - jekyll-paginate-v2
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

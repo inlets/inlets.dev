@@ -67,7 +67,11 @@ ol, ul {
     list-style: none;
 }
 
-
+.blog-max-w {
+    max-width: 100ch;
+}
 /* Write your styles above this line. */
+
+
 
 @tailwind utilities;

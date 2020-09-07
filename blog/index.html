@@ -1,0 +1,32 @@
+---
+layout: default
+pagination:
+  enabled: true
+---
+
+<div class="bg-white">
+    <div class="max-w-screen-xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-base leading-6 font-semibold inlets-blue-900 tracking-wide uppercase">Blog</h1>
+            <p class="mt-1 text-4xl leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">The latest Inlets news</p>
+            <p class="max-w-xl mt-5 mx-auto text-xl leading-7 text-gray-500">The latest news, tutorials, case-studies and announcements. </p>
+        </div>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 min-height-500">
+    {% if paginator.posts.size == 0 %}
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h1> No Posts yet </h1>
+        <h2>make sure to check back soon!</h2>
+    </div>
+    {% else %}
+        {% for post in paginator.posts %}
+            {% include post_outline.html %}
+        {% endfor %}
+    {% endif%}
+</div>
+<!-- Pagination links -->
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        {% include pagination.html %}
+</div>
