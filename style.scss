@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 18px/1.4 $helveticaNeue;
   color: $darkGray;
 }
 
@@ -42,6 +42,10 @@ h1 {
   a {
     color: inherit;
   }
+}
+
+.min-height-500 {
+  min-height: 500px;
 }
 
 h2 {
