@@ -1,4 +1,3 @@
-<!-- This example requires Tailwind CSS v1.4.0+ -->
 {% include banner2.html %}
 <div class="relative pt-6">
     <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
@@ -15,22 +14,13 @@
                 </div>
             </div>
             <div class="hidden md:flex md:space-x-10">
-                <a href="/#pricing" class="link-item font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
+                <a href="/" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Home</a>
+                <a href="/pricing/" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Pricing</a>
                 <a href="/#comparison" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Comparison</a>
                 <a href="/#features" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Features</a>
                 <a href="/#faq" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">FAQ</a>
                 <a href="https://docs.inlets.dev" class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out">Docs</a>
             </div>
-            <!--
-    Mobile menu, show/hide based on mobile menu state.
-
-    Entering: "duration-200 ease-out"
-      From: "opacity-0 scale-95"
-      To: "opacity-100 scale-100"
-    Leaving: "duration-100 ease-in"
-      From: "opacity-100 scale-100"
-      To: "opacity-0 scale-95"
-  -->
             <div id="mobile-menu" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
                 <div class="rounded-lg shadow-lg">
                     <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
@@ -46,7 +36,12 @@
                             </div>
                             <div>
                                 <nav class="grid row-gap-8">
-                                    <a href="/#pricing" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                    <a href="/" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            Home
+                                        </div>
+                                    </a>
+                                    <a href="/pricing/" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="text-base leading-6 font-medium text-gray-900">
                                             Pricing
                                         </div>
