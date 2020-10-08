@@ -55,12 +55,13 @@ Pictured above is an architecture diagram from VSHN's usage of inlets, where a s
 
 The typical use-case for this is as a service provide offering a SaaS or IoT solution, but if you manage more than a few tunnels, then inlets-cloud would likely save you time over the long-run.
 
-![inlets-cloud-architecture](/images/2020-10-advanced-cloud/inlets-cloud-architecture.png)
+![inlets-cloud-conceptual](/images/2020-10-advanced-cloud/inlets-cloud-conceptual.png)
 
-> Pictured: API1 and API2 in two different customer networks are tunneled into a Kubernetes cluster where they are accessed through inlets-cloud. cert-manager provides a wild-card TLS certificate for the control-plane of inlets.
+> Conceptual diagram: inlets-cloud can be installed by our team on your existing cloud infrastructure.
 
 inlets-cloud includes:
 * A REST API for managing tunnels and invoking tunnelled services - to be used from your applications
+* A tunnel proxy for accessing the tunnelled services through inlets
 * A CLI - for operators to manage and review tunnels
 * A Kubernetes helm chart and automation for TLS certificates for each tunnel
 
