@@ -187,7 +187,7 @@ echo Open a browser at https://$DOMAIN
 
 From here you can now share your URL for your various functions by running `faas-cli describe FUNCTION`, this will give you a synchronous and asynchronous URL that you can enter into a third-party's webhook settings page.
 
-You can also host websites and APIs with OpenFaaS, as long as your Dockerfile follows the OpenFaaS convention of having a health endpoint and listening to HTTP traffic on port 8080.
+You can also host websites and APIs with OpenFaaS, as long as your Dockerfile follows the [OpenFaaS workloads convention](https://docs.openfaas.com/reference/workloads/) of having a health endpoint and listening to HTTP traffic on port 8080.
 
 Learn more:
 
