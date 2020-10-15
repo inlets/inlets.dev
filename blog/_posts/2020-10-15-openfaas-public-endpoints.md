@@ -151,7 +151,7 @@ arkade has a built-in way to generate Ingress records for OpenFaaS:
 export TOP_DOMAIN=example.com
 export DOMAIN=openfaas.$TOP_DOMAIN
 
-export EMAIL=webmaster@$DOMAIN
+export EMAIL=webmaster@$TOP_DOMAIN
 arkade install openfaas-ingress \
  --domain $DOMAIN \
  --email $EMAIL
