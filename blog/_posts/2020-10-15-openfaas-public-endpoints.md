@@ -20,9 +20,9 @@ With [OpenFaaS](https://www.openfaas.com/) you can build functions, APIs, and mi
 
 In this post we'll deploy the [inlets-operator](https://github.com/inlets/inlets-operator) to your local Kubernetes cluster to enable your OpenFaaS gateway and functions to be exposed on the Internet. Why would you want to do this?
 
-![Traditional tunnel usage](/images/2020-10-advanced-cloud/internet-webhooks.png)
+![Conceptual architecture](/images/2020-10-openfaas-ingress/openfaas-inlets-pro.png)
 
-> The diagram above shows how inlets works with a public exit-server to enable Ingress to your private network or Kubernetes cluster.
+> The inlets-operator takes over the role of a cloud LoadBalancer, and provisions an exit-server on public cloud to tunnel traffic to the IngressController.
 
 For Hybrid Cloud:
 
@@ -55,7 +55,6 @@ The main pre-requisite for the tutorial is the arkade CLI, which can be used to 
 # to /usr/local/bin yourself
 curl -sLS https://dl.get-arkade.dev | sudo sh
 ```
-
 
 inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets PRO) adds support for TCP and has built-in TLS. The [inletsctl](https://github.com/inlets/inletsctl) and [inlets-operator](https://github.com/inlets/inlets-operator) projects can set up exit-server VMs for you on public cloud, which are used to gain access to your private services.
 
