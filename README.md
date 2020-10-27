@@ -4,13 +4,13 @@
 
 ### Locally
 
-```
+```bash
 bundle exec jekyll serve
 ```
 
 ### Production
 
-```
+```bash
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
