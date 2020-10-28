@@ -18,6 +18,14 @@ module.exports = {
           },
         },
       },
+      lg: {
+        css: {
+          'li': {
+            marginTop: 0,
+            marginBottom: 0,
+          }
+        }
+      }
     },
     extend: {},
   },
