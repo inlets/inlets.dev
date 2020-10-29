@@ -15,6 +15,8 @@ On Nov 1st, all images pulled from the Docker Hub will be subjected to severe li
 
 [Docker](Docker) is both a company and [an Open Source project](https://github.com/docker/docker) which revolutionised how users deploy code to production. Containers rather than Virtual Machines (VMs) are now considered the lingua franca of deployments, and containers are packed in "images". These images need to be distributed through a container registry, such as the registry created and operated by Docker called the [Docker Hub](https://hub.docker.com/).
 
+![Container shipment](/images/2020-10-preparing-docker-hub/containers.jpg)
+
 Up until recently, public images were able to be pulled as many times as needed by a user with no rate-limiting, gating, or payments getting in the way. On Nov 1st, that is all going to change an the following will come into play:
 
 * Unauthenticated users: 100 pulls / 6 hours
