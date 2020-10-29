@@ -223,3 +223,8 @@ If you want to prove that the secret is being used, try creating a private conta
 In conclusion, there are some changes coming to the Docker Hub that are potentially going to affect every user of container images. Kubernetes users are going to suffer the worst, especially new users who are just starting out on their journey. There are mitigations such as a pull-through and caching registry, which are actually a good idea anyway to make your environment faster. Configuring an ImagePullSecret is likely to be required whatever you decide to do, and the `registry-creds` operator we created is ready for the task.
 
 Feel free to [Star or Fork the project on GitHub](https://github.com/alexellis/registry-creds), feature requests are welcome.
+
+All the tools mentioned here which are maintained by OpenFaaS Ltd are multi-arch compatible, so you can run these steps on your homelab, ARM64 server, or on a Raspbery Pi.
+
+* [Connect with the community on OpenFaaS Slack](https://slack.openfaas.io/)
+* [Follow inletsdev on Twitter](https://twitter.com/inletsdev)
