@@ -120,7 +120,7 @@ FROM ubuntu:latest
 to:
 
 ```Dockerfile
-FROM mirror.gcr.io/ubuntu:latest
+FROM mirror.gcr.io/library/ubuntu:latest
 ```
 
 This may be worth while for Google Cloud customers, but read all the terms and conditions before switching over.
@@ -140,8 +140,8 @@ On the inlets project we've already started publishing an image in GHCR so that 
 Before:
 
 ```bash
-docker pull inlets/inlets:2.7.10
-docker pull docker.io/inlets/inlets:2.7.10
+docker pull inlets/inlets-pro:0.7.3
+docker pull docker.io/inlets/inlets-pro:0.7.3
 ```
 
 > Note that the `docker.io` prefix is implicit, we are just not use to typing it in.
@@ -149,7 +149,7 @@ docker pull docker.io/inlets/inlets:2.7.10
 After:
 
 ```bash
-docker pull ghcr.io/inlets/inlets:2.7.10
+pull ghcr.io/inlets/inlets-pro:0.7.3
 ```
 
 It's a little more typing, and maintainers have to change their projects, but this seems like a good balance.
