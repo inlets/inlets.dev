@@ -222,9 +222,14 @@ If you want to prove that the secret is being used, try creating a private conta
 
 In conclusion, there are some changes coming to the Docker Hub that are potentially going to affect every user of container images. Kubernetes users are going to suffer the worst, especially new users who are just starting out on their journey. There are mitigations such as a pull-through and caching registry, which are actually a good idea anyway to make your environment faster. Configuring an ImagePullSecret is likely to be required whatever you decide to do, and the `registry-creds` operator we created is ready for the task.
 
-Feel free to [Star or Fork the project on GitHub](https://github.com/alexellis/registry-creds), feature requests are welcome.
+Feel free to [Star or Fork the registry-creds project on GitHub](https://github.com/alexellis/registry-creds). Feature requests are welcome.
 
-All the tools mentioned here which are maintained by OpenFaaS Ltd are multi-arch compatible, so you can run these steps on your homelab, ARM64 server, or on a Raspbery Pi.
+All the tools mentioned here which are maintained by [OpenFaaS Ltd](https://www.openfaas.com/) are multi-arch compatible, so you can run these steps on your home lab, ARM64 server, or on a Raspberry Pi.
 
-* [Connect with the community on OpenFaaS Slack](https://slack.openfaas.io/)
-* [Follow inletsdev on Twitter](https://twitter.com/inletsdev)
+You can follow [@inletsdev](https://twitter.com/inletsdev) and myself [@alexellisuk](https://twitter.com/alexellisuk) on Twitter
+
+You may also like:
+
+* [Get a TLS-enabled Docker registry in 5 minutes](https://blog.alexellis.io/get-a-tls-enabled-docker-registry-in-5-minutes/)
+* [Expose your private Grafana devops dashboards with Caddy and TLS](https://blog.alexellis.io/expose-grafana-dashboards/)
+* [Securely tunnel a private database over inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-tcp-database)
