@@ -3,7 +3,7 @@ layout: post
 title: Preparing for the Docker Hub Rate Limits
 description: On Nov 1st, all images pulled from the Docker Hub will be subjected to severe limits, which will affect all Kubernetes users. Find out how to prepare.
 author: Alex Ellis
-tags: sdn sdwan inlets-cloud
+tags: registry containers docker dockerhub
 author_img: alex
 image: /images/2020-10-preparing-docker-hub/containers.jpg
 date: 2020-10-29
