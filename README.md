@@ -1,5 +1,19 @@
 ## inlets.dev homepage
 
+## Adding a new blog post
+
+* Create an issue and propose the topic. Wait for approval before contributing.
+
+* Create a new YAML file in `blog/_posts` - see [this example](https://github.com/alexellis/inlets.dev/blob/master/blog/_posts/2020-10-29-preparing-docker-hub-rate-limits.md) for how to set the post title and description.
+
+* Prefix it with the date.
+
+* Add images to `/images/` - resize all images to < 200-300KB.
+
+* Raise a Pull Request
+
+If you use any copyrighted material such as text, code, or images, then you must credit the author.
+
 ## Usage
 
 ### Locally
