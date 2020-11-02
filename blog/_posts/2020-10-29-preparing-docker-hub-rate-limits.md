@@ -29,6 +29,8 @@ See also: [Docker Hub rate limits & pricing](https://www.docker.com/pricing)
 
 That limit of 100 pulls can be extended to 200 pulls, but requires complex configuration of your Kubernetes cluster with ["image pull secrets"](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) in each namespace and each ServiceAccount throughout the cluster. Docker Hub users who pay Docker will be able to pull an unlimited amount of images, without rate-limiting, however this still requires "image pull secrets" to be configured.
 
+You will be able to check your rate-limit level using a new Docker Hub API. Read more: [Docker Hub Download rate limit](https://docs.docker.com/docker-hub/download-rate-limit/).
+
 ## Potential solutions
 
 You will hit the limit, eventually, and so it's best to prepare yourself and team for that eventually, than to scramble to StackOverflow when that day arrives.
@@ -231,5 +233,5 @@ You can follow [@inletsdev](https://twitter.com/inletsdev) and myself [@alexelli
 You may also like:
 
 * [Get a TLS-enabled Docker registry in 5 minutes](https://blog.alexellis.io/get-a-tls-enabled-docker-registry-in-5-minutes/)
+* [Consuming Public Content by opencontainers.org](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/)
 * [Expose your private Grafana devops dashboards with Caddy and TLS](https://blog.alexellis.io/expose-grafana-dashboards/)
-* [Securely tunnel a private database over inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-tcp-database)
