@@ -37,9 +37,13 @@ You will hit the limit, eventually, and so it's best to prepare yourself and tea
 
 In addition to several alternatives, I want to show you how to use the [registry-creds operator](https://github.com/alexellis/registry-creds/) built to help new users learning Kubernetes, and those who are developing images locally.
 
+For Kubernetes learners, whichever solution you go for (including paying for a Docker Hub account), this is going to be an additional step. The learning curve is steep enough already, but now rather than installing Kubernetes and getting on with things, a suitable workaround will need to be deployed on every new cluster.
+
 ### Use a local mirror of the Docker Hub
 
-Setting up a mirror is fairly straight-forward, but will require additional infrastructure, and storage. Someone will need to own this mirror and baby-sit it, if it crashes or dies, you better hope that it can be restored quickly. For new Kubernetes users, this is going to be an unfortunate burden on your learning curve which is steep enough as it is.
+Setting up a mirror is fairly straight-forward, but will require additional infrastructure, storage, and maintenance. You may also have to factor in bandwidth costs. In the remote-work situation we are all currently in, does that mean setting up a mirror/cache on each employee's machine, on the VPN, or the public Internet?
+
+Someone in the team will need to own the mirror and have a good way to restore it quickly, if it crashes.
 
 There is an [arkade](https://get-arkade.dev/) app for setting up a Docker registry on your own Kubernetes cluster:
 
