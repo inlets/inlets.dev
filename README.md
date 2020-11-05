@@ -18,19 +18,7 @@ If you use any copyrighted material such as text, code, or images, then you must
 
 ## Usage
 
-### Locally
-
-```bash
-bundle exec jekyll serve
-```
-
-### Production
-
-```bash
-JEKYLL_ENV=production bundle exec jekyll build
-```
-
-## Installation
+## Initial installation
 
 You may need to run `brew install/upgrade ruby` if the `bundle` command is unavailable.
 
@@ -41,8 +29,8 @@ $ yarn install
 $ yarn run tailwind init _includes/tailwind.config.js
 ```
 
-## Build for prod
+### Preview locally
 
-Github Pages doesn't support the `tailwind build`, so you need to publish the site using static HTML.
-
-In the root of the repo run `make build`. This will generate the site in the `docs` folder. Commit this and push it to GitHub, it will then be served.
+```bash
+bundle exec jekyll serve
+```
