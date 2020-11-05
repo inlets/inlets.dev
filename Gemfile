@@ -7,6 +7,7 @@ group :jekyll_plugins do
   gem "jekyll-purgecss"
   gem "jekyll-paginate-v2"
   gem "classifier-reborn"
+  gem "jekyll-feed"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

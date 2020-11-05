@@ -1,5 +1,7 @@
 ## inlets.dev homepage
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fd9c25fb-865c-481e-adcf-90f6a0a7a0cc/deploy-status)](https://app.netlify.com/sites/inlets-dev/deploys)
+
 ## Adding a new blog post
 
 * Create an issue and propose the topic. Wait for approval before contributing.

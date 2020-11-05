@@ -135,6 +135,7 @@ plugins:
   - jekyll-postcss
   - jekyll-purgecss
   - jekyll-paginate-v2
+  - jekyll-feed
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
