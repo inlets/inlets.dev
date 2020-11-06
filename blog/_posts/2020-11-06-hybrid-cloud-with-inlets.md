@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Bring your on-premises database into a cloud Kubernetes cluster
-description: Bringing on-premises service to a cloud workload can be quite a challenge. Learn how to achieve this with inlets PRO &reg; by following our example with WordPress in the cloud and MySQL in a private data center. 
+title: Connect your on-premises databases to Kubernetes in the cloud
+description: Migrating all workloads to public cloud can be a challenge, which is why a hybrid model can suit some teams. Learn how to connect WordPress on the public cloud to an on-premises MySQL instance.
 author: Johan Siebens
-tags: inlets-pro hybrid-cloud 
+tags: inlets-pro hybrid-cloud databases wordpress kubernetes
 author_img: jsiebens
 image: /images/2020-11-06-hybrid-cloud-with-inlets/oakland-bridge.jpg
 date: 06-11-2020
 ---
 
-Learn how to connect on-premises services and cloud services with inlets PRO &reg;
+Learn how to connect private on-premises services to the public cloud with inlets
 
 ## What is "hybrid cloud" anyway?
 
