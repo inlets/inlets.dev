@@ -11,9 +11,9 @@ date: 06-11-2020
 
 Learn how to connect on-premises services and cloud services with inlets PRO &reg;
 
-## Hybrid Cloud?
+## What is "hybrid cloud" anyway?
 
-Before we get started, let's have a clear idea what "Hybrid Cloud" is all about.
+Before we get started, let's have a clear idea what "hybrid cloud" is all about.
 
 > "__Hybrid Cloud__ is a composition of a public cloud and a private environment, such as a private cloud or on-premises resources, offering the benefits of multiple deployment models. ... For example, an organization may store sensitive client data in house on a private cloud application, but interconnect that application to services provided on a public cloud as a software service." -- [Wikipedia](https://en.wikipedia.org/wiki/Cloud_computing#Hybrid_cloud)
 
