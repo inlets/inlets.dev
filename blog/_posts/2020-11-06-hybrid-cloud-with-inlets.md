@@ -29,18 +29,21 @@ This model applies for different use-cases:
 
 ## Tutorial
 
-You'll need:
-- A Kubernetes cluster running on a public cloud (e.g. GKE, AKS, EKS, DOKS, ...)
-- `kubectl`, configured to connect to the cluster
-- A domain and access to your DNS admin panel to create a sub-domain
-- A service, like a database, running locally
-- An inlets PRO license, start [a 14-day free trial](https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link).
-
 As an example, we will connect a WordPress instance running in the cloud with a MySQL server running locally. Still, this solution is perfectly applicable to other databases or services like e.g. an Oracle database, a MinIO cluster or a RabbitMQ service.
 
 ![hybrid-mysql-wordpress](/images/2020-11-06-hybrid-cloud-with-inlets/mysql-wordpress.png)
 
 > Picture above: our target architecture, a WordPress in the cloud connecting to a MySQL on-prem via inlets PRO
+
+### Pre-requisites
+
+You will need:
+
+- A Kubernetes cluster running on a public cloud (e.g. GKE, AKS, EKS, DOKS, ...)
+- `kubectl`, configured to connect to the cluster
+- A domain and access to your DNS admin panel to create a sub-domain
+- A service, like a database, running locally
+- You can use your inlets PRO license, or start [a free 14-day trial](https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link).
 
 ### Create the inlets PRO exit server
 
