@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Inlets an an IPv6 proxy
+title: Inlets as an IPv6 proxy
 description: Many users have no IPv6 stack available to them where they run their services, whether at home or in the datacenter. Learn how you can use inlets to serve traffic to IPv6 users
 author: Alex Ellis
 tags: ipv6 ipv4 proxy
