@@ -35,6 +35,8 @@ You can use inlets or inlets PRO for this setup. The key is that your exit-serve
 
 All versions of inlets come as static Go binaries, but it's often easier to use some automation to install them on a cloud host, than to provision the host manually. [inletsctl](https://github.com/inlets/inletsctl) sets up a host, generates an auth token and installs a systemd unit file.
 
+> Did you know? inlets can also be used with Kubernetes and both the client and server components can be used as Pods. The easiest way to get started is with the [inlets-operator](https://github.com/inlets/inlets-operator).
+
 Install inletsctl and download inlets to your client:
 
 ```bash
