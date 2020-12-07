@@ -48,7 +48,7 @@ inletsctl create --provider equinix-metal \
   --project-id $(cat ~/EM_PROJECT_ID.txt)
 ```
 
-In a few moments you'll find a *t1.small.x86` provisioned in your account which costs $0.07 / hour. That is Equinix Metal's cheapest host, at the end of the tutorial I'll show you how you can use the inlets PRO chart to setup multiple tunnels on the same host for efficiency and cost savings.
+In a few moments you'll find a *t1.small.x86` provisioned in your account which costs $0.07 / hour. That is Equinix Metal's cheapest host, at the end of the tutorial I'll show you how you can use the inlets PRO chart to setup multiple tunnels on the same host for efficiency and cost savings. Other options like VPS providers will cost around 5 USD / month in total.
 
 ```bash
 inlets OSS (2.7.4) exit-server summary:
