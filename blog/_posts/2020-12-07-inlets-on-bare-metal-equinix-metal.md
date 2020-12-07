@@ -9,7 +9,7 @@ image: /images/2020-12-equinix-metal/tunnel.jpg
 date: 2020-12-7
 ---
 
-Inlets was created to make tunneling easy for Cloud Native practitioners. Learn how to deploy tunnels to Equinix Metal from your private network or Kubernetes clusters.
+Inlets was created to make tunneling easy for Cloud Native practitioners. Learn three ways to deploy tunnels to Equinix Metal from your private network or Kubernetes clusters.
 
 ## Introduction
 
