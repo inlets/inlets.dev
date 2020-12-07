@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cloud Native Tunnels on Bare-Metal Cloud
-description: Inlets was created to make tunneling easy for Cloud Native practitioners. Learn how to deploy tunnels to Equinix Metal.
+description: Inlets was created to make tunnelling easy for Cloud Native practitioners. Learn how to deploy tunnels to Equinix Metal.
 author: Alex Ellis
 tags: ipv6 ipv4 tunnels bare-metal
 author_img: alex
@@ -9,7 +9,7 @@ image: /images/2020-12-equinix-metal/tunnel.jpg
 date: 2020-12-7
 ---
 
-Inlets was created to make tunneling easy for Cloud Native practitioners. Learn three ways to deploy tunnels to Equinix Metal from your private network or Kubernetes clusters.
+Inlets was created to make tunnelling easy for Cloud Native practitioners. Learn three ways to deploy tunnels to Equinix Metal from your private network or Kubernetes clusters.
 
 ## Introduction
 
