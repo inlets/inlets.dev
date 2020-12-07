@@ -21,12 +21,14 @@ That's how the [inletsctl](https://github.com/inlets/inletsctl) and [inlets-oper
 
 {% include youtube.html id="LeKMSG7QFSk" %}
 
-> A Very early demo of inlets-operator from 2019 running on Equinix Metal (née Packet)
+> A Very early demo of inlets-operator from 2019 running on Equinix Metal (née Packet).
+
+At the time, I picked Equinix Metal for the first provider because they had an easy to use API, very high performance hosts on offer, and had a history of being good citizens in the Open Source community.
 
 * [inletsctl](https://github.com/inlets/inletsctl) creates an exit-server and prints out a command you can just run to connect a tunnel using `inlets client`
 * [inlets-operator](https://github.com/inlets/inlets-operator) integrates into Kubernetes (something which Ngrok didn't offer at the time) and provides a LoadBalancer integration using the same approach
 
-Equinix Metal was the first exit-server provider to be added to the inlets-operator and was until very recently called `--provider=packet`, this is now `--provider=equinix-metal`.
+The previous `--provider=packet` provider name will be phased out in newer versions of the above tools, and users should move over to the new Equinix Metal name: `--provider=equinix-metal`. All the options, flags, and regions are the same.
 
 <center><img src="/images/2020-12-equinix-metal/equinix-metal.svg" alt="Equinix Metal logo" width="30%"></center>
 
