@@ -1,8 +1,14 @@
 <li class="mt-4 flex items-start">
     <div class="flex-shrink-0">
-        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+        {% if include.unavailable %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+          </svg>
+        {% else %}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
+        {% endif %}
     </div>
     <p class="ml-3 text-base leading-6 font-medium text-gray-500">
         {{include.feature}}
