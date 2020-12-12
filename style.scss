@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helveticaNeue;
+  font: 18px $helveticaNeue;
   color: $darkGray;
 }
 
@@ -28,13 +28,13 @@ h1, h2, h3, h4, h5, h6 {
   color: $darkerGray;
   font-weight: bold;
 
-  line-height: 1.7;
+  // line-height: 1.7;
   margin: 15px 0 15px;
   padding: 0;
 
-  @include mobile {
-    line-height: 1.4;
-  }
+  // @include mobile {
+  //   line-height: 1.4;
+  // }
 }
 
 h1 {
