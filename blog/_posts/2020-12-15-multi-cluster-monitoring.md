@@ -19,11 +19,11 @@ There are two main reasons why you may have more than one Kubernetes cluster to 
 
 The diagram above shows an architecture where we have multiple "Client" clusters on the left. Prometheus, a widely-adopted open-source metrics-based monitoring and alerting system, is actively monitoring the applications and the clusters. The monitoring set-up in each cluster is very robust and complete; however, there is no clear view on the metrics across clusters.
 
-Using a secure inlets PRO tunnel, those Prometheus servers are reachable from within the cluster on the right, the "Observability cluster. By doing so, the Prometheus server on the left can scrape selected time series from the other Prometheus servers, also know as Prometheus Federation.
+Using a secure inlets PRO tunnel, those Prometheus servers are reachable from within the cluster on the right, the "Observability cluster. By doing so, the Prometheus server on the left can scrape selected time series from the other Prometheus servers, also know as [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/).
+
+For long-term storage, you may also want to consider [Thanos](https://thanos.io/) or [Cortex](https://cortexmetrics.io/).
 
 Let's take a look at how we can build this!
-
-> For a more scalable and robust architecture with long-term storage, we could highly recommend having a look at e.g. [Thanos](https://thanos.io/) or [Cortex](https://cortexmetrics.io/)
 
 ## Pre-requisites
 
@@ -32,7 +32,7 @@ Let's take a look at how we can build this!
 - `kubectx`, optionally, but useful to manage the different cluster
 - `arkade`
 - A domain and access to your DNS admin panel to create a sub-domain
-- You can use your inlets PRO license, or start [a free 14-day trial](https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link).
+- An inlets PRO license
 
 
 For this tutorial I've prepared three Kubernetes clusters:
@@ -246,11 +246,10 @@ This post should give you an idea how easy it is to connect services running in 
 
 The Helm charts for both sides of the secure tunnel, server and client, make it very convenient to install the necessary components, and you will have a tunnel in no time.
 
-The Prometheus Federation is an example to illustrate the techniques. However, this kind of set up is applicable in many use cases, like connecting your applications to a database running in a different cluster.
-
+The [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/) is an example to illustrate the techniques. However, this kind of set up is applicable in many use cases, like connecting your applications to a database running in a different cluster.
 
 Further resources:
 
+* [Start a free 14-day trial of inlets PRO](https://inlets.dev)
 * [Read tutorials and documentation for inlets PRO and OSS](https://docs.inlets.dev/)
-* [Kick the tires with free 14-day trial of inlets PRO](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)

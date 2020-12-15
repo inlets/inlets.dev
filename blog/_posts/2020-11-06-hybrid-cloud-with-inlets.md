@@ -43,7 +43,7 @@ You will need:
 - `kubectl`, configured to connect to the cluster
 - A domain and access to your DNS admin panel to create a sub-domain
 - A service, like a database, running locally
-- You can use your inlets PRO license, or start [a free 14-day trial](https://docs.google.com/forms/d/e/1FAIpQLScfNQr1o_Ctu_6vbMoTJ0xwZKZ3Hszu9C-8GJGWw1Fnebzz-g/viewform?usp=sf_link).
+- An inlets PRO license
 
 ### Create the inlets PRO exit server
 
@@ -221,6 +221,6 @@ For the example we chose WordPress, but the same technique can be applied to any
 
 Further resources:
 
+* [Start a free 14-day trial of inlets PRO](https://inlets.dev)
 * [Read tutorials and documentation for inlets PRO and OSS](https://docs.inlets.dev/)
-* [Kick the tires with free 14-day trial of inlets PRO](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
