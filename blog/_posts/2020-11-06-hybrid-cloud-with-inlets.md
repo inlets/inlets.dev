@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Connect your on-premises databases to Kubernetes in the cloud
+title: How to connect your on-premises databases to Kubernetes in the cloud
 description: Migrating all workloads to public cloud can be a challenge, which is why a hybrid model can suit some teams. Learn how to connect WordPress on the public cloud to an on-premises MySQL instance.
 author: Johan Siebens
 tags: inlets-pro hybrid-cloud databases wordpress kubernetes

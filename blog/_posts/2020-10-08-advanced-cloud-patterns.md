@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Advanced Cloud Patterns with inlets
+title: Learn Advanced Cloud Networking Patterns with inlets
 description: Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets PRO for hybrid-cloud, multi-cluster and federation.
 author: Alex Ellis
 tags: sdn sdwan inlets-cloud

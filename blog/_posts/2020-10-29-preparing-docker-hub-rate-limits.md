@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Preparing for the Docker Hub Rate Limits
+title: How to prepare for the Docker Hub Rate Limits
 description: On Nov 1st, all images pulled from the Docker Hub will be subjected to severe limits, which will affect all Kubernetes users. Find out how to prepare.
 author: Alex Ellis
 tags: registry containers docker dockerhub

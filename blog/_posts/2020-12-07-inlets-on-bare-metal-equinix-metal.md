@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cloud Native Tunnels on Bare-Metal Cloud
+title: How to integrate Cloud Native Tunnels with Bare-Metal Cloud
 description: Inlets was created to make tunnelling easy for Cloud Native practitioners. Learn how to deploy tunnels to Equinix Metal.
 author: Alex Ellis
 tags: ipv6 ipv4 tunnels bare-metal

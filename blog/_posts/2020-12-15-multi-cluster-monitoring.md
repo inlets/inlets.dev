@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Monitor multi-cloud clusters with Prometheus and Grafana
+title: How to monitor multi-cloud Kubernetes with Prometheus and Grafana
 description: In many cases, a Kubernetes environment consists of multiple clusters. Learn how inlets can help setting up Prometheus Federation and bringing all the metrics in a single dashboard.
 author: Johan Siebens
 tags: inlets-pro hybrid-cloud metrics prometheus federation helm
