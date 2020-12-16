@@ -19,7 +19,7 @@ There are two main reasons why you may have more than one Kubernetes cluster to 
 
 The diagram above shows an architecture where we have multiple "Client" clusters on the left. Prometheus, a widely-adopted open-source metrics-based monitoring and alerting system, is actively monitoring the applications and the clusters. The monitoring set-up in each cluster is very robust and complete; however, there is no clear view on the metrics across clusters.
 
-Using a secure inlets PRO tunnel, those Prometheus servers are reachable from within the cluster on the right, the "Observability cluster. By doing so, the Prometheus server on the left can scrape selected time series from the other Prometheus servers, also know as [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/).
+Using a secure inlets tunnel, those Prometheus servers are reachable from within the cluster on the right, the "Observability cluster. By doing so, the Prometheus server on the left can scrape selected time series from the other Prometheus servers, also know as [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/).
 
 For long-term storage, you may also want to consider [Thanos](https://thanos.io/) or [Cortex](https://cortexmetrics.io/).
 
@@ -30,10 +30,12 @@ Let's take a look at how we can build this!
 - Some Kubernetes clusters running in different locations, e.g. on a public cloud (e.g. GKE, AKS, EKS, DOKS, …) or on a Raspberry Pi in a private home-lab
 - `kubectl`, configured to connect to the cluster
 - `kubectx`, optionally, but useful to manage the different cluster
-- `arkade`
+- `arkade` - portable Kubernetes marketplace
 - A domain and access to your DNS admin panel to create a sub-domain
-- An inlets PRO license
 
+This tutorial uses inlets PRO because it's easier to configure, and comes with support, but you could also use the free OSS version of inlets if you want to configure it yourself.
+
+See the differences between the two versions in the: [inlets docs](https://inlets.dev/)
 
 For this tutorial I've prepared three Kubernetes clusters:
 
@@ -157,8 +159,14 @@ Now get the inlets-pro helm chart and install the chart for each remote Promethe
 
 ``` bash
 git clone https://github.com/inlets/inlets-pro
-helm install orion-aws      ./inlets-pro/chart/inlets-pro -n monitoring -f custom.yaml --set ingress.domain=orion-aws.prometheus.example.com
-helm install orion-equinix  ./inlets-pro/chart/inlets-pro -n monitoring -f custom.yaml --set ingress.domain=orion-equinix.prometheus.example.com
+
+helm install orion-aws      ./inlets-pro/chart/inlets-pro \
+   -n monitoring -f custom.yaml \
+   --set ingress.domain=orion-aws.prometheus.example.com
+
+helm install orion-equinix  ./inlets-pro/chart/inlets-pro \
+  -n monitoring -f custom.yaml \
+  --set ingress.domain=orion-equinix.prometheus.example.com
 ```
 
 What is the result of installing this chart:
@@ -169,7 +177,6 @@ What is the result of installing this chart:
 - a Data Plane service of type ClusterIP is created, exposing port 9090
 
 This means that a inlets PRO client can connect to the Control Plane using the proper domain name, e.g. `wss://orion-aws.prometheus.example.com/connect`, and can punch out port 9090, making it accessible from only within this cluster, because of type ClusterIP.
-
 
 ## Connecting the Client clusters
 
@@ -187,14 +194,24 @@ Switched to context "orion-aws".
 Create the secrets for your inlets PRO license and the token:
 
 ```
-kubectl create secret generic -n monitoring inlets-license --from-file license=$HOME/inlets-license
-kubectl create secret generic -n monitoring inlets-pro-secret --from-file token=./token.txt
+kubectl create secret generic \
+  -n monitoring inlets-license \
+  --from-file license=$HOME/inlets-license
+
+kubectl create secret generic \
+  -n monitoring inlets-pro-secret \
+  --from-file token=./token.txt
 ```
 
 And install the inlets-pro-client chart with the proper values to connect to the exit-node pods in the Observability cluster:
 
 ``` bash
-helm install prometheus-tunnel ./inlets-pro/chart/inlets-pro-client -n monitoring --set url=wss://orion-aws2.prometheus.sphene.io/connect --set upstream=prometheus --set ports=9090
+helm install prometheus-tunnel \
+  ./inlets-pro/chart/inlets-pro-client \
+  -n monitoring \
+  --set url=wss://orion-aws2.prometheus.sphene.io/connect \
+  --set upstream=prometheus \
+  --set ports=9090
 ```
 
 ## Monitoring the Client clusters
