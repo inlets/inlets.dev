@@ -263,7 +263,7 @@ This post should give you an idea how easy it is to connect services running in 
 
 The Helm charts for both sides of the secure tunnel, server and client, make it very convenient to install the necessary components, and you will have a tunnel in no time.
 
-The [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/) is an example to illustrate the techniques. However, this kind of set up is applicable in many use cases, like connecting your applications to a database running in a different cluster.
+The [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/) is an example to illustrate the techniques. However, this kind of set up is applicable in many use cases, like connecting your applications to a database running in a different cluster. [Read more here](https://inlets.dev/blog/2020/11/06/hybrid-cloud-with-inlets.html)
 
 Further resources:
 
