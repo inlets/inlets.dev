@@ -48,3 +48,5 @@ $ yarn run tailwind init _includes/tailwind.config.js
 ```bash
 bundle exec jekyll serve
 ```
+
+Access the site at: http://127.0.0.1:4000/
