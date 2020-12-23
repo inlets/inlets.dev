@@ -20,16 +20,30 @@ If you use any copyrighted material such as text, code, or images, then you must
 
 ## Initial installation
 
+You will need node.js in order to install yarn:
+
+```bash
+$ npm i -g yarn
+```
+
 You may need to run `brew install/upgrade ruby` if the `bundle` command is unavailable.
 
-```shell
+If it's still unavailable run:
+
+```bash
+$ gem install bundle
+```
+
+When you have the tools in place run:
+
+```bash
 $ bundle install
 $ yarn install
 
 $ yarn run tailwind init _includes/tailwind.config.js
 ```
 
-### Preview locally
+### To start a preview, simply run:
 
 ```bash
 bundle exec jekyll serve
