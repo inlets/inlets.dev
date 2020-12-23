@@ -33,7 +33,7 @@
       From: "opacity-100 scale-100"
       To: "opacity-0 scale-95"
   -->
-            <div id="mobile-menu" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
+            <div id="mobile-menu" style="z-index: 1" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
                 <div class="rounded-lg shadow-lg">
                     <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
                         <div class="pt-5 pb-6 px-5 space-y-6">
@@ -48,9 +48,21 @@
                             </div>
                             <div>
                                 <nav class="grid row-gap-8">
-                                    <a href="/#pricing" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                    <a href="/#top" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            About
+                                        </div>
+                                    </a>
+
+                                    <a href="/pricing" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="text-base leading-6 font-medium text-gray-900">
                                             Pricing
+                                        </div>
+                                    </a>
+
+                                    <a href="/blog" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
+                                        <div class="text-base leading-6 font-medium text-gray-900">
+                                            Blog
                                         </div>
                                     </a>
 
@@ -72,11 +84,6 @@
                                     <a href="https://docs.inlets.dev" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
                                         <div class="text-base leading-6 font-medium text-gray-900">
                                             Docs
-                                        </div>
-                                    </a>
-                                    <a href="/blog" class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition ease-in-out duration-150">
-                                        <div class="text-base leading-6 font-medium text-gray-900">
-                                            Blog
                                         </div>
                                     </a>
                                 </nav>
