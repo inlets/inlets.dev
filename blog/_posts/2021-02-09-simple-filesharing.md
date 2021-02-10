@@ -15,9 +15,13 @@ When it comes to sharing files, there are many SaaS options out there, but what 
 
 When I released the first version of inlets, my mind was set on solving just one problem. My team at an enterprise company needed to receive webhooks from a GitHub App in order to build a CI/CD platform we were working on. We looked to solutions like Ngrok and SSH tunnels, but both were blocked or had limits that meant they were not suitable.
 
-The project did well, and then I got [a message](https://twitter.com/ntdvps/status/1143071544203186176?s=20) from an enthusiastic user which made me think about other use-cases:
+The project did well, and then I got [a message](https://twitter.com/ntdvps/status/1143071544203186176?s=20) from Roman Dodin who had just used inlets to transfer a large file.
 
 > I just transferred a 70Gb disk image from a NATed NAS to a remote NATed server with @alexellisuk' inlets tunnels and a one-liner python web server. Check it out, works like a breeze.
+
+Notice that Roman did not have to upload 70GB to One-Drive or Dropbox, only to download it again. He was simply able to set up an inlets exit-server and get access to the file directly, without having to wait for an initial upload and download.
+
+Maybe you need to share a 5GB video recording with someone for editing, or as part of a virtual conference? Perhaps you have a number of smaller files to share with a colleague, and don't want to clog up your Google Drive with them.
 
 In this post I'll explain how it was not as simple as I expected to share a large file over my inlets tunnel, and what I did to make it simpler. I hope you'll also find the tool useful whether you run it directly on a cloud instance, or expose it securely over an inlets tunnel.
 
