@@ -3,7 +3,7 @@ layout: post
 title: Get a secure HTTPS tunnel with Let's Encrypt
 description: Learn how to get a self-hosted HTTPS tunnel secure with Let's Encrypt in 5-10 minutes for development, testing or self-hosting.
 author: Alex Ellis
-tags: inlets-pro file-sharing https
+tags: inlets-pro secure letsencrypt tunnel
 author_img: alex
 image: /images/2021-letsencrypt/background.jpg
 date: 2021-02-11
