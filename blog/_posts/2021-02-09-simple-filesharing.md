@@ -2,7 +2,7 @@
 layout: post
 title: The simple way to share files directly from your computer
 description: When it comes to sharing files, there are many SaaS options out there, but what if you need a quick and simple solution?
-author: Alex Ellis 
+author: Alex Ellis
 tags: inlets-pro file-sharing https
 author_img: alex
 image: /images/2021-filesharing/background.jpg
