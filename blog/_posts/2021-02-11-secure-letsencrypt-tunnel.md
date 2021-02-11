@@ -83,6 +83,25 @@ The `--token` is used by the inlets client to authenticate to the server.
 
 Then the `--auto-tls` flags enable TLS for the control-plane of inlets running on port `8123`. This ensures that the tunnel will be able to connect, even if there is an issue with Let's Encrypt such as rate-limiting.
 
+You can keep the inlets server process running by generating a systemd unit file. Just run the same command as before, but add `--generate=systemd`
+
+```bash
+inlets-pro http server \
+  --generate=systemd \
+  --letsencrypt-domain $DOMAIN \
+  --letsencrypt-email webmaster@$DOMAIN \
+  --letsencrypt-issuer prod \
+  --token $TOKEN \
+  --auto-tls \
+  --auto-tls-san $SERVER_IP \
+  > inlets-pro.service
+sudo cp inlets-pro.service /etc/systemd/system
+
+sudo systemctl enable inlets-pro
+```
+
+Then check it started as expected with `sudo journalctl -u inlets-pro` or `sudo systemctl status inlets-pro`. The process will now restart upon reboot, or if for some reason the process crashes.
+
 ### Run a local HTTP server
 
 I'm going to run a HTTP server using Node.js on port 8080. I want to share it with my friends, but I also want to get some webhooks from a third-party like GitHub and this tunnel will help me with building the functionality and testing it.
