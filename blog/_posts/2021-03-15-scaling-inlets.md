@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Scaling inlets like a Pro with the help of Kubernetes
-description: Learn how to run tens or hundreds of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
+title: How to scale to hundreds of inlets tunnels with Kubernetes
+description: Learn how to run and manage tens or hundreds of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
 author: Johan Siebens
 tags: inlets-pro secure scaling tunnel kubernetes
 author_img: jsiebens
@@ -9,17 +9,19 @@ image: /images/2021-03-scaling/background.jpg
 date: 2021-03-15
 ---
 
-Learn how to run tens or hundreds of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
+Learn how to run and manage tens or hundreds of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
 
 ## Introduction
 
-In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets Pro Helm charts to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
+In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets PRO [Helm charts](https://github.com/inlets/inlets-pro/tree/master/chart) to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
 
-So what if we want to bring a lot of services or applications into the cluster? Are the Helm charts available to assist is us? What do you need to know to scale to tens or hundreds of inlets tunnels?
+What if we want to bring a lot of services or applications into the cluster? 
+For example, a large organisation that has one cluster per tenant instead of a shared cluster.
+Or a service provider offering a SaaS or IoT solution, where all the customers connect their devices to a central management pane with an inlets PRO tunnel.
 
-Let's have a look.
+Are the Helm charts able to assist is us? What do you need to know to scale to tens or hundreds of inlets tunnels?
 
-## A little retrospect
+__A little retrospect__
 
 First, let’s recap what we did in the previous post focusing on the server part of the tunnels.
 
@@ -29,10 +31,15 @@ First, let’s recap what we did in the previous post focusing on the server par
 By using the Helm chart, an inlets PRO exit server is created for each tunnel. Those tunnels' control planes are securely exposed using an ingress and a Let's Encrypt certificate created by cert-manager.
 Besides that, the data plane is only available from within the Kubernetes cluster.
 
-With this setup, every time we add another tunnel, the cert-manager will create a new certificate with Let's Encrypt for the specific subdomain.
+With this setup, every time we add another tunnel, cert-manager will create a new certificate with Let's Encrypt for the specific subdomain.
 For a couple of services, that's ok, but if we want to scale to tens or hundreds of tunnels, perhaps this can become an issue because of Let's Encrypt's rate limits.
 
 Because all our tunnels will be using the same domain, a wildcard certificate can help us here. If you have already such a certificate available, we can put that in place and otherwise, we can let cert-manager issue a wildcard certificate with the proper DNS01 Challenge Provider.
+
+> If you want to know more about the differences between HTTP01 and DNS01 challenges, have a closer look [here](https://cert-manager.io/docs/configuration/acme/) and [here](https://letsencrypt.org/docs/challenge-types/#http-01-challenge)
+
+Next, I’ll explain what pieces of the puzzle need to be adapted when using the Helm charts to scale to tens or hundreds of inlets tunnels.
+
 
 ## Pre-requisites
 
@@ -58,7 +65,11 @@ Next, create an Issuer, or ClusterIssuer, to use Amazon Route53 to solve DNS01 A
 > A detailed explanation on how to prepare the issuer can be found [here](https://cert-manager.io/docs/configuration/acme/dns01/route53/)
 
 ``` bash
-cat <<EOF | kubectl apply -f -
+export EMAIL="you@example.com"
+export ACCESS_KEY_ID="AKIAIOSFODNN7EXAMPLE"
+export REGION="eu-central-1"
+
+cat > issuer.yaml <<EOF
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -66,24 +77,28 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: <your email>
+    email: $EMAIL
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
     - dns01:
         route53:
-          region: eu-central-1
-          accessKeyID: AKIAIOSFODNN7EXAMPLE
+          region: $REGION
+          accessKeyID: $ACCESS_KEY_ID
           secretAccessKeySecretRef:
             name: prod-route53-credentials-secret
             key: secret-access-key
 EOF
 ```
 
+Apply the file with `kubectl apply -f issuer.yaml`
+
 Finally, create a wildcard Certificate resource with a reference the issuer created earlier:
 
 ``` bash
-cat <<EOF | kubectl apply -f -
+export DOMAIN=inlets.example.com
+
+cat > certificate.yaml <<EOF
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -93,46 +108,18 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: Issuer
-  commonName: '*.inlets.example.com'
+  commonName: '*.$DOMAIN'
   dnsNames:
-  - '*.inlets.example.com'
+  - '*.$DOMAIN'
 EOF
 ```
 
-Wait a few minutes until the cert-manager has done its job and the certificate is ready to use.
+Apply the file with `kubectl apply -f certificate.yaml`, wait a few minutes until cert-manager obtained a certificate and it is ready to use.
 
 ``` bash
-$ kubectl describe certificate inlets-tls
-Name:         inlets-tls
-Namespace:    default
-Labels:       <none>
-Annotations:  API Version:  cert-manager.io/v1
-Kind:         Certificate
-Metadata:
-  Creation Timestamp:  2021-03-14T10:59:43Z
-  Generation:          1
-  Resource Version:  1003819
-  UID:               a04bb906-ec9c-490d-b8c7-5cd61adc6a36
-Spec:
-  Common Name:  *.inlets.example.com
-  Dns Names:
-    *.inlets.example.com
-  Issuer Ref:
-    Kind:       Issuer
-    Name:       letsencrypt-prod
-  Secret Name:  inlets-tls
-Status:
-  Conditions:
-    Last Transition Time:  2021-03-14T11:01:02Z
-    Message:               Certificate is up to date and has not expired
-    Reason:                Ready
-    Status:                True
-    Type:                  Ready
-  Not After:               2021-06-12T10:01:01Z
-  Not Before:              2021-03-14T10:01:01Z
-  Renewal Time:            2021-05-13T10:01:01Z
-  Revision:                1
-Events: 
+$ kubectl get certificate inlets-tls -o wide
+NAME         READY   SECRET       ISSUER             STATUS                                          AGE
+inlets-tls   True    inlets-tls   letsencrypt-prod   Certificate is up to date and has not expired   14m
 ```
 
 Now everything is ready to create a first tunnel.
@@ -190,7 +177,7 @@ This means that a inlets PRO client can connect to the Control Plane using the p
 ## Scaling inlets PRO tunnels
 
 Now that we have created a first tunnel, it is time to add all the other required tunnel.
-As demonstrated, the Helm chart is pretty convenient to get everything up and running and can be installed many times to create different tunnels.
+As demonstrated, the Helm chart is more convenient than creating and managing individual virtual machines to get everything up and running and can be installed many times to create different tunnels.
 Every time an exit-node is created, the control-plane is available on a specific subdomain, allowing you to connect tens or hundreds of services.
 
 Put all the command above in a single script and name it `create-exit-server.sh`:
@@ -256,7 +243,7 @@ ingress.networking.k8s.io/prometheus-inlets-pro   <none>   prometheus-tunnel.inl
 
 Have a look at the created services, every control plane is listening on port 8123 and every data plane has the custom port in use.
 
-> Want more tunnels?! Put it in a good ol' `bash` for-loop, and before you know it, you have hundreds of tunnels available, all with an own authentication token.
+> Want more tunnels?! Put it in a good ol' `bash` for-loop, and before you know it, you have hundreds of tunnels available, all with their own authentication token.
 >
 > ``` bash
 > #!/bin/bash
@@ -277,6 +264,7 @@ First, grab the token of the target tunnel:
 
 ``` bash
 export TOKEN=$(kubectl get secrets inlets-keycloak-token --template={{.data.token}} | base64 -d)
+echo $TOKEN > $HOME/.inlets/token
 ```
 
 Now connect your inlets client to the inlets server:
@@ -292,8 +280,27 @@ inlets-pro tcp client \
   --auto-tls=false \
   --upstream=localhost \
   --port=8080 \
+  --token-from=$HOME/.inlets/token \
   --license-file=$HOME/.inlets/license
 ```
+
+The command above will start the client in the foreground, which is great to test if everything is working correctly, but you probably want the client to run as a service. Luckily, the inlets-pro CLI has a command to generate a systemd service file for us:
+
+``` bash
+inlets-pro tcp client \
+  --url wss://keycloak-tunnel.inlets.example.com \
+  --auto-tls=false \
+  --upstream=localhost \
+  --port=8080 \
+  --token-from=$HOME/.inlets/token \
+  --license-file=$HOME/.inlets/license \
+  --generate systemd > /etc/systemd/system/inlets.service
+
+systemctl enable inlets
+systemctl start inlets
+```
+
+> If your services are running in a Kubernetes cluster, you can always use the [client Helm chart](https://github.com/inlets/inlets-pro/tree/master/chart/inlets-pro-client) to create the client side of the tunnel.
 
 ## Exposing the data plane
 
@@ -333,6 +340,13 @@ In this post we started by creating a single inlets PRO exit server in a Kuberne
 We created a first tunnel with a little utility script, making it easy to configure some settings like the data plane port and the authentication token. Next, we used the same script to add more and more tunnels.
 
 It should give you an idea how easy it is to scale up to hundreds of tunnels by using the Helm chart.
+
+In a post about [Advanced Cloud Pattern with inlets](https://inlets.dev/blog/2020/10/08/advanced-cloud-patterns.html), Alex gave an introduction to inlets-cloud, which is a managed solution for managing inlets tunnel servers at scale. The Helm charts can get you already far, but if you want to manage more and more tunnels, inlets-cloud would likely save you time over the long-run.
+
+![inlets-cloud-conceptual](/images/2020-10-advanced-cloud/inlets-cloud-conceptual.png)
+
+> Conceptual diagram: inlets-cloud can be installed by our team on your existing cloud infrastructure.
+
 
 Did you know that the personal license can now be used at work? inlets PRO has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
 
