@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to scale to thousands of inlets tunnels with Kubernetes
+title: How we scaled inlets to thousands of tunnels with Kubernetes
 description: Learn how to run and manage thousands of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
 author: Johan Siebens
 tags: inlets-pro secure scaling tunnel kubernetes
