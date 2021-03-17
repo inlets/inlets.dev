@@ -1,7 +1,7 @@
 ---
 layout: post
-title: How to scale to hundreds and thousands of inlets tunnels with Kubernetes
-description: Learn how to run and manage hundreds and thousands of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
+title: How to scale to thousands of inlets tunnels with Kubernetes
+description: Learn how to run and manage thousands of secure inlets tunnels on a single Kubernetes cluster with the ability to scale for more.
 author: Johan Siebens
 tags: inlets-pro secure scaling tunnel kubernetes
 author_img: jsiebens
@@ -21,9 +21,11 @@ Or a service provider offering a SaaS or IoT solution, where all the customers c
 
 Are the Helm charts able to assist is us? What do you need to know to scale to hundreds and thousands of inlets tunnels?
 
-__A little retrospect__
+We'll first review how we set up inlets PRO servers in Pods to enable multi-cluster. Then we'll show you how you can add hundreds of tunnels through automation. To conclude, we'll introduce you to inlets-cloud, a self-hosted system for managing thousands of tunnels through REST or kubectl. 
 
-First, let’s recap what we did in the previous post focusing on the server part of the tunnels.
+__Reviewing the multi-cluster use-case__
+
+First, let’s recap what we did in the [previous post](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html) to run multiple inlets PRO server processes on a single Kubernetes cluster.
 
 ![prometheus](/images/2020-12-multi-cluster-monitoring/architecture.png)
 > Kubernetes multi-cluster monitoring with Prometheus, nginx ingress controller, cert-manager and inlets PRO
@@ -174,7 +176,7 @@ What is the result of installing this chart:
 
 This means that a inlets PRO client can connect to the Control Plane using the proper domain name, e.g. `wss://keycloak-tunnel.inlets.example.com`, and can punch out port 8080, making it accessible from only within this cluster, because of type ClusterIP.
 
-## Scaling inlets PRO tunnels
+## Scaling inlets PRO tunnels with the Helm chart
 
 Now that we have created a first tunnel, it is time to add all the other required tunnel.
 As demonstrated, the Helm chart is more convenient than creating and managing individual virtual machines to get everything up and running and can be installed many times to create different tunnels.
@@ -339,13 +341,15 @@ spec:
 In this post we started by creating a single inlets PRO exit server in a Kubernetes cluster with the Helm chart, but instead of using the default ingress and cert-manager configuration we issued a wildcard certificate to support multiple tunnels.
 We created a first tunnel with a little utility script, making it easy to configure some settings like the data plane port and the authentication token. Next, we used the same script to add more and more tunnels.
 
-The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets PRO.
+The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets PRO. You could even install these Helm charts using a tool like ArgoCD or Flux, and use a GitOps approach to management.
 
-In a post about [Advanced Cloud Pattern with inlets](https://inlets.dev/blog/2020/10/08/advanced-cloud-patterns.html), Alex introduced to inlets-cloud, which is a managed solution for managing thousands of inlets tunnels. The Helm chart gets you so far, but if you want to manage tunnels programatically, and use REST, then please feel free to reach out to us to find out more.
+But what if you wanted to scale to thousands of tunnels? In the post [Advanced Cloud Pattern with inlets](https://inlets.dev/blog/2020/10/08/advanced-cloud-patterns.html), Alex introduced inlets-cloud, which allows users to manage tunnels programatically through kubectl using a CRD, or through a REST API. inlets-cloud makes management easier than using Helm, especially at scale, and allows your team to run their own secure tunnel capability for multiple clients.
 
 ![inlets-cloud-conceptual](/images/2020-10-advanced-cloud/inlets-cloud-conceptual.png)
 
 > Conceptual diagram: inlets-cloud can be installed by our team on your existing infrastructure.
+
+If you'd like to know moreabout inlets-cloud, or try a demo, then get in touch at: [contact@openfaas.com](mailto:contact@openfaas.com)
 
 Want to try inlets PRO for yourself?
 
