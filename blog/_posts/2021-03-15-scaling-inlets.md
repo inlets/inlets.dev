@@ -264,10 +264,12 @@ Now that the server part of the tunnel is ready, connect a client to bring an ap
 
 First, grab the token of the target tunnel:
 
+{% raw %}
 ``` bash
 export TOKEN=$(kubectl get secrets inlets-keycloak-token --template={{.data.token}} | base64 -d)
 echo $TOKEN > $HOME/.inlets/token
 ```
+{% endraw %}
 
 Now connect your inlets client to the inlets server:
 
