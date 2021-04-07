@@ -13,13 +13,13 @@ Learn how to run and manage hundreds and thousands of secure inlets tunnels on a
 
 ## Introduction
 
-In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets PRO [Helm charts](https://github.com/inlets/inlets-pro/tree/master/chart) to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
+In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets PRO [Helm Charts](https://github.com/inlets/inlets-pro/tree/master/chart) to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm Charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
 
 What if we want to bring a lot of services or applications into the cluster? 
 For example, a large organisation that has one cluster per tenant instead of a shared cluster.
 Or a service provider offering a SaaS or IoT solution, where all the customers connect their devices to a central management pane with an inlets PRO tunnel.
 
-Are the Helm charts able to assist is us? What do you need to know to scale to hundreds and thousands of inlets tunnels?
+Are the Helm Charts able to assist is us? What do you need to know to scale to hundreds and thousands of inlets tunnels?
 
 We'll first review how we set up inlets PRO servers in Pods to enable multi-cluster. Then we'll show you how you can add hundreds of tunnels through automation. To conclude, we'll introduce you to inlets-cloud, a self-hosted system for managing thousands of tunnels through REST or kubectl. 
 
@@ -40,7 +40,7 @@ Because all our tunnels will be using the same domain, a wildcard certificate ca
 
 > If you want to know more about the differences between HTTP01 and DNS01 challenges, have a closer look [here](https://cert-manager.io/docs/configuration/acme/) and [here](https://letsencrypt.org/docs/challenge-types/#http-01-challenge)
 
-Next, I’ll explain what pieces of the puzzle need to be adapted when using the Helm charts to scale to hundreds and thousands of inlets tunnels.
+Next, I’ll explain what pieces of the puzzle need to be adapted when using the Helm Charts to scale to hundreds and thousands of inlets tunnels.
 
 
 ## Pre-requisites
@@ -343,7 +343,7 @@ spec:
 In this post we started by creating a single inlets PRO exit server in a Kubernetes cluster with the Helm chart, but instead of using the default ingress and cert-manager configuration we issued a wildcard certificate to support multiple tunnels.
 We created a first tunnel with a little utility script, making it easy to configure some settings like the data plane port and the authentication token. Next, we used the same script to add more and more tunnels.
 
-The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets PRO. You could even install these Helm charts using a tool like ArgoCD or Flux, and use a GitOps approach to management.
+The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets PRO. You could even install these Helm Charts using a tool like ArgoCD or Flux, and use a GitOps approach to management.
 
 But what if you wanted to scale to thousands of tunnels? In the post [Advanced Cloud Pattern with inlets](https://inlets.dev/blog/2020/10/08/advanced-cloud-patterns.html), Alex introduced inlets-cloud, which allows users to manage tunnels programatically through kubectl using a CRD, or through a REST API. inlets-cloud makes management easier than using Helm, especially at scale, and allows your team to run their own secure tunnel capability for multiple clients.
 

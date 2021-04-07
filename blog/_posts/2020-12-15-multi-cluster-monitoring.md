@@ -47,7 +47,7 @@ The first two clusters will act as the "Client" clusters and have a Prometheus s
 
 The third cluster will be our "Observability" cluster, and likewise to the previous two, Prometheus is also up and running here.
 
-Installing Prometheus and all the components can be done in several ways, but the most common way is to install it using the Prometheus Operator or the official Helm charts.
+Installing Prometheus and all the components can be done in several ways, but the most common way is to install it using the Prometheus Operator or the official Helm Charts.
 
 ``` bash
 $ kubectx
@@ -216,7 +216,7 @@ helm install prometheus-tunnel \
 
 ## Monitoring the Client clusters
 
-After installing all the helm charts, server and clients, all the Prometheus services are available within our Observability cluster, and now we have some possibilities to visualise all those metrics in Grafana.
+After installing all the Helm Charts, server and clients, all the Prometheus services are available within our Observability cluster, and now we have some possibilities to visualise all those metrics in Grafana.
 
 Either we add all the different Prometheus servers as separate data sources in Grafana, or we configure the Prometheus server with those endpoints. The second option is for most cases preferable as it allows us the create an aggregated view.
 
@@ -261,7 +261,7 @@ Now that all metrics are collected in a single Prometheus server, the only thing
 
 This post should give you an idea how easy it is to connect services running in multiple, isolated, Kubernetes clusters spread across cloud providers or running on-premises. 
 
-The Helm charts for both sides of the secure tunnel, server and client, make it very convenient to install the necessary components, and you will have a tunnel in no time.
+The Helm Charts for both sides of the secure tunnel, server and client, make it very convenient to install the necessary components, and you will have a tunnel in no time.
 
 The [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federation/) is an example to illustrate the techniques. However, this kind of set up is applicable in many use cases, like connecting your applications to a database running in a different cluster. [Read more here](https://inlets.dev/blog/2020/11/06/hybrid-cloud-with-inlets.html)
 

@@ -48,7 +48,7 @@ You'll need:
 * A domain and access to your DNS admin panel to create a sub-domain for OpenFaaS
 * A cloud account on DigitalOcean or another cloud, to provision an exit-server with a public IP
 
-The main pre-requisite for the tutorial is the arkade CLI, which can be used to download CLI tools and to install helm charts.
+The main pre-requisite for the tutorial is the arkade CLI, which can be used to download CLI tools and to install Helm Charts.
 
 ```bash
 # You can also run without sudo, but you'll need to move the arkade binary
