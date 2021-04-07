@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Connect on-premises services to the cloud with private tunnels
-description: Learn how to connect your on-premises services to public cloud using private tunnels and inlets PRO.
+title: The Simple Way To Connect Existing Apps to Public Cloud
+description: Learn how to use a Hybrid Cloud model to connect your existing apps to the Public Cloud using private tunnels.
 author: Alex Ellis
 tags: inlets-pro hybrid-cloud
 author_img: alex
@@ -9,7 +9,7 @@ image: /images/2021-simple-hybrid-cloud/background.jpeg
 date: 2021-04-07
 ---
 
-Learn how to connect your on-premises services to public cloud using private tunnels and inlets PRO.
+Learn how to use a Hybrid Cloud model to connect your existing apps to the Public Cloud using private tunnels.
 
 ## Introduction
 
