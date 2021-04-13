@@ -44,7 +44,7 @@ I used this technique in the past to host a Ghost blog and used [Namecheap](http
 
 The configuration is similar to above. It still exposes your location, and is still limited on port mappings.
 
-Things can get worse than this, if your provider uses [Carrier Grade NAT (CGNAT)](https://en.wikipedia.org/wiki/Carrier-grade_NAT), then you will not have an IP address that is publicly accessible. The same would be true if you wanted to host a dashboard or API within an office network, or using a WiFi network in a hotel whilst on the road or on vacation.
+Things can get worse than this, if your provider uses [Carrier Grade NAT (CGNAT)](https://en.wikipedia.org/wiki/Carrier-grade_NAT), then you will not have an IP address that is publicly accessible. The same would be true if you wanted to host a dashboard or API within an office network, university halls, a hotel, or when connected to a public WiFi network of some kind.
 
 ### Serving traffic with an inlets tunnel
 
