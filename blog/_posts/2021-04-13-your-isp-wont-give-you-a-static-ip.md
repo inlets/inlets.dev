@@ -59,7 +59,7 @@ Rather than just getting one dynamic IP, or paying for a Static IP, using inlets
 
 Each exit server is a cloud VM which comes with its own static public IP address and usually costs 3 EUR or 5 USD / month. If you're on a budget, and like tinkering, you can even use a single exit-server for many different inlets clients or services.
 
-You can provision an exit-server for pure TCP traffic such as databases, TLS and SSH using inletsctl:
+You can provision an exit-server for pure TCP traffic such as databases, TLS and SSH using [inletsctl](https://github.com/inlets/inletsctl):
 
 ```bash
 inletsctl create \
