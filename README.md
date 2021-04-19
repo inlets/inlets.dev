@@ -43,6 +43,14 @@ $ yarn install
 $ yarn run tailwind init _includes/tailwind.config.js
 ```
 
+### For production:
+
+```bash
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
+Content will be in `_site`
+
 ### To start a preview, simply run:
 
 ```bash
@@ -50,3 +58,4 @@ bundle exec jekyll serve
 ```
 
 Access the site at: http://127.0.0.1:4000/
+
