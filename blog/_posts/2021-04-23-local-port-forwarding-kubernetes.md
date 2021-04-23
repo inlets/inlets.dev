@@ -13,7 +13,9 @@ Learn how one user cleared his headache and got reliable local port-forwarding f
 
 ## Introduction
 
-A developer working on an API for the UK Government reached out to me and asked if he could use inlets to access a message queue from a GKE cluster on his laptop. The answer was yes, but we haven't documented it very well yet. I asked why he wasn't using `kubectl port-forward` and the answer surprised me.
+A developer working on an API for the UK Government reached out to me and asked if he could use inlets to access a NATS message queue from within a Google Kubernetes Engine (GKE) cluster on his laptop. The answer was yes inlets PRO could do that, but we hadn't documented it very well yet. My understanding was that getting access to the message queue from his laptop meant that he could watch things happening "live" and fix a bug that was blocking his progress at work.
+
+> I asked why he wasn't using `kubectl port-forward` and the answer surprised me.
 
 The traditional use-case for inlets PRO has always been exposing or tunneling a service from a private cluster to a public cluster. This kind of forwarding is called **remote port forwarding** and is the use-case we're used to seeing with Ngrok. A port is forwarded to a remote cluster for access via its network. The difference between inlets and Ngrok or Argo tunnels, is that inlets can forward a service and also keep it private on the remote network by binding it to loopback, or a non-public adapter. inlets PRO customers tell me that they do this quite often for hybrid cloud use-cases and for continuous deployment to edge locations.
 
@@ -27,9 +29,9 @@ The developer that contacted me wanted to "bring back" a remote service to his l
 
 > Local forwarding brings a remote service back to localhost for accessing
 
-## Try it out for yourself
+## Trying it out before responding
 
-The simplest experiment I could think of was to forward SSH from my Intel NUC to my Apple MacBook Air M1 which didn't have SSH running on it. At that point, running `ssh -p 22 localhost` on the Mac would have given me a connection to the NUC's SSH service.
+The simplest experiment I could think of was to forward SSH from my Intel NUC to my Apple MacBook Air M1 which didn't have SSH running on it. If it worked as desire, then at that point, running `ssh -p 22 localhost` on the Mac would have given me a connection to the NUC's SSH service.
 
 My NUC had an IP of `192.168.0.35`, so I logged in, then ran:
 
@@ -63,13 +65,13 @@ Then finally, I just ran:
 ssh -p 2222 localhost
 ```
 
-It worked. On to the Kubernetes manifests.
+It worked. On to the Kubernetes part.
 
 ## Replacing `kubectl port-forward`
 
-It turns out that `kubectl port-forward` disconnects often and can give a poor connection for long-term use.
+It turns out that `kubectl port-forward` disconnects often and can give a poor connection for long-term use. He'd also tried using the various tools that people usually turn to here, and they had the same issues because they all wrapped the same Kubernetes port-forwarding API.
 
-First we create a `Deployment` for the inlets PRO server. To get NATS installed I just installed OpenFaaS using `arkade install openfaas`, because [OpenFaaS](https://openfaas.com/) bundles NATS within its helm chart:
+First we create a `Deployment` for the inlets PRO server to run in a Pod. It will forward traffic from within the cluster back to the client on his laptop. To get NATS installed I just installed OpenFaaS using `arkade install openfaas`, because [OpenFaaS](https://openfaas.com/) bundles NATS within its helm chart:
 
 ```yaml
 ---
@@ -103,9 +105,9 @@ spec:
 
 Note the `--client-forwarding` flag. You can also create a secret and mount that as a volume instead of specifying a hard-coded value.
 
-Next, decide whether you want to expose the control-plane via a NodePort or a LoadBalancer using the built-in automatic TLS encryption, or turn encryption off and let an IngressController do that instead.
+Next, the client needs to connect to the control-plane port of the inlets PRO server. So decide whether you want to expose the control-plane via a NodePort or a LoadBalancer using the built-in automatic TLS termination. Another option is to turn automatic TLS termination off and let an IngressController do that instead.
 
-I thought a LoadBalancer would be the easiest to understand for him:
+I thought a LoadBalancer would be the simplest approach:
 
 ```yaml
 apiVersion: v1
@@ -127,7 +129,7 @@ spec:
     app: inlets-server
 ```
 
-After applying those configurations, I checked that the service came up with `kubectl logs -n openfaas deploy/inlets-server` - it looked good.
+After applying those YAML manifests, I checked that the service came up with `kubectl logs -n openfaas deploy/inlets-server` - it looked good.
 
 Next up, it was time to give him the inlets client command, just like what we had before to access SSH:
 
@@ -156,6 +158,22 @@ He seemed to be running Linux, because he then generated a systemd service so th
 
 To generate your own just add the `--generate=systemd` flag to any inlets PRO command.
 
+```bash
+[Unit]
+Description=inlets PRO TCP Client
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+StartLimitInterval=0
+ExecStart=/usr/local/bin/inlets-pro tcp client --url="wss://192.168.0.35:8123/connect" --upstream="localhost" --auto-tls --ports="8000" --license-file=/home/alex/.inlets/LICENSE --token="test1234"
+
+[Install]
+WantedBy=multi-user.target
+```
+
 The user was so happy that he emailed me and said:
 
 > ALEX!
@@ -164,6 +182,8 @@ The user was so happy that he emailed me and said:
 > Ps. If you don’t mind I’d like to describe your project and how it saved my life in my new article on Medium
 
 That message made the whole exercise worth it, and of course he picked up a personal use license for himself after that.
+
+Why did I go to all this effort, for one user, who may have solved his immediate problem with the free trial key? And if not, would only buy the lowest priced license? For one - these problems are why I created inlets, I wanted to help users reach services in networks and make the developer experience 10x better than existing tools. I was also inspired by Paul Graham's essay: [Do things that don't scale](http://paulgraham.com/ds.html).
 
 ## Wrapping up
 
