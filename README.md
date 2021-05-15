@@ -59,3 +59,9 @@ bundle exec jekyll serve
 
 Access the site at: http://127.0.0.1:4000/
 
+Apple M1:
+
+```bash
+arch -arch x86_64 bundle install
+arch -arch x86_64 bundle exec jekyll serve
+```
