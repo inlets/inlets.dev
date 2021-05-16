@@ -268,5 +268,5 @@ The [Prometheus Federation](https://prometheus.io/docs/prometheus/latest/federat
 Further resources:
 
 * [Start a free 14-day trial of inlets PRO](https://inlets.dev)
-* [Read tutorials and documentation for inlets PRO and OSS](https://docs.inlets.dev/)
+* [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
