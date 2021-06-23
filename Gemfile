@@ -8,6 +8,7 @@ group :jekyll_plugins do
   gem "jekyll-paginate-v2"
   gem "classifier-reborn"
   gem "jekyll-feed"
+  gem "jekyll-twitter-plugin"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
