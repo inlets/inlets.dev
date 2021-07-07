@@ -322,7 +322,13 @@ You can expose any other HTTP or TCP services that are reachable by the client's
 
 ## Wrapping up
 
-In this tutorial configured and deployed an inlets PRO exit server on the Fly platform, making the deployment pretty simple and reducing operational overhead. Not only the easy setup is attractive, but also the sharp pricing makes the platform a perfect fit for the inlets tunnel. For only __$1.94/mo__ you have already the most basic compute sizing available and with the __generous free tier__ you can even run three tunnel for free.
+In this tutorial configured and deployed an inlets PRO exit server on the Fly platform, making the deployment pretty simple and reducing operational overhead. Not only the easy setup is attractive, but also the sharp pricing makes the platform a perfect fit for the inlets tunnel. For only __$1.94/mo__ you have already the most basic compute sizing available and with the __generous free tier__ you can even run three separate tunnel processes for free.
+
+> A note from Alex
+
+There are alternatives to inlets PRO for exposing a single website, for very light traffic, but with Fly, the costs are brought down to about as low as possible whilst retaining the benefits of no rate-limiting, custom domains and data privacy.
+
+inlets PRO has a very low memory footprint, so typically you can run the server portion on the cheapest VM instances available on each provider. In this tutorial, Johan showed us how to set up the exit-server manually, but [inletsctl](https://github.com/inlets/inletsctl) tool can automate setting up a tunnel server on a cheap VM using AWS EC2, GCP, Azure, Digital Ocean, Vultr and Linode.
 
 Further resources:
 
