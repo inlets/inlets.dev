@@ -13,7 +13,7 @@ date: 2021-07-07
 
 This little story started with Alex learning more about the Fly platform and reaching out to me on Slack:
 
-> Alex Ellis: Would you check out fly.io for hosting an inlets PRO tunnel server? They have a "generous free tier" that can run containers.
+> Alex Ellis: Would you check out fly.io for hosting an inlets PRO tunnel server? They have a "generous free tier" for hosting containers.
 >
 > Me: Sounds interesting!
 
