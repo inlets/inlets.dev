@@ -45,7 +45,13 @@ The Kubernetes Operator encodes the knowledge and experience of a human operator
 
 ### Where operators fall short
 
-Here's three scenarios where the operator may fall short:
+The operator is ideal for a single user, with a single long-lived cluster. That could be your Raspberry Pi, a private data center or a local K3d, KinD or minikube cluster.
+
+The IP will go with you, and because the client runs as a Pod, it will restart whenever there's an interruption in traffic, like going to your local cafe.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">inlets-operator brings a Service LoadBalancer with public IP to any Kubernetes cluster i.e. minikube/k3d/KinD/kubeadm<br><br>I set up <a href="https://twitter.com/OpenFaaSCloud?ref_src=twsrc%5Etfw">@openfaascloud</a> on my laptop at home, when I got to a coffee shop it reconnected with the same public IP from <a href="https://twitter.com/digitalocean?ref_src=twsrc%5Etfw">@digitalocean</a>😱<a href="https://t.co/PanfWfMRlT">https://t.co/PanfWfMRlT</a> <a href="https://t.co/hHCeMRW7z2">pic.twitter.com/hHCeMRW7z2</a></p>&mdash; Alex Ellis (@alexellisuk) <a href="https://twitter.com/alexellisuk/status/1185179594040717312?ref_src=twsrc%5Etfw">October 18, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+But here's three scenarios where the operator may fall short:
 
 * If you have dozens of team members all using the inlets-operator, then there will potentially be a lot of VMs created and it could be hard to manage them centrally.
 * Secondly, the operator requires an access token to provision the cloud host.
@@ -226,12 +232,14 @@ Accept-Ranges: bytes
 
 If you close the lid on your laptop and open it in a coffee shop and connect to their captive WiFi portal, your IP address will go with you and will work just the same there or on the other side of the world after a 12 hour flight to San Francisco.
 
-For a production configuration, you are more likely to want to expose an IngressController or an Istio Gateway.
+I showed you how to expose a single HTTP service, but TCP services are also supported like MongoDB or Postresql.
+
+For a production configuration, you are more likely to want to expose an IngressController or an [Istio](https://istio.io) Gateway. In this way, you just pay for a single exit server created with [inletsctl](https://github.com/inlets/inletsctl) or [the operator](https://github.com/inlets/inlets-operator) and make sure that you have TLS encryption enabled for any traffic you serve.
 
 * [Istio Gateway with TLS](https://blog.alexellis.io/a-bit-of-istio-before-tea-time/)
 * [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/#/get-started/quickstart-ingresscontroller-cert-manager?id=expose-your-ingresscontroller-and-get-tls-from-letsencrypt)
 
-In this way, you just pay for a single exit server created with inletsctl or the operator.
+An IngressController can also be used to set authentication for your endpoints and for testing OAuth2 workflows.
 
 ## Wrapping up
 
