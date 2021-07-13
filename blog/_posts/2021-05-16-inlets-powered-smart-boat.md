@@ -118,4 +118,4 @@ This easily be done via the [Huawei API](https://github.com/Salamek/huawei-lte-a
 
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
 * [Get started with inlets today](https://inlets.dev)
-
+* [Contact the team with a question](https://inlets.dev/contact)

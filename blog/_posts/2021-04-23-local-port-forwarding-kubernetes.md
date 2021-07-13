@@ -215,3 +215,9 @@ Flags:
 Feel free [to reach out to me](https://inlets.dev/contact) if you have questions about inlets.
 
 You can kick the tires for free with a 14-day trial using the link at the bottom of the page, or just check out the [various other tutorials and tools we have for you here](https://docs.inlets.dev/).
+
+## Taking things further
+
+* [Get started today with a personal or business license](https://inlets.dev/)
+* [Contact the team with a question](https://inlets.dev/contact)
+* [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)

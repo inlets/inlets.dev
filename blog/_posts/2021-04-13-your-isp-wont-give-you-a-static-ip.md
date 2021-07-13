@@ -96,3 +96,7 @@ inlets tunnels also allow us to do more than just expose traffic publicly. You c
 
 You can try inlets PRO for free for 14 days. We have dozens of use-cases, tutorials and videos waiting for you, and I'd be happy to answer any questions you may have, if you'd like to [get in touch](https://inlets.dev/).
 
+## Taking things further
+
+* [Get started today with a personal or business license](https://inlets.dev/)
+* [Contact the team with a question](https://inlets.dev/contact)

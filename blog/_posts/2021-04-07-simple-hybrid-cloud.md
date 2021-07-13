@@ -100,6 +100,8 @@ We covered the progression and move away from on-premises datacenters to modern 
 
 I'd be happy to chat to and see if we can help you access your legacy systems from your public cloud platform.
 
-* [Contact us](https://inlets.dev/contact)
-* [Read the documentation and follow a tutorial](https://docs.inlets.dev/)
+## Taking things further
+
+* [Get started today with a personal or business license](https://inlets.dev/)
+* [Contact the team with a question](https://inlets.dev/contact)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
