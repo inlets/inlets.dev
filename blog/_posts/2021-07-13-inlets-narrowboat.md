@@ -3,10 +3,10 @@ layout: post
 title: Connecting my boat to the Internet with inlets
 description: A guest post from Mark, who used inlets to bring edge computing to his narrow boat during lockdown.
 author: Mark Sharpley
-tags: inlets-pro homelab boat iot
+tags: homelab boat iot edgecomputing prometheus
 author_img: mark
-image: /images/2021-05-16-boat/background.jpg
-date: 2021-05-16
+image: /images/2021-07-13-narrowboat/background.jpg
+date: 2021-07-13
 ---
 
 A guest post from Mark, who used inlets to bring edge computing to his narrow boat during lockdown.
@@ -17,7 +17,7 @@ Like many of us, I've at times struggled with the work/life balance and lockdown
 
 There was just an itch that I couldn't quite scratch, until I found Ionic.
 
-![My narrowboat, Ionic](/images/2021-05-16-boat/boat.jpg)
+![My narrowboat, Ionic](/images/2021-07-13-narrowboat/boat.jpg)
 
 Meet Ionic. She's a 17 metre [narrow boat](https://en.wikipedia.org/wiki/Narrowboat) and she first floated in 1986.
 
@@ -69,7 +69,7 @@ altitude 113.1
 
 Then to keep GPSD and the exporter running at all times, I set up a systemd unit file for both of them. In my work I do a lot of DevOps automation, so naturally I created an Ansible playbook to configure everything.
 
-# Where inlets comes in
+## Remote access that just works
 
 Now we have a way to track *ionic's* location, speed and altitude. I started off running the whole stack locally, with both Prometheus and Grafana running on the boat's Pi 4. Given that the Raspberry Pi 4 has up to 8GB of RAM, it seemed like a good plan, but then I wondered what would happen if the boat's battery ran out? What if someone stole the Raspberry Pi? What if I ran out of disk space for metrics?
 
@@ -79,7 +79,7 @@ To utilise my other monitoring stack we needed a tunnel from the boat to my othe
 
 > In my job I've used a lot of solutions for remote access from VPNs, to Ngrok and SSH. What I can say is that inlets PRO "just worked". I loved the simplicity of it and whenever I had a question, I got help directly from Alex.
 
-![Conceptual diagram](/images/2021-05-16-boat/boat-inlets.jpg)
+![Conceptual diagram](/images/2021-07-13-narrowboat/boat-inlets.jpg)
 
 Once the tunnel exists we can simply point Prometheus at the local end point and start scraping metrics. It's just like the boat is directly on my network, and if it disconnects for any reason, the tunnel restarts without any extra configuration needed.
 
@@ -102,7 +102,7 @@ There are lots more metrics to gather...
 
 The prometheus instance allows us to easily extract stored metrics from it. I created a simple Python Flask web application which displays the boat's last known location from Prometheus.
 
-![flask-application](/images/2021-05-16-boat/flask-app.png)
+![flask-application](/images/2021-07-13-narrowboat/flask-app.png)
 
 In the future, I may add historical data like routes and alerts for when the battery level gets too low.
 
