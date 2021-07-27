@@ -70,6 +70,13 @@ inlets PRO has a built-in integration for Kubernetes LoadBalancers, so you get t
 
 Having a tunnel created automatically may not suit your needs, so we also have a helm chart: [Fixing Ingress for short-lived local Kubernetes clusters](https://inlets.dev/blog/2021/07/08/short-lived-clusters.html)
 
+Tunnels can also be used for multi-cluster monitoring and deployment:
+
+* [How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)
+* [Learn how to manage apps across private Kubernetes clusters](https://inlets.dev/blog/2021/06/02/argocd-private-clusters.html)
+
+If you run a SaaS, this approach can be used to connect each of your clients back to your control plane for billing, metering or support.
+
 Unlike Ngrok, we are not just dealing with exposing services on the Internet. inlets PRO can be used for local tunnels too, so that you can debug problems within your Kubernetes cluster.
 
 Learn how a developer at the UK Government bought a license to help him debug an issue in staging with a NATS queue: [Reliable local port-forwarding from Kubernetes](https://inlets.dev/blog/2021/04/13/local-port-forwarding-kubernetes.html)
