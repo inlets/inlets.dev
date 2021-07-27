@@ -33,9 +33,11 @@ So why would an individual developer want a tunnel and how does it differ from t
 * Exposing a self-hosted service from a Kubernetes cluster for development and testing.
 * Exposing dashboards or services from your Raspberry Pi.
 
-Finally, inlets PRO was created to do all of the above, but also to avoid the rate-limits and corporate banning of SaaS tunnels like Ngrok.
-
 ## Differences vs. Ngrok
+
+SaaS-based tunnels like Ngrok and later clones are incredibly cheap to run as a service, and the pricing is a race to the bottom. If you just want a few webhooks, and don't care about privacy, integration, self-hosting and the rate-limits don't get in your way, then it's easy to see why the price is attractive.
+
+inlets PRO was created help developers expose endpoints during development and for self-hosting. Its main difference? It can be self-hosted which means that rate-limits and corporate banning of SaaS tunnels does not affect your productivity. It also works well as a replacement for SSH tunnels and was built with the cloud and containers in mind.
 
 ### Never banned
 
