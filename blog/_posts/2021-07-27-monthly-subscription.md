@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing the inlets PRO subscription
+title: Introducing the inlets monthly subscription
 description: You can now pay for inlets PRO on a monthly basis - learn the use-cases and how it compares to other solutions.
 author: Alex Ellis
 tags: inlets-pro secure private loadbalancer comparison announcement
@@ -11,9 +11,9 @@ date: 2021-07-27
 
 ## Introduction
 
-You asked for a monthly subscription for inlets PRO, we listened. Learn what you can use it for and how it compares to other solutions like managed tunnels from Ngrok.
+You asked for a monthly subscription for inlets, we listened. Learn what you can use it for and how it compares to other solutions like managed tunnels from Ngrok.
 
-Now, if you're operating a business and using inlets PRO, it's likely that this is something that will be part of your core infrastructure, for some time. It's also less likely that paying up front for a static license is going to be a problem.
+Now, if you're operating a business and using inlets, it's likely that this is something that will be part of your core infrastructure, for some time. It's also less likely that paying up front for a static license is going to be a problem.
 
 You can read a case-study from a business customer here: [How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
 
@@ -119,9 +119,11 @@ I'd like to thanks [Johan Siebens](https://twitter.com/nosceon) for his guest bl
 
 So do individuals like you or me actually buy and pay for inlets PRO? Yes, you can find individual stories on the [inlets homepage](https://inlets.dev/).
 
-You can [try it for free today for 14 days](https://docs.inlets.dev/#/get-started/free-trial?id=get-started-with-your-free-trial), or you can go ahead and [pay month-by-month on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
+Going forward you'll hear us use the term inlets and inlets PRO interchangeably, inlets is a paid, commercial solution for individuals and businesses.
 
-If you have comments, questions or suggestions, feel free to reach out to me via [OpenFaaS Slack in the #inlets channel](https://slack.openfaas.io/).
+If you have comments, questions or suggestions, you can chat with me and other users on the [OpenFaaS Slack](https://slack.openfaas.io/) in the `#inlets` channel.
+
+You can [try it for free today for 14 days](https://docs.inlets.dev/#/get-started/free-trial?id=get-started-with-your-free-trial), or you can go ahead and [pay month-by-month on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
 
 [Maartje](https://twitter.com/MaartjeME) uses inlets PRO to host dozens of side-projects and told me that she saved hundreds of dollars per year. Apparently the savings went on to fund her Raspberry Pi cluster!
 
