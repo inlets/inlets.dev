@@ -119,7 +119,7 @@ I'd like to thanks [Johan Siebens](https://twitter.com/nosceon) for his guest bl
 
 So do individuals like you or me actually buy and pay for inlets PRO? Yes, you can find individual stories on the [inlets homepage](https://inlets.dev/).
 
-Going forward you'll hear us use the term inlets and inlets PRO interchangeably, inlets is a paid, commercial solution for individuals and businesses.
+Going forward you'll hear us use the term inlets and inlets PRO interchangeably, inlets is a paid, commercial solution for individuals and businesses. The inlets subscription can be paid for on a monthly or yearly basis, the yearly options come with a discount that increases with the amount of licenses you need.
 
 If you have comments, questions or suggestions, you can chat with me and other users on the [OpenFaaS Slack](https://slack.openfaas.io/) in the `#inlets` channel.
 
