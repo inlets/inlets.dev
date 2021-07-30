@@ -1,3 +1,8 @@
+Lucario
+Background - transparent
+
+https://carbon.now.sh
+
 
 CLI example
 
@@ -18,7 +23,7 @@ $ inlets-pro tcp client --url wss://178.62.70.130:8123 \
 
 # Use the tunnel for TCP traffic:
 $ curl "http://178.62.70.130:8080/function/webhook"
-$ ssh -l 2222 "pi@178.62.70.130"
+$ ssh -p 2222 "pi@178.62.70.130"
 
 
 ```
