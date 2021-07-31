@@ -39,7 +39,7 @@ For this tutorial you'll need the following:
   - [login to Fly](https://fly.io/docs/getting-started/login-to-fly/)
 - [Docker](https://docker.io) installed on your machine
 - The [inlets-pro](https://github.com/inlets/inlets-pro/releases) binary available on your machine
-- An [inlets PRO license](https://inlets.dev/pricing/) - free trials are available
+- An [inlets PRO license](https://inlets.dev/pricing/) - monthly or annual subscriptions are available
 
 ## Creating the Dockerfile
 

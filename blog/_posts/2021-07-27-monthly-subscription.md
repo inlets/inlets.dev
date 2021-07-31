@@ -123,7 +123,7 @@ Going forward you'll hear us use the term inlets and inlets PRO interchangeably,
 
 If you have comments, questions or suggestions, you can chat with me and other users on the [OpenFaaS Slack](https://slack.openfaas.io/) in the `#inlets` channel.
 
-You can [try it for free today for 14 days](https://docs.inlets.dev/#/get-started/free-trial?id=get-started-with-your-free-trial), or you can go ahead and [pay month-by-month on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
+Our monthly subscription gives you the ability to try things out before moving to a yearly plan to enjoy a discount. Check out [the plans on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
 
 [Maartje](https://twitter.com/MaartjeME) uses inlets PRO to host dozens of side-projects and told me that she saved hundreds of dollars per year. Apparently the savings went on to fund her Raspberry Pi cluster!
 
