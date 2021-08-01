@@ -160,7 +160,7 @@ inlets-pro http client \
   --url wss://$SERVER_IP:8123 \
   --token $TOKEN \
   --upstream $UPSTREAM \
- --license-file $HOME/.inlets/LICENSE
+  --license-file $HOME/.inlets/LICENSE
 ```
 
 The four things you need to do are:
