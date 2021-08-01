@@ -105,19 +105,17 @@ Make sure you set `LICENSE` with the value of your license.
 
 ```bash
 export LICENSE="INLETS_PRO_LICENSE_JWT"
-export ACCESS_TOKEN=$HOME/access-token
 
 arkade install inlets-operator \
  --provider digitalocean \
  --region lon1 \
- --token-file $ACCESS_TOKEN \
- --license $LICENSE
+ --token-file $HOME/access-token \
+ --license-file $HOME/.inlets/LICENSE
 ```
 
 > You can run `arkade install inlets-operator --help` to see a list of other cloud providers.
 
 * Set the `--region` flag as required, it's best to have low latency between your current location and where the exit-servers will be provisioned.
-* Use your license in `--license`, or omit this flag if you just want to serve port 80 from your IngressController without any TLS
 
 ### Configure your DNS records
 

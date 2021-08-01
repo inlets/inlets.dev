@@ -65,13 +65,12 @@ And if you're running on your own hardware, or on-premises, you can use the [inl
 
 ```bash
 export LICENSE="INLETS_PRO_LICENSE_JWT"
-export ACCESS_TOKEN=$HOME/access-token
 
 arkade install inlets-operator \
  --provider digitalocean \
  --region lon1 \
- --token-file $ACCESS_TOKEN \
- --license $LICENSE
+ --token-file $HOME/access-token \
+ --license-file $HOME/.inlets/LICENSE
 ```
 
 See a complete tutorial here for [setting up a local Docker registry with a public IP address](https://blog.alexellis.io/get-a-tls-enabled-docker-registry-in-5-minutes/).

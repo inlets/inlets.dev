@@ -154,13 +154,13 @@ export TOKEN=""
 # Populate from previous step
 export UPSTREAM="http://127.0.0.1:8080"
 
-# Save your inlets-pro license to ~/LICENSE.txt 
+# Save your inlets-pro license to ~/.inlets/LICENSE
 
 inlets-pro http client \
   --url wss://$SERVER_IP:8123 \
   --token $TOKEN \
   --upstream $UPSTREAM \
-  --license-file $HOME/LICENSE.txt
+ --license-file $HOME/.inlets/LICENSE
 ```
 
 The four things you need to do are:
@@ -168,7 +168,7 @@ The four things you need to do are:
 * Set the `SERVER_IP`
 * Set the `TOKEN`
 * Set the `UPSTREAM` i.e."http://127.0.0.1:8080"
-* Save your license to `$HOME/LICENSE.txt`
+* Save your license to `~/.inlets/LICENSE`
 
 ### Test out your tunnel
 
