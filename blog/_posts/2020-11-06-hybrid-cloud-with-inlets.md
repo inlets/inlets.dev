@@ -221,6 +221,6 @@ For the example we chose WordPress, but the same technique can be applied to any
 
 Further resources:
 
-* [Start a free 14-day trial of inlets PRO](https://inlets.dev)
+* [Subscribe to inlets on a monthly or yearly plan](https://inlets.dev/pricing/)
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
