@@ -228,6 +228,46 @@ Accept-Ranges: bytes
 <title>Welcome to nginx!</title>
 ```
 
+### What about my Ingress Controller?
+
+Let's say that you wanted to expose Traefik or ingress-nginx, how does that compare?
+
+Create a secret for the auth token:
+
+```bash
+kubectl create secret generic -n default \
+  traefik-tunnel-token \
+  --from-literal token=DP4bepIxuNXbjbtXWsu6aSkEE9r5cvMta56le2ajP7l9ajJpAgEcFxBTWSlR2PdB
+```
+
+Just follow the steps from before, then change the helm install to the following:
+
+```bash
+git clone https://github.com/inlets/inlets-pro
+cd inlets-pro/chart/inlets-pro-client
+
+helm upgrade --install \
+  --namespace kube-system \
+  --set autoTLS=true \
+  --set ports=80,443 \
+  --set upstream=traefik \
+  --set url=wss://165.227.232.164:8123 \
+  --set tokenSecretName=traefik-tunnel-token \
+  --set fullnameOverride="traefik-tunnel" \
+  traefik-tunnel \
+  ./
+```
+
+What changed?
+
+* The namespace is now `kube-system` to match where K3s installs Traefik by default
+* The ports are 80 and 443, so that Traefik or cert-manager can respond to HTTP01 Acme challenges to issue certificates
+* The upstream service is changed to `traefik`
+
+There's also a dashboard port on 8080, you can add that to the list if you wish.
+
+Finally, the name is updated. You can install the helm chart for the inlets client or server as many times as you like.
+
 ### Production use and travel
 
 If you close the lid on your laptop and open it in a coffee shop and connect to their captive WiFi portal, your IP address will go with you and will work just the same there or on the other side of the world after a 12 hour flight to San Francisco.
