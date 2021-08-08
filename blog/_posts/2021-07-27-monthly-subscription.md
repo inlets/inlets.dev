@@ -35,9 +35,13 @@ So why would an individual developer want a tunnel and how does it differ from t
 
 ## Differences vs. Ngrok
 
-SaaS-based tunnels like Ngrok and later clones are incredibly cheap to run as a service, and the pricing is a race to the bottom. If you just want a few webhooks, and don't care about privacy, integration, self-hosting and the rate-limits don't get in your way, then it's easy to see why the price is attractive.
+ngrok was founded by Alan Shreve in 2015, and since then many similar services have appeared. The concept is simple, but powerful: you have service running on your laptop and want a public address for it. Why? For remote access or for testing.
 
-inlets PRO was created help developers expose endpoints during development and for self-hosting. Its main difference? It can be self-hosted which means that rate-limits and corporate banning of SaaS tunnels does not affect your productivity. It also works well as a replacement for SSH tunnels and was built with the cloud and containers in mind.
+I was an Ngrok user myself, but in 2019 after running into various limitations and frustrations, decided to create a new self-hosted option. The main differences are that Ngrok is a SaaS service and inlets is self-hosted. Ngrok is mainly about exposing a local service on the Internet, but inlets can also act like a VPN or site-to-site uplink.
+
+If you just want to receive a few webhooks and the rate limits don't get in your way, then Ngrok may be the fastest solution. However, a SaaS is a shared environment and does not provide a completely private or isolated path for your confidential data. Ngrok was built in a a different time and for a different community, so there isn't a Kubernetes or Docker integration either. Most of the time it is blocked when connected to a corporate VPN, or working at the office on the corporate network.
+
+inlets can also be used to expose local endpoints during development and for self-hosting, but what are its main differences?
 
 ### Never banned
 
