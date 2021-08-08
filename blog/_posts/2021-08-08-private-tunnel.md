@@ -44,10 +44,14 @@ For instructions on how to create an API key or service account for each, [feel 
 inletsctl create \
  --region lon1 \
  --provider digitalocean \
- --token-from ~/digital-ocean-api-key.txt
+ --token-from ~/digital-ocean-api-key.txt \
  --letsencrypt-domain blog.example.com \
  --letsencrypt-email webmaster@example.com
 ```
+
+A VM will be created in your account using the cheapest plan available, for DigitalOcean this costs 5 USD / mo at time of writing.
+
+You can also run your tunnel server in the free tier of GCP, Oracle Cloud or on Fly.io at no additional cost.
 
 Once the tunnel server has been created, you will receive:
 
@@ -100,6 +104,12 @@ $ npm start
 alexellis.io started on port: http://0.0.0.0:3000
 ```
 
+You can download the inlets client using the inletsctl tool:
+
+```bash
+$ sudo inletsctl download
+```
+
 Now you can start the tunnel client and start serving a test version of my personal homepage `alexellis.io`:
 
 ```bash
@@ -148,7 +158,7 @@ $ sudo systemctl enable inlets
 You can then check the logs or service status:
 
 ```bash
-$ sudo journactl -u inlets
+$ sudo journalctl -u inlets
 $ sudo systemctl status inlets
 ```
 
@@ -179,12 +189,16 @@ When would you need this?
 * If you're running a Kubernetes cluster or K3s on a Raspberry Pi, it can be much cheaper over the course of a year.
 * But it's also incredibly convenient for sharing files and for testing APIs or OAuth flows during development.
 
-![Andrew's K3s cluster, with inlets](https://pbs.twimg.com/media/E8QOduEXIAQ2TIL?format=jpg&name=small)
-> Andrew's K3s cluster, with inlets
+[Ben Potter at Coder](https://twitter.com/bpmct) is writing up a tutorial on how to access a private VSCode server from anywhere using a private tunnel. If you would like to learn more, follow [@inletsdev](https://twitter.com/inletsdev) for when it gets published.
+
+<img src="https://blog.alexellis.io/content/images/2021/07/PXL_20210720_080841146-s.jpg" width="60%" alt="VSCode running in the browser using Coder">
 
 [Andrew Meier](https://twitter.com/ameier38) put it this way:
 
 > "I prefer to play around with different projects without having to worry about my costs skyrocketing. I had a few Raspberry Pis and wondered if I could use them as a cluster. After a bit of searching #k3s and  inlets gave me my answer"
+
+![Andrew's K3s cluster, with inlets](https://pbs.twimg.com/media/E8QOduEXIAQ2TIL?format=jpg&name=small)
+> Andrew's K3s cluster, with inlets
 
 Read his blog post: [Personal Infrastructure with Inlets, k3s, and Pulumi](https://andrewmeier.dev/personal-infrastructure)
 
