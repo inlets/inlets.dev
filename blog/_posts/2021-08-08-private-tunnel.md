@@ -44,7 +44,7 @@ For instructions on how to create an API key or service account for each, [feel 
 inletsctl create \
  --region lon1 \
  --provider digitalocean \
- --token-from ~/digital-ocean-api-key.txt \
+ --access-token-file ~/digital-ocean-api-key.txt \
  --letsencrypt-domain blog.example.com \
  --letsencrypt-email webmaster@example.com
 ```
@@ -103,6 +103,8 @@ $ npm start
 
 alexellis.io started on port: http://0.0.0.0:3000
 ```
+
+inlets also has its own built-in file-server with password protection and the ability to disable browsing for sharing private links. You can expose the built-in file-server when you want to share files directly, without having to upload them first: [The simple way to share files directly from your computer](https://inlets.dev/blog/2021/02/09/simple-filesharing.html)
 
 You can download the inlets client using the inletsctl tool:
 
