@@ -379,4 +379,8 @@ As a quick summary, 0.9.0 covers:
 * Improved support for PaaS systems through the `--token-env` and `--license-env` flags
 * Better support for High Availability through the new TCP load-balancing feature
 
-The inlets 0.9.0 client and server are backwards compatible with prior versions, however it is recommended that you upgrade to take advantage of updated dependencies and the newer features listed above. Feel free to reach out to me if you have any questions.
+The inlets 0.9.0 client and server are backwards compatible with prior versions, however it is recommended that you upgrade to take advantage of updated dependencies and the newer features listed above. 
+
+A release candidate is [available today via GitHub releases](http://github.com/inlets/inlets-pro/releases), and will soon be promoted to the default version for inletsctl and the inlets-operator.
+
+Feel free to [reach out to me](/contact) if you have any questions.
