@@ -154,9 +154,11 @@ In my eBook Everyday Go, I cover patterns and techniques learned from building a
 
 > The easiest way to add Prometheus metrics to inlets was to use the examples [from my own eBook](https://openfaas.gumroad.com/l/everyday-golang).
 
-The moment that you add Prometheus' HTTP handler, it automatically makes the count of Goroutines available, the amount of memory used and much more.
+The moment that you add the built-in Prometheus' HTTP handler, it automatically makes the count of Goroutines available, the amount of memory used and much more. Then it's over to you, to decide what you want to measure and monitor them by updating your code and adding various [counters, gauges and histograms](https://prometheus.io/docs/concepts/metric_types/).
 
-Then it's over to you, to decide what you want to measure and monitor.
+Prometheus has its own query language called PromQL which I'll use in some of the examples. You can [find out more about it here](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+
+In the following section I'll recap the two "planes" of inlets, then I'll introduce the new metrics and explain each one and give you a sample that you can run in less than 15 minutes to see how it all works with your own tunnels.
 
 ### The control and data plane
 
