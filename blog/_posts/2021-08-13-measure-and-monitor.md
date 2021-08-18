@@ -3,9 +3,9 @@ layout: post
 title: Measure and monitor your inlets tunnels
 description: You can now measure and monitor your tunnels with Prometheus and a new status command.
 author: Alex Ellis
-tags: private tunnel secure self-hosting
+tags: monitoring metrics prometheus observability
 author_img: alex
-image: /images/2021-08-08-private-tunnel/background.jpg
+image: /images/2021-08-measure-and-monitor/background-measure.jpg
 date: 2021-08-08
 ---
 
@@ -38,9 +38,13 @@ I've seen a growing set of projects and products that interop well. Why is that 
 > 
 > I simply picked the best projects from the CNCF landscape that aligned with the values of [OpenFaaS](https://openfaas.com). [NATS](https://nats.io) was chosen for asynchronous messages and was lightweight with good defaults, [Prometheus](https://prometheus.io) managed metrics and auto-scaling alerts and [Kubernetes](https://kubernetes.io) and Docker provided for multi-node orchestration.
 
-Inlets is a Cloud Native for all of the reasons described above. It will run well as a binary on an Intel or ARM server, on Windows, Linux and MacOS. It can also be run as a container or as a Kubernetes Pod, and is easy to automate through common tools. You can run it as a developer in the same way you would do a SaaS tunnel, or as as home-lab enthusiast hosting Ingress to a private network, or as a SaaS vendor - federating on-premises customers into your system.
+Inlets is a Cloud Native for all of the reasons described above. It will run well as a binary on an Intel or ARM server, on Windows, Linux and MacOS. It can also be run as a container or as a Kubernetes Pod, and is easy to automate through common tools.
 
-One inlets customer is a large business that sells an on-premises Git solution and a cloud-hosted project management solution. They were able to use inlets to integrate their on-premises Git product with their newer cloud-hosted project management tool. With more and more traditional on-premises companies like VMware and Dell looking to SaaS models, inlets is positioned perfectly to help traditional companies bridge the gap.
+Who needs a Cloud Native Tunnel?
+
+You can run it as a developer in the same way you would do a SaaS tunnel, or as as home-lab enthusiast hosting Ingress to a private network, or as a SaaS vendor - federating on-premises customers into your system. It's a quick and reliable way to make private services addressable on your own network or the Internet.
+
+One inlets customer is a large business that sells an on-premises Git solution and a cloud-hosted project management solution. They were able to use inlets to integrate their on-premises Git product with their newer cloud-hosted project management tool. With more and more traditional on-premises companies like [Dell looking to SaaS models](https://www.crn.com/news/data-center/dell-to-make-all-offerings-as-a-service-says-michael-dell), inlets is well-positioned to help traditional companies bridge that gap.
 
 Now I'll cover the new changes, and deprecations, followed by a walk-through and explanation of the new Prometheus metrics added in this release.
 
@@ -138,7 +142,7 @@ TCP tunnels will now load-balance traffic between all connected clients that exp
 
 HTTP tunnels already load-balance connections between clients using a round-robbin approach.
 
-![Load balancing from Kubernetes pods](/images/2021-08-metrics-monitoring/load-balance-tcp.jpg)
+![Load balancing from Kubernetes pods](/images/2021-08-measure-and-monitor/load-balance-tcp.jpg)
 
 > Load Balancing the Traefik Ingress Controller from Kubernetes
 
@@ -330,7 +334,7 @@ unable to find requested file
 
 Now you'll be able to see the metrics within the Prometheus UI:
 
-![Metrics browser](/images/2021-08-metrics-monitoring/metrics-browser.jpg)
+![Metrics browser](/images/2021-08-measure-and-monitor/metrics-browser.jpg)
 
 > The metrics browser shows you the various names I mentioned above for the HTTP tunnel that we created
 
@@ -347,7 +351,7 @@ http_dataplane_requests_total{method="GET"}
 http_dataplane_requests_total{code="500"}
 ```
 
-![Viewing the data in a table format](/images/2021-08-metrics-monitoring/metrics-table.png)
+![Viewing the data in a table format](/images/2021-08-measure-and-monitor/metrics-table.png)
 
 A more useful metric is usually to sample the data and find the "rate" of a certain HTTP code over a time window:
 
