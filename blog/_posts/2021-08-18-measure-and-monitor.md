@@ -6,7 +6,7 @@ author: Alex Ellis
 tags: monitoring metrics prometheus observability
 author_img: alex
 image: /images/2021-08-measure-and-monitor/background-measure.jpg
-date: 2021-08-08
+date: 2021-08-18
 ---
 
 In this new release of inlets, you can now get insights into your tunnel servers through the `status` command and new Prometheus monitoring. I'll walk you through why inlets was built as a *Cloud Native* tunnel, followed by the various changes and features introduced in this release.
