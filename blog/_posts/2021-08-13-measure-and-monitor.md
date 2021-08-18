@@ -9,26 +9,28 @@ image: /images/2021-08-08-private-tunnel/background.jpg
 date: 2021-08-08
 ---
 
-In this new release of inlets, you can now measure and monitor your tunnels with Prometheus and a new `status` CLI command. I'm going to walk you through why inlets is called the Cloud Native tunnel, and what that means to you. I'll also introduce you to the new features in this releases.
+In this new release of inlets, you can now get insights into your tunnel servers through the `status` command and new Prometheus monitoring. I'll walk you through why inlets was built as a *Cloud Native* tunnel, followed by the various changes and features introduced in this release.
 
 The inlets 0.9.0 releases adds:
 
-* Prometheus metrics for TCP and HTTP tunnels
 * A new `status` CLI command to monitor tunnels
 * Load-balancing of requests between clients using TCP tunnels
 * An ARM64 Darwin binary for Apple M1 users
+* Prometheus metrics for TCP and HTTP tunnels
+
+You'll also notice that a few commands and flags have changed, I've taken care to note each of these for you.
 
 ## What is Cloud Native anyway?
 
-[Alexis Richardson](https://twitter.com/monadic), CEO of Weaveworks and former chair to the ToC of the CNCF [gave a presentation](https://www.cncf.io/online-programs/what-is-cloud-native-and-why-does-it-exist/), where he mentioned the following as being important drivers of Cloud Native applications.
+In 2017 [Alexis Richardson](https://twitter.com/monadic), CEO of Weaveworks and former chair to the ToC of the [CNCF](https://cncf.io) [gave a presentation](https://www.cncf.io/online-programs/what-is-cloud-native-and-why-does-it-exist/), where he mentioned the following as being important drivers of Cloud Native applications:
 
 * Automation, lots of it. End to End - CI, observability, Orchestration
 * Focus on the app, not the infrastructure, i.e. containers because they just work
 * Understand and apply new patterns for monitoring, logging, uptime management - microservices and beyond
 
-Alexis' vision in 2017 aligns closely with what we've seen evolve with CNCF projects and the ecosystem surrounding it.
+Alexis' vision from 2017 aligns closely with what we've seen evolving with CNCF projects and the ecosystem surrounding it.
 
-A set of projects and products that interop well, that do not require a single monolithic application to cover every responsibility, but building blocks and that are built to work together.
+I've seen a growing set of projects and products that interop well. Why is that important? Rather than needing one single monolithic application that covers every use-case and responsibility, building blocks can be composed together to achieve the same goal, with more speed and less effort overall.
 
 > Cloud Native from my own journey:
 >
@@ -36,13 +38,111 @@ A set of projects and products that interop well, that do not require a single m
 > 
 > I simply picked the best projects from the CNCF landscape that aligned with the values of [OpenFaaS](https://openfaas.com). [NATS](https://nats.io) was chosen for asynchronous messages and was lightweight with good defaults, [Prometheus](https://prometheus.io) managed metrics and auto-scaling alerts and [Kubernetes](https://kubernetes.io) and Docker provided for multi-node orchestration.
 
-Inlets is a Cloud Native for all of the reasons described above. You can run it as a developer in the same way you would do a SaaS tunnel, or as as home-lab enthusiast hosting Ingress to a private network, or as a SaaS vendor - federating on-premises customers into your system.
+Inlets is a Cloud Native for all of the reasons described above. It will run well as a binary on an Intel or ARM server, on Windows, Linux and MacOS. It can also be run as a container or as a Kubernetes Pod, and is easy to automate through common tools. You can run it as a developer in the same way you would do a SaaS tunnel, or as as home-lab enthusiast hosting Ingress to a private network, or as a SaaS vendor - federating on-premises customers into your system.
 
-There is a large business that sells an on-premises Git solution and a cloud-hosted project management solution. They were able to use inlets to integrate any customers running the on-premises Git product with their newer hosted cloud software.
+One inlets customer is a large business that sells an on-premises Git solution and a cloud-hosted project management solution. They were able to use inlets to integrate their on-premises Git product with their newer cloud-hosted project management tool. With more and more traditional on-premises companies like VMware and Dell looking to SaaS models, inlets is positioned perfectly to help traditional companies bridge the gap.
 
-With more and more traditional on-premises companies like VMware and Dell looking to SaaS models, inlets is positioned perfectly to help them bridge the gap.
+Now I'll cover the new changes, and deprecations, followed by a walk-through and explanation of the new Prometheus metrics added in this release.
 
-## Monitoring with Prometheus
+### New changes and deprecations
+
+The `--token-env` option has been added to the client and server commands so that inlets can be used more easily with PaaS platforms that store secrets as environment variables. Examples include ECS, Fargate, Heroku and Fly. In the same vein, `--license-env` has been added to the client commands so that ECS Anywhere users can update their license tokens on edge devices, if and when required.
+
+The `inlets-pro http fileserver` command has moved up one level to `inlets-pro fileserver` so that it's easier to discover and less to type in.
+
+The flag `--token-from` is now deprecated and will be removed in a future release, see also: `token-file` which does the same thing with a more consistent name.
+
+The `--print-token` flag has been removed from the inlets HTTP client and server, given that the token is an input it should already be possible to print this value yourself.
+
+#### The new status command
+
+There is a new `inlets-pro status` command that you can use with HTTP or TCP tunnels. It can help you understand how tunnels are being used, and later on you may choose to move to Prometheus metrics (explained below) for background monitoring and alerting.
+
+You can find out tunnel statistics, uptime and connected clients without logging in with a console or SSH session.
+
+Here's an example of a TCP tunnel server:
+
+```bash
+$ inlets-pro status \
+  --url wss://178.62.70.130:8123 \
+  --token "$TOKEN" \
+  --auto-tls
+
+Querying server status. Version DEV - unknown
+Hostname: unruffled-banzai4
+Started: 49 minutes
+Mode: tcp
+Version:        0.8.9-rc1
+
+Client ID                        Remote Address     Connected Upstreams
+730aa1bb96474cbc9f7e76c135e81da8 81.99.136.188:58102 15 minutes localhost:8001, localhost:8000, localhost:2222
+22fbfe123c884e8284ee0da3680c1311 81.99.136.188:64018 6 minutes  localhost:8001, localhost:8000, localhost:2222
+```
+
+You can see two clients connected and which ports they make available on the server. All traffic to the data plane for ports 8001, 8000 and 2222 will be load-balanced between the two clients for HA.
+
+And the response from a HTTP tunnel:
+
+```bash
+$ inlets-pro status \
+  --url wss://147.62.70.101:8123 
+  --token "$TOKEN" 
+  --auto-tls
+
+Server info:
+Hostname: creative-pine6
+Started: 1 day
+Mode:           http
+Version:        0.8.9-rc1
+Connected clients:
+Client ID                        Remote Address     Connected Upstreams
+4e35edf5c6a646b79cc580984eac4ea9 192.168.0.19:34988 5 minutes example.com=http://localhost:8000, prometheus.example.com=http://localhost:9090
+```
+
+Here we have one client which provides two separate domains. You can connect multiple clients with different domains if you wish.
+
+You can also access the status endpoint though curl using an Authorization header and the token you set up for the server:
+
+```bash
+$ curl -ksLS https://127.0.0.1:8123/status \
+-H "Authorization: Bearer $TOKEN"
+```
+
+Example response from a HTTP tunnel:
+
+```json
+{
+  "info": {
+    "version": "0.8.9-18-gf4fc15b",
+    "sha": "f4fc15b9604efd0b0ca3cc604c19c200ae6a1d7b",
+    "mode": "http",
+    "startTime": "2021-08-13T12:23:17.321388+01:00",
+    "hostname": "am1.local"
+  },
+  "clients": [
+    {
+      "clientID": "0c5f2a1ca0174ee3a177c3be7cd6d950",
+      "remoteAddr": "[::1]:63671",
+      "since": "2021-08-13T12:23:19.72286+01:00",
+      "upstreams": [
+        "*=http://127.0.0.1:8080"
+      ]
+    }
+  ]
+}
+```
+
+#### Load-balancing enhancement in TCP mode
+
+TCP tunnels will now load-balance traffic between all connected clients that expose the same ports. This is useful for High Availability and when you have multiple locations that serve the same data.
+
+HTTP tunnels already load-balance connections between clients using a round-robbin approach.
+
+![Load balancing from Kubernetes pods](/images/2021-08-metrics-monitoring/load-balance-tcp.jpg)
+
+> Load Balancing the Traefik Ingress Controller from Kubernetes
+
+## Monitoring inlets with Prometheus
 
 In my eBook Everyday Go, I cover patterns and techniques learned from building and contributing to open source Go projects over the past 5 years, one of those patterns is observability of HTTP services.
 
@@ -256,97 +356,21 @@ A more useful metric is usually to sample the data and find the "rate" of a cert
 rate(http_dataplane_requests_total{code="401"}[5m])
 ```
 
-What do you do with this data?
+What can you do with this data?
 
 * Create a dashboard in a tool like [Grafana](https://grafana.io/) for pro-active monitoring to understand patterns and problems.
 * Define alerts in Prometheus or Grafana to detect problems and take action to fix them.
-
-### The new status command
-
-If you're not quite Cloud Native enough to add Prometheus metrics into your stack, you'll probably find the new status command for HTTP and TCP tunnels particularly useful.
-
-You can find out tunnel statistics, uptime and connected clients without logging in over SSH or a terminal.
-
-Here's an example of a TCP tunnel server:
-
-```bash
-$ inlets-pro status --url wss://178.62.70.130:8123 --token "$TOKEN" --auto-tls
-
-Querying server status. Version DEV - unknown
-Hostname: unruffled-banzai4
-Started: 49 minutes
-Mode: tcp
-Version:        0.8.9-rc1
-
-Client ID                        Remote Address     Connected Upstreams
-730aa1bb96474cbc9f7e76c135e81da8 81.99.136.188:58102 15 minutes localhost:8001, localhost:8000, localhost:2222
-22fbfe123c884e8284ee0da3680c1311 81.99.136.188:64018 6 minutes  localhost:8001, localhost:8000, localhost:2222
-```
-
-You can see two clients connected and which ports they make available on the server. All traffic to the data plane for ports 8001, 8000 and 2222 will be load-balanced between the two clients for HA.
-
-And the response from a HTTP tunnel:
-
-```bash
-$ inlets-pro status --url wss://147.62.70.101:8123 --token "$TOKEN" --auto-tls
-
-Server info:
-Hostname: creative-pine6
-Started: 1 day
-Mode:           http
-Version:        0.8.9-rc1
-Connected clients:
-Client ID                        Remote Address     Connected Upstreams
-4e35edf5c6a646b79cc580984eac4ea9 192.168.0.19:34988 5 minutes example.com=http://localhost:8000, prometheus.example.com=http://localhost:9090
-```
-
-Here we have one client which provides two separate domains. You can connect multiple clients with different domains if you wish.
-
-You can also access the status endpoint though curl using an Authorization header and the token you set up for the server:
-
-```bash
-$ curl -ksLS https://127.0.0.1:8123/status \
--H "Authorization: Bearer $TOKEN"
-```
-
-Example response from a HTTP tunnel:
-
-```json
-{
-  "info": {
-    "version": "0.8.9-18-gf4fc15b",
-    "sha": "f4fc15b9604efd0b0ca3cc604c19c200ae6a1d7b",
-    "mode": "http",
-    "startTime": "2021-08-13T12:23:17.321388+01:00",
-    "hostname": "am1.local"
-  },
-  "clients": [
-    {
-      "clientID": "0c5f2a1ca0174ee3a177c3be7cd6d950",
-      "remoteAddr": "[::1]:63671",
-      "since": "2021-08-13T12:23:19.72286+01:00",
-      "upstreams": [
-        "*=http://127.0.0.1:8080"
-      ]
-    }
-  ]
-}
-```
-
-### Load-balancing enhancement in TCP mode
-
-TCP tunnels will now load-balance traffic between all connected clients that expose the same ports. This is useful for High Availability and when you have multiple locations that serve the same data.
-
-HTTP tunnels already load-balance connections between clients using a round-robbin approach.
-
-![Load balancing from Kubernetes pods](/images/2021-08-metrics-monitoring/load-balance-tcp.jpg)
-
-> Load Balancing the Traefik Ingress Controller from Kubernetes
-
+* Fire alerts into an [OpenFaaS](https://www.openfaas.com/) function for automatic remediation or escalation.
 
 ## Wrapping up the release
 
 This has been a big release, so I'd like to thank all of our customers and contributors for their input and help with testing.
 
-inlets 0.9.0 is backwards compatible with prior versions, however it is recommended that you upgrade to take advantage of updated dependencies and the newer features listed above. Feel free to reach out to me if you have any questions.
+As a quick summary, 0.9.0 covers:
 
+* Monitoring and observability support with Prometheus
+* A status command and endpoint to help you understand what's happening with your tunnel servers 
+* Improved support for PaaS systems through the `--token-env` and `--license-env` flags
+* Better support for High Availability through the new TCP load-balancing feature
+
+The inlets 0.9.0 client and server are backwards compatible with prior versions, however it is recommended that you upgrade to take advantage of updated dependencies and the newer features listed above. Feel free to reach out to me if you have any questions.
