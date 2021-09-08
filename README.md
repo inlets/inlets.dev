@@ -4,15 +4,19 @@
 
 ## Adding a new blog post
 
-* Create an issue and propose the topic. Wait for approval before contributing.
+* Create an issue and propose the topic. Wait for approval before contributing, unless you've already been asked to contribute a post.
 
 * Create a new YAML file in `blog/_posts` - see [this example](https://github.com/alexellis/inlets.dev/blob/master/blog/_posts/2020-10-29-preparing-docker-hub-rate-limits.md) for how to set the post title and description.
 
 * Prefix it with the date.
 
-* Add images to `/images/` - resize all images to < 200-300KB.
+* Add images to `/images/` - resize all images to under 200-300KB, for a faster page loading time
 
-* Raise a Pull Request
+* Make sure you have a cropped image for the background / title of the post, this will show up on the page roll-up at /blog/ - good sources for images are: unsplash.com and pexels.com
+
+* Sign-off any commits you make with `git commit -s`, this is not GPG or cryptography, but [a simple declaration](https://en.wikipedia.org/wiki/Developer_Certificate_of_Origin)
+
+* Raise a Pull Request and fill out the whole template, including how you tested the page and the instructions.
 
 If you use any copyrighted material such as text, code, or images, then you must credit the author.
 
