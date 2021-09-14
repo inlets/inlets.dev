@@ -27,13 +27,21 @@ Meet Ionic. She's a 17 metre narrow boat, laid down in 1986. I purchased her las
 >  No DevOps engineer worth their salt could own a boat and not try to connect it to the internet.
 >  - Me, probably
 
-This boat is ßpretty basic. The fuel level is measured with a stick. The water tank level is measured with a stick. Want to know where the boat is? Look at a map. While there is joy in this, we can do better - all we need is a stable Internet connection, a few Raspberry Pis and some enthusiasm.
+This boat is pretty basic. The fuel level is measured with a stick. The water tank level is measured with a stick. Want to know where the boat is? Look at a map. While there is joy in this, we can do better - all we need is a stable Internet connection, a few Raspberry Pis and some enthusiasm.
 
 ## Hooking up to the Internet
 
-To access the Internet there is a sim card with a data only contract, plugged into [one of these](https://consumer.huawei.com/en/routers/5g-cpe-pro/specs/) This lives on the boat and is plugged into the 12 volt power system which itself is fed from two 120 amp hour batteries. The batteries are trickle charged using solar panels. This system also powers the Pi.
+To access the Internet there is a sim card with a data only contract, plugged into [one of these](https://consumer.huawei.com/en/routers/5g-cpe-pro/specs/) This lives on the boat and is plugged into the 12 volt power system which itself is fed from two 120 amp hour "leisure" batteries:
 
-The Huawei Router provides DHCP and WiFi for the boat.
+![leisure batteries](/images/2021-05-16-boat/battery.jpg)
+
+The batteries are trickle charged using solar panels:
+
+![solar panels](/images/2021-05-16-boat/solar.jpg)
+
+
+The Huawei Router provides DHCP and WiFi for the boat and is powered from this circuit.
+The same system also power the Raspberry Pi.
 
 ## Starting Simple
 
