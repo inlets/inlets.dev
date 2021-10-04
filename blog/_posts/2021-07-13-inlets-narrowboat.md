@@ -33,13 +33,21 @@ This boat is pretty basic. The fuel level is measured with a stick. The water ta
 
 While there is some joy in this we can do better - all we need is a stable Internet connection, a few Raspberry Pis and some creative thinking.
 
-## Hooking Ionic up to the Internet
-
 To access the Internet I use a SIM card with a data-only contract, plugged into a [5G router by Huawei](https://consumer.huawei.com/en/routers/5g-cpe-pro/specs/).
+
+## Ionic's power inlets
 
 The boat runs on 12 volts, fed by two 120 aH batteries connected in parallel. I use solar panels and a charge controller to trickle charge back into them.
 
-This system powers the Raspberry Pi, and then there's also an inverter on board for whenever I need 240V, it can draw the 12V input and produce power for a regular 3-pin plug. 
+![The battery system](/images/2021-07-13-narrowboat/battery.jpg)
+
+> The two batteries connected to the solar panels.
+
+This system powers the Raspberry Pi, and then there's also an inverter on board for whenever I need 240V, it can draw the 12V input and produce power for a regular 3-pin plug.
+
+![The solar panels](/images/2021-07-13-narrowboat/solar.jpg)
+
+> The solar panels mounted on the roof, although we don't get that much sun in the UK through winter.
 
 ## Starting Simple
 
