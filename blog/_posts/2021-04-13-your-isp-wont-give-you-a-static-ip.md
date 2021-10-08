@@ -40,7 +40,7 @@ Not all ISPs will offer you a Static IP, so you may have a public IP address tha
 
 I used this technique in the past to host a Ghost blog and used [Namecheap](https://namecheap.com). Unfortunately my router didn't support Namecheap, so I had to buy a Raspberry Pi to run a regular cron job and update the address. Occasionally, this will fail and you may be away from home, wanting to access your network over SSH, but will have no way to do so.
 
-![Port forwarding with a dynamic IP](/images/2021-04-static-ip/static-ports.jpg)
+![Port forwarding with a dynamic IP](/images/2021-04-static-ip/dynamic-ports.jpg)
 
 The configuration is similar to above. It still exposes your location, and is still limited on port mappings.
 
