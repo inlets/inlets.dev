@@ -29,6 +29,8 @@ VPC Peering can also be used to join a service from an ISV to your network, for 
 
 ![Joining two private networks](/images/2021-10-kubernetes-peering/peered.png)
 
+If you'd like to learn more about VPC Peering, Google Cloud has [a good introduction here](https://cloud.google.com/vpc/docs/vpc-peering).
+
 ## Where VPC peering may fall short
 
 Two problems may occur, where VPC peering may fall short.
