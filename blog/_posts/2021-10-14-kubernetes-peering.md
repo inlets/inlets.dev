@@ -5,7 +5,7 @@ description: Find out how Inlets, VPC Peering and direct uplinks can be used to 
 author: Alex Ellis
 tags: containers hybridcloud
 author_img: alex
-image: /images/2021-09-compose/writing.jpg
+image: /images/2020-11-ipv6-proxy/top.jpg
 date: 2021-10-14
 ---
 
