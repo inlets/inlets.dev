@@ -1,16 +1,16 @@
 ---
 layout: post
 title: Learn Advanced Cloud Networking Patterns with inlets
-description: Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets PRO for hybrid-cloud, multi-cluster and federation.
+description: Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets Pro for hybrid-cloud, multi-cluster and federation.
 author: Alex Ellis
 tags: sdn sdwan inlets-cloud
 author_img: alex
 date: 08-10-2020
 ---
 
-Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets PRO for hybrid-cloud, multi-cluster and federation.
+Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets Pro for hybrid-cloud, multi-cluster and federation.
 
-inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets PRO) adds support for TCP and has built-in TLS and [Kubernetes](https://kubernetes.io) support through the [inlets-operator](https://github.com/inlets/inlets-operator).
+inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets Pro) adds support for TCP and has built-in TLS and [Kubernetes](https://kubernetes.io) support through the [inlets-operator](https://github.com/inlets/inlets-operator).
 
 The best known use-case for a network tunnel is to take a service on a private network and to expose it on the Internet. This can be useful for sharing work with clients, integrating with third-party APIs, and for receiving webhooks behind a firewall. 
 
@@ -31,7 +31,7 @@ Most SaaS tunnels are subjected to severe limits and restrictions to make large 
 At cert-manager's community day, Alex gave an overview of inlets including:
 
 * The traditional use-case for network tunnels
-* The differences and usage for inlets OSS and inlets PRO
+* The differences and usage for inlets OSS and inlets Pro
 * A case-study with hybrid cloud, to manage private OpenShift APIs from a central SaaS service
 * Multi-cloud service federation with Prometheus
 
@@ -86,5 +86,5 @@ Here's a few reasons to try inlets today:
 Further resources:
 
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
-* [Kick the tires with free 14-day trial of inlets PRO](https://inlets.dev)
+* [Kick the tires with free 14-day trial of inlets Pro](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)

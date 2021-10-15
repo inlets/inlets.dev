@@ -13,24 +13,24 @@ Learn how to run and manage hundreds and thousands of secure inlets tunnels on a
 
 ## Introduction
 
-In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets PRO [Helm Charts](https://github.com/inlets/inlets-pro/tree/master/chart) to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm Charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
+In a previous blog post, _[How to monitor multi-cloud Kubernetes with Prometheus and Grafana](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html)_, we demonstrated how we could use the inlets Pro [Helm Charts](https://github.com/inlets/inlets-pro/tree/master/chart) to bring multiple Prometheus instances into a single remote Kubernetes cluster, giving us a single plane of glass for monitoring all of them. The Helm Charts proved to be very useful for setting up both the server part as the client part of an inlets tunnel. In the use case explained, we only tunnelled a couple of services, though. 
 
 What if we want to bring a lot of services or applications into the cluster? 
 For example, a large organisation that has one cluster per tenant instead of a shared cluster.
-Or a service provider offering a SaaS or IoT solution, where all the customers connect their devices to a central management pane with an inlets PRO tunnel.
+Or a service provider offering a SaaS or IoT solution, where all the customers connect their devices to a central management pane with an inlets Pro tunnel.
 
 Are the Helm Charts able to assist is us? What do you need to know to scale to hundreds and thousands of inlets tunnels?
 
-We'll first review how we set up inlets PRO servers in Pods to enable multi-cluster. Then we'll show you how you can add hundreds of tunnels through automation. To conclude, we'll introduce you to inlets-cloud, a self-hosted system for managing thousands of tunnels through REST or kubectl. 
+We'll first review how we set up inlets Pro servers in Pods to enable multi-cluster. Then we'll show you how you can add hundreds of tunnels through automation. To conclude, we'll introduce you to inlets-cloud, a self-hosted system for managing thousands of tunnels through REST or kubectl. 
 
 __Reviewing the multi-cluster use-case__
 
-First, let’s recap what we did in the [previous post](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html) to run multiple inlets PRO server processes on a single Kubernetes cluster.
+First, let’s recap what we did in the [previous post](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html) to run multiple inlets Pro server processes on a single Kubernetes cluster.
 
 ![prometheus](/images/2020-12-multi-cluster-monitoring/architecture.png)
-> Kubernetes multi-cluster monitoring with Prometheus, nginx ingress controller, cert-manager and inlets PRO
+> Kubernetes multi-cluster monitoring with Prometheus, nginx ingress controller, cert-manager and inlets Pro
 
-By using the Helm chart, an inlets PRO exit server is created for each tunnel. Those tunnels' control planes are securely exposed using an ingress and a Let's Encrypt certificate created by cert-manager.
+By using the Helm chart, an inlets Pro exit server is created for each tunnel. Those tunnels' control planes are securely exposed using an ingress and a Let's Encrypt certificate created by cert-manager.
 Besides that, the data plane is only available from within the Kubernetes cluster.
 
 With this setup, every time we add another tunnel, cert-manager will create a new certificate with Let's Encrypt for the specific subdomain.
@@ -169,14 +169,14 @@ helm upgrade --install keycloak ./inlets-pro/chart/inlets-pro \
 
 What is the result of installing this chart:
 
-- a Pod with the inlets PRO server is running
+- a Pod with the inlets Pro server is running
 - a Control Plane service of type ClusterIP is created, exposing port 8123
 - an Ingress is created with the wildcard certificate, making the Control Plane service available in a secure manner
 - a Data Plane service of type ClusterIP is created, exposing port 8080
 
-This means that a inlets PRO client can connect to the Control Plane using the proper domain name, e.g. `wss://keycloak-tunnel.inlets.example.com`, and can punch out port 8080, making it accessible from only within this cluster, because of type ClusterIP.
+This means that a inlets Pro client can connect to the Control Plane using the proper domain name, e.g. `wss://keycloak-tunnel.inlets.example.com`, and can punch out port 8080, making it accessible from only within this cluster, because of type ClusterIP.
 
-## Scaling inlets PRO tunnels with the Helm chart
+## Scaling inlets Pro tunnels with the Helm chart
 
 Now that we have created a first tunnel, it is time to add all the other required tunnel.
 As demonstrated, the Helm chart is more convenient than creating and managing individual virtual machines to get everything up and running and can be installed many times to create different tunnels.
@@ -276,7 +276,7 @@ Now connect your inlets client to the inlets server:
 - `--url`: the secure websocket url
 - `--auto-tls=false`: don't get the certificate from the control plane, a valid Let's Encrypt certificate is in use
 - `--upstream` and `--port`: the target host and port
-- `--license-file`: a valid inlets PRO license
+- `--license-file`: a valid inlets Pro license
 
 ``` bash
 inlets-pro tcp client \
@@ -340,10 +340,10 @@ spec:
 
 ## Wrapping up
 
-In this post we started by creating a single inlets PRO exit server in a Kubernetes cluster with the Helm chart, but instead of using the default ingress and cert-manager configuration we issued a wildcard certificate to support multiple tunnels.
+In this post we started by creating a single inlets Pro exit server in a Kubernetes cluster with the Helm chart, but instead of using the default ingress and cert-manager configuration we issued a wildcard certificate to support multiple tunnels.
 We created a first tunnel with a little utility script, making it easy to configure some settings like the data plane port and the authentication token. Next, we used the same script to add more and more tunnels.
 
-The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets PRO. You could even install these Helm Charts using a tool like ArgoCD or Flux, and use a GitOps approach to management.
+The aim of the post was to show you how you can scale to 10 or 100 tunnels with relative ease using existing tools like the Helm chart for inlets Pro. You could even install these Helm Charts using a tool like ArgoCD or Flux, and use a GitOps approach to management.
 
 But what if you wanted to scale to thousands of tunnels? In the post [Advanced Cloud Pattern with inlets](https://inlets.dev/blog/2020/10/08/advanced-cloud-patterns.html), Alex introduced inlets-cloud, which allows users to manage tunnels programatically through kubectl using a CRD, or through a REST API. inlets-cloud makes management easier than using Helm, especially at scale, and allows your team to run their own secure tunnel capability for multiple clients.
 
@@ -353,9 +353,9 @@ But what if you wanted to scale to thousands of tunnels? In the post [Advanced C
 
 If you'd like to know moreabout inlets-cloud, or try a demo, then get in touch at: [contact@openfaas.com](mailto:contact@openfaas.com)
 
-Want to try inlets PRO for yourself?
+Want to try inlets Pro for yourself?
 
-Did you know that the personal license can now be used at work? inlets PRO has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
+Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
 
 Use-cases:
 

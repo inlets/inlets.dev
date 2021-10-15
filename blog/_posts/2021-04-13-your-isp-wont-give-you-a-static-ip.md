@@ -70,7 +70,7 @@ inletsctl create \
 
 After the provisioning has completed, you'll be given a connection string that you can type in. Then any packets that hit the exit-server's IP will be forwarded onto the upstream location within your private network.
 
-Then connect your client on the computer where you are hosting the HTTP endpoint. If you're using Kubernetes, then you can automate all of this using the [inlets-operator](https://github.com/inlets/inlets-operator) or the [inlets PRO helm chart](https://github.com/inlets/inlets-pro/tree/master/chart).
+Then connect your client on the computer where you are hosting the HTTP endpoint. If you're using Kubernetes, then you can automate all of this using the [inlets-operator](https://github.com/inlets/inlets-operator) or the [inlets Pro helm chart](https://github.com/inlets/inlets-pro/tree/master/chart).
 
 If you want to serve traffic from a HTTP endpoint, it's easier to setup an exit-server with automatic TLS from Let's Encrypt:
 
@@ -90,11 +90,11 @@ Then connect your client on the computer where you are hosting the HTTP endpoint
 
 ## Wrapping up
 
-We have now looked at a few of the options for self-hosting and for remote access to services within your home. The primary challenges we saw were: privacy, port mapping and conflicts, and steps our ISPs take to prevent us hosting services. A tunnels solution like inlets PRO has a modest cost, but overcomes all of the challenges we mentioned. We recently took a stopwatch to see how long it took to get a public IP on [Hetzner Cloud](https://www.hetzner.com/cloud) - it was just 15 seconds. If you've ever used AWS, then you'll know it can take several minutes just to get an Application LoadBalancer.
+We have now looked at a few of the options for self-hosting and for remote access to services within your home. The primary challenges we saw were: privacy, port mapping and conflicts, and steps our ISPs take to prevent us hosting services. A tunnels solution like inlets Pro has a modest cost, but overcomes all of the challenges we mentioned. We recently took a stopwatch to see how long it took to get a public IP on [Hetzner Cloud](https://www.hetzner.com/cloud) - it was just 15 seconds. If you've ever used AWS, then you'll know it can take several minutes just to get an Application LoadBalancer.
 
 inlets tunnels also allow us to do more than just expose traffic publicly. You can use inlets for multi-cloud and hybrid-cloud configurations where you want to federate your private network with a public network, but don't want to expose services to the Internet. Read more: [hybrid cloud with inlets](https://inlets.dev/blog/2021/04/07/simple-hybrid-cloud.html)
 
-You can try inlets PRO for free for 14 days. We have dozens of use-cases, tutorials and videos waiting for you, and I'd be happy to answer any questions you may have, if you'd like to [get in touch](https://inlets.dev/).
+You can try inlets Pro for free for 14 days. We have dozens of use-cases, tutorials and videos waiting for you, and I'd be happy to answer any questions you may have, if you'd like to [get in touch](https://inlets.dev/).
 
 ## Taking things further
 

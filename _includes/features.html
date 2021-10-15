@@ -14,28 +14,34 @@
                 A better way to connect
             </h3>
             <p class="mt-4 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-                Connect your applications securely without the hassle of VPNs, or the limitations of SaaS tunnels.
+                Bring public traffic to your local environment, or local traffic into a public cluster. Without managing VPNs or the limitations of SaaS solutions.
             </p>
         </div>
 
         <div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div class="relative">
                 <h4 class="text-2xl leading-8 font-extrabold text-gray-900 tracking-tight sm:text-3xl sm:leading-9">
-                    Connect anything, anywhere.
+                    Connect what counts.
                 </h4>
                 <p class="mt-3 text-lg leading-7 text-gray-500">
-                    You self-host the tunnel server, and run the client alongside the private service. Once connected, you'll have your own private uplink between the two networks.
+                    Inlets connects just the HTTP and TCP services that count to your network.
                 </p>
+
                 <p class="mt-3 text-lg leading-7 text-gray-500">
-                    Tunnels are encrypted with TLS and work through almost any network conditions. So you do not need to raise a help desk ticket to open ports, configure routers, or send an engineer on site to configure a VPN.
+                    Your tunnels are secured by default so anything that you transfer over them is encrypted. And they'll work through the toughest network conditions such as NAT, firewalls and corporate proxies.
+                </p>
+
+                <p class="mt-3 text-lg leading-7 text-gray-500">
+                    It was built for the cloud, which means it works well on bare-metal, in a container, on Kubernetes and has built-in support for Prometheus metrics, so you can monitor and measure your tunnels.
                 </p>
 
                 <ul class="mt-10">
                     {% include features/feature.html icon="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" title="No sweat webhooks" text="Not only can you share websites, blog posts drafts and APIs without publishing them on public cloud, but you can integrate directly with webhooks from Stripe, GitHub and Slack." %}
-                    {% include features/feature.html icon="M2 6C2 4.89543 2.89543 4 4 4H9L11 6H16C17.1046 6 18 6.89543 18 8V14C18 15.1046 17.1046 16 16 16H4C2.89543 16 2 15.1046 2 14V6Z" title="Peering that works anywhere" text="Use inlets tunnels to peer and extend your network across edge, different clouds or Kubernetes clusters." %}
-                    {% include features/feature.html icon="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" title="Hybrid cloud, without the hassle" text="Connect legacy applications, GPUs or private test environments to the public cloud." %}
-                    {% include features/feature.html icon="M13 10V3L4 14h7v7l9-11h-7z" title="Host services on private Kubernetes clusters" text="Whether your cluster is on a private cloud, or your laptop, get a TCP LoadBalancer just like on a managed cloud platform." %}
-                    {% include features/feature.html icon="M7,8 C9.209139,8 11,6.209139 11,4 C11,1.790861 9.209139,0 7,0 C4.790861,0 3,1.790861 3,4 C3,6.209139 4.790861,8 7,8 Z M7,9 C4.852,9 2.801,9.396 0.891,10.086 L2,16 L3.25,16 L4,20 L10,20 L10.75,16 L12,16 L13.109,10.086 C11.199,9.396 9.148,9 7,9 Z M15.315,9.171 L13.66,18 L12.41,18 L12.035,20 L16,20 L16.75,16 L18,16 L19.109,10.086 C17.899,9.648 16.627,9.346 15.315,9.171 Z M13,0 C12.532,0 12.089,0.096 11.671,0.243 C12.501,1.272 13,2.578 13,4 C13,5.422 12.501,6.728 11.671,7.757 C12.089,7.904 12.531,8 13,8 C15.209,8 17,6.209 17,4 C17,1.791 15.209,0 13,0 Z" title="Scale to thousands of services" text="inlets tunnels are light-weight and can scale massively to support thousands of tunnels. It's ideal for SaaS platforms and monitoring multiple environments. Can your VPN solution do that?" %}
+
+                    {% include features/feature.html icon="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" title="Save on cloud spend" text="Make the most of your existing hardware investment, by bringing real traffic to your local machines." %}
+                    {% include features/feature.html icon="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" title="Hybrid cloud, without the hassle" text="Connect legacy applications, GPUs or private test environments to your public cloud account." %}
+                    {% include features/feature.html icon="M13 10V3L4 14h7v7l9-11h-7z" title="Your own Kubernetes cloud" text="Get a cloud LoadBalancer for your local self-hosted Kubernetes cluster." %}
+                    {% include features/feature.html icon="M7,8 C9.209139,8 11,6.209139 11,4 C11,1.790861 9.209139,0 7,0 C4.790861,0 3,1.790861 3,4 C3,6.209139 4.790861,8 7,8 Z M7,9 C4.852,9 2.801,9.396 0.891,10.086 L2,16 L3.25,16 L4,20 L10,20 L10.75,16 L12,16 L13.109,10.086 C11.199,9.396 9.148,9 7,9 Z M15.315,9.171 L13.66,18 L12.41,18 L12.035,20 L16,20 L16.75,16 L18,16 L19.109,10.086 C17.899,9.648 16.627,9.346 15.315,9.171 Z M13,0 C12.532,0 12.089,0.096 11.671,0.243 C12.501,1.272 13,2.578 13,4 C13,5.422 12.501,6.728 11.671,7.757 C12.089,7.904 12.531,8 13,8 C15.209,8 17,6.209 17,4 C17,1.791 15.209,0 13,0 Z" title="Scale out" text="Connect thousands of services to your infrastructure with lightweight tunnels." %}
                 </ul>
             </div>
 

@@ -33,7 +33,7 @@ As an example, we will connect a WordPress instance running in the cloud with a 
 
 ![hybrid-mysql-wordpress](/images/2020-11-06-hybrid-cloud-with-inlets/mysql-wordpress.png)
 
-> Picture above: our target architecture, a WordPress in the cloud connecting to a MySQL on-prem via inlets PRO
+> Picture above: our target architecture, a WordPress in the cloud connecting to a MySQL on-prem via inlets Pro
 
 ### Pre-requisites
 
@@ -43,9 +43,9 @@ You will need:
 - `kubectl`, configured to connect to the cluster
 - A domain and access to your DNS admin panel to create a sub-domain
 - A service, like a database, running locally
-- An inlets PRO license
+- An inlets Pro license
 
-### Create the inlets PRO exit server
+### Create the inlets Pro exit server
 
 Before we start an inlets-pro exit service, create a Kubernetes secret with a token:
 
@@ -209,7 +209,7 @@ Mission accomplished! Our WordPress application, running in a public cloud envir
 
 ## Wrapping up
 
-This tutorial gives us a short introduction on how inlets PRO can help us to build a hybrid cloud between existing servers and public cloud.
+This tutorial gives us a short introduction on how inlets Pro can help us to build a hybrid cloud between existing servers and public cloud.
 As a cheaper, easier alternative to a data-center uplink or managed product like AWS Direct Connect or Azure Express Route it is a very lightweight, but powerful, tool to bring your on-prem services to a cloud workload.
 
 For the example we chose WordPress, but the same technique can be applied to any other applications that use TCP traffic.

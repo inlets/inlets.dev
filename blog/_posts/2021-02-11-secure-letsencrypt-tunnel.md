@@ -23,7 +23,7 @@ Tunnels are traditionally used to give you incoming network access to a service 
 
 When using a self-hosted tunnel, things just tend to work, and you won't be rate-limited on the number of connections you can establish, or what DNS provider you can use.
 
-In this post I'll show you how to use the new Let's Encrypt integration which ships with inlets PRO 0.8.0.
+In this post I'll show you how to use the new Let's Encrypt integration which ships with inlets Pro 0.8.0.
 
 * You'll create a small VM on public cloud with a public IP address
 * You'll run the inlets server on the VM and get a free TLS certificate from Let's Encrypt
@@ -221,7 +221,7 @@ We've now set up a self-hosted tunnel server and can use it whenever we like. in
 
 > What did you expose? Tweet to [@inletsdev](https://twitter.com/inletsdev) and we'll give the first 5 people 10% off a personal license.
 
-Did you know that the personal license can now be used at work? inlets PRO has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
+Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
 
 Use-cases:
 

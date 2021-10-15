@@ -48,7 +48,7 @@ inletsctl create --provider equinix-metal \
   --project-id $(cat ~/EM_PROJECT_ID.txt)
 ```
 
-In a few moments you'll find a *t1.small.x86` provisioned in your account which costs $0.07 / hour. That is Equinix Metal's cheapest host, at the end of the tutorial I'll show you how you can use the inlets PRO chart to setup multiple tunnels on the same host for efficiency and cost savings. Other options like VPS providers will cost around 5 USD / month in total.
+In a few moments you'll find a *t1.small.x86` provisioned in your account which costs $0.07 / hour. That is Equinix Metal's cheapest host, at the end of the tutorial I'll show you how you can use the inlets Pro chart to setup multiple tunnels on the same host for efficiency and cost savings. Other options like VPS providers will cost around 5 USD / month in total.
 
 ```bash
 inlets OSS (2.7.4) exit-server summary:
@@ -75,7 +75,7 @@ export UPSTREAM=http://127.0.0.1:3000
 
 Then run the `inlets client` command and access your service from the public IP on port 80, i.e. `http://147.75.33.129/`
 
-You can also tunnel TCP services with inlets PRO [like SSH](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh) and [Postgresql](https://docs.inlets.dev/#/get-started/quickstart-tcp-database).
+You can also tunnel TCP services with inlets Pro [like SSH](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh) and [Postgresql](https://docs.inlets.dev/#/get-started/quickstart-tcp-database).
 
 ### Option 2 - expose a service from your Kubernetes cluster
 
@@ -132,7 +132,7 @@ To remove the exit-server, simply delete the service:
 kubectl delete svc/nginx-1
 ```
 
-The inlets-operator also supports [inlets PRO](https://inlets.dev) which can be used to expose TCP services like an IngressController's port 80 and 443 to make it fully functional and to receive TLS certificates. Another popular use-case is to expose a database, or SSH over the Internet.
+The inlets-operator also supports [inlets Pro](https://inlets.dev) which can be used to expose TCP services like an IngressController's port 80 and 443 to make it fully functional and to receive TLS certificates. Another popular use-case is to expose a database, or SSH over the Internet.
 
 ### Option 3 - using a Kubernetes cluster and Pods for exit-servers
 
@@ -142,20 +142,20 @@ The helm chart for inlets-pro has a client and server portion, if you deploy the
 
 In the example below [VSHN.ch](https://vshn.ch/en/) provides a SaaS OpenShift service to regulated institutions through the use of inlets run as a Pod.
 
-![inlets PRO run as a chart](https://inlets.dev/images/2020-10-advanced-cloud/use-case-1-saas.png)
+![inlets Pro run as a chart](https://inlets.dev/images/2020-10-advanced-cloud/use-case-1-saas.png)
 > This is useful for running a SaaS and connecting to customers, or for managing many clients.
 
 If a Pod fails, or a Node goes down, then Kubernetes will restart it automatically.
 
-See also: [inlets PRO server chart](https://github.com/inlets/inlets-pro/tree/master/chart/inlets-pro)
+See also: [inlets Pro server chart](https://github.com/inlets/inlets-pro/tree/master/chart/inlets-pro)
 
 ## Summing up
 
 I wanted to show you how easy it is to use Equinix Metal to set up a tunnel for development from your network, or from a Kubernetes cluster. All of these tunnels are using the inlets OSS project, which by default enables a single port to be exposed, TLS can be configured separately.
 
-Alternatively you can use [inlets PRO](https://inlets.dev/) which allows for tunnelling TCP services like databases and IngressControllers, multiple-ports, enables encryption by default and has commercial support. inlets PRO also enables a reverse proxy like Caddy, Nginx, or a Kubernetes IngressController to be exposed so that you can obtain TLS certificates from LetsEncrypt and serve as many virtual hosts as you like.
+Alternatively you can use [inlets Pro](https://inlets.dev/) which allows for tunnelling TCP services like databases and IngressControllers, multiple-ports, enables encryption by default and has commercial support. inlets Pro also enables a reverse proxy like Caddy, Nginx, or a Kubernetes IngressController to be exposed so that you can obtain TLS certificates from LetsEncrypt and serve as many virtual hosts as you like.
 
-Whether you use inlets OSS or inlets PRO - the inletsctl/inlets-operator tooling is open source and gives the same consistent user-experience. To date we have provisioners for several clouds such as digitalocean, equinix-metal, ec2, scaleway, civo, gce, azure, linode and hetzner. You can suggest new provisioners and [see the source code here](https://github.com/inlets/inletsctl/tree/master/pkg/provision).
+Whether you use inlets OSS or inlets Pro - the inletsctl/inlets-operator tooling is open source and gives the same consistent user-experience. To date we have provisioners for several clouds such as digitalocean, equinix-metal, ec2, scaleway, civo, gce, azure, linode and hetzner. You can suggest new provisioners and [see the source code here](https://github.com/inlets/inletsctl/tree/master/pkg/provision).
 
 Find out more about inlets and use-cases in the [inlets docs](https://docs.inlets.dev/)
 

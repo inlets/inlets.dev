@@ -249,7 +249,7 @@ $ mkdir -p /tmp/share && \
 
 $ inlets-pro http fileserver -w ./ --allow-browsing
 
-Starting inlets PRO fileserver. Version: 0.8.9-18-gf4fc15b - f4fc15b9604efd0b0ca3cc604c19c200ae6a1d7b
+Starting inlets Pro fileserver. Version: 0.8.9-18-gf4fc15b - f4fc15b9604efd0b0ca3cc604c19c200ae6a1d7b
 2021/08/13 12:24:00 Serving: ./, on 127.0.0.1:8080, browsing: true, auth: false
 ```
 

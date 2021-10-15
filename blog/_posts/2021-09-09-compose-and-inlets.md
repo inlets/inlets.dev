@@ -85,7 +85,7 @@ inletsctl create \
 At the end of the creation, inletsctl will print out all the connection information that you require.
 
 ```
-inlets PRO HTTPS (0.8.8) server summary:
+inlets Pro HTTPS (0.8.8) server summary:
   IP: 66.228.36.207
   HTTPS Domains: [ghost.o6s.io]
   Auth-token: c663ac57e2ae697ebea3fbe02c051194a7ea9cc3

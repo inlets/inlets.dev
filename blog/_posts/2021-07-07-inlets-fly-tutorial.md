@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Run an inlets PRO tunnel server for free on fly.io
-description: Learn how to configure, deploy and run an inlets PRO server for free on the Fly application platform.
+title: Run an inlets Pro tunnel server for free on fly.io
+description: Learn how to configure, deploy and run an inlets Pro server for free on the Fly application platform.
 author: Johan Siebens
 tags: inlets-pro secure https tunnel
 author_img: jsiebens
@@ -13,7 +13,7 @@ date: 2021-07-07
 
 This little story started with Alex learning more about the Fly platform and reaching out to me on Slack:
 
-> Alex Ellis: Would you check out fly.io for hosting an inlets PRO tunnel server? They have a "generous free tier" for hosting containers.
+> Alex Ellis: Would you check out fly.io for hosting an inlets Pro tunnel server? They have a "generous free tier" for hosting containers.
 >
 > Me: Sounds interesting!
 
@@ -23,7 +23,7 @@ _Fly is a platform for applications that need to run globally. It runs your code
 
 Using this platform, you can run most applications with a `Dockerfile` using the `flyctl` command. The first time you deploy an app, we assign it a global IP address. By default, apps listen for HTTP and HTTPS connections, though they can be configured to accept any kind of TCP traffic.
 
-After going through their documentation and tutorials, it didn't take long before we had a working set up deployed on fly.io, although with some minor tweaks in inlets PRO.
+After going through their documentation and tutorials, it didn't take long before we had a working set up deployed on fly.io, although with some minor tweaks in inlets Pro.
 
 {% twitter https://twitter.com/alexellisuk/status/1403315054410358788 align=center %}
 
@@ -39,13 +39,13 @@ For this tutorial you'll need the following:
   - [login to Fly](https://fly.io/docs/getting-started/login-to-fly/)
 - [Docker](https://docker.io) installed on your machine
 - The [inlets-pro](https://github.com/inlets/inlets-pro/releases) binary available on your machine
-- An [inlets PRO license](https://inlets.dev/pricing/) - monthly or annual subscriptions are available
+- An [inlets Pro license](https://inlets.dev/pricing/) - monthly or annual subscriptions are available
 
 ## Creating the Dockerfile
 
 Since applications on Fly need to be built into a Docker image, we'll need to create a Dockerfile.
 
-Fortunately inlets PRO is already released in a Docker image, so we just have to inherit from it and set some new command line arguments for the server.
+Fortunately inlets Pro is already released in a Docker image, so we just have to inherit from it and set some new command line arguments for the server.
 
 ``` Dockerfile
 FROM ghcr.io/inlets/inlets-pro:0.8.5
@@ -54,8 +54,8 @@ CMD ["tcp", "server", "--auto-tls=false", "--token-env=TOKEN"]
 
 For this tutorial you'll need version 0.8.5 or higher.
 
-The second `CMD` line contains the parameters we pass to the `inlets-pro` command that are going to configure how inlets PRO runs.
-By default, the official image will simply start an inlets PRO tcp server, but here we need to tweak the runtime flags a little but.
+The second `CMD` line contains the parameters we pass to the `inlets-pro` command that are going to configure how inlets Pro runs.
+By default, the official image will simply start an inlets Pro tcp server, but here we need to tweak the runtime flags a little but.
 With the first flag, `--auto-tls`, we disable the auto-generation of the TLS CA and certificate for the control plane because we can rely on the HTTPS feature of fly.io. Second, with the flag `--token-env`, the server part of our inlets tunnel will read a token from an environment variable which we will create later as a [Fly secret](https://fly.io/docs/reference/secrets/).
 
 > With platforms like Kubernetes, you can read secrets like tokens from disk, but with a PaaS platform, they tend to be injected through environment variables. A new patch was created by Alex and released the same day to enable this use case.
@@ -173,7 +173,7 @@ For this tutorial we will continue with the first example, exposing an HTTP serv
 > A note on health-checks: I'm sure you can spot a difference between the service section of the control plane and the data plane, being a health check configuration. With those health checks, Fly verifies if the application is available and restart the instance when that is not the case. 
 Because the data plane is not ready when the inlets server is started, we still need to connect the client, only the control plane has a health check. Feel free the add a health check to your data plane if that fits your needs.
 
-In the end, the complete `fly.toml` file will look like this and contains the basic configuration parts for running a inlets PRO exit service on the Fly platform.
+In the end, the complete `fly.toml` file will look like this and contains the basic configuration parts for running a inlets Pro exit service on the Fly platform.
 
 ```toml
 app = "white-star-8139"
@@ -223,7 +223,7 @@ You can read the generated token back from `token.txt` to use with your `inlets-
 
 ## Deploy the exit server to Fly
 
-At this point, we have everything in place to deploy the inlets PRO exit server with `flyctl deploy`:
+At this point, we have everything in place to deploy the inlets Pro exit server with `flyctl deploy`:
 
 ``` bash
 $ flyctl deploy
@@ -294,7 +294,7 @@ $ inlets-pro http fileserver \
   --allow-browsing \
   --port 8080
 
-2021/06/23 09:06:11 Starting inlets PRO fileserver. Version 0.8.3 - 205c311fde775723cf68b8116dacd7f428d243f8
+2021/06/23 09:06:11 Starting inlets Pro fileserver. Version 0.8.3 - 205c311fde775723cf68b8116dacd7f428d243f8
 2021/06/23 09:06:11 Serving: /workbench/workspaces/inlets/projects/fly-inlets, on 127.0.0.1:8080, browsing: true, auth: false
 ```
 
@@ -322,10 +322,10 @@ You can expose any other HTTP or TCP services that are reachable by the client's
 
 ## Wrapping up
 
-In this tutorial configured and deployed an inlets PRO exit server on the Fly platform, making the deployment pretty simple and reducing operational overhead. Not only the easy setup is attractive, but also the sharp pricing makes the platform a perfect fit for the inlets tunnel. For only __$1.94/mo__ you have already the most basic compute sizing available and with the __generous free tier__ you can even run three tunnel for free.
+In this tutorial configured and deployed an inlets Pro exit server on the Fly platform, making the deployment pretty simple and reducing operational overhead. Not only the easy setup is attractive, but also the sharp pricing makes the platform a perfect fit for the inlets tunnel. For only __$1.94/mo__ you have already the most basic compute sizing available and with the __generous free tier__ you can even run three tunnel for free.
 
 Further resources:
 
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
-* [Buy a personal license of inlets PRO](https://inlets.dev/pricing/)
-* [Read tutorials and documentation for inlets PRO and OSS](https://docs.inlets.dev/)
+* [Buy a personal license of inlets Pro](https://inlets.dev/pricing/)
+* [Read tutorials and documentation for inlets Pro and OSS](https://docs.inlets.dev/)

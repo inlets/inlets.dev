@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introducing the inlets monthly subscription
-description: You can now pay for inlets PRO on a monthly basis - learn the use-cases and how it compares to other solutions.
+description: You can now pay for inlets Pro on a monthly basis - learn the use-cases and how it compares to other solutions.
 author: Alex Ellis
 tags: inlets-pro secure private loadbalancer comparison announcement
 author_img: alex
@@ -17,9 +17,9 @@ Now, if you're operating a business and using inlets, it's likely that this is s
 
 You can read a case-study from a business customer here: [How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
 
-Businesses tend to use inlets PRO as a replacement for a VPN like OpenVPN or Wireguard, they also find it works well deployed within a Kubernetes cluster.
+Businesses tend to use inlets Pro as a replacement for a VPN like OpenVPN or Wireguard, they also find it works well deployed within a Kubernetes cluster.
 
-So why would an individual developer want a tunnel and how does it differ from the alternatives? As a personal user, you're either using inlets PRO at home, or you're using at at work which is [allowed within the terms of a personal license](https://inlets.dev/pricing).
+So why would an individual developer want a tunnel and how does it differ from the alternatives? As a personal user, you're either using inlets Pro at home, or you're using at at work which is [allowed within the terms of a personal license](https://inlets.dev/pricing).
 
 ## Why would I want a tunnel?
 
@@ -47,7 +47,7 @@ inlets can also be used to expose local endpoints during development and for sel
 
 Ngrok tends to be blanket-banned on all corporate VPNs. The domain `*.ngrok.io` gets added to a blacklist and it's game over.
 
-inlets PRO tunnels are self-hosted, either on a cloud's free tier, on a service like Fly.io or on a VM that will only cost you 5 USD / month.
+inlets Pro tunnels are self-hosted, either on a cloud's free tier, on a service like Fly.io or on a VM that will only cost you 5 USD / month.
 
 * [Provision a tunnel whenever you need it with inletsctl](https://github.com/inlets/inletsctl)
 * [Host three tunnels on fly.io](https://inlets.dev/blog/2021/07/07/inlets-fly-tutorial.html)
@@ -62,13 +62,13 @@ You can push your HTTP or TCP tunnel as hard as you want. You can share the URL 
 
 Try that with Ngrok, and after your first 40 connections, you'll hit the rate limits. Even when you pay for the product, you're still limited to 60-120 connections per minute depending on the plan.
 
-This was an important problem to solve when I first set out to build inlets in 2019 and remains a reason why inlets PRO is something *that you can self-host*.
+This was an important problem to solve when I first set out to build inlets in 2019 and remains a reason why inlets Pro is something *that you can self-host*.
 
 ### Best in class Kubernetes integration
 
 Ngrok has no Kubernetes integration
 
-inlets PRO has a built-in integration for Kubernetes LoadBalancers, so you get the same experience as when you're on a public Kubernetes engine like AWS EKS or GKE.
+inlets Pro has a built-in integration for Kubernetes LoadBalancers, so you get the same experience as when you're on a public Kubernetes engine like AWS EKS or GKE.
 
 * [Check out the inlets-operator](https://github.com/inlets/inlets-operator)
 
@@ -81,7 +81,7 @@ Tunnels can also be used for multi-cluster monitoring and deployment:
 
 If you run a SaaS, this approach can be used to connect each of your clients back to your control plane for billing, metering or support.
 
-Unlike Ngrok, we are not just dealing with exposing services on the Internet. inlets PRO can be used for local tunnels too, so that you can debug problems within your Kubernetes cluster.
+Unlike Ngrok, we are not just dealing with exposing services on the Internet. inlets Pro can be used for local tunnels too, so that you can debug problems within your Kubernetes cluster.
 
 Learn how a developer at the UK Government bought a license to help him debug an issue in staging with a NATS queue: [Reliable local port-forwarding from Kubernetes](https://inlets.dev/blog/2021/04/13/local-port-forwarding-kubernetes.html)
 
@@ -91,7 +91,7 @@ How do you know it's been done right? This is all maintained by a CNCF Ambassado
 
 When you expose a TCP port with Ngrok like SSH, you'll get allocated a random TCP port on one of their servers.
 
-With inlets PRO you can get an unlimited number of TCP ports, and whichever ones you like including: 80, 443 which means you can run a reverse proxy at home or on your laptop.
+With inlets Pro you can get an unlimited number of TCP ports, and whichever ones you like including: 80, 443 which means you can run a reverse proxy at home or on your laptop.
 
 * [Remote access to SSH](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh)
 * [Host multiple sites with Caddy v2](https://docs.inlets.dev/#/get-started/quickstart-http)
@@ -101,9 +101,9 @@ With inlets PRO you can get an unlimited number of TCP ports, and whichever ones
 
 Cloudflare's Argo tunnel product can also get you a tunnel, but you will be locked into their DNS plan and bandwidth charges.
 
-By self-hosting a tunnel with inlets PRO instead of using a SaaS service, you can run that wherever you like and use your own DNS. Developer clouds like DigitalOcean/Linode offer around 1TB of transfer for free each month for each VM, and Hetzner Cloud offers around double that.
+By self-hosting a tunnel with inlets Pro instead of using a SaaS service, you can run that wherever you like and use your own DNS. Developer clouds like DigitalOcean/Linode offer around 1TB of transfer for free each month for each VM, and Hetzner Cloud offers around double that.
 
-You can expose unlimited domains and unlimited websites all over a single tunnel with inlets PRO.
+You can expose unlimited domains and unlimited websites all over a single tunnel with inlets Pro.
 
 ### Always private
 
@@ -111,7 +111,7 @@ Finally, whenever you use a SaaS tunnel, you are putting your data in the hands 
 
 ### Contribute and make it better
 
-The tooling, tutorials and blog posts for inlets PRO are all open-source and contributions are encouraged.
+The tooling, tutorials and blog posts for inlets Pro are all open-source and contributions are encouraged.
 
 * [inlets/inletsctl](https://github.com/inlets/inletsctl) - provision one-off tunnel servers to various clouds
 * [inlets/inlets-operator](https://github.com/inlets/inlets-operator) - automated LoadBalancers for Kubernetes using tunnels
@@ -121,15 +121,15 @@ I'd like to thanks [Johan Siebens](https://twitter.com/nosceon) for his guest bl
 
 ## Wrapping up
 
-So do individuals like you or me actually buy and pay for inlets PRO? Yes, you can find individual stories on the [inlets homepage](https://inlets.dev/).
+So do individuals like you or me actually buy and pay for inlets Pro? Yes, you can find individual stories on the [inlets homepage](https://inlets.dev/).
 
-Going forward you'll hear us use the term inlets and inlets PRO interchangeably, inlets is a paid, commercial solution for individuals and businesses. The inlets subscription can be paid for on a monthly or yearly basis, the yearly options come with a discount that increases with the amount of licenses you need.
+Going forward you'll hear us use the term inlets and inlets Pro interchangeably, inlets is a paid, commercial solution for individuals and businesses. The inlets subscription can be paid for on a monthly or yearly basis, the yearly options come with a discount that increases with the amount of licenses you need.
 
 If you have comments, questions or suggestions, you can chat with me and other users on the [OpenFaaS Slack](https://slack.openfaas.io/) in the `#inlets` channel.
 
 Our monthly subscription gives you the ability to try things out before moving to a yearly plan to enjoy a discount. Check out [the plans on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
 
-[Miles Kane](https://twitter.com/milsman2) uses inlets PRO to get access to his own services running on a HA K3s cluster built with Raspberry Pis.
+[Miles Kane](https://twitter.com/milsman2) uses inlets Pro to get access to his own services running on a HA K3s cluster built with Raspberry Pis.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/alexellisuk?ref_src=twsrc%5Etfw">@alexellisuk</a> 3 nodes <a href="https://twitter.com/Raspberry_Pi?ref_src=twsrc%5Etfw">@Raspberry_Pi</a> <a href="https://twitter.com/HAProxy?ref_src=twsrc%5Etfw">@HAProxy</a> <a href="https://twitter.com/keepalived?ref_src=twsrc%5Etfw">@keepalived</a> 3 nodes <a href="https://twitter.com/kubernetesio?ref_src=twsrc%5Etfw">@kubernetesio</a> <a href="https://twitter.com/hashtag/k3sup?src=hash&amp;ref_src=twsrc%5Etfw">#k3sup</a> <a href="https://twitter.com/hashtag/master?src=hash&amp;ref_src=twsrc%5Etfw">#master</a> <a href="https://twitter.com/hashtag/embedded?src=hash&amp;ref_src=twsrc%5Etfw">#embedded</a> <a href="https://twitter.com/hashtag/etcd?src=hash&amp;ref_src=twsrc%5Etfw">#etcd</a> 3 nodes workers. <a href="https://twitter.com/nginx?ref_src=twsrc%5Etfw">@nginx</a> <a href="https://twitter.com/hashtag/Kubernetes?src=hash&amp;ref_src=twsrc%5Etfw">#Kubernetes</a> <a href="https://twitter.com/hashtag/ingress?src=hash&amp;ref_src=twsrc%5Etfw">#ingress</a> and <a href="https://twitter.com/inletsdev?ref_src=twsrc%5Etfw">@inletsdev</a> <a href="https://twitter.com/hashtag/pro?src=hash&amp;ref_src=twsrc%5Etfw">#pro</a> <a href="https://twitter.com/hashtag/operator?src=hash&amp;ref_src=twsrc%5Etfw">#operator</a> <a href="https://t.co/FNTMIDClpC">pic.twitter.com/FNTMIDClpC</a></p>&mdash; milsman2 (@milsman2) <a href="https://twitter.com/milsman2/status/1417672558183333893?ref_src=twsrc%5Etfw">July 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

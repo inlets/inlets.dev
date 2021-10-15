@@ -40,7 +40,7 @@ Once you've completed this tutorial, you will be able to share your functions an
 
 ## Tutorial
 
-> You will need an inlets PRO license, [start a 14-day free trial](https://inlets.dev/).
+> You will need an inlets Pro license, [start a 14-day free trial](https://inlets.dev/).
 
 You'll need:
 * [Docker](https://docker.com/) on your local machine.
@@ -56,7 +56,7 @@ The main pre-requisite for the tutorial is the arkade CLI, which can be used to 
 curl -sLS https://dl.get-arkade.dev | sudo sh
 ```
 
-inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets PRO) adds support for TCP and has built-in TLS. The [inletsctl](https://github.com/inlets/inletsctl) and [inlets-operator](https://github.com/inlets/inlets-operator) projects can set up exit-server VMs for you on public cloud, which are used to gain access to your private services.
+inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets Pro) adds support for TCP and has built-in TLS. The [inletsctl](https://github.com/inlets/inletsctl) and [inlets-operator](https://github.com/inlets/inlets-operator) projects can set up exit-server VMs for you on public cloud, which are used to gain access to your private services.
 
 > Did you know? You can also create your own exit servers with Terraform, or host them as Kubernetes Pods.
 
@@ -204,6 +204,6 @@ Here's a few reasons to try inlets today:
 
 Further resources:
 
-* [Buy now, or kick the tires with free 14-day trial of inlets PRO](https://inlets.dev)
+* [Buy now, or kick the tires with free 14-day trial of inlets Pro](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)

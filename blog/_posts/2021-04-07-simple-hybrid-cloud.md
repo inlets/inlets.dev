@@ -92,7 +92,7 @@ inlets-pro tcp client \
 
 If you wanted to run the tunnel client on another machine on the private cloud, you can change the `--upstream` flag to any reachable hostname or IP address. You can also forward additional ports if you need them like SSH, VNC or RDP over the same tunnel.
 
-Do you want to try tunnelling a database for yourself? You can try the following tutorial: [Tunnel a private database over inlets PRO](https://docs.inlets.dev/#/get-started/quickstart-tcp-database)
+Do you want to try tunnelling a database for yourself? You can try the following tutorial: [Tunnel a private database over inlets Pro](https://docs.inlets.dev/#/get-started/quickstart-tcp-database)
 
 ## Wrapping up
 

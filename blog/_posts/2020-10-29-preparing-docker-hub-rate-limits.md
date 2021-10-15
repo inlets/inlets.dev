@@ -140,7 +140,7 @@ Just be careful that you don't incur a huge bill. Make sure you know the costs o
 
 The best option at present seems to be [GitHub's container registry (ghcr.io)](https://github.com/features/packages) which offers unlimited pulls of public images. Beware that the original GitHub Package Repository for containers is not the same product, and cannot support multi-arch templates.
 
-On the inlets project we've already started publishing an image in GHCR so that users don't have to contend with this issue.
+On the inlets Project we've already started publishing an image in GHCR so that users don't have to contend with this issue.
 
 Before:
 

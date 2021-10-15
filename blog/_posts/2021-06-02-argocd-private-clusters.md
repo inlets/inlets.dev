@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Learn how to manage apps across private Kubernetes clusters
-description: Learn a simple approach to deploying applications across multiple public and private Kubernetes clusters using Argo CD, inlets PRO and GitOps.
+description: Learn a simple approach to deploying applications across multiple public and private Kubernetes clusters using Argo CD, inlets Pro and GitOps.
 author: Johan Siebens
 tags: inlets-pro hybrid-cloud multi-cloud gitops argocd
 author_img: jsiebens
@@ -37,7 +37,7 @@ The biggest challenge lies in the communication between Argo CD and the Kubernet
 
 The diagram above shows an architecture where we have multiple private target clusters on the left. Using a secure inlets tunnel with a public control plane, the GitOps agent in the cluster on the right can reach the Kubernetes API services via a private data plan.
 
-In what follows next, you will learn how we leverage inlets PRO to bring the API servers of a remote cluster into the Kubernetes cluster where Argo CD is installed.
+In what follows next, you will learn how we leverage inlets Pro to bring the API servers of a remote cluster into the Kubernetes cluster where Argo CD is installed.
 
 ## Preparation
 
@@ -84,7 +84,7 @@ kubectl create --context argocd namespace inlets
 
 When the namespace is created, we will start by creating two Kubernetes services, one for the control plane and one for the data plane.
 
-Our target Kubernetes API service is running in a private network such as a different cloud or on-premises. Argo CD needs to access that service from our central management cluster., but we would like to prevent everyone from reaching our private API service. That's why we will use a split-plane configuration only the control plane of inlets PRO is public, while Argo CD can access the data plane via a private ClusterIP.
+Our target Kubernetes API service is running in a private network such as a different cloud or on-premises. Argo CD needs to access that service from our central management cluster., but we would like to prevent everyone from reaching our private API service. That's why we will use a split-plane configuration only the control plane of inlets Pro is public, while Argo CD can access the data plane via a private ClusterIP.
 
 ``` bash
 export NAME=gke-eu1
@@ -210,7 +210,7 @@ As before, I prefer the place the inlets client in a separate namespace:
 kubectl create --context gke-eu1 namespace inlets
 ```
 
-Now create the deployment for an inlets PRO TCP client:
+Now create the deployment for an inlets Pro TCP client:
 
 ``` bash
 export LICENSE=$(cat ~/.inlets/LICENSE)
@@ -417,12 +417,12 @@ Managing applications across multiple Kubernetes clusters can be quite challengi
 
 Argo CD, a GitOps continuous delivery tool for Kubernetes, can manage multiple external targets forming a central place to deploy and monitoring all your application across clusters.
 
-This post explains how we use inlets PRO to bring the sensitive Kubernetes API services into a single management cluster in a secure way. While the control plane of the tunnels is accessible for the clients, the data plane is kept private in the central management cluster and available for tools like Argo CD.
+This post explains how we use inlets Pro to bring the sensitive Kubernetes API services into a single management cluster in a secure way. While the control plane of the tunnels is accessible for the clients, the data plane is kept private in the central management cluster and available for tools like Argo CD.
 
-This technique applies to all kinds of services. Take the example of collecting metrics. In a previous post, we demonstrated how to [monitor multiple clusters with Prometheus and inlets PRO](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html).
+This technique applies to all kinds of services. Take the example of collecting metrics. In a previous post, we demonstrated how to [monitor multiple clusters with Prometheus and inlets Pro](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html).
 
 
 Further resources:
 
-* [Read tutorials and documentation for inlets PRO and OSS](https://docs.inlets.dev/)
+* [Read tutorials and documentation for inlets Pro and OSS](https://docs.inlets.dev/)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)

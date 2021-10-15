@@ -33,7 +33,7 @@ Let's take a look at how we can build this!
 - `arkade` - portable Kubernetes marketplace
 - A domain and access to your DNS admin panel to create a sub-domain
 
-This tutorial uses inlets PRO because it's easier to configure, and comes with support, but you could also use the free OSS version of inlets if you want to configure it yourself.
+This tutorial uses inlets Pro because it's easier to configure, and comes with support, but you could also use the free OSS version of inlets if you want to configure it yourself.
 
 See the differences between the two versions in the: [inlets docs](https://inlets.dev/)
 
@@ -86,7 +86,7 @@ service/prometheus   ClusterIP   10.43.148.58   <none>        9090/TCP   61m
 First, we have to prepare our Observability cluster. 
 
 The goal is the make the Prometheus servers running in the remote "clients" clusters available within this cluster.
-To achieve this, we will use inlets PRO to create a secure tunnel between the Observability and the Client clusters.
+To achieve this, we will use inlets Pro to create a secure tunnel between the Observability and the Client clusters.
 The server part of those tunnels, the exit-node, has to be created in the Observability cluster, so that later on, clients can connect and bring Prometheus into this cluster.
 
 Instead of exposing each exit-node pod using a LoadBalancer, we are going to use a IngressController, like nginx, in combination with cert-manager to get some certificates.
@@ -171,12 +171,12 @@ helm install orion-equinix  ./inlets-pro/chart/inlets-pro \
 
 What is the result of installing this chart:
 
-- a Pod with the inlets PRO server is running
+- a Pod with the inlets Pro server is running
 - a Control Plane service of type ClusterIP is created, exposing port 8123
 - an Ingress is created with a certificate, making the Control Plane service available in a secure manner
 - a Data Plane service of type ClusterIP is created, exposing port 9090
 
-This means that a inlets PRO client can connect to the Control Plane using the proper domain name, e.g. `wss://orion-aws.prometheus.example.com/connect`, and can punch out port 9090, making it accessible from only within this cluster, because of type ClusterIP.
+This means that a inlets Pro client can connect to the Control Plane using the proper domain name, e.g. `wss://orion-aws.prometheus.example.com/connect`, and can punch out port 9090, making it accessible from only within this cluster, because of type ClusterIP.
 
 ## Connecting the Client clusters
 
@@ -191,7 +191,7 @@ $ kubectx orion-aws
 Switched to context "orion-aws".
 ```
 
-Create the secrets for your inlets PRO license and the token:
+Create the secrets for your inlets Pro license and the token:
 
 ```
 kubectl create secret generic \

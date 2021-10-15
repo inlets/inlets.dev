@@ -13,11 +13,11 @@ Learn how one user cleared his headache and got reliable local port-forwarding f
 
 ## Introduction
 
-A developer working on an API for the UK Government reached out to me and asked if he could use inlets to access a NATS message queue from within a Google Kubernetes Engine (GKE) cluster on his laptop. The answer was yes inlets PRO could do that, but we hadn't documented it very well yet. My understanding was that getting access to the message queue from his laptop meant that he could watch things happening "live" and fix a bug that was blocking his progress at work.
+A developer working on an API for the UK Government reached out to me and asked if he could use inlets to access a NATS message queue from within a Google Kubernetes Engine (GKE) cluster on his laptop. The answer was yes inlets Pro could do that, but we hadn't documented it very well yet. My understanding was that getting access to the message queue from his laptop meant that he could watch things happening "live" and fix a bug that was blocking his progress at work.
 
 > I asked why he wasn't using `kubectl port-forward` and the answer surprised me.
 
-The traditional use-case for inlets PRO has always been exposing or tunneling a service from a private cluster to a public cluster. This kind of forwarding is called **remote port forwarding** and is the use-case we're used to seeing with Ngrok. A port is forwarded to a remote cluster for access via its network. The difference between inlets and Ngrok or Argo tunnels, is that inlets can forward a service and also keep it private on the remote network by binding it to loopback, or a non-public adapter. inlets PRO customers tell me that they do this quite often for hybrid cloud use-cases and for continuous deployment to edge locations.
+The traditional use-case for inlets Pro has always been exposing or tunneling a service from a private cluster to a public cluster. This kind of forwarding is called **remote port forwarding** and is the use-case we're used to seeing with Ngrok. A port is forwarded to a remote cluster for access via its network. The difference between inlets and Ngrok or Argo tunnels, is that inlets can forward a service and also keep it private on the remote network by binding it to loopback, or a non-public adapter. inlets Pro customers tell me that they do this quite often for hybrid cloud use-cases and for continuous deployment to edge locations.
 
 ![Remote forwarding](/images/2021-04-23-local-forwarding/remote-forwarding.jpg)
 
@@ -71,7 +71,7 @@ It worked. On to the Kubernetes part.
 
 It turns out that `kubectl port-forward` disconnects often and can give a poor connection for long-term use. He'd also tried using the various tools that people usually turn to here, and they had the same issues because they all wrapped the same Kubernetes port-forwarding API.
 
-First we create a `Deployment` for the inlets PRO server to run in a Pod. It will forward traffic from within the cluster back to the client on his laptop. To get NATS installed I just installed OpenFaaS using `arkade install openfaas`, because [OpenFaaS](https://openfaas.com/) bundles NATS within its helm chart:
+First we create a `Deployment` for the inlets Pro server to run in a Pod. It will forward traffic from within the cluster back to the client on his laptop. To get NATS installed I just installed OpenFaaS using `arkade install openfaas`, because [OpenFaaS](https://openfaas.com/) bundles NATS within its helm chart:
 
 ```yaml
 ---
@@ -105,7 +105,7 @@ spec:
 
 Note the `--client-forwarding` flag. You can also create a secret and mount that as a volume instead of specifying a hard-coded value.
 
-Next, the client needs to connect to the control-plane port of the inlets PRO server. So decide whether you want to expose the control-plane via a NodePort or a LoadBalancer using the built-in automatic TLS termination. Another option is to turn automatic TLS termination off and let an IngressController do that instead.
+Next, the client needs to connect to the control-plane port of the inlets Pro server. So decide whether you want to expose the control-plane via a NodePort or a LoadBalancer using the built-in automatic TLS termination. Another option is to turn automatic TLS termination off and let an IngressController do that instead.
 
 I thought a LoadBalancer would be the simplest approach:
 
@@ -156,11 +156,11 @@ Pub stats: 397,314 msgs/sec ~ 48.50 MB/sec
 
 He seemed to be running Linux, because he then generated a systemd service so that he could have the inlets client running all the time.
 
-To generate your own just add the `--generate=systemd` flag to any inlets PRO command.
+To generate your own just add the `--generate=systemd` flag to any inlets Pro command.
 
 ```bash
 [Unit]
-Description=inlets PRO TCP Client
+Description=inlets Pro TCP Client
 After=network.target
 
 [Service]
@@ -189,7 +189,7 @@ Why did I go to all this effort, for one user, who may have solved his immediate
 
 In a short period of time, a user who was frustrated with the friction of existing and accepted tools find a workaround that saved him from a considerable headache. I had to go the extra mile, but hope that this little exercise we went through will help many more users to come who may have landed here.
 
-Depending on the levels of interest, we may consider adding a feature to inlets pro or inletsctl to automate his kind of local port forwarding. You may also be interested in the `inletsctl kfwd` feature that was built last year for a similar usecase, where users wanted to remotely forward a local service into a Kubernetes cluster.
+Depending on the levels of interest, we may consider adding a feature to inlets Pro or inletsctl to automate his kind of local port forwarding. You may also be interested in the `inletsctl kfwd` feature that was built last year for a similar usecase, where users wanted to remotely forward a local service into a Kubernetes cluster.
 
 ```bash
 Forward a Kubernetes service to the local machine using the --if flag to 
@@ -207,9 +207,9 @@ Flags:
   -f, --from string        From service for the inlets client to forward
   -h, --help               help for kfwd
   -i, --if string          Destination interface for the inlets server
-      --license string     Inlets PRO license key
+      --license string     inlets Pro license key
   -n, --namespace string   Source service namespace (default "default")
-      --pro                Use inlets PRO
+      --pro                Use inlets Pro
 ```
 
 Feel free [to reach out to me](https://inlets.dev/contact) if you have questions about inlets.

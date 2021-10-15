@@ -94,7 +94,7 @@ Host: 253982495, status:
 Note the output with its sample connection command, IP address and auth token for the tunnel server.
 
 ```bash
-inlets PRO TCP (0.8.3) server summary:
+inlets Pro TCP (0.8.3) server summary:
   IP: 165.227.232.164
   Auth-token: DP4bepIxuNXbjbtXWsu6aSkEE9r5cvMta56le2ajP7l9ajJpAgEcFxBTWSlR2PdB
 
@@ -285,10 +285,10 @@ An IngressController can also be used to set authentication for your endpoints a
 
 We looked at how the operator pattern works and encoded my operational experience of inlets into code, and also where it fell short in one or two scenarios. Then I showed you how to create a tunnel server manually and then deploy an inlets client using YAML.
 
-[Miles Kane](https://twitter.com/milsman2) uses inlets PRO to get access to his own services running on a HA K3s cluster built with Raspberry Pis.
+[Miles Kane](https://twitter.com/milsman2) uses inlets Pro to get access to his own services running on a HA K3s cluster built with Raspberry Pis.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/alexellisuk?ref_src=twsrc%5Etfw">@alexellisuk</a> 3 nodes <a href="https://twitter.com/Raspberry_Pi?ref_src=twsrc%5Etfw">@Raspberry_Pi</a> <a href="https://twitter.com/HAProxy?ref_src=twsrc%5Etfw">@HAProxy</a> <a href="https://twitter.com/keepalived?ref_src=twsrc%5Etfw">@keepalived</a> 3 nodes <a href="https://twitter.com/kubernetesio?ref_src=twsrc%5Etfw">@kubernetesio</a> <a href="https://twitter.com/hashtag/k3sup?src=hash&amp;ref_src=twsrc%5Etfw">#k3sup</a> <a href="https://twitter.com/hashtag/master?src=hash&amp;ref_src=twsrc%5Etfw">#master</a> <a href="https://twitter.com/hashtag/embedded?src=hash&amp;ref_src=twsrc%5Etfw">#embedded</a> <a href="https://twitter.com/hashtag/etcd?src=hash&amp;ref_src=twsrc%5Etfw">#etcd</a> 3 nodes workers. <a href="https://twitter.com/nginx?ref_src=twsrc%5Etfw">@nginx</a> <a href="https://twitter.com/hashtag/Kubernetes?src=hash&amp;ref_src=twsrc%5Etfw">#Kubernetes</a> <a href="https://twitter.com/hashtag/ingress?src=hash&amp;ref_src=twsrc%5Etfw">#ingress</a> and <a href="https://twitter.com/inletsdev?ref_src=twsrc%5Etfw">@inletsdev</a> <a href="https://twitter.com/hashtag/pro?src=hash&amp;ref_src=twsrc%5Etfw">#pro</a> <a href="https://twitter.com/hashtag/operator?src=hash&amp;ref_src=twsrc%5Etfw">#operator</a> <a href="https://t.co/FNTMIDClpC">pic.twitter.com/FNTMIDClpC</a></p>&mdash; milsman2 (@milsman2) <a href="https://twitter.com/milsman2/status/1417672558183333893?ref_src=twsrc%5Etfw">July 21, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The exit-servers can also be hosted within a public Kubernetes cluster, it might be a good option for a large team, or for part of a SaaS product that needs to expose endpoints dynamically.
 
-You can get a copy of inlets PRO for personal or business use [in the store](https://inlets.dev/pricing/)
+You can get a copy of inlets Pro for personal or business use [in the store](https://inlets.dev/pricing/)

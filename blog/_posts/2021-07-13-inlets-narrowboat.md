@@ -85,7 +85,7 @@ Quickly, I decided to offload Grafana and Prometheus to the cloud, and then have
 
 To utilise my other monitoring stack we needed a tunnel from the boat to my other network - the Pi 4 should automatically use this to present metrics.
 
-> In my job I've used a lot of solutions for remote access from VPNs, to Ngrok and SSH. What I can say is that inlets PRO "just worked". I loved the simplicity of it and whenever I had a question, I got help directly from Alex.
+> In my job I've used a lot of solutions for remote access from VPNs, to Ngrok and SSH. What I can say is that inlets Pro "just worked". I loved the simplicity of it and whenever I had a question, I got help directly from Alex.
 
 ![Conceptual diagram](/images/2021-07-13-narrowboat/boat-inlets.jpg)
 
