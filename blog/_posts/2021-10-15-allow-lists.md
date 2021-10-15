@@ -13,6 +13,8 @@ IP address allow lists aka IP whitelists can be used to restrict your tunnel ser
 
 ## Introduction
 
+inlets is a network proxy and service tunnel that was built from the ground up to work well in containers and Kubernetes. You can find out more about [inlets use-cases on the homepage and how to get started](https://inlets.dev/).
+
 The concept of restricting which IP addresses can access your services is a common request from commercial users of software, despite it being not entirely bulletproof. Let's look at how to configure it with inlets and what else you'll need.
 
 As of 0.9.1, when the inlets server receives a connection, it can inspect the remote address to see whether it is allowed to connect. This change covers any HTTP or TCP tunnel servers that you might run, along with the built-in HTTP fileserver.
