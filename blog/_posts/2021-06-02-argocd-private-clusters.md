@@ -419,10 +419,10 @@ Argo CD, a GitOps continuous delivery tool for Kubernetes, can manage multiple e
 
 This post explains how we use inlets Pro to bring the sensitive Kubernetes API services into a single management cluster in a secure way. While the control plane of the tunnels is accessible for the clients, the data plane is kept private in the central management cluster and available for tools like Argo CD.
 
-This technique applies to all kinds of services. Take the example of collecting metrics. In a previous post, we demonstrated how to [monitor multiple clusters with Prometheus and inlets Pro](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html).
-
+This technique applies to all kinds of services. Take the example of collecting metrics. In a previous post, we demonstrated how to [monitor multiple clusters with Prometheus and inlets](https://inlets.dev/blog/2020/12/15/multi-cluster-monitoring.html).
 
 Further resources:
 
+* Did you enjoy this article? pGet in touch with us](https://inlets.dev/contact/) with your comments & questions, we'd love to help.
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
