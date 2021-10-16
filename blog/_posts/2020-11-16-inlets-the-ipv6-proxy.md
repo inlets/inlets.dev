@@ -52,7 +52,7 @@ inlets version
 
 Go to your Equinix Metal dashboard and create an API Key, call it "inletsctl" and give it read/write permissions. Save it to a file: `$HOME/api-token-packet.txt`
 
-Let's run a server process for our IPv6 clients to connect to. Now if you're using inlets OSS, then you need to use a HTTP server, but if you're using inlets Pro you can use a TCP service like RDP or SSH.
+Let's run a server process for our IPv6 clients to connect to. You can run a HTTP or a TCP tunnel, both support IPv6 access.
 
 Download [the OpenFaaS watchdog](https://github.com/openfaas/of-watchdog) which is described as a "Reverse proxy for HTTP microservices and STDIO"
 
@@ -109,7 +109,7 @@ Host: 90078982-4490-4430-9915-54e7630a6cd0, status:
 ---
 [40/500] Host: 90078982-4490-4430-9915-54e7630a6cd0, status: provisioning
 [41/500] Host: 90078982-4490-4430-9915-54e7630a6cd0, status: active
-inlets OSS (2.7.4) exit-server summary:
+inlets (2.7.4) exit-server summary:
   IP: 147.75.33.3
   Auth-token: da39a3ee5e6b4b0d3255bfef95601890afd80709KLOyx559efgzdITeAhgCHtaH74zysHZ
 
@@ -200,7 +200,7 @@ The of-watchdog is just one component of OpenFaaS, and is designed to be used as
 
 ## Wrapping up
 
-In this tutorial we exposed a local API endpoint on a network with an IPv4 networking stack to public clients to access over IPv6. The IPv6 rollout is coming, but is slow and in the meantime solutions like inlets OSS and inlets Pro provide a way for us to serve traffic clients and to patch the gaps.
+In this tutorial we exposed a local API endpoint on a network with an IPv4 networking stack to public clients to access over IPv6. The IPv6 rollout is coming, but is slow and in the meantime solutions like inlets provide a way for us to serve traffic clients and to patch the gaps.
 
 > inlets can be used to create a self-hosted tunnels, but what you're tunneling can also be kept private by binding to a local ethernet adapter. You can then access your services from the remote LAN, instead of over the Internet. A recent example of that is the post by Johan Siebens where he runs MySQL on-premises on a private network and WordPress on a cloud Kubernetes cluster. [Read more here](https://inlets.dev/blog/2020/11/06/hybrid-cloud-with-inlets.html)
 

@@ -327,5 +327,4 @@ In this tutorial configured and deployed an inlets Pro exit server on the Fly pl
 Further resources:
 
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
-* [Buy a personal license of inlets Pro](https://inlets.dev/pricing/)
-* [Read tutorials and documentation for inlets Pro and OSS](https://docs.inlets.dev/)
+* [Read tutorials and documentation for inlets](https://docs.inlets.dev/)

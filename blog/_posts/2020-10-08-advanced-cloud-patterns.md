@@ -1,14 +1,14 @@
 ---
 layout: post
 title: Learn Advanced Cloud Networking Patterns with inlets
-description: Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets Pro for hybrid-cloud, multi-cluster and federation.
+description: Learn a number of advanced cloud patterns you can apply with inlets for hybrid-cloud, multi-cluster and federation.
 author: Alex Ellis
 tags: sdn sdwan inlets-cloud
 author_img: alex
 date: 08-10-2020
 ---
 
-Learn a number of advanced cloud patterns you can apply with inlets OSS and inlets Pro for hybrid-cloud, multi-cluster and federation.
+Learn a number of advanced cloud patterns you can apply with inlets for hybrid-cloud, multi-cluster and federation.
 
 inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets Pro) adds support for TCP and has built-in TLS and [Kubernetes](https://kubernetes.io) support through the [inlets-operator](https://github.com/inlets/inlets-operator).
 
@@ -31,13 +31,13 @@ Most SaaS tunnels are subjected to severe limits and restrictions to make large 
 At cert-manager's community day, Alex gave an overview of inlets including:
 
 * The traditional use-case for network tunnels
-* The differences and usage for inlets OSS and inlets Pro
+* The differences and usage for inlets OSS (since deprecated) and inlets Pro
 * A case-study with hybrid cloud, to manage private OpenShift APIs from a central SaaS service
 * Multi-cloud service federation with Prometheus
 
 The talk finishes with a demo of inlets-cloud for managing hundreds of exit-servers in Kubernetes Pods and how to get started with the project.
 
-inlets OSS and PRO are both available for Linux, Windows, MacOS and FreeBSD.
+inlets is available for Linux, Windows and MacOS.
 
 ## Watch the presentation
 

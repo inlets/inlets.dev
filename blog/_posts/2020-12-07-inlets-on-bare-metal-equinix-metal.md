@@ -51,7 +51,7 @@ inletsctl create --provider equinix-metal \
 In a few moments you'll find a *t1.small.x86` provisioned in your account which costs $0.07 / hour. That is Equinix Metal's cheapest host, at the end of the tutorial I'll show you how you can use the inlets Pro chart to setup multiple tunnels on the same host for efficiency and cost savings. Other options like VPS providers will cost around 5 USD / month in total.
 
 ```bash
-inlets OSS (2.7.4) exit-server summary:
+inlets (2.7.4) exit-server summary:
   IP: 147.75.33.129
   Auth-token: 6KGTlWVeI0FUgGybXT7dujWW4wT8G5chqDBPWLYJ16CiEbbrxkcIhMab4lV1BFcT
 
@@ -151,11 +151,11 @@ See also: [inlets Pro server chart](https://github.com/inlets/inlets-pro/tree/ma
 
 ## Summing up
 
-I wanted to show you how easy it is to use Equinix Metal to set up a tunnel for development from your network, or from a Kubernetes cluster. All of these tunnels are using the inlets OSS project, which by default enables a single port to be exposed, TLS can be configured separately.
+I wanted to show you how easy it is to use Equinix Metal to set up a tunnel for development from your network, or from a Kubernetes cluster. TLS is enabled by default on these connections for anything that goes over the tunnel.
 
-Alternatively you can use [inlets Pro](https://inlets.dev/) which allows for tunnelling TCP services like databases and IngressControllers, multiple-ports, enables encryption by default and has commercial support. inlets Pro also enables a reverse proxy like Caddy, Nginx, or a Kubernetes IngressController to be exposed so that you can obtain TLS certificates from LetsEncrypt and serve as many virtual hosts as you like.
+You can also expose your IngressController or any other TCP service within the cluster.
 
-Whether you use inlets OSS or inlets Pro - the inletsctl/inlets-operator tooling is open source and gives the same consistent user-experience. To date we have provisioners for several clouds such as digitalocean, equinix-metal, ec2, scaleway, civo, gce, azure, linode and hetzner. You can suggest new provisioners and [see the source code here](https://github.com/inlets/inletsctl/tree/master/pkg/provision).
+We currently have provisioners for several clouds such as digitalocean, equinix-metal, ec2, scaleway, civo, gce, azure, linode and hetzner. You can suggest new provisioners and [see the source code here](https://github.com/inlets/inletsctl/tree/master/pkg/provision).
 
 Find out more about inlets and use-cases in the [inlets docs](https://docs.inlets.dev/)
 

@@ -33,8 +33,6 @@ Let's take a look at how we can build this!
 - `arkade` - portable Kubernetes marketplace
 - A domain and access to your DNS admin panel to create a sub-domain
 
-This tutorial uses inlets Pro because it's easier to configure, and comes with support, but you could also use the free OSS version of inlets if you want to configure it yourself.
-
 See the differences between the two versions in the: [inlets docs](https://inlets.dev/)
 
 For this tutorial I've prepared three Kubernetes clusters:
