@@ -343,15 +343,22 @@ stringData:
     {
       "bearerToken": "${token}",
       "tlsClientConfig": {
-        "insecure": true
+        "serverName": "kubernetes.default.svc"
       }
     }
 EOF
 ```
 
-Notice the `"insecure" : true"`? 
-It doesn't necessarily mean it is less secure. The communication still flows through a secure private tunnel, but it is probably necessary as the TLS certificate of the Kubernetes API service is not valid for the domain name `gke-eu1.inlets`. 
-By setting this to true, we allow Argo CD to access the server without verifying the TLS certificate. Where we have access to kubeadm or k3s for the private cluster, we can add a TLS SAN name, and the solution works by directly tunnelling the API server. Alex also introduced [inlets-connect](https://github.com/alexellis/inlets-connect), a proxy that can help make the "insecure" not needed.
+Notice the `"serverName": "kubernetes.default.svc"`?
+The Argo CD docs explain the use of this property as follows:
+
+> ServerName is passed to the server for SNI and is used in the client to check server ceritificates against. If ServerName is empty, the hostname used to contact the server is used.
+
+In this case, such a setting is required, because Argo CD will try to reach the cluster on e.g. https://gke-eu1.inlets:443 which is not a valid domain name according the TLS certificate of the Kubernetes API service. Our inlets client is running in the target cluster, hence the server name `kubernetes.default.svc`, a way to locate the api server within a pod.
+
+Another option is using the flag `"insecure": true"` in the TLS client config. By setting this to true, we allow Argo CD to access the server without verifying the TLS certificate, while the communication still flows through a secure private tunnel. 
+
+Where we have access to kubeadm or k3s for the private cluster, we can add a TLS SAN name, and the solution works by directly tunnelling the API server. Alex also introduced [inlets-connect](https://github.com/alexellis/inlets-connect), a proxy that can help make the "serverName" of "insecure" not needed.
 
 ![argocd](/images/2021-06-argocd-private-clusters/argocd_clusters.png)
 > Our private cluster is ready to serve!
