@@ -93,9 +93,8 @@ When you expose a TCP port with Ngrok like SSH, you'll get allocated a random TC
 
 With inlets Pro you can get an unlimited number of TCP ports, and whichever ones you like including: 80, 443 which means you can run a reverse proxy at home or on your laptop.
 
-* [Remote access to SSH](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh)
-* [Host multiple sites with Caddy v2](https://docs.inlets.dev/#/get-started/quickstart-http)
-* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/#/get-started/quickstart-ingresscontroller-cert-manager?id=quick-start-expose-your-ingresscontroller-and-get-tls-from-letsencrypt-and-cert-manager)
+* [Remote access to SSH](https://docs.inlets.dev/tutorial/ssh-tcp-tunnel)
+* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/tutorial/kubernetes-ingress)
 
 ### Your DNS
 

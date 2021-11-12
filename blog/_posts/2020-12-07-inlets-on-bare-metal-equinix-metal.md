@@ -75,7 +75,7 @@ export UPSTREAM=http://127.0.0.1:3000
 
 Then run the `inlets client` command and access your service from the public IP on port 80, i.e. `http://147.75.33.129/`
 
-You can also tunnel TCP services with inlets Pro [like SSH](https://docs.inlets.dev/#/get-started/quickstart-tcp-ssh) and [Postgresql](https://docs.inlets.dev/#/get-started/quickstart-tcp-database).
+You can also tunnel TCP services with inlets PRO [like SSH](https://docs.inlets.dev/tutorial/ssh-tcp-tunnel) and [Postgresql](https://docs.inlets.dev/tutorial/postgresql-tcp-tunnel).
 
 ### Option 2 - expose a service from your Kubernetes cluster
 
@@ -165,5 +165,5 @@ Whilst inlets was created with the original problem of exposing an internal or p
 
 See an example:
 
-* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/#/get-started/quickstart-ingresscontroller-cert-manager?id=expose-your-ingresscontroller-and-get-tls-from-letsencrypt)
+* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/tutorial/kubernetes-ingress)
 * [Expose your private Grafana dashboards with TLS](https://blog.alexellis.io/expose-grafana-dashboards/)

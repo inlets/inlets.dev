@@ -38,7 +38,7 @@ To see a list of supported clouds run:
 inletsctl create --help
 ```
 
-For instructions on how to create an API key or service account for each, [feel free to browse the docs](https://docs.inlets.dev/#/tools/inletsctl?id=inletsctl-reference-documentation).
+For instructions on how to create an API key or service account for each, [feel free to browse the docs](https://docs.inlets.dev/reference/inletsctl).
 
 ```bash
 inletsctl create \

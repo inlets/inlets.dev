@@ -277,7 +277,7 @@ I showed you how to expose a single HTTP service, but TCP services are also supp
 For a production configuration, you are more likely to want to expose an IngressController or an [Istio](https://istio.io) Gateway. In this way, you just pay for a single exit server created with [inletsctl](https://github.com/inlets/inletsctl) or [the operator](https://github.com/inlets/inlets-operator) and make sure that you have TLS encryption enabled for any traffic you serve.
 
 * [Istio Gateway with TLS](https://blog.alexellis.io/a-bit-of-istio-before-tea-time/)
-* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/#/get-started/quickstart-ingresscontroller-cert-manager?id=expose-your-ingresscontroller-and-get-tls-from-letsencrypt)
+* [Expose Your IngressController and get TLS from LetsEncrypt and cert-manager](https://docs.inlets.dev/tutorial/kubernetes-ingress)
 
 An IngressController can also be used to set authentication for your endpoints and for testing OAuth2 workflows.
 

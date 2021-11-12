@@ -213,7 +213,7 @@ If you're an OpenFaaS user, then you may setup two separate subdomains for Grafa
 
 Then it's up to you whether you want to connect one client or two.
 
-inlets also supports tunnelling TCP traffic and can be used with Kubernetes as a LoadBalancer through the [inlets-operator project](https://docs.inlets.dev/#/tools/inlets-operator?id=inlets-operator-reference-documentation).
+inlets also supports tunnelling TCP traffic and can be used with Kubernetes as a LoadBalancer through the [inlets-operator project](https://docs.inlets.dev/reference/inlets-operator).
 
 ## Wrapping up
 
