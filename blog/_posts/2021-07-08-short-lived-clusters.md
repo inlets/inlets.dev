@@ -249,7 +249,7 @@ cd inlets-pro/chart/inlets-pro-client
 helm upgrade --install \
   --namespace kube-system \
   --set autoTLS=true \
-  --set ports=80,443 \
+  --set ports="80\,443" \
   --set upstream=traefik \
   --set url=wss://165.227.232.164:8123 \
   --set tokenSecretName=traefik-tunnel-token \
