@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Serve traffic through a private self-hosted tunnel
-description: Learn how to serve traffic from your private network over a self-hosted tunnel.
+title: Serve traffic through a private tunnel
+description: Learn how to serve traffic from your local network over a self-hosted tunnel.
 author: Alex Ellis
 tags: private tunnel secure self-hosting
 author_img: alex
@@ -9,7 +9,7 @@ image: /images/2021-08-08-private-tunnel/background.jpg
 date: 2021-08-08
 ---
 
-Learn how to serve traffic from your private network over a self-hosted tunnel.
+Learn how to serve traffic from your local network over a private tunnel.
 
 ## Introduction
 
@@ -25,7 +25,7 @@ In [a previous article](/blog/2021/07/27/monthly-subscription.html), I explained
 
 ## Create your tunnel server
 
-With a self-hosted tunnel like inlets, you need to create a tunnel server. It has a public IP address that you can use to accept traffic and proxy it into your private network.
+With a private tunnel like inlets, you need to create a tunnel server. It has a public IP address that you can use to accept traffic and proxy it into your private network.
 
 <img src="https://inlets.dev/images/quick.png" alt="Inlets Conceptual architecture" width="60%">
 > Pictured: Inlets Conceptual architecture
