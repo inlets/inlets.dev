@@ -17,6 +17,9 @@ If you run a cluster for development, the costs can add up very quickly - especi
 
 Costs may not be your focus, you may just want the convenience of hosting or testing applications on your local Kubernetes cluster. That's why I created [inlets](https://inlets.dev/) in 2019.
 
+![Traefik and K3s](/images/2021-12-traefik/logos.png)
+> Traefik is bundled with K3s
+
 [Traefik](https://traefik.io) is a popular open-source Ingress Controller for [Kubernetes](https://kubernetes.io/). It gained even more visibility when [Darren Shepherd](https://twitter.com/ibuildthecloud) decided to package it with his [K3s](https://k3s.io) project.
 
 Why would you want to expose Traefik?
