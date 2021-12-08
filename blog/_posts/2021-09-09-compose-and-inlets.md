@@ -216,4 +216,3 @@ If you want to run a tunnel to expose something on your local network which is n
 
 * Find out more about the inlets subscription and how it compares to other tools: [Introducing the inlets monthly subscription](https://inlets.dev/blog/2021/07/27/monthly-subscription.html)
 * Learn how to expose services within your local Kubernetes cluster: [Fixing Ingress for short-lived local Kubernetes clusters](https://inlets.dev/blog/2021/07/08/short-lived-clusters.html)
-* Join the #inlets channel of the [OpenFaaS Slack community](https://slack.openfaas.io/)
