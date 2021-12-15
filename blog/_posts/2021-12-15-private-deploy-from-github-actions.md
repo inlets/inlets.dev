@@ -22,12 +22,15 @@ There's three options that come to mind:
 1) Establish a full VPN between GitHub Actions and your private network
 2) Use a GitHub self-hosted runner for the deployment steps
 3) Establish a temporary tunnel for deployment purposes only.
+4) Use a "GitOps" tool to pull state outside of the flow of GitHub Actions
 
 If we want to move away from managing infrastructure, then building a full VPN solution with a product like OpenVPN or Wireguard is going to create management overhead for us. We also need to be certain that we are not going to make our whole private network accessible from GitHub's network.
 
 Self-hosted runners can make for a useful alternative. They work by scheduling one or more actions jobs to run on servers that you enroll to the GitHub Actions control-plane. You'll need to either install these tools to an existing server or provision a new one to act as a proxy. The risk is that you are enabling almost unbounded access to your private network.
 
 The third option is more fine-grained and easier to automate. It involves forwarding one or more local ports from within your private network or Kubernetes cluster to the public GitHub Actions runner. The only thing it will be able to do, is to authenticate and send requests to what you've chosen to expose to it.
+
+For the fourth option - a GitOps agent like ArgoCD will run in your cluster and keep checking for new images to apply or deploy. This only works well but you are tied to Kubernetes. The approach I'm outlining today works whatever API or system you're using. But, if you are tied into Kubernetes and your resource can be created through kubectl, then a tool like FluxCD or ArgoCD could be a good option. We covered this approach on the blog: [Learn how to manage apps across private Kubernetes clusters](https://inlets.dev/blog/2021/06/02/argocd-private-clusters.html).
 
 ## Conceptual architecture
 
