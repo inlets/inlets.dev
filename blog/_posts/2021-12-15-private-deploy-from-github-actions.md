@@ -5,7 +5,7 @@ description: Learn options to deploy to a private cluster from a GitHub Action w
 author: Alex Ellis
 tags: private tunnel secure deployment github actions
 author_img: alex
-image: /images/2021-12-private-actions/background.png
+image: /images/2021-12-private-actions/background.jpg
 date: 2021-12-06
 ---
 
