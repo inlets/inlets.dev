@@ -246,7 +246,14 @@ What if you wanted to deploy to Kubernetes?
 
 You could also forward the Kubernetes API server by changing the "--local" flag to `6443:kubernetes.default:443`. Then you'd use kubectl within your GitHub Actions, changing the server address in your KUBECONFIG file to `127.0.0.1:6443` and adding the parameter: `--tls-server-name`.
 
-What if you cannot expose a LoadBalancer for the inlets server? A workaround is to use a double tunnel. This is beyond the scope of the article, but you are welcome to get in touch for some pointers on the configuration.
+What if you cannot expose a LoadBalancer for the inlets server?
+
+A workaround is to use a double-tunnel. This is beyond the scope of the article, but you are welcome to get in touch for some pointers on the configuration.
+
+![A double-tunnel](/images/2021-12-private-actions/double-tunnel.png)
+
+> A double-tunnel, where we add an intermediary server which does have a publicly accessible IP address.
+
 
 You can follow us on Twitter for more content like this: [@inletsdev](https://twitter.com/inletsdev/)
 
