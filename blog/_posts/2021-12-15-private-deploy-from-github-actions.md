@@ -257,7 +257,6 @@ A workaround is to use a double-tunnel. This is beyond the scope of the article,
 
 > A double-tunnel, where we add an intermediary server which does have a publicly accessible IP address.
 
-
 You can follow us on Twitter for more content like this: [@inletsdev](https://twitter.com/inletsdev/)
 
 Why not try out the tutorial? [Get started with a monthly plan here](https://inlets.dev/pricing/)
