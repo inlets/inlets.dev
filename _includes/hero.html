@@ -34,19 +34,112 @@
         </div>
       </div>
 
-      <div class="relative w-full lg:absolute lg:inset-y-60 lg:right-0 lg:left-180 lg:w-1/2 lg:h-full">
+<!-- 
+      <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="video-modal">
+        Toggle modal
+      </button> -->
 
-          <a href="https://youtu.be/zPl9oC12BJM">
-            <video width="700" height="450" autoplay muted loop preload="true" class="pb-10">
+      <div class="relative w-full lg:absolute lg:inset-y-60 lg:right-0 lg:left-180 lg:w-1/2 lg:h-full">
+        
+          <a href="#" onClick="showModal()">
+
+            <video width="700" height="450" autoplay muted loop preload="false" class="pb-10" poster="/media/preview.jpg">
               <source src="/media/preview.mp4" type="video/mp4" />
               <img class="absolute inset-0 w-full h-full object-cover" style="-webkit-transform: scaleX(-1);" src="/images/hero-human.jpg" alt="inlets Pro is fast and easy to use">
             </video>
           </a>
-          <a href="https://youtu.be/zPl9oC12BJM" class="font-medium text-indigo-600 hover:text-indigo-500"> Create your first tunnel with Alex <span aria-hidden="true">→</span></a>
+          <a href="#" onClick="showModal()" class="font-medium text-indigo-600 hover:text-indigo-500"> Create your first tunnel with Alex <span aria-hidden="true">→</span></a>
 
         </div>
 
     </div>
     </main>
+
   </div>
 
+
+  <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="fixed  z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal1" hidden>
+  <div class="flex  items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+    <!-- This element is to trick the browser into centering the modal contents. -->
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm md:max-w-3xl lg:max-w-5xl xl-max-w-7xl sm:w-full sm:p-6">
+      <div class="">
+        <div class="mt-0 text-center">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-5" id="modal-title">
+            Set up your tunnel in 10 minutes
+          </h3>
+          <div id="player" class="w-full"></div>
+        </div>
+      </div>
+      <div class="mt-5 sm:mt-6">
+        <button onClick="hideModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+var player;
+var ready;
+
+function loadYouTube() {
+  if(!player) {
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+}
+
+function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '450',
+        width: '700',
+        videoId: 'zPl9oC12BJM',
+        playerVars: {
+          'playsinline': 1,
+          'autoplay': 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+function showModal() {
+  document.querySelector("#modal1").hidden = false;
+  console.log("Load YouTube")
+
+  loadYouTube()
+  if(ready) {
+    player.playVideo();
+  }
+}
+
+function hideModal() {  
+  if(player) {
+    player.stopVideo()
+  }
+    document.querySelector("#modal1").hidden = true;
+}
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+    console.log("Ready")
+    ready = true
+    event.target.playVideo();
+  }
+
+  function onPlayerStateChange(event) {
+  }
+
+</script>
