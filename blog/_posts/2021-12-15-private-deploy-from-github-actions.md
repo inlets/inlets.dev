@@ -165,6 +165,7 @@ inlets-pro tcp client \
 And this is what it might look like in a GitHub Action:
 
 ```yaml
+{% raw %}
 name: build
 
 on:
@@ -226,7 +227,7 @@ jobs:
       - name: Close tunnel
         run: |
           killall -9 inlets-pro
-
+{% endraw %}
 ```
 
 Create the following secrets:
