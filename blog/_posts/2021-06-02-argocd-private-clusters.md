@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Learn how to manage apps across private Kubernetes clusters
-description: Learn a simple approach to deploying applications across multiple public and private Kubernetes clusters using Argo CD, inlets Pro and GitOps.
+title: Learn how to manage apps across multiple Kubernetes clusters
+description: Learn a simple approach to deploying applications across multiple Kubernetes clusters using Argo CD, inlets Pro and GitOps.
 author: Johan Siebens
 tags: inlets-pro hybrid-cloud multi-cloud gitops argocd
 author_img: jsiebens
@@ -9,7 +9,7 @@ image: /images/2021-06-argocd-private-clusters/background.jpg
 date: 2021-06-02
 ---
 
-In this post, you'll learn how to apply GitOps on multiple private Kubernetes cluster with a single Argo CD installation.
+In this post, you'll learn how to deploy to multiple public and private Kubernetes clusters using Argo CD and GitOps. 
 
 ## Continuous Deployment on Kubernetes with GitOps
 
