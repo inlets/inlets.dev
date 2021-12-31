@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Happy 3rd Birthday Inlets!
+title: My Highlights of Inlets from 2021
 description: Learn my top five highlights of inlets in 2021, from features to use-cases to a new subscription business model.
 author: Alex Ellis
 tags: review inlets secure private tunnels
@@ -9,9 +9,11 @@ image: /images/2021-highlights/background.jpg
 date: 2021-12-31
 ---
 
-Did you know that Inlets was first released in January 2019? That means it's coming up for its third birthday!
+Did you know that Inlets was first released in January 2019? That means it's coming up for its third birthday. 
 
-In this short article, I'll cover the use-case and origin story for inlets before going on to cover highlights of the past year. These include a new business model, Prometheus monitoring and automated TLS with Let's Encrypt for HTTPS tunnels.
+> Happy 3rd Birthday Inlets! 🎂😀💻
+
+In this short article, I'll cover the use-case and origin story for inlets before going on to cover highlights *of the past year*. These include a new business model, Prometheus monitoring and automated TLS with Let's Encrypt for HTTPS tunnels.
 
 ## Who needs a tunnel anyway?
 
