@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Happy 2nd Birthday Inlets!
+title: Happy 3rd Birthday Inlets!
 description: Learn my top five highlights of inlets in 2021, from features to use-cases to a new subscription business model.
 author: Alex Ellis
 tags: review inlets secure private tunnels
 author_img: alex
-image: /images/2021-higlights/background.jpg
+image: /images/2021-highlights/background.jpg
 date: 2021-12-31
 ---
 
-Did you know that Inlets was first released in January 2019? That means it's coming up for its second birthday!
+Did you know that Inlets was first released in January 2019? That means it's coming up for its third birthday!
 
 In this short article, I'll cover the use-case and origin story for inlets before going on to cover highlights of the past year. These include a new business model, Prometheus monitoring and automated TLS with Let's Encrypt for HTTPS tunnels.
 
@@ -38,7 +38,7 @@ Inlets is written in Go, which makes it easy to cross compile to various Operati
 
 One of my top five was adding the status command and Prometheus metrics. I used the chapter from my [eBook Everyday Go](https://gumroad.com/l/everyday-golang) as a starting point.
 
-![Adding metrics support to inlets](/images/2021-higlights/background.jpg)
+![Adding metrics support to inlets](/images/2021-highlights/background.jpg)
 > Adding metrics and observability support to inlets for customers to monitor their tunnels 
 
 ### 1. New docs and better positioning
