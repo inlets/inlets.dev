@@ -19,26 +19,28 @@ But what about when it comes to deploying to your servers? What if they are runn
 
 There's three options that come to mind:
 
-1) Establish a full VPN between GitHub Actions and your private network
-2) Use a GitHub self-hosted runner for the deployment steps
-3) Establish a temporary tunnel for deployment purposes only.
-4) Use a "GitOps" tool to pull state outside of the flow of GitHub Actions
+1. Establish a full VPN between GitHub Actions and your private network
+2. Use a GitHub self-hosted runner for the deployment steps
+3. Establish a temporary tunnel for deployment purposes only.
+4. Use a "GitOps" tool to pull state outside of the flow of GitHub Actions
 
 If we want to move away from managing infrastructure, then building a full VPN solution with a product like OpenVPN or Wireguard is going to create management overhead for us. We also need to be certain that we are not going to make our whole private network accessible from GitHub's network.
 
 Self-hosted runners can make for a useful alternative. They work by scheduling one or more actions jobs to run on servers that you enroll to the GitHub Actions control-plane. You'll need to either install these tools to an existing server or provision a new one to act as a proxy. The risk is that you are enabling almost unbounded access to your private network.
 
-The third option is more fine-grained and easier to automate. It involves forwarding one or more local ports from within your private network or Kubernetes cluster to the public GitHub Actions runner. The only thing it will be able to do, is to authenticate and send requests to what you've chosen to expose to it.
+The third option is more fine-grained and easier to automate. It involves forwarding one or more local ports from within your private network or [Kubernetes](https://kubernetes.io/) cluster to the public GitHub Actions runner. The only thing it will be able to do, is to authenticate and send requests to what you've chosen to expose to it.
 
-For the fourth option - a GitOps agent like ArgoCD will run in your cluster and keep checking for new images to apply or deploy. This only works well but you are tied to Kubernetes. The approach I'm outlining today works whatever API or system you're using. But, if you are tied into Kubernetes and your resource can be created through kubectl, then a tool like FluxCD or ArgoCD could be a good option. We covered this approach on the blog: [Learn how to manage apps across private Kubernetes clusters](https://inlets.dev/blog/2021/06/02/argocd-private-clusters.html).
+For the fourth option - a GitOps agent like [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) will run in your cluster and keep checking for new images to apply or deploy. This only works well but you are tied to Kubernetes. The approach I'm outlining today works whatever API or system you're using. But, if you are tied into Kubernetes and your resource can be created through kubectl, then a tool like FluxCD or ArgoCD could be a good option. We covered this approach on the blog: [Learn how to manage apps across private Kubernetes clusters](https://inlets.dev/blog/2021/06/02/argocd-private-clusters.html).
+
+> Using a GitOps agent means you will need to split up how you build your images from how you deploy them. This may not suit traditional companies who are well versed with a CI job both building and deploying images. 
 
 ## Conceptual architecture
 
 On the left hand side we have a private VPC running on AWS. This could also be an on-premises Kubernetes cluster for instance. It has no incoming traffic enabled, other than through a load balancer for port 8123 into our inlets server. The inlets server only exposes a control plane to inlets clients. It has authentication and TLS encryption enabled.
 
-On the right hand side, GitHub Actions needs a URL to deploy to OpenFaaS. It cannot access the OpenFaaS gateway running inside our local, private network, so we establish an inlets tunnel and forward the gateway service from the network network to localhost. It'll only be available for the GitHub Action at this point.
+On the right hand side, GitHub Actions needs a URL to deploy to [OpenFaaS](https://openfaas.com/). It cannot access the OpenFaaS gateway running inside our local, private network, so we establish an inlets tunnel and forward the gateway service from the network network to localhost. It'll only be available for the GitHub Action at this point.
 
-![Our conceptual architecture](/images/2021-12-private-actions/deploy-private.png)
+![The conceptual architecture showing deployments to a private EKS VPC](/images/2021-12-private-actions/deploy-private.png)
 
 > The inlets client binds the remote OpenFaaS Gateway to: `http://127.0.0.1:8080` within the GitHub Actions runner, but does not expose it anywhere on the Internet
 
