@@ -176,7 +176,7 @@ Here's how you can try it out:
 * Use the arkade tool to download some tools and start a cluster, if you don't already have one:
 
 ```bash
-curl -SLs https://dl.get-arkade.dev|sh
+curl -SLs https://get.arkade.dev|sh
 sudo mv arkade /usr/local/bin/
 
 arkade get kind

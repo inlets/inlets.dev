@@ -53,7 +53,7 @@ The main pre-requisite for the tutorial is the arkade CLI, which can be used to 
 ```bash
 # You can also run without sudo, but you'll need to move the arkade binary
 # to /usr/local/bin yourself
-curl -sLS https://dl.get-arkade.dev | sudo sh
+curl -sLS https://get.arkade.dev | sudo sh
 ```
 
 inlets &reg; is a network tunnel that can be used to connect services between private and public clusters. The open source version comes with support for HTTP and the commercial edition (inlets Pro) adds support for TCP and has built-in TLS. The [inletsctl](https://github.com/inlets/inletsctl) and [inlets-operator](https://github.com/inlets/inlets-operator) projects can set up exit-server VMs for you on public cloud, which are used to gain access to your private services.
