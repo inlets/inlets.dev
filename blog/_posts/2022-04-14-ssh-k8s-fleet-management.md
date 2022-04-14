@@ -299,13 +299,15 @@ Another option might be to create your administrative shell scripts in ConfigMap
 
 We are hearing about a need to manage devices in remote locations, and SSH is a tried and tested technology. Kubernetes provides a scalable way to deploy many inlets tunnels and to manage the various SSH tunnels, whilst keeping them private, and not having to expose them on the Internet.
 
-I hope this article gives you an idea of what's possible. You can experiment and try out inlets with the Starter Plan For Professionals over on [Gumroad](https://gumroad.com/l/inlets-subscription).
+I hope this article gives you an idea of what's possible. You saw how to set up and manage multiple tunnels, how to connect manually for troubleshooting and how to deploy a cron job for automated tasks. The third option is to launch a Pod for something else like Ansible or your own code making use of a Go SDK. Running a one-time pod is also relatively simple, and you could adapt that from what I showed you for the Cron Job, simply turning it into a [one-time Kubernetes "Job"](https://kubernetes.io/docs/concepts/workloads/controllers/job/).
 
 When scaled up, this solution looks very similar to our previous articles, where you run one to many Kubernetes Pods for your inlets servers in a centrally-managed cluster, and then have any number of inlets clients connect from remote locations.
 
 ![Fleet management](/images/2022-04-k8s-ssh-fleet/fleet-management.png)
 
 > An architecture with a second customer added into the fleet.
+
+You can experiment and try out inlets with the Starter Plan For Professionals over on [Gumroad](https://gumroad.com/l/inlets-subscription).
 
 If you'd like us to help you design or validate an architecture, feel free to reach out via the contact us page. Or see some of our previous tutorials and case-studies below:
 
