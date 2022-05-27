@@ -82,7 +82,8 @@ What if I have multiple sites?
 You can pass a number of sub-domains, for instance:
 
 ```bash
- --letsencrypt-domain blog.example.com,grafana.example.com \
+ --letsencrypt-domain blog.example.com \
+ --letsencrypt-domain grafana.example.com \
  --letsencrypt-email webmaster@example.com
 ```
 
@@ -132,7 +133,8 @@ If they are all within the same network, then you can run the client in one plac
 $ inlets-pro http client \
   --url $URL \
   --token $TOKEN \
-  --upstream blog.example.com=http://127.0.0.1:3000,grafana.example.com=http://192.168.0.100:3000
+  --upstream blog.example.com=http://127.0.0.1:3000 \
+  --upstream grafana.example.com=http://192.168.0.100:3000
 ```
 
 If they are on different networks, you can simply run multiple clients, just change the `--upstream` flag on each client.
@@ -150,7 +152,7 @@ $ export TOKEN=""
 $ inlets-pro http client \
   --url $URL \
   --token $TOKEN \
-  --upstream blog.example.com=http://127.0.0.1:3000
+  --upstream blog.example.com=http://127.0.0.1:3000 \
   --generate=systemd > inlets.service
 
 $ sudo cp inlets.service /etc/systemd/system/
