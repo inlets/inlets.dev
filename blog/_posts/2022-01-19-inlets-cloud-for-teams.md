@@ -97,6 +97,7 @@ $ inlets-pro http client \
   --url=wss://docs-preview-tunnel.tun.example.com \
   --upstream=http://127.0.0.1:8080 \
   --auto-tls=false \
+  --license-file=$HOME/.inlets/LICENSE \
   --generate=systemd > inlets-pro.service
 
 $ sudo mv inlets-pro.service /etc/systemd/system/inlets-pro.service

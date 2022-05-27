@@ -153,6 +153,7 @@ $ inlets-pro http client \
   --url $URL \
   --token $TOKEN \
   --upstream blog.example.com=http://127.0.0.1:3000 \
+  --license-file=$HOME/.inlets/LICENSE \
   --generate=systemd > inlets.service
 
 $ sudo cp inlets.service /etc/systemd/system/

@@ -87,14 +87,16 @@ You can keep the inlets server process running by generating a systemd unit file
 
 ```bash
 inlets-pro http server \
-  --generate=systemd \
   --letsencrypt-domain $DOMAIN \
   --letsencrypt-email webmaster@$DOMAIN \
   --letsencrypt-issuer prod \
   --token $TOKEN \
   --auto-tls \
   --auto-tls-san $SERVER_IP \
+  --generate=systemd \
+  --license-file=$HOME/.inlets/LICENSE \
   > inlets-pro.service
+
 sudo cp inlets-pro.service /etc/systemd/system
 
 sudo systemctl enable inlets-pro
