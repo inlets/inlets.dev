@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How To Manage Customer Services From Your Product
+title: How To Manage Customer Services From Within Your Product
 description: Service providers often need to access remote services in a customer's network. Building your own agent is an option, establishing multiple VPNs is complex, so how can tunnels help?
 author: Alex Ellis
 tags: secure management remote product saas kubernetes
