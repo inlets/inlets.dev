@@ -241,6 +241,7 @@ The Application Set controller is deployed alongside Argo CD by default. Unlike 
 
 We can define an ApplicationSet for the inlets servers:
 
+{% raw %}
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -271,6 +272,7 @@ spec:
         automated:
           selfHeal: true
 ```
+{% endraw %}
 
 This ApplicationSet uses the [List generator](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-List/) which generates parameters based on a fixed list of arbitrary key/value pairs. In this case it contains values for the name of our inlets servers and the values file that Helm needs to use for the deployment.
 
