@@ -180,7 +180,7 @@ export DOMAIN="postgresql-customer1.example.com"
 
 helm upgrade --install postgresql-customer1-tunnel \
   inlets-pro/inlets-pro \
-  --set domain=$DOMAIN \
+  --set ingress.domain=$DOMAIN \
   -f ./values-postgresql-customer1.yaml
 ```
 
@@ -277,7 +277,7 @@ export DOMAIN="mysql-customer2.example.com"
 
 helm upgrade --install mysql-customer2-tunnel \
   inlets-pro/inlets-pro \
-  --set domain=$DOMAIN \
+  --set ingress.domain=$DOMAIN \
   -f ./values-mysql-customer2.yaml
 ```
 
