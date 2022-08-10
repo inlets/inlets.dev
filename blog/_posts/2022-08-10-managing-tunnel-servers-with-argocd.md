@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How To Manage Inlets Tunnels With Argo CD and GitOps
-description: We show you how Argo CD can make your job simpler if you're managing multiple inlets tunnel servers.
+description: Learn how Argo CD can make managing multiple tunnel servers easier through GitOps.
 author: Han Verstraete
 tags: management argocd kubernetes saas
 author_img: welteki
@@ -9,7 +9,7 @@ image: /images/2022-managing-tunnels-with-argocd/background.png
 date: 2022-08-10
 ---
 
-If you're managing multiple inlets tunnel servers, Argo CD could make your job simpler. We'll show you how to set up two inlets-pro TCP servers using the helm chart and SealedSecrets for the authentication tokens.
+If you're managing multiple inlets tunnel servers, Argo CD and GitOps could make your job easier. We'll show you how to set up two different inlets TCP servers using the inlets helm chart, Argo CD and SealedSecrets for the servers' authentication tokens.
 
 ## Introduction
 
