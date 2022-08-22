@@ -118,7 +118,7 @@ spec:
     spec:
       containers:
       - name: inlets-forwarding-server
-        image: ghcr.io/inlets/inlets-pro:0.9.1
+        image: ghcr.io/inlets/inlets-pro:0.9.5
         imagePullPolicy: IfNotPresent
         command: ["inlets-pro"]
         args:

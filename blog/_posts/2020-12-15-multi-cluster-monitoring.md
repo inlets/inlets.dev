@@ -47,7 +47,7 @@ The third cluster will be our "Observability" cluster, and likewise to the previ
 
 Installing Prometheus and all the components can be done in several ways, but the most common way is to install it using the Prometheus Operator or the official Helm Charts.
 
-``` bash
+```bash
 $ kubectx
 orion-aws
 orion-gcp
@@ -98,7 +98,7 @@ Switched to context "orion-gcp".
 
 Install the nginx ingress controller and cert-manager with `arkade:
 
-``` bash
+```bash
 arkade install ingress-nginx --namespace ingress-nginx
 arkade install cert-manager --namespace cert-manager
 ```
@@ -127,13 +127,13 @@ spec:
         ingress:
           class: nginx
 ```
-``` bash
+```bash
 kubectl apply -f issuer-prod.yaml
 ```
 
 Generate a token for your inlets server:
 
-``` bash
+```bash
 export TOKEN=$(head -c 16 /dev/random | shasum|cut -d" " -f1)
 kubectl create secret generic inlets-pro-secret -n monitoring --from-literal token=$TOKEN
 
@@ -155,7 +155,7 @@ dataPlane:
 
 Now get the inlets-pro helm chart and install the chart for each remote Prometheus service.
 
-``` bash
+```bash
 git clone https://github.com/inlets/inlets-pro
 
 helm install orion-aws      ./inlets-pro/chart/inlets-pro \
@@ -184,7 +184,7 @@ Take all the following steps and execute them against all your client clusters.
 
 Switch your kubectl config to the correct Client cluster:
 
-``` bash
+```bash
 $ kubectx orion-aws
 Switched to context "orion-aws".
 ```
@@ -203,7 +203,7 @@ kubectl create secret generic \
 
 And install the inlets-pro-client chart with the proper values to connect to the exit-node pods in the Observability cluster:
 
-``` bash
+```bash
 helm install prometheus-tunnel \
   ./inlets-pro/chart/inlets-pro-client \
   -n monitoring \

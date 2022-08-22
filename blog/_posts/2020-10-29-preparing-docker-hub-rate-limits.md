@@ -145,8 +145,8 @@ On the inlets Project we've already started publishing an image in GHCR so that 
 Before:
 
 ```bash
-docker pull inlets/inlets-pro:0.7.3
-docker pull docker.io/inlets/inlets-pro:0.7.3
+docker pull inlets/inlets-pro:0.9.5
+docker pull docker.io/inlets/inlets-pro:0.9.5
 ```
 
 > Note that the `docker.io` prefix is implicit, we are just not use to typing it in.
@@ -154,7 +154,7 @@ docker pull docker.io/inlets/inlets-pro:0.7.3
 After:
 
 ```bash
-pull ghcr.io/inlets/inlets-pro:0.7.3
+pull ghcr.io/inlets/inlets-pro:0.9.5
 ```
 
 It's a little more typing, and maintainers have to change their projects, but this seems like a good balance.

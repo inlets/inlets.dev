@@ -92,13 +92,13 @@ spec:
     spec:
       containers:
       - name: inlets-server
-        image: ghcr.io/inlets/inlets-pro:0.8.3
+        image: ghcr.io/inlets/inlets-pro:0.9.5
         imagePullPolicy: IfNotPresent
         command: ["inlets-pro"]
         args:
         - "server"
         - "--auto-tls=true"
-        - "--common-name=192.168.0.35"
+        - "--auto-tls-san=192.168.0.35"
         - "--token=test1234"
         - "--client-forwarding"
 ```

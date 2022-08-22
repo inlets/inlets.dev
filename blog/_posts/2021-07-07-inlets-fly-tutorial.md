@@ -48,11 +48,11 @@ Since applications on Fly need to be built into a Docker image, we'll need to cr
 Fortunately inlets Pro is already released in a Docker image, so we just have to inherit from it and set some new command line arguments for the server.
 
 ``` Dockerfile
-FROM ghcr.io/inlets/inlets-pro:0.8.5
+FROM ghcr.io/inlets/inlets-pro:0.9.5
 CMD ["tcp", "server", "--auto-tls=false", "--token-env=TOKEN"]
 ```
 
-For this tutorial you'll need version 0.8.5 or higher.
+For this tutorial you'll need version 0.9.5 or higher.
 
 The second `CMD` line contains the parameters we pass to the `inlets-pro` command that are going to configure how inlets Pro runs.
 By default, the official image will simply start an inlets Pro tcp server, but here we need to tweak the runtime flags a little but.
@@ -68,7 +68,7 @@ For this tutorial we will this command to start, but without the generation of t
 
 Assuming `flyctl` is installed and configured correctly, run the following command:
 
-``` bash
+```bash
 $ flyctl init --nowrite
 ```
 
@@ -213,7 +213,7 @@ Secrets allow sensitive values, such as credentials, to be passed securely to yo
 
 The `flyctl secrets set` command will set one or more application secrets:
 
-``` bash
+```bash
 token=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 32 ; echo '')
 flyctl secrets set TOKEN=$token
 echo $token > token.txt
@@ -225,7 +225,7 @@ You can read the generated token back from `token.txt` to use with your `inlets-
 
 At this point, we have everything in place to deploy the inlets Pro exit server with `flyctl deploy`:
 
-``` bash
+```bash
 $ flyctl deploy
 
 Deploying white-star-8139
@@ -238,7 +238,7 @@ TCP 80/443 ⇢ 8080
 --> Creating build context done
 ==> Building image with Docker
 Sending build context to Docker daemon  4.096kB
-Step 1/2 : FROM ghcr.io/inlets/inlets-pro:0.8.5
+Step 1/2 : FROM ghcr.io/inlets/inlets-pro:0.9.5
  ---> dc95fbda2417
 Step 2/2 : CMD ["tcp", "server", "--auto-tls=false", "--token-env=TOKEN"]
  ---> Running in 5ecba2c50ef9
@@ -266,7 +266,7 @@ Monitoring Deployment
 
 Connect your `inlets-pro` client to the newly deployed server:
 
-``` bash
+```bash
 export URL=wss://white-star-8139.fly.dev:10023/connect
 export TOKEN=$(cat ./token.txt)
 inlets-pro tcp client \
@@ -289,7 +289,7 @@ INFO[2021/06/23 09:03:17] Connecting to proxy                           url="wss
 
 In a different terminal, start an HTTP server on port 8080, for example a lightweight fileserver with inlets:
 
-``` bash
+```bash
 $ inlets-pro http fileserver \
   --allow-browsing \
   --port 8080
@@ -300,7 +300,7 @@ $ inlets-pro http fileserver \
 
 And test the public endpoint:
 
-``` bash
+```bash
 $ curl -i https://white-star-8139.fly.dev
 HTTP/2 200 
 content-type: text/html; charset=utf-8

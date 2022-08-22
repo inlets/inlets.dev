@@ -48,7 +48,7 @@ For this tutorial, I’ve prepared two Kubernetes clusters:
 
 Both clusters are configured in my kubectl configuration file and accessible from my machine.
 
-``` bash
+```bash
 $ kubectl config get-contexts
 CURRENT   NAME      CLUSTER                                   AUTHINFO                                  NAMESPACE
 *         argocd    argocd                                    argocd                                    default
@@ -57,7 +57,7 @@ CURRENT   NAME      CLUSTER                                   AUTHINFO          
 
 Argo CD is installed following their [Getting Started](https://argoproj.github.io/argo-cd/getting_started/) guide in the "argocd" cluster.
 
-``` bash
+```bash
 $ kubectl get deployments,services --context argocd -n argocd
 NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/argocd-redis         1/1     1            1           3d8h
@@ -78,7 +78,7 @@ service/argocd-server-metrics   ClusterIP   10.43.38.166    <none>        8083/T
 
 First, we are going to create an exit-server pod on the management cluster. You don't have to, but prefer placing them in a separate namespace:
 
-``` bash
+```bash
 kubectl create --context argocd namespace inlets
 ```
 
@@ -86,7 +86,7 @@ When the namespace is created, we will start by creating two Kubernetes services
 
 Our target Kubernetes API service is running in a private network such as a different cloud or on-premises. Argo CD needs to access that service from our central management cluster., but we would like to prevent everyone from reaching our private API service. That's why we will use a split-plane configuration only the control plane of inlets Pro is public, while Argo CD can access the data plane via a private ClusterIP.
 
-``` bash
+```bash
 export NAME=gke-eu1
 export ARGOCD_CTX=argocd
 
@@ -135,7 +135,7 @@ Wait for the LoadBalancer to be ready with a public IP address and update your D
 
 Now create the deployment for the server part of the inlets tunnel.
 
-``` bash
+```bash
 export NAME=gke-eu1
 export ARGOCD_CTX=argocd
 export TOKEN=<a secure token>
@@ -159,7 +159,7 @@ spec:
     spec:
       containers:
       - name: inlets
-        image: ghcr.io/inlets/inlets-pro:0.8.4
+        image: ghcr.io/inlets/inlets-pro:0.9.5
         imagePullPolicy: IfNotPresent
         securityContext:
           allowPrivilegeEscalation: false
@@ -169,7 +169,7 @@ spec:
         - "tcp"
         - "server"
         - "--auto-tls=true"
-        - "--common-name=${DOMAIN}"
+        - "--auto-tls-san=${DOMAIN}"
         - "--token=${TOKEN}"
         volumeMounts:
           - mountPath: /tmp/certs
@@ -182,7 +182,7 @@ EOF
 
 Verify if everything has started correctly, you should see two services and a single pod with status `Running`:
 
-``` bash
+```bash
 $ kubectl get -n inlets pods,services
 NAME                              READY   STATUS    RESTARTS   AGE
 pod/gke-eu1-c9fb8b859-6ffz4       1/1     Running   0          5h7m
@@ -206,13 +206,13 @@ Switch your kubectl config to the correct cluster:
 
 As before, I prefer the place the inlets client in a separate namespace:
 
-``` bash
+```bash
 kubectl create --context gke-eu1 namespace inlets
 ```
 
 Now create the deployment for an inlets Pro TCP client:
 
-``` bash
+```bash
 export LICENSE=$(cat ~/.inlets/LICENSE)
 export TOKEN=<a secure token>
 export DOMAIN=gke-eu1.inlets.example.com
@@ -236,7 +236,7 @@ spec:
     spec:
       containers:
       - name: inlets-client
-        image: ghcr.io/inlets/inlets-pro:0.8.4
+        image: ghcr.io/inlets/inlets-pro:0.9.5
         imagePullPolicy: IfNotPresent
         command: ["inlets-pro"]
         args:
@@ -318,7 +318,7 @@ More information on how this structure looks like can be found in the [Argo CD d
 
 The following script is an example of how to will fetch the bearer token for the service account created earlier and create such a secret for our target cluster.
 
-``` bash
+```bash
 export TARGET_CTX=gke-eu1
 export ARGOCD_CTX=argocd
 
@@ -369,7 +369,7 @@ Now it is time to deploy an application.
 
 Let's try to deploy the guestbook application in a declarative way:
 
-``` bash
+```bash
 export ARGOCD_CTX=argocd
 
 cat <<EOF | kubectl apply --context $ARGOCD_CTX -n argocd -f -
@@ -394,7 +394,7 @@ EOF
 
 Or if you have the Argo CD cli available, why won't you try installing OpenFaas with Argo CD?
 
-``` bash
+```bash
 export TARGET_CTX=gke-eu1
 
 kubectl create --context $TARGET_CTX namespace openfaas

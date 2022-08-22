@@ -130,7 +130,7 @@ services:
       - "ghost-data:/var/lib/ghost/content"      
 
   inlets:
-    image: ghcr.io/inlets/inlets-pro:0.9.0-rc3
+    image: ghcr.io/inlets/inlets-pro:0.9.5
     restart: always
     command: [
       "http",

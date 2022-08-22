@@ -49,7 +49,7 @@ You will need:
 
 Before we start an inlets-pro exit service, create a Kubernetes secret with a token:
 
-``` bash
+```bash
 kubectl create secret generic inlets-token --from-literal=token=<a random token>
 ```
 
@@ -73,13 +73,13 @@ spec:
     spec:
       containers:
         - name: inlets-pro
-          image: inlets/inlets-pro:0.7.2
+          image: inlets/inlets-pro:0.9.5
           imagePullPolicy: IfNotPresent
           command: [ "inlets-pro" ]
           args:
             - "server"
             - "--auto-tls"
-            - "--common-name=inlets.example.com"
+            - "--auto-tls-san=inlets.example.com"
             - "--token-from=/etc/inlets/token"
           volumeMounts:
             - name: temp-volume
@@ -127,7 +127,7 @@ This is actually a good thing, as our database will only reachable from within o
 
 Wait a little bit until the load balancer is created, grab it's public IP address and point your domain (remember the common-name) to it.
 
-``` bash
+```bash
 $ kubectl get service inlets-pro-server
 NAME                TYPE           CLUSTER-IP       EXTERNAL-IP       PORT(S)          AGE
 inlets-pro-server   LoadBalancer   192.168.197.17   185.136.232.105   8123:31981/TCP   8m11s
@@ -140,7 +140,7 @@ inlets-pro-server   LoadBalancer   192.168.197.17   185.136.232.105   8123:31981
 Now that the server part of the tunnel is running, it is time to start the client in our private data center.
 Let's say we have a MySQL instance available with an internal IP address `10.1.0.50`, start the inlets-pro client:
 
-``` bash
+```bash
 $ inlets-pro client --license-file ~/inlets-license --port 3306 --url wss://inlets.example.com:8123/connect --upstream 10.1.0.50 --token <your token> 
 2020/11/05 13:23:21 Welcome to inlets-pro! Client version 0.7.2
 2020/11/05 13:23:21 Licensed to: Johan Siebens <xxxx@gmail.com>, expires: xxx day(s)

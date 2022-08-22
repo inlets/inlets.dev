@@ -55,7 +55,7 @@ Next, I’ll explain what pieces of the puzzle need to be adapted when using the
 
 Install the nginx ingress controller and cert-manager with `arkade`:
 
-``` bash
+```bash
 arkade install ingress-nginx --namespace ingress-nginx
 arkade install cert-manager --namespace cert-manager
 ```
@@ -66,7 +66,7 @@ Next, create an Issuer, or ClusterIssuer, to use Amazon Route53 to solve DNS01 A
 
 > A detailed explanation on how to prepare the issuer can be found [here](https://cert-manager.io/docs/configuration/acme/dns01/route53/)
 
-``` bash
+```bash
 export EMAIL="you@example.com"
 export ACCESS_KEY_ID="AKIAIOSFODNN7EXAMPLE"
 export REGION="eu-central-1"
@@ -97,7 +97,7 @@ Apply the file with `kubectl apply -f issuer.yaml`
 
 Finally, create a wildcard Certificate resource with a reference the issuer created earlier:
 
-``` bash
+```bash
 export DOMAIN=inlets.example.com
 
 cat > certificate.yaml <<EOF
@@ -118,7 +118,7 @@ EOF
 
 Apply the file with `kubectl apply -f certificate.yaml`, wait a few minutes until cert-manager obtained a certificate and it is ready to use.
 
-``` bash
+```bash
 $ kubectl get certificate inlets-tls -o wide
 NAME         READY   SECRET       ISSUER             STATUS                                          AGE
 inlets-tls   True    inlets-tls   letsencrypt-prod   Certificate is up to date and has not expired   14m
@@ -152,7 +152,7 @@ Let's say the first tunnel we would like to create is for making our on premise 
 
 Get the inlets-pro helm chart, generate a token for the inlets server and install the chart for the Keycload service:
 
-``` bash
+```bash
 git clone https://github.com/inlets/inlets-pro
 
 kubectl create secret generic inlets-keycloak-token \
@@ -184,7 +184,7 @@ Every time an exit-node is created, the control-plane is available on a specific
 
 Put all the command above in a single script and name it `create-exit-server.sh`:
 
-``` bash
+```bash
 #!/bin/bash
 
 NAME=$1
@@ -204,7 +204,7 @@ helm upgrade --install $NAME ./inlets-pro/chart/inlets-pro \
 
 This little script is very convinient to add other tunnels in an easy way, some examples:
 
-``` bash
+```bash
 ./create-exit-server.sh grafana 3000
 ./create-exit-server.sh prometheus 9090
 ./create-exit-server.sh jenkins 8080
@@ -213,7 +213,7 @@ This little script is very convinient to add other tunnels in an easy way, some 
 
 As a result, all the tunnels are ready to use:
 
-``` bash
+```bash
 $ kubectl get pods,service,ingress
 NAME                                         READY   STATUS    RESTARTS   AGE
 pod/grafana-inlets-pro-787d6dc495-68s2h      1/1     Running   0          7m55s
@@ -247,7 +247,7 @@ Have a look at the created services, every control plane is listening on port 81
 
 > Want more tunnels?! Put it in a good ol' `bash` for-loop, and before you know it, you have hundreds of tunnels available, all with their own authentication token.
 >
-> ``` bash
+> ```bash
 > #!/bin/bash
 > for i in {1..50}
 > do
@@ -265,7 +265,7 @@ Now that the server part of the tunnel is ready, connect a client to bring an ap
 First, grab the token of the target tunnel:
 
 {% raw %}
-``` bash
+```bash
 export TOKEN=$(kubectl get secrets inlets-keycloak-token --template={{.data.token}} | base64 -d)
 echo $TOKEN > $HOME/.inlets/token
 ```
@@ -278,7 +278,7 @@ Now connect your inlets client to the inlets server:
 - `--upstream` and `--port`: the target host and port
 - `--license-file`: a valid inlets Pro license
 
-``` bash
+```bash
 inlets-pro tcp client \
   --url wss://keycloak-tunnel.inlets.example.com \
   --auto-tls=false \
@@ -290,7 +290,7 @@ inlets-pro tcp client \
 
 The command above will start the client in the foreground, which is great to test if everything is working correctly, but you probably want the client to run as a service. Luckily, the inlets-pro CLI has a command to generate a systemd service file for us:
 
-``` bash
+```bash
 inlets-pro tcp client \
   --url wss://keycloak-tunnel.inlets.example.com \
   --auto-tls=false \
