@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How To Manage Inlets Tunnels With Argo CD and GitOps
+title: How To Manage Inlets Tunnels Servers With Argo CD and GitOps
 description: Learn how Argo CD can make managing multiple tunnel servers easier through GitOps.
 author: Han Verstraete
 tags: management argocd kubernetes saas
