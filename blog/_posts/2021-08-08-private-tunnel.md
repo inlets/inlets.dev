@@ -173,6 +173,36 @@ You can now access your local website being served at http://127.0.0.1:3000 over
 
 https://blog.example.com/
 
+## Checking the status of the tunnel server
+
+You can check the status of your tunnel server with the `inlets-pro status` command:
+
+```bash
+$ export URL=""
+$ export TOKEN=""
+
+$ inlets-pro status \
+  --url $URL \
+  --token $TOKEN
+```
+
+Example output:
+
+```bash
+Server info:
+Hostname: creative-pine6
+Started: 1 day
+Mode:           http
+Version:        0.8.9-rc1
+Connected clients:
+Client ID                        Remote Address     Connected Upstreams
+4e35edf5c6a646b79cc580984eac4ea9 192.168.0.19:34988 5 minutes example.com=http://localhost:8000, prometheus.example.com=http://localhost:9090
+```
+
+A Grafana dashboard can be set up to monitor your tunnel server itself, plus any services that you expose get metrics collected automatically.
+
+See also: [Monitoring and metrics](https://docs.inlets.dev/tutorial/monitoring-and-metrics/)
+
 ### Your IP goes where you go
 
 You can close the lid on your laptop, and open it again in Starbucks or your favourite local independent coffee shop. As soon as you reconnect the client, your local server will be available over the tunnel at the same IP address and domain: https://blog.example.com/
