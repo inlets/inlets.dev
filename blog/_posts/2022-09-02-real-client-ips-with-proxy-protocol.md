@@ -297,11 +297,11 @@ kubectl edit -n kube-system svc/traefik
 
 Change `externalTrafficPolicy: Cluster` to `externalTrafficPolicy: Local`
 
-This instructs Kubernetes to maintain the original source IP address of the traffic.
+This instructs [Kubernetes](https://kubernetes.io) to maintain the original source IP address of the traffic.
 
 Finally, create a Kubernetes service and deployment for my printip sample application.
 
-The sample is technically an OpenFaaS function, but we're going to run it on its own without OpenFaaS. OpenFaaS guards you from having to write and maintain all this YAML, which I personally find to be a burden.
+The sample is technically [an OpenFaaS function](https://github.com/openfaas/golang-http-template), but we're going to run it on its own without [OpenFaaS](https://openfaas.com/). OpenFaaS guards you from having to write and maintain all this YAML, which I personally find to be a burden.
 
 ```yaml
 apiVersion: apps/v1
