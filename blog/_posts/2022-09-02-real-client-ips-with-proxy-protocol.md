@@ -25,13 +25,13 @@ The [spec for the PROXY protocol](https://www.haproxy.org/download/1.8/doc/proxy
 
 There are two versions:
 
-1) A plaintext sent before any other data:
+1) Version 1 is a plaintext sent before any other data goes over the connection
 
-    `PROXY TCP4 192.0.2.0 203.0.113.0 56147 80`
+    `PROXY TCP4 192.168.1.100 237.224.56.164 24712 80`
 
     The format is: `PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PORT`
 
-2) v2: Proxy Protocol v2 adds a more efficient binary data header to all requests, similar to the following:
+2) Version 2 uses a binary format
 
     ```
     \r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
@@ -111,9 +111,9 @@ HTTP tunnel servers can already send "X-Forwarded-" headers, so let's focus on T
 
 We need to create an exit tunnel server in TCP mode.
 
-I prefer using DigitalOcean because they send a convenient email with the root password immediately after the tunnel is created. We'll need that to SSH into the box and customise the settings for the inlets-pro tcp server.
+When I need to customise a tunnel server then I prefer using [DigitalOcean](https://m.do.co/c/8d4e75e9886f) because they send a convenient email with the root password immediately after the tunnel is created. We'll need the password to SSH into the box and customise the settings for the `inlets-pro tcp server` command.
 
-There is a newer, cheaper instance available for 4 USD / mo in certain regions, I'm going to use that by setting `--region` and `--plan`.
+There is a newer, cheaper instance available for 4 USD / mo in certain regions, I'm going to use that by setting `--region` and `--plan`. I learned about the plan from the [DigitalOcean release notes](https://docs.digitalocean.com/release-notes/droplets/).
 
 ```
 doctl compute size list
@@ -170,7 +170,7 @@ arkade get \
     k3sup
 ```
 
-Now create a single node K3s server on a VM or bare-metal host of your choice. This could be a local multipass VM, a Linode VM or DigitalOcean Droplet, or a Raspberry Pi.
+Now create a single node K3s server on a VM or bare-metal host of your choice. This could be a local multipass VM, a [Linode VM](https://www.linode.com/openfaas?utm_source=openfaas&utm_medium=web&utm_campaign=sponsorship) or [DigitalOcean Droplet](https://m.do.co/c/8d4e75e9886f), or a Raspberry Pi.
 
 We'll use K3sup (installed earlier) to bootstrap K3s over SSH
 
@@ -406,6 +406,64 @@ status:
 
 You can find the source code for the function plus the Kubernetes YAML manifests on GitHub: [inlets/printip](https://github.com/inlets/printip)
 
+## Deploy the inlets client
+
+There are various ways to deploy an inlets client through a [Helm chart or Kubernetes operator](https://docs.inlets.dev/), but since there is a container image, it's relatively simple to write YAML for this purpose.
+
+The [inlets-operator](https://github.com/inlets/inlets-operator) would normally forward traffic to the hostname of the service in Kubernetes such as `traefik.kube-system:443`, however Proxy Protocol requires an IP address, instead of a hostname for the destination for the traffic.
+
+Save the following file and edit the `args` section with your TUNNEL_SERVER_PUBLIC_IP, TUNNEL_SERVER_TOKEN, `TRAEFIK_SERVICE_IP` and LICENSE. Keep the ports the same, since we'll need port 80 to server the [HTTP01 ACME challenge](https://letsencrypt.org/docs/challenge-types/) and 443 to serve traffic over TLS to our users.
+
+Replace `TRAEFIK_SERVICE_IP` with the IP address show via: `kubectl get svc -n kube-system`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  name: inlets-client
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: inlets-client
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: inlets-client
+    spec:
+      containers:
+      - args:
+        - tcp
+        - client
+        - --url=wss://TUNNEL_SERVER_PUBLIC_IP:8123
+        - --ports=80,443
+        - --token=TUNNEL_SERVER_TOKEN
+        - --license=LICENSE
+        - --upstream=TRAEFIK_SERVICE_IP
+        command:
+        - inlets-pro
+        image: ghcr.io/inlets/inlets-pro:0.9.8
+        imagePullPolicy: IfNotPresent
+        name: inlets-client
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}
+```
+
 ## Test it out
 
 I used a domain of `printip.o6s.io` (o6s stands for OpenFaaS, like k8s stands for Kubernetes)
@@ -438,8 +496,7 @@ As you can see, the Pod running inside Kubernetes returned the correct IP addres
 
 The settings we used for Traefik also show the two connections in the logs, one with HTTP/1.1 (port 80) and then with an upgrade to HTTP/2.0 (port 443).
 
-```
-bash
+```bash
 kubectl logs -n kube-system deploy/traefik -f
 
 237.224.56.164 - - [02/Sep/2022:11:53:00 +0000] "GET / HTTP/1.1" 200 13 "-" "-" 2121 "printip-openfaas-fn-printip-o6s-io@kubernetes" "http://10.42.0.36:8080" 6ms
