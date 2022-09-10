@@ -57,7 +57,7 @@ inlets (2.7.4) exit-server summary:
 
 Command:
   export UPSTREAM=http://127.0.0.1:8000
-  inlets client --remote "ws://147.75.33.129:8080" \
+  inlets tcp client --remote "ws://147.75.33.129:8080" \
         --token "6KGTlWVeI0FUgGybXT7dujWW4wT8G5chqDBPWLYJ16CiEbbrxkcIhMab4lV1BFcT" \
         --upstream $UPSTREAM
 
