@@ -318,6 +318,56 @@ More information on how this structure looks like can be found in the [Argo CD d
 
 The following script is an example of how to will fetch the bearer token for the service account created earlier and create such a secret for our target cluster.
 
+For Kubernetes 1.24+, you need to take another step or two to get a bearer token for the service account:
+
+```bash
+export TARGET_CTX=gke-eu1
+export ARGOCD_CTX=argocd
+
+# Request a token by creating a secret with the corresponding 
+# `kubernetes.io/service-account.name`
+cat <<EOF | kubectl apply --context $TARGET_CTX -n kube-system  -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-manager-token
+  namespace: kube-system 
+  annotations:
+    kubernetes.io/service-account.name: argocd-manager
+type: kubernetes.io/service-account-token
+EOF
+
+# There's now a static name for the secret:
+name="argocd-manager-token"
+
+ca=$(kubectl get --context $TARGET_CTX -n kube-system secret/$name -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get --context $TARGET_CTX -n kube-system secret/$name -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get --context $TARGET_CTX -n kube-system secret/$name -o jsonpath='{.data.namespace}' | base64 --decode)
+
+cat <<EOF | kubectl apply --context $ARGOCD_CTX -n argocd -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gke-eu1
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: gke-eu1
+  server: https://gke-eu1.inlets:443
+  config: |
+    {
+      "bearerToken": "${token}",
+      "tlsClientConfig": {
+        "serverName": "kubernetes.default.svc",
+        "ca": "${ca}"
+      }
+    }
+EOF
+```
+
+Prior to Kubernetes 1.24, run the following instead:
+
 ```bash
 export TARGET_CTX=gke-eu1
 export ARGOCD_CTX=argocd
@@ -343,7 +393,8 @@ stringData:
     {
       "bearerToken": "${token}",
       "tlsClientConfig": {
-        "serverName": "kubernetes.default.svc"
+        "serverName": "kubernetes.default.svc",
+        "ca": "${ca}"
       }
     }
 EOF
