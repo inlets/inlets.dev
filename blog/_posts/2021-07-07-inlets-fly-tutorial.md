@@ -48,11 +48,11 @@ Since applications on Fly need to be built into a Docker image, we'll need to cr
 Fortunately inlets Pro is already released in a Docker image, so we just have to inherit from it and set some new command line arguments for the server.
 
 ``` Dockerfile
-FROM ghcr.io/inlets/inlets-pro:0.9.5
+FROM ghcr.io/inlets/inlets-pro:0.9.9
 CMD ["tcp", "server", "--auto-tls=false", "--token-env=TOKEN"]
 ```
 
-For this tutorial you'll need version 0.9.5 or higher.
+For this tutorial you'll need version 0.9.9 or higher.
 
 The second `CMD` line contains the parameters we pass to the `inlets-pro` command that are going to configure how inlets Pro runs.
 By default, the official image will simply start an inlets Pro tcp server, but here we need to tweak the runtime flags a little but.
@@ -238,7 +238,7 @@ TCP 80/443 ⇢ 8080
 --> Creating build context done
 ==> Building image with Docker
 Sending build context to Docker daemon  4.096kB
-Step 1/2 : FROM ghcr.io/inlets/inlets-pro:0.9.5
+Step 1/2 : FROM ghcr.io/inlets/inlets-pro:0.9.9
  ---> dc95fbda2417
 Step 2/2 : CMD ["tcp", "server", "--auto-tls=false", "--token-env=TOKEN"]
  ---> Running in 5ecba2c50ef9
@@ -280,7 +280,7 @@ inlets-pro tcp client \
 And the tunnel is up and running, exposing an HTTP service on your local machine at port 8080 via the Fly platform.
 
 ```
-2021/06/23 09:03:17 Starting TCP client. Version 0.8.3 - 205c311fde775723cf68b8116dacd7f428d243f8
+2021/06/23 09:03:17 Starting TCP client. Version 0.9.5 - 205c311fde775723cf68b8116dacd7f428d243f8
 2021/06/23 09:03:17 Licensed to: Johan Siebens <redacted>, expires: <redacted> day(s)
 2021/06/23 09:03:17 Upstream server: localhost, for ports: 8080
 inlets-pro client. Copyright Alex Ellis, OpenFaaS Ltd 2020
@@ -294,7 +294,7 @@ $ inlets-pro http fileserver \
   --allow-browsing \
   --port 8080
 
-2021/06/23 09:06:11 Starting inlets Pro fileserver. Version 0.8.3 - 205c311fde775723cf68b8116dacd7f428d243f8
+2021/06/23 09:06:11 Starting inlets Pro fileserver. Version 0.9.5 - 205c311fde775723cf68b8116dacd7f428d243f8
 2021/06/23 09:06:11 Serving: /workbench/workspaces/inlets/projects/fly-inlets, on 127.0.0.1:8080, browsing: true, auth: false
 ```
 
@@ -322,7 +322,9 @@ You can expose any other HTTP or TCP services that are reachable by the client's
 
 ## Wrapping up
 
-In this tutorial configured and deployed an inlets Pro exit server on the Fly platform, making the deployment pretty simple and reducing operational overhead. Not only the easy setup is attractive, but also the sharp pricing makes the platform a perfect fit for the inlets tunnel. For only __$1.94/mo__ you have already the most basic compute sizing available and with the __generous free tier__ you can even run three tunnel for free.
+In this tutorial we set up an inlets tunnel server on Fly's platform. At the time of writing, you can run three of these tunnels servers for free, which makes it a great way of keeping cloud costs down. If you're not using Fly, another way of squeezing value is to tunnel ports 80 and 443 to Caddy, Traefik, or Nginx running inside your local network, that way you can expose as many domains as you like over a single tunnel server.
+
+Since Johan wrote this tutorial, he put together a CLI to make deploying tunnels to Fly even quicker: [jsiebens/inlets-on-fly](https://github.com/jsiebens/inlets-on-fly)
 
 Further resources:
 
