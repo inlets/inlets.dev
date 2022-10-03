@@ -135,7 +135,7 @@ Connect your inlets client:
 
 ```bash
 export UPSTREAM=http://127.0.0.1:8080
-inlets client --remote "ws://147.75.33.3:8080" \
+inlets tcp client --remote "ws://147.75.33.3:8080" \
     --token "CnLgAxPkOw594ZbZ0nEfsbclpQUov9ZBFKLOyx559efgzdITeAhgCHtaH74zysHZ" \
     --upstream $UPSTREAM
 ```

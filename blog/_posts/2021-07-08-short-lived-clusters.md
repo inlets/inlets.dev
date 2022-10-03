@@ -172,8 +172,8 @@ kubectl create secret generic -n default \
 ```
 
 ```bash
-git clone https://github.com/inlets/inlets-pro
-cd inlets-pro/chart/inlets-pro-client
+$ helm repo add inlets-pro https://inlets.github.io/inlets-pro/charts/
+$ helm repo update
 
 helm upgrade --install \
   --namespace default \
@@ -184,7 +184,7 @@ helm upgrade --install \
   --set tokenSecretName=nginx-1-tunnel-token \
   --set fullnameOverride="nginx-1-tunnel" \
   nginx-1-tunnel \
-  ./
+  inlets-pro/inlets-pro-client
 ```
 
 The key fields you need to set are:
@@ -240,11 +240,11 @@ kubectl create secret generic -n default \
   --from-literal token=DP4bepIxuNXbjbtXWsu6aSkEE9r5cvMta56le2ajP7l9ajJpAgEcFxBTWSlR2PdB
 ```
 
-Just follow the steps from before, then change the helm install to the following:
+Just follow the steps from before, then change the `helm install` to the following:
 
 ```bash
-git clone https://github.com/inlets/inlets-pro
-cd inlets-pro/chart/inlets-pro-client
+helm repo add inlets-pro https://inlets.github.io/inlets-pro/charts/
+helm repo update
 
 helm upgrade --install \
   --namespace kube-system \
@@ -255,7 +255,7 @@ helm upgrade --install \
   --set tokenSecretName=traefik-tunnel-token \
   --set fullnameOverride="traefik-tunnel" \
   traefik-tunnel \
-  ./
+  inlets-pro/inlets-tcp-client
 ```
 
 What changed?

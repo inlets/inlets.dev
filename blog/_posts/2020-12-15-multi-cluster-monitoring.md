@@ -156,13 +156,14 @@ dataPlane:
 Now get the inlets-pro helm chart and install the chart for each remote Prometheus service.
 
 ```bash
-git clone https://github.com/inlets/inlets-pro
+$ helm repo add inlets-pro https://inlets.github.io/inlets-pro/charts/
+$ helm repo update
 
-helm install orion-aws      ./inlets-pro/chart/inlets-pro \
+helm install orion-aws inlets-pro/inlets-tcp-server \
    -n monitoring -f custom.yaml \
    --set ingress.domain=orion-aws.prometheus.example.com
 
-helm install orion-equinix  ./inlets-pro/chart/inlets-pro \
+helm install orion-equinix inlets-pro/inlets-tcp-server \
   -n monitoring -f custom.yaml \
   --set ingress.domain=orion-equinix.prometheus.example.com
 ```
@@ -201,11 +202,11 @@ kubectl create secret generic \
   --from-file token=./token.txt
 ```
 
-And install the inlets-pro-client chart with the proper values to connect to the exit-node pods in the Observability cluster:
+And install the inlets-tcp-client chart with the proper values to connect to the exit-node pods in the Observability cluster:
 
 ```bash
 helm install prometheus-tunnel \
-  ./inlets-pro/chart/inlets-pro-client \
+  inlets-pro/inlets-tcp-client \
   -n monitoring \
   --set url=wss://orion-aws2.prometheus.sphene.io/connect \
   --set upstream=prometheus \
