@@ -179,7 +179,7 @@ Install the inlets-pro TCP server using its helm chart:
 export DOMAIN="postgresql-customer1.example.com"
 
 helm upgrade --install postgresql-customer1-tunnel \
-  inlets-pro/inlets-pro \
+  inlets-pro/inlets-tcp-server \
   --set ingress.domain=$DOMAIN \
   -f ./values-postgresql-customer1.yaml
 ```
@@ -276,7 +276,7 @@ Then install the tunnel server with Helm:
 export DOMAIN="mysql-customer2.example.com"
 
 helm upgrade --install mysql-customer2-tunnel \
-  inlets-pro/inlets-pro \
+  inlets-pro/inlets-tcp-server \
   --set ingress.domain=$DOMAIN \
   -f ./values-mysql-customer2.yaml
 ```

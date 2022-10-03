@@ -153,12 +153,13 @@ Let's say the first tunnel we would like to create is for making our on premise 
 Get the inlets-pro helm chart, generate a token for the inlets server and install the chart for the Keycload service:
 
 ```bash
-git clone https://github.com/inlets/inlets-pro
+helm repo add inlets-pro https://inlets.github.io/inlets-pro/charts/
+helm repo update
 
 kubectl create secret generic inlets-keycloak-token \
   --from-literal token=$(head -c 16 /dev/random | shasum|cut -d" " -f1)
 
-helm upgrade --install keycloak ./inlets-pro/chart/inlets-pro \
+helm upgrade --install keycloak inlets-pro/inlets-tcp-server \
   --set tokenSecretName=inlets-keycloak-token \
   --set ingress.annotations=null \
   --set ingress.secretName=inlets-tls \
@@ -193,7 +194,7 @@ PORT=$2
 kubectl create secret generic inlets-$NAME-token \
   --from-literal token=$(head -c 16 /dev/random | shasum|cut -d" " -f1)
 
-helm upgrade --install $NAME ./inlets-pro/chart/inlets-pro \
+helm upgrade --install $NAME inlets-pro/inlets-tcp-server \
   --set tokenSecretName=inlets-$NAME-token \
   --set ingress.annotations=null \
   --set ingress.secretName=inlets-tls \
