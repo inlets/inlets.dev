@@ -220,7 +220,7 @@ There are a range of commercial users at different scales, and we're now releasi
 
 inlets-uplink makes inlets more suitable for use at scale by companies that need to reach into private customer networks as part of their product or service.
 
-It's available in beta now, and we'd love to hear from you if you'd like to try it out.
+It's stable, and available for pilot now, so we'd love to hear from you if you'd like to try it out.
 
 ### Want to talk to us?
 
