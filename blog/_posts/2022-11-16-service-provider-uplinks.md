@@ -51,18 +51,28 @@ Over the years since 2019, there have been too many users to mention individuall
 * Kat, a developer advocate at Kong [used inlets to run a demo of Kong's API Gateway with live traffic](https://twitter.com/usrbinkat/status/1557430745332781057?ref_src=twsrc%5Etfw).
 * [Marino Wijay](https://twitter.com/virtualized6ix) of Solo.io signed up to inlets to demo the new [Ambient Mesh changes](https://istio.io/latest/blog/2022/introducing-ambient-mesh/) in the Istio project.
 * [Zespre Schmidt](https://twitter.com/starbops) spontaneously wrote up a really comprehensive guide to inlets for personal use: [A Tour of Inlets - A Tunnel Built for the Cloud](https://blog.zespre.com/inlets-the-cloud-native-tunnel.html)
+* [Mark Sharpley connected his solar-powered boat to the Internet with inlets](https://inlets.dev/blog/2021/07/13/inlets-narrowboat.html)
+* A developer in the UK Government kept banging his head against the wall with the flakiness of "kubectl port-forward", so we wrote a feature to help him: [Fixing the Developer Experience of Kubernetes Port Forwarding](https://inlets.dev/blog/2022/06/24/fixing-kubectl-port-forward.html)
 
 Over the three years, we've had a lot of love from the community.
 
-Thank you from me, we're still building inlets and would love to hear from you on how you're using it for personal use or at work.
+I want to say thank you from me. We're still building inlets for developers and would love to hear from you on how you're using it for personal use or at work.
 
-The core of inlets is a single binary, but there are dozens of Open Source tools built around it like our [inlets-operator](https://github.com/inlets/inlets-operator)
+The core of inlets is a single binary, but there are dozens of Open Source tools built around it like our [inlets-operator](https://github.com/inlets/inlets-operator), [cloud provisioning library](https://github.com/inlets) and [tiny TCP load balancer as an alternative to HAProxy](https://github.com/inlets/mixctl).
 
 [Ivan Velichko](https://twitter.com/iximiuz), then SRE at Booking.com, now developer at Docker Slim wrote a detailed review and explanation of the inlets-operator, that created tunnel servers for LoadBalancers for private clusters: [Exploring Kubernetes Operator Pattern](https://iximiuz.com/en/posts/kubernetes-operator-pattern/).
 
 ## Part two - SaaS and Service Providers
 
 Then we started to see interest from two types of customers, who had very different needs (and budgets) vs. personal users, like you and me who are more cost sensitive.
+
+Over time, listening to both customers and prospects, we wrote up various blog posts to show them how to achieve their goals:
+
+* [How To Manage Customer Services From Within Your Product](https://inlets.dev/blog/2022/08/03/accessing-customer-services.html)
+* [Managing remote hosts at the edge with Kubernetes and SSH](https://inlets.dev/blog/2022/04/14/ssh-k8s-fleet-management.html)
+* [Deploy to a private cluster from GitHub Actions without exposing it to the Internet](https://inlets.dev/blog/2021/12/06/private-deploy-from-github-actions.html)
+* [Connecting services to Kubernetes clusters with inlets, VPC Peering and direct uplinks.](https://inlets.dev/blog/2021/10/14/kubernetes-peering.html)
+* [Case study: How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
 
 ### SaaS companies that needed to access private customer services in a remote VPC
 
@@ -196,7 +206,7 @@ inlets-pro uplink \
 
 ## Use-cases
 
-* [How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
+* [Case-study: How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
 * [How To Manage Customer Services From Within Your Product](https://inlets.dev/blog/2022/08/03/accessing-customer-services.html)
 * [Managing remote hosts at the edge with Kubernetes and SSH](https://inlets.dev/blog/2022/04/14/ssh-k8s-fleet-management.html)
 * [Deploy to a private cluster from GitHub Actions without exposing it to the Internet](https://inlets.dev/blog/2021/12/06/private-deploy-from-github-actions.html)
