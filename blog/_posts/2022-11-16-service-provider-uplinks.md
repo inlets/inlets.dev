@@ -198,10 +198,10 @@ status: {}
 On the customer end, they'd type in:
 
 ```bash
-inlets-pro uplink \
+inlets-pro uplink client \
     --token-file token.txt \
     --upstream postgres-prod:25060 \
-    --url wss://uplink.example.com
+    --url wss://uplink.example.com/acmeco/postgres-prod
 ```
 
 ## Use-cases
