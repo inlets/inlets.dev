@@ -128,7 +128,7 @@ You can even host up to three tunnels on [Fly.io](https://fly.io) at no cost, ju
 
 That was a quick introduction to inlets and [inletsctl](https://github.com/inlets/inletsctl), but there's more. We've written up different [tutorials in the docs](https://docs.inlets.dev/) including for TCP pass-through tunnels and for Kubernetes.
 
-* [Read a detailed FAQ on inlets(https://docs.inlets.dev/reference/faq/)
+* [Read a detailed FAQ on inlets](https://docs.inlets.dev/reference/faq/)
 
 We also have an option for private tunnelling, a bit like a VPN which is great for IoT and anyone who runs a SaaS company and needs to access customer endpoints from their cloud: [Inlets Uplink for SaaS & Service Providers](./2022-11-16-uplink-for-saas.md).
 
