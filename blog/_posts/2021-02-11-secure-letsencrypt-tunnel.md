@@ -34,7 +34,9 @@ In this post I'll show you how to use the new Let's Encrypt integration which sh
 
 > Conceptual architecture: public users will be able to access a HTTP server on our local and private network over an encrypted websocket.
 
-### Start with the exit-server
+### Start with the tunnel server
+
+> Since this tutorial was written in Feb 2021, you can automate all the below steps simply by running `inletsctl create --letsencrypt-domain tunnel.example.com`, the client steps remain the same.
 
 Since we are not relying on a third-party to host a container or VM for us with a public IP, we will create our own. It needn't be expensive, you can generally pick the lowest price available, and sometimes even use the free-tier of your cloud provider.
 
@@ -45,13 +47,13 @@ You will need the following ports open if you're using security groups:
 * 80 - to serve Let's Encrypt HTTP01 challenges
 * 443 - to serve your website or local application to users
 
-Note down the IP address of your exit-server and create a DNS A record in your DNS management tool
+Note down the IP address of your tunnel server and create a DNS A record in your DNS management tool
 
 ![DNS record](/images/2021-letsencrypt/adns.png)
 
 > Above: Creating the alexellis.inlets.dev subdomain in [Google Domains](https://domains.google.com/)
 
-Now download inlets 0.8.0 onto the server using `wget` or `curl` from the [releases page](https://github.com/inlets/inlets-pro/releases).
+Now download inlets onto the server using `wget` or `curl` from the [releases page](https://github.com/inlets/inlets-pro/releases).
 
 Your command will be slightly different to mine, but here's an example you can adapt:
 
@@ -206,7 +208,7 @@ There was [a small challenge I ran on Twitter](https://twitter.com/alexellisuk/s
 
 Now that you have a tunnel server, you can keep it running at a very minimal cost and reconnect to it whenever you need.
 
-You can connect several inlets clients to your exit-server, either for redundancy (connections will be load-balanced), or for separate sites.
+You can connect several inlets clients to your tunnel server, either for redundancy (connections will be load-balanced), or for separate sites.
 
 If you're an OpenFaaS user, then you may setup two separate subdomains for Grafana and the OpenFaaS UI.
 
