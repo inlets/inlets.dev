@@ -103,8 +103,8 @@ I then connected my tunnel and previewed the blog post, changing the --upstream 
 
 ```bash
 inlets-pro http client --url "wss://161.35.162.47:8123" \
---token "X7pUG6hc+FsEJEcHezEfdfemUwlTYhuQ694CgW4Df0I=" \
---upstream alex.o6s.io=http://127.0.0.1:4000
+  --token "X7pUG6hc+FsEJEcHezEfdfemUwlTYhuQ694CgW4Df0I=" \
+  --upstream alex.o6s.io=http://127.0.0.1:4000
 ```
 
 If you have two sub-domains to expose, you can simply add them them as extra `--upstream` flags.
