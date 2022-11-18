@@ -120,6 +120,8 @@ inletsctl delete --provider digitalocean --id "326730619" \
 
 I used DigitalOcean, but a dozen other clouds are supported for automation, and if you don't see yours there yet, you can send a PR to the open source inletsctl tool, or simply use user-data to configure your own tunnel with automation. If you prefer, you can even use Terraform and tear down the tunnel between uses, but these VMs are going to be about as cheap as possible at ~ 5 USD / month.
 
+[DigitalOcean has a very generous 1TB of bandwidth allowance](https://docs.digitalocean.com/products/billing/bandwidth/) per Droplet per month, and [Linode has an even higher allowance](https://www.linode.com/docs/guides/network-transfer/).
+
 You can even host up to three tunnels on [Fly.io](https://fly.io) at no cost, just follow the steps here: [Run an inlets Pro tunnel server for free on fly.io](https://inlets.dev/blog/2021/07/07/inlets-fly-tutorial.html)
 
 ## Wrapping up
