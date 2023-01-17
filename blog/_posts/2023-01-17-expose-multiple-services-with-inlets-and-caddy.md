@@ -17,7 +17,7 @@ If you deploy an inlets HTTP tunnel server using the `--lets-encrypt-domain` fla
 
 But what if you want to change the names often, without having to get a new certificate each time? Or what if you want to expose dozens of services on a single server? What if you just want a handy server, where you can connect different tunnels with different names from one day to the next?
 
-That's where we can use a wildcard domain and have all the traffic go to a reverse proxy like Nginx or in this instance Traefik.
+That's where we can use a wildcard domain and have all the traffic go to a reverse proxy like Nginx, Traefik, or in this instance Caddy.
 
 While using my own tunnels for local development and testing I found that I often wanted to expose different named tunnels as part of my workflow.
 
@@ -34,6 +34,8 @@ You can use your preferred reverse proxy, but we're going to use [Caddy](https:/
 In the next sections we will walk you through the setup and configuration of inlets and caddy.
 
 ## Pre-reqs
+
+An inlets tunnel server will generally use single digits of RAM, so even a 5 USD DigitalOcean droplet is sufficient for this tutorial.
 
 - A Linux server, VM, VPS etc with a public IP address
 - An [inlets subscription](https://inlets.dev/pricing/)
