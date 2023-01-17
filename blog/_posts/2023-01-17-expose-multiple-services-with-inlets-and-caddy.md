@@ -23,6 +23,8 @@ While using my own tunnels for local development and testing I found that I ofte
 
 By using a wildcard domain for the tunnel it's possible to expose services on multiple subdomains without having to configure the tunnel server and DNS for each subdomain. It's a bit like having your own Ngrok, but without any of the limits that come with it. And what's more, you could expose tens or hundreds of domains over a single tunnel without having to pay anything extra.
 
+> Inlets was built specifically to integrate with containers and Kubernetes, you can even run the tunnel server on a cutting edge platform like Fly.io in a microVM. In this tutorial, we focus on running a client as a regular binary on your local Linux, MacOS or Windows machine.
+
 The built-in HTTP server in inlets uses a HTTP01 challenge for each domain, and Let's Encrypt limits us on how many of those we can have per week, so that's where the [DNS challenge](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge) comes in handy. The HTTP01 ACME challenge checks the server's URL over port 80 to verify it has ownership, then issues a certificate if everything looks good.
 
 With a DNS01 challenge, DNS records are used instead, and this can often feel more complex because an API key with the appropriate permissions are required from your DNS provider.
