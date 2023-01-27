@@ -5,6 +5,7 @@ description: Alex shows you how to access Gita from within a private Kubernetes 
 author: Alex Ellis
 tags: kubernetes gitea homelab selfhosting
 author_img: alex
+image: /images/2023-01-gitea-k8s/laptop.jpg
 date: 2023-01-27
 ---
 
