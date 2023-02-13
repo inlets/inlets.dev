@@ -40,9 +40,8 @@ Once you've completed this tutorial, you will be able to share your functions an
 
 ## Tutorial
 
-> You will need an inlets Pro license, [start a 14-day free trial](https://inlets.dev/).
-
 You'll need:
+
 * [Docker](https://docker.com/) on your local machine.
 * arkade (CLI) installed below
 * A domain and access to your DNS admin panel to create a sub-domain for OpenFaaS
@@ -204,6 +203,5 @@ Here's a few reasons to try inlets today:
 
 Further resources:
 
-* [Buy now, or kick the tires with free 14-day trial of inlets Pro](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)

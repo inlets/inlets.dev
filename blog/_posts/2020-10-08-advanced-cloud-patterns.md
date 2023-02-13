@@ -86,5 +86,4 @@ Here's a few reasons to try inlets today:
 Further resources:
 
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
-* [Kick the tires with free 14-day trial of inlets Pro](https://inlets.dev)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)
