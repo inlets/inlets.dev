@@ -1,11 +1,11 @@
-name: CI
+name: publish
 
 on:
   push:
     tags:
       - '*'
     branches:
-    - '*'
+    - 'master'
 
 permissions:
   contents: read
