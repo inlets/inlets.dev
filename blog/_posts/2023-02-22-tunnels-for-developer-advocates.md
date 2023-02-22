@@ -112,7 +112,7 @@ That reminds me of a time where I set up a tunnel server on Fly.io for one of my
 From the holiday cottage, I copied a file from my MacBook over to a machine on my home network. What surprised me was that inlets was faster on every run than Tailscale. That was even with Tailscale reporting a direct peer connection over UDP, without relay servers. Port-forwarding was marginally faster than inlets, but not enough to warrant the management and privacy issues it has.
 
 [![Faster than a VPN](https://pbs.twimg.com/media/FcSEDEIWQAIFpGl?format=jpg&name=medium)](https://twitter.com/alexellisuk/status/1568524049449648129?s=20)
-> Inlets, faster than the most trendy, VC-funded VPN.
+> In a real-life test, inlets was faster than the most trendy, VC-funded VPN.
 
 Let's not forget, that I also use inlets. When I was working on a product that had to integrate with webhooks from GitHub.com and GitLab.com at the same time, I closed the lid on my laptop, opened it again in a cafe down the road and everything continued to work exactly the same.
 
@@ -153,6 +153,10 @@ So why do developers advocates pay for inlets? They can run 2-5 tunnels at very 
 You can [try inlets for free](https://inlets.dev/pricing/).
 
 Or check out the code for the [inlets-operator](https://github.com/inlets/inlets-operator) - a Kubernetes operator to automate tunnel clients and VMs with public IPs.  
+
+[![Inlets Operator in action](https://pbs.twimg.com/media/EkIhvo6XcAEhDke?format=jpg&name=medium)](https://twitter.com/alexellisuk/status/1315651572777603072/)
+
+> Probably the easiest way to get a Load Balancer from `<pending>` to publicly accessible with KinD, minikube, K3s, etc.
 
 ## Want to talk to us?
 
