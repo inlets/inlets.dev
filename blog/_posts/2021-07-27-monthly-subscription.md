@@ -126,7 +126,7 @@ Going forward you'll hear us use the term inlets and inlets Pro interchangeably,
 
 If you have comments, questions or suggestions, reach out over Twitter to [@inletsdev](https://twiter.com/inletsdev).
 
-Our monthly subscription gives you the ability to try things out before moving to a yearly plan to enjoy a discount. Check out [the plans on Gumroad](https://openfaas.gumroad.com/l/inlets-subscription).
+Our monthly subscription gives you the ability to try things out before moving to a yearly plan to enjoy a discount. [Check out the plans](/pricing).
 
 [Miles Kane](https://twitter.com/milsman2) uses inlets Pro to get access to his own services running on a HA K3s cluster built with Raspberry Pis.
 

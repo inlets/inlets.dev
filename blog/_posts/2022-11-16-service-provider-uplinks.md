@@ -11,68 +11,19 @@ image: /images/2022-uplink/connections.jpg
 
 We're excited to announce Inlets (tm) Uplink, a tunnel solution built with our SaaS and Service Provider customers.
 
-I'll give a quick recap of where we've come from, building a community with developer advocates and personal users, then what we're doing with our new product to help service providers and SaaS companies.
+Inlets started in the community, helping developers and developers advocates to develop on their projects and customer demos, but we kept hearing from teams who needed to connect customers into their SaaS, without dealing with the complexity and reliability issues associated with VPNs.
 
-## Part one - developers like me
-
-[Inlets](https://inlets.dev/) began its journey on the cusp of 2019 over the holiday season as a Proof of Concept (PoC), with the simple idea of making a first-class tunnel service for Cloud Native use-cases.
-
-I built it for myself. I wanted a tunnel that was born for the cloud, built for Kubernetes, built for containers, without rate-limits and that followed the same principles of [OpenFaaS - simplicity, security and portability](https://openfaas.com).
-
-The incumbent solutions like Ngrok and Cloudflare Argo were not a good fit for several reasons:
-
-* They were tied to a SaaS, meaning all your data had to pass through the vendor's servers
-* In the case of Ngrok, they were heavily rate-limited, even on paid plans, with stingy bandwidth limits
-* Ngrok was and possibly still is banned by many corporate networks, by simply blocking the domain name "*.ngrok.com"
-* Neither had container images, Kubernetes integrations or Helm charts
-
-They just were not built for the needs of Cloud Native practitioners or companies.
-
-So inlets was a response to these issues, and quickly gained popularity with its intended audience. Two of the maintainers of cert-manager started using the inlets-operator to get public IPs for KinD clusters, to test Let's Encrypt integrations.
-
-And it was really popular with personal users and developer advocates who used it to run demos with customers, on live-streams and at events like KubeCon.
-
-Nathan Peck at AWS [built out an AWS ECS Anywhere lab](https://nathanpeck.com/ingress-to-ecs-anywhere-from-anywhere-using-inlets/) and told me that traditional VPNs did not work well, and that he'd used inlets TCP tunnels to load balance instead:
-
-<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">You can try it out by sending traffic to <a href="https://t.co/s4h7DweKMF">https://t.co/s4h7DweKMF</a><br><br>Your request goes to an AWS Fargate hosted Inlets exit server, and then down to a Raspberry Pi sitting on my desk!<br><br>Refresh a few times to reach all of my Raspberry Pi&#39;s! <a href="https://t.co/xslB7Gz4NL">pic.twitter.com/xslB7Gz4NL</a></p>&mdash; Nathan Peck (@nathankpeck) <a href="https://twitter.com/nathankpeck/status/1438554384238006276?ref_src=twsrc%5Etfw">September 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-The infamous CNCF parody account "Memenetes" noticed us and even added inlets to his Cloud Native Puzzle "Now with inlets and K3s":
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Kid: I want a really difficult puzzle for my birthday<br>Me: <a href="https://t.co/y5dzjL6mIv">pic.twitter.com/y5dzjL6mIv</a></p>&mdash; memenetes (@memenetes) <a href="https://twitter.com/memenetes/status/1247630361242279936?ref_src=twsrc%5Etfw">April 7, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-And inlets was presented at various conferences like the OSSummit and [Cloud Native Rejekts](https://cloud-native.rejekts.io/) by the community:
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">At <a href="https://twitter.com/hashtag/OSSummit?src=hash&amp;ref_src=twsrc%5Etfw">#OSSummit</a> <a href="https://twitter.com/ellenkorbes?ref_src=twsrc%5Etfw">@ellenkorbes</a> is providing a great overview of the many dev, debug, build, deploy, etc. tools available to developers in the Kubernetes ecosystem. Shout-out to <a href="https://twitter.com/inletsdev?ref_src=twsrc%5Etfw">@inletsdev</a> by my friend <a href="https://twitter.com/alexellisuk?ref_src=twsrc%5Etfw">@alexellisuk</a>! <a href="https://t.co/UblhwesF2i">pic.twitter.com/UblhwesF2i</a></p>&mdash; Phil Estes (@estesp) <a href="https://twitter.com/estesp/status/1189506674392031233?ref_src=twsrc%5Etfw">October 30, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-Over the years since 2019, there have been too many users to mention individually, but here are a few:
-
-* Connor Hicks, then at 1Password, now founder at Suborbital [used inlets with his WebAssembly project to get Ingress directly to his Raspberry Pi](https://twitter.com/cohix/status/1359885962407518210?ref_src=twsrc%5Etfw) during development
-* Carlos Santana, Staff Developer Advocate at IBM, now at AWS [used inlets to get webhooks to Tekton Pipelines, for development](https://twitter.com/csantanapr/status/1223759215816257536?ref_src=twsrc%5Etfw)
-* Kat, a developer advocate at Kong [used inlets to run a demo of Kong's API Gateway with live traffic](https://twitter.com/usrbinkat/status/1557430745332781057?ref_src=twsrc%5Etfw).
-* [Marino Wijay](https://twitter.com/virtualized6ix) of Solo.io signed up to inlets to demo the new [Ambient Mesh changes](https://istio.io/latest/blog/2022/introducing-ambient-mesh/) in the Istio project.
-* [Zespre Schmidt](https://twitter.com/starbops) spontaneously wrote up a really comprehensive guide to inlets for personal use: [A Tour of Inlets - A Tunnel Built for the Cloud](https://blog.zespre.com/inlets-the-cloud-native-tunnel.html)
-* [Mark Sharpley connected his solar-powered boat to the Internet with inlets](https://inlets.dev/blog/2021/07/13/inlets-narrowboat.html)
-* A developer in the UK Government kept banging his head against the wall with the flakiness of "kubectl port-forward", so we wrote a feature to help him: [Fixing the Developer Experience of Kubernetes Port Forwarding](https://inlets.dev/blog/2022/06/24/fixing-kubectl-port-forward.html)
-
-Over the three years, we've had a lot of love from the community.
-
-I want to say thank you from me. We're still building inlets for developers and would love to hear from you on how you're using it for personal use or at work.
-
-The core of inlets is a single binary, but there are dozens of Open Source tools built around it like our [inlets-operator](https://github.com/inlets/inlets-operator), [cloud provisioning library](https://github.com/inlets) and [tiny TCP load balancer as an alternative to HAProxy](https://github.com/inlets/mixctl).
-
-[Ivan Velichko](https://twitter.com/iximiuz), then SRE at Booking.com, now developer at Docker Slim wrote a detailed review and explanation of the inlets-operator, that created tunnel servers for LoadBalancers for private clusters: [Exploring Kubernetes Operator Pattern](https://iximiuz.com/en/posts/kubernetes-operator-pattern/).
-
-## Part two - SaaS and Service Providers
-
-Then we started to see interest from two types of customers, who had very different needs (and budgets) vs. personal users, like you and me who are more cost sensitive.
-
-Over time, listening to both customers and prospects, we wrote up various blog posts to show them how to achieve their goals:
+Over time, we saw growing interest in connecting to services, and wrote up how to achieve this with the existing inlets, solution.
 
 * [How To Manage Customer Services From Within Your Product](https://inlets.dev/blog/2022/08/03/accessing-customer-services.html)
 * [Managing remote hosts at the edge with Kubernetes and SSH](https://inlets.dev/blog/2022/04/14/ssh-k8s-fleet-management.html)
 * [Deploy to a private cluster from GitHub Actions without exposing it to the Internet](https://inlets.dev/blog/2021/12/06/private-deploy-from-github-actions.html)
 * [Connecting services to Kubernetes clusters with inlets, VPC Peering and direct uplinks.](https://inlets.dev/blog/2021/10/14/kubernetes-peering.html)
 * [Case study: How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
+
+But there was more that they needed, which was hard to retrofit into the existing product.
+
+We heard from two types of teams.
 
 ### SaaS companies that needed to access private customer services in a remote VPC
 
@@ -92,7 +43,7 @@ A large Swiss medical company providing diagnostic imaging evaluated inlets TCP 
 
 A small business based out of the US buys several dozen tunnels from us and uses them to provide remote technical support to smaller businesses.
 
-## Part three - Inlets Uplink
+## Introducing Inlets Uplink
 
 In [Monetizing Innovation](https://www.amazon.co.uk/Monetizing-Innovation-Companies-Design-Product/dp/1119240867) Madhavan Ramanujam speaks of how no product fits just one size, and quite often, you'll need to segment your customers into different groups, and potentially offer different products to each.
 
@@ -204,7 +155,20 @@ inlets-pro uplink client \
     --url wss://uplink.example.com/acmeco/postgres-prod
 ```
 
-## Use-cases
+## Customer feedback
+
+[Kubiya.ai](https://kubiya.ai/) have developed a DevOps virtual assistant with conversational AI. Tell it what you need to happen, and it'll go and do it for you, without manual steps.
+
+The team were using NATS JetStream, but ran into issues with managing keys and certificates for customers, reliability issues with the servers, and having to use pub/sub over direct access to OpenFaaS functions.
+
+We met with Kubiya's team, and after a few days of testing the new solution they wrote to us:
+
+> "Just wanted to let you know that the Inlets-pro works amazing! Thank you for your help!
+"For tunnel creation, I tried both the inlets-pro cli and yaml files. It's brilliant, I don't know what to say!"
+> 
+> Constantin Paigin - Head of DevOps & IT
+
+We have other use-cases and blog posts showing what can be done with the existing inlets-pro solution, all of these can now be adapted for Uplink too. 
 
 * [Case-study: How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html)
 * [How To Manage Customer Services From Within Your Product](https://inlets.dev/blog/2022/08/03/accessing-customer-services.html)
@@ -220,10 +184,12 @@ There are a range of commercial users at different scales, and we're now releasi
 
 inlets-uplink makes inlets more suitable for use at scale by companies that need to reach into private customer networks as part of their product or service.
 
-It's stable, and available for pilot now, so we'd love to hear from you if you'd like to try it out.
+It's stable, and available now, so we'd love to hear from you if you'd like to try it out.
 
-### Want to talk to us?
+Read the docs: [Become an inlets uplink provider](https://docs.inlets.dev/uplink/become-a-provider/)
 
-If you'd like to talk to us about inlets, feel free to reach out to us:
+### Want to talk to us about tunnels and remote access?
+
+Feel free to reach out to us below:
 
 [Contact us now](https://inlets.dev/contact)

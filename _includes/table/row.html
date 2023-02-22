@@ -8,9 +8,15 @@
     </td>
     <td class="px-6 py-4 whitespace-no-wrap text-base leading-5 text-gray-500">
         {% if include.words %}
-        {{ include.vpn }}
+        {% if include.inlets == "1" %}
+        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
         {% else %}
-        {% if include.vpn %}
+        {{ include.inlets }}
+        {% endif %}
+        {% else %}
+        {% if include.inlets %}
         <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
@@ -31,15 +37,9 @@
     </td>
     <td class="px-6 py-4 whitespace-no-wrap text-base leading-5 text-gray-500">
         {% if include.words %}
-        {% if include.inlets == "1" %}
-        <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
+        {{ include.vpn }}
         {% else %}
-        {{ include.inlets }}
-        {% endif %}
-        {% else %}
-        {% if include.inlets %}
+        {% if include.vpn %}
         <svg class="h-6 w-6 text-green-500" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>

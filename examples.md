@@ -1,6 +1,9 @@
 Lucario
 Background - transparent
 
+Highlighting: Auto
+Drop shadow: off
+
 https://carbon.now.sh
 
 
@@ -76,4 +79,30 @@ nginx-1   LoadBalancer   10.100.115.125   178.62.28.53  80:32200/TCP   2m36s
 
 # Live LoadBalancer in 10 seconds!
 $ curl -s "http://178.62.70.130:80/"
+```
+
+Uplink example:
+
+bash
+```
+# Get the inlets uplink plugin
+$ inlets-pro plugin get tunnel
+
+# Create a new namespace for the customer
+$ kubectl create ns customer1
+
+# Create a tunnel for OpenFaaS for customer1
+$ inlets-pro tunnel create openfaas --port 8080 --namespace customer1 
+Created tunnel openfaas. OK.
+
+$ inlets-pro tunnel connect openfaas --namespace customer1 --domain example.com
+# Access your TCP tunnel via ClusterIP: openfaas.customer1:8080
+  inlets-pro uplink client \
+    --url="wss://uplink.example.com/customer1/openfaas" \
+    --token="otFFiUzaViA6acvdWPnsbbCoEEs1yWCGnk3IU7tJo4laeQxA41dRy1qUhC"
+
+# Access the customer service privately, from within the cluster
+$ kubectl run -t -i curl --rm \
+  --image ghcr.io/openfaas/curl:latest -- curl -s -i http://openfaas.customer1:8080
+  
 ```

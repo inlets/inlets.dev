@@ -18,20 +18,22 @@
 
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            VPN
-                        </th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            SAAS Tunnel
-                        </th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             inlets Pro
+                        </th>
+                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            SaaS Tunnel
+                        </th>
+                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            VPN
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                         {% include table/row.html words="" feature="Setup Cost" inlets="Low" saas="Low" vpn="High" %}
                         {% include table/row.html even="1" feature="" feature="Self-hosting" inlets="1" vpn="" %}
-                        {% include table/row.html words="" feature="Public TCP Ports" inlets="ANY" saas="Randomly Allocated/High ports" vpn="None" %}
+                        {% include table/row.html even="1" words="" feature="Scope" inlets="One or more ports or domains" saas="Single domain" vpn="Entire subnets or host" %}
+
+                        {% include table/row.html words="" feature="Public TCP Ports" inlets="Any" saas="Randomly Allocated/High ports" vpn="None" %}
                         {% include table/row.html even="1" words="" feature="Connection Rate-limiting " inlets="Unlimited" saas="60-260/min" vpn="Unlimited" %}
                         {% include table/row.html feature="Expose with a Domain" inlets="" saas="" %}
                         {% include table/row.html even="1" words="" feature="Custom Domains" inlets="1" saas="(extra cost)" %}
