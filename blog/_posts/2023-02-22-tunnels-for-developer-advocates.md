@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Network Tunnels for Developer Advocates
+title: Why do Developer Advocates like network tunnels?
 description: Over the past three years we've seen inlets has become a hit with developer advocates, but why?
 author: Alex Ellis
 tags: kubernetes demos devrel
