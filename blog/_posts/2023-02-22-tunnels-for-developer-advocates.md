@@ -5,7 +5,7 @@ description: Over the past three years we've seen inlets has become a hit with d
 author: Alex Ellis
 tags: kubernetes demos devrel
 author_img: alex
-image: /images/2023-tunnels-dev-advocates/background.jpg
+image: /images/2023-02-tunnels-dev-advocates/background.jpg
 date: 2023-02-22
 ---
 
