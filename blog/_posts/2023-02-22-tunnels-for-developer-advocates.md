@@ -113,6 +113,8 @@ With the popularity of free SaaS solutions like Ngrok and modern VPNs like Tails
 
 If you want to access your mom's printer whilst on the road. Use Tailscale.
 
+Want to get remote access to every host on your network whilst away from home? Tunnels are great for accessing SSH, Kubernetes, RDP, or specific services. A VPN like Zerotier or Wireguard is better for getting raw access to everything on a machine or network.
+
 You're super cost sensitive and don't want to pay anything to self-host a low-traffic HTTP endpoint, think about port-forwarding on your router, along with a machine to run a cron-job to update a dynamic DNS record. It's a bunch of work, but it's "free". And of course, [you give out the location of your home to any users](https://inlets.dev/blog/2021/04/13/your-isp-wont-give-you-a-static-ip.html).
 
 If you are cost sensitive and occasionally need to debug webhooks, Ngrok will probably be fine, just don't go beyond the rate limits. (This is easy to do - ask me how I know)
