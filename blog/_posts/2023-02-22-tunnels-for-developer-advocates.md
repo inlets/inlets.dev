@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Tunnels for developers advocates and customer demos
+title: Network Tunnels for Developer Advocates
 description: Over the past three years we've seen inlets has become a hit with developer advocates, but why?
 author: Alex Ellis
 tags: kubernetes demos devrel
@@ -9,7 +9,7 @@ image: /images/2023-02-tunnels-dev-advocates/background.jpg
 date: 2023-02-22
 ---
 
-Over the past three years we've seen inlets has become a hit with developer advocates, but why?
+Over the past three years we've seen inlets has become a hit with developer advocates, but why? And how does it stack up against Tailscale, Ngrok and Wireguard?
 
 ## Developers like me
 
@@ -115,6 +115,8 @@ If you're a commercial business looking at Ngrok or Inlets, inlets works out sig
 If you're a service provider and want to connect to customer devices and services, Tailscale may work out expensive (there is no public pricing available), and is really better for connecting entire hosts or subnets, than individual services. Check out what we're doing with [inlets uplink](https://docs.inlets.dev/uplink/become-a-provider/).
 
 Want to make your Kubernetes home-lab accessible from anywhere like a managed Kubernetes service? [Check out this tutorial for inlets](https://inlets.dev/blog/2022/07/07/access-kubernetes-api-server.html)
+
+Want to go deeper on technical differences? [Check out the inlets FAQ](https://docs.inlets.dev/reference/faq/)
 
 So where does inlets excel?
 
