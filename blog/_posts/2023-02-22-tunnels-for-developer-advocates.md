@@ -45,16 +45,23 @@ And inlets was presented at various conferences like the OSSummit and [Cloud Nat
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">At <a href="https://twitter.com/hashtag/OSSummit?src=hash&amp;ref_src=twsrc%5Etfw">#OSSummit</a> <a href="https://twitter.com/ellenkorbes?ref_src=twsrc%5Etfw">@ellenkorbes</a> is providing a great overview of the many dev, debug, build, deploy, etc. tools available to developers in the Kubernetes ecosystem. Shout-out to <a href="https://twitter.com/inletsdev?ref_src=twsrc%5Etfw">@inletsdev</a> by my friend <a href="https://twitter.com/alexellisuk?ref_src=twsrc%5Etfw">@alexellisuk</a>! <a href="https://t.co/UblhwesF2i">pic.twitter.com/UblhwesF2i</a></p>&mdash; Phil Estes (@estesp) <a href="https://twitter.com/estesp/status/1189506674392031233?ref_src=twsrc%5Etfw">October 30, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Ellen Korbes, used inlets at their time at Garden to get public ingress.
+[Ellen Korbes](https://twitter.com/l_korbes), used inlets at their time at Garden to get public ingress for demos.
 
 Over the years since 2019, there have been too many users to mention individually, but here are a few:
 
-* Connor Hicks, then at 1Password, now founder at Suborbital [used inlets with his WebAssembly project to get Ingress directly to his Raspberry Pi](https://twitter.com/cohix/status/1359885962407518210?ref_src=twsrc%5Etfw) during development
-* Carlos Santana, Staff Developer Advocate at IBM, now at AWS [used inlets to get webhooks to Tekton Pipelines, for development](https://twitter.com/csantanapr/status/1223759215816257536?ref_src=twsrc%5Etfw)
-* Kat, a developer advocate at Kong [used inlets to run a demo of Kong's API Gateway with live traffic](https://twitter.com/usrbinkat/status/1557430745332781057?ref_src=twsrc%5Etfw).
+* [Connor Hicks](https://twitter.com/cohix?lang=en), then at 1Password, now founder at Suborbital [used inlets with his WebAssembly project to get Ingress directly to his Raspberry Pi](https://twitter.com/cohix/status/1359885962407518210?ref_src=twsrc%5Etfw) during development
+* [Carlos Santana](https://twitter.com/csantanapr), Staff Developer Advocate at IBM, now at AWS [used inlets to get webhooks to Tekton Pipelines, for development](https://twitter.com/csantanapr/status/1223759215816257536?ref_src=twsrc%5Etfw)
+* [Kat](https://twitter.com/usrbinkat), a developer advocate at Kong [used inlets to run a demo of Kong's API Gateway with live traffic](https://twitter.com/usrbinkat/status/1557430745332781057?ref_src=twsrc%5Etfw).
+* [Michael Cade](https://twitter.com/MichaelCade1) of Kasten/Veeam picked inlets for a customer demo because in his words "A VPN was overkill, giving way too much access away" - [Managing private Kubernetes clusters with Kasten](https://vzilla.co.uk/vzilla-blog/dark-kubernetes-clusters-managing-multi-clusters)
 * [Marino Wijay](https://twitter.com/virtualized6ix) of Solo.io signed up to inlets to demo the new [Ambient Mesh changes](https://istio.io/latest/blog/2022/introducing-ambient-mesh/) in the Istio project.
-* [Zespre Schmidt](https://twitter.com/starbops) spontaneously wrote up a really comprehensive guide to inlets for personal use: [A Tour of Inlets - A Tunnel Built for the Cloud](https://blog.zespre.com/inlets-the-cloud-native-tunnel.html)
-* [Mark Sharpley connected his solar-powered boat to the Internet with inlets](https://inlets.dev/blog/2021/07/13/inlets-narrowboat.html)
+
+Whilst not a developer advocates, here are three other examples I really enjoyed:
+
+[Mark Sharpley from the UK connected his solar-powered boat to the Internet with inlets](https://inlets.dev/blog/2021/07/13/inlets-narrowboat.html) so he could monitor it with Prometheus. That's about as Cloud Native as it gets.
+
+And [Zespre Schmidt](https://twitter.com/starbops) spontaneously wrote up a really comprehensive guide to inlets for personal use: [A Tour of Inlets - A Tunnel Built for the Cloud](https://blog.zespre.com/inlets-the-cloud-native-tunnel.html)
+
+[Johan Siebens](https://johansiebens.dev/), a Kubernetes and infrastructure contractor went on a content spree, writing dozens of tutorials and utilities for inlets, including a popular one on hosting tunnel servers [for free on Fly.io](https://inlets.dev/blog/2021/07/07/inlets-fly-tutorial.html) and using [ArgoCD to manage multi-cloud Kubernetes clusters](https://inlets.dev/blog/2021/06/02/argocd-private-clusters.html).
 
 Over the three years, we've had a lot of love from the community.
 
@@ -106,7 +113,7 @@ With the popularity of free SaaS solutions like Ngrok and modern VPNs like Tails
 
 If you want to access your mom's printer whilst on the road. Use Tailscale.
 
-You're super cost sensitive and don't want to pay anything to self-host a low-traffic HTTP endpoint, think about port-forwarding on your router, along with a machine to run a cron-job to update a dynamic DNS record. It's a bunch of work, but it's "free".
+You're super cost sensitive and don't want to pay anything to self-host a low-traffic HTTP endpoint, think about port-forwarding on your router, along with a machine to run a cron-job to update a dynamic DNS record. It's a bunch of work, but it's "free". And of course, [you give out the location of your home to any users](https://inlets.dev/blog/2021/04/13/your-isp-wont-give-you-a-static-ip.html).
 
 If you are cost sensitive and occasionally need to debug webhooks, Ngrok will probably be fine, just don't go beyond the rate limits. (This is easy to do - ask me how I know)
 
