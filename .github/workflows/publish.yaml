@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  tags:
+    - '*'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: inlets/inlets.dev
+          fetch-depth: 1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+          bundler-cache: true
+      - name: Add bundler
+        run: |
+          sudo gem install bundler:2.2.13
+      - name: Install deps
+        run: |
+          bundle install && yarn install
+      - name: Build site
+        run: |
+          JEKYLL_ENV=production bundle exec jekyll build -d _site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
