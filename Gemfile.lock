@@ -71,6 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 2.2.13)
   classifier-reborn
   jekyll (~> 4.1.1)
   jekyll-feed
