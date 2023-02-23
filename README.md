@@ -38,10 +38,31 @@ If it's still unavailable run:
 $ gem install bundle
 ```
 
-When you have the tools in place run:
+Install Bundler, and set up your Ruby gem environment:
+
+MacOS:
 
 ```bash
+export GEM_HOME=$HOME/.gem
+export PATH=$HOME/.gem/bin:$PATH
+
+$ arch -arch x86_64 gem install bundler:2.2.13
+$ arch -arch x86_64 bundle install
+```
+
+Other systems:
+
+```bash
+export GEM_HOME=$HOME/.gem
+export PATH=$HOME/.gem/bin:$PATH
+
+$ gem install bundler:2.2.13
 $ bundle install
+```
+
+Install Yarn dependencies:
+
+```bash
 $ yarn install
 
 $ yarn run tailwind init _includes/tailwind.config.js
@@ -58,7 +79,7 @@ Content will be in `_site`
 ### To start a preview, simply run:
 
 ```bash
-bundle exec jekyll serve
+$GEM_HOME/bin/bundle exec jekyll serve
 ```
 
 Access the site at: http://127.0.0.1:4000/
@@ -66,7 +87,10 @@ Access the site at: http://127.0.0.1:4000/
 Apple M1:
 
 ```bash
-arch -arch x86_64 bundle install
-arch -arch x86_64 bundle exec jekyll serve
+export GEM_HOME=$HOME/.gem
+export PATH=$HOME/.gem/bin:$PATH
+
+arch -arch x86_64 $GEM_HOME/bin/bundle install
+arch -arch x86_64 $GEM_HOME/bin/bundle exec jekyll serve
 ```
 
