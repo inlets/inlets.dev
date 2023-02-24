@@ -97,9 +97,7 @@ Now when the inlets-operator is installed, it will print a help message with a s
 
 ```bash
 kubectl run nginx-1 --image=nginx --port=80 --restart=Always
-kubectl apply -f \
- https://raw.githubusercontent.com/inlets/inlets-operator/master/contrib/nginx-sample-deployment.yaml
-kubectl expose deployment nginx-1 --port=80 --type=LoadBalancer
+kubectl expose pod/ nginx-1 --port=80 --type=LoadBalancer
 ```
 
 The operator will automatically create the exit-server for you, and then run an `inlets client` as a Deployment within your cluster. Whenever the public server receives a request, it will tunnel it to the ClusterIP of the `nginx-1` service.
