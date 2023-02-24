@@ -182,7 +182,7 @@ Personally, I recommend exposing an Ingress Controller or an Istio Ingress Gatew
 
 Not everyone needs to get public network ingress into a local cluster. So unless you have one of the use-cases we covered in the intro, you may not need to do anything at all.
 
-Some of the time, you want to get private access to a cluster, without serving any public traffic. That use-case is served well by VPN solutions like ZeroTier, Wireguard, and Tailscale. Teleport's enterprise can also be useful here, if all you want is remote administrative access to a cluster, without exposing it publicly.
+Some of the time, you want to get private access to a cluster, without serving any public traffic. That use-case is served well by VPN solutions like ZeroTier, Wireguard, and Tailscale. Teleport's enterprise can also be useful here, if all you want is remote administrative access to a cluster, without exposing it publicly. Inlets can [also be used to make the Kubernetes API server accessible to the Internet](https://inlets.dev/blog/2022/07/07/access-kubernetes-api-server.html).
 
 But what if you do need public network ingress?
 
