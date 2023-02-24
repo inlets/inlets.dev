@@ -80,6 +80,12 @@ Cons:
 * Kubernetes is unsupported as a deployment option, so there's lots of manual work ahead
 * No way to integrate with Ingress Controllers or Istio
 
+## MetalLB and Kube-vip
+
+Both of these projects are usually used in private networks to allocate IP addresses or to balance traffic between nodes with private IP addresses.
+
+They're great at what they do, but neither MetalLB, nor Kube-vip can take a cluster running within a private network and make them accessible on the Internet. MetalLB can be used to make port-forwarding a bit easier to manage, and it's free, but you will run into similar downsides like the ones listed above.
+
 ## ZeroTier / Wireguard / Tailscale
 
 ZeroTier, Wireguard, and Tailscale are all examples of VPNs, and are designed to connect machines or networks together over the Internet. They're great for those use-cases, and you may be able to use them to get private access to a local Kubernetes cluster, but they're unfortunately not going to help us serve traffic to the Internet.
