@@ -178,9 +178,15 @@ Otherwise, any LoadBalancer service will be managed by the operator, and within 
 
 Personally, I recommend exposing an Ingress Controller or an Istio Ingress Gateway, this saves on costs and means you can tunnel all the microservices you need through a single tunnel server and client.
 
-## Getting started
+## Where next?
 
-If you want to use port-forwarding, that'll be cheap for you, but it does come with its limits. With Ngrok, there's quite a lot of friction right now, so you may end up spending a lot of your own time to save a few dollars. The Inlets Operator provides the most versatile and complete option, and it's actively used by individuals and commercial users from around the world.
+Not everyone needs to get public network ingress into a local cluster. So unless you have one of the use-cases we covered in the intro, you may not need to do anything at all.
+
+Some of the time, you want to get private access to a cluster, without serving any public traffic. That use-case is served well by VPN solutions like ZeroTier, Wireguard, and Tailscale. Teleport's enterprise can also be useful here, if all you want is remote administrative access to a cluster, without exposing it publicly.
+
+But what if you do need public network ingress?
+
+If you want to use port-forwarding, that'll be cheap in cost, but it does come with limits and setup costs. With Ngrok, there's quite a lot of friction right now, so you may end up spending a lot of your own time trying to get something working. The Inlets Operator provides the most versatile and complete option, and it's actively used by individuals and commercial users from around the world.
 
 * [Expose Ingress Nginx or another IngressController](https://docs.inlets.dev/tutorial/kubernetes-ingress/)
 * [Expose an Istio Ingress Gateway](https://docs.inlets.dev/tutorial/istio-gateway/)
