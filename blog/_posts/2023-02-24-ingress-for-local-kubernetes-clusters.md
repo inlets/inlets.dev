@@ -5,7 +5,7 @@ description: "By design, local Kubernetes clusters are inaccessible from the int
 author: Alex Ellis
 tags: kubernetes ingress istio
 author_img: alex
-image: https://docs.inlets.dev/images/tethering-k3s.jpeg
+image: /images/2023-02-operator/hotspot.jpg
 date: 2023-02-24
 ---
 
