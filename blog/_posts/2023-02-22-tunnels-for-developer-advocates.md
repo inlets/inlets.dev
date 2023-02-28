@@ -124,7 +124,7 @@ You can't do that with a static IP or port forwarding set up on your router.
 
 With the popularity of free SaaS solutions like Ngrok and modern VPNs like Tailscale, you've got to ask yourself. Should you pay for an inlets subscription?
 
-If you want to access your mom's printer whilst on the road. Use Tailscale.
+If you want to access your mom's printer whilst on the road, from your iPhone, for free. There's really nothing better than Tailscale for that.
 
 Want to get remote access to every host on your network whilst away from home? Tunnels are great for accessing SSH, Kubernetes, RDP, or specific services. A VPN like Zerotier or Wireguard is better for getting raw access to everything on a machine or network.
 
