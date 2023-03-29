@@ -17,7 +17,7 @@ We launched a version of inlets specifically for service providers who need to a
 
 It's also ideal for SREs and DevOps leads who need to manage applications across multiple clouds or clusters.
 
-A few days ago, [Cody Hill](https://twitter.com/eyeonthecloud?lang=en) from Google reached out when working on a customer project. His client needed a way to securely reach the Kubernetes API in up to 10,000 remote clusters.
+A few days ago, [Cody Hill](https://twitter.com/eyeonthecloud?lang=en) reached out to me when working on a customer project. His client needed a way to securely reach the Kubernetes API in up to 10,000 remote clusters.
 
 In the past, I've shown how you can expose your own Kubernetes API server on the Internet, so that you can update your kubeconfig and manage the cluster just like a managed service:
 
