@@ -149,6 +149,10 @@ kubectl apply tunnel2.yaml
 
 He then set up Rancher to point to the two children clusters via their new subdomains: `cluster1.example.com` and `cluster2.example.com`.
 
+We're always making inlets better and keen to get your feedback.
+
+Whilst working with Richard, he told us that inletsctl was creating VMs with a public IP address that was ephemeral - so it could change during the lifetime of the tunnel. Within a couple of days, we'd merged a PR into the open source provisioning library that switches to using a reserved IP address instead. [view the patch on GitHub](https://github.com/inlets/cloud-provision/commit/5d460da00ba7a516b33fefbf669b615dba0eeaab).
+
 ## Need a hand getting started?
 
 Unlike with a SaaS tunnel product - inlets is much more versatile, but that also means that you may benefit from being pointed at the right tutorial for your use-case.
