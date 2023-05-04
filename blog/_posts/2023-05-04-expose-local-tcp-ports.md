@@ -119,7 +119,9 @@ If you want to expose one or more sub-domains over a single tunnel server then I
 
 [Automate a self-hosted HTTPS tunnel in less than 5 minutes without any limits](https://inlets.dev/blog/2022/11/16/automate-a-self-hosted-https-tunnel.html)
 
-Since Richard wanted to run the inlets client inside Kubernetes, we added an extra command that can generate the YAML for a Kubernetes Pod.
+Since Richard wanted to run the inlets client inside Kubernetes, we added a new feature that can generate the YAML for a Kubernetes Pod.
+
+Today you can already generate a systemd service for a TCP or HTTP client by adding the flag `--generate=systemd`, and now thanks to understanding this use-case better, we were able to add `--generate=k8s_yaml` to inlets too.
 
 He ran this, and applied it to the first private cluster:
 
