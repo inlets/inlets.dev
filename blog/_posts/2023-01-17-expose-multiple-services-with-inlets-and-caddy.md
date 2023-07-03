@@ -60,7 +60,7 @@ Configure the inlets tunnel server. The `--generate` flag can be used to turn th
 
 ```bash
 inlets-pro http server \
-  --auto-tls false \
+  --auto-tls=false \
   --control-addr 127.0.0.1 \
   --data-addr 127.0.0.1 \
   --token $TOKEN \
