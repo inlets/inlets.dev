@@ -25,6 +25,10 @@ jobs:
         with:
           repository: inlets/inlets.dev
           fetch-depth: 1
+      - name: Reset hostedtoolcache permissions
+        run: |
+          sudo mkdir -p /opt/hostedtoolcache
+          sudo chown -R $(whoami) /opt/hostedtoolcache
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
