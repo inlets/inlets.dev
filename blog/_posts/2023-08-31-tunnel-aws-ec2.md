@@ -13,7 +13,7 @@ Learn how to automate the two kinds of inlets tunnel servers using AWS EC2 inclu
 
 ## Introduction
 
-Typically when I use inlets, I'll provision VMs to act as tunnel servers on DigitalOcean or GCP. The main reason is the low cost, and the quick boot-up speed, perhaps 10-20 seconds from issuing a command to our [inletsctl](https://github.com/inlets/inletsctl) tool. However, for some of us, AWS will the cloud of choice. So whether you have free credits, existing infrastructure, or use it for work, this is a guide to exposing your local services via a tunnel server hosted on AWS EC2.
+Typically when I use inlets, I'll provision VMs to act as tunnel servers on DigitalOcean or GCP. The main reason is the low cost, and the quick boot-up speed, perhaps 10-20 seconds from issuing a command to our [inletsctl](https://github.com/inlets/inletsctl) tool. It's even possible to [create tunnel servers as Pods within 2-3 seconds within a Kubernetes cluster](https://docs.inlets.dev/uplink/overview/). However, for some of us, AWS will be the cloud of choice; so whether you have free credits, existing infrastructure, or use it for work, this is a guide to exposing your local services via a tunnel server hosted on AWS EC2.
 
 We'll cover how to set up the required IAM permissions, an SSH key for troubleshooting, then the two types of tunnels and when to use them. You can pick between HTTPS for quick and easy access to HTTP sites, or TCP for more complex use-cases like SSH, Kubernetes API, or self-signed TLS appliances.
 
@@ -44,7 +44,7 @@ Create a new Key Pair of type RSA, and give it the name **inlets**.
 
 Download the key-pair and save it to your home directory i.e. `~/.inlets/ec2.pem`.
 
-Change the permissions on the key file: `chmod 400 ~/inlets/ec2.pem`.
+Change the permissions on the key file: `chmod 400 ~/.inlets/ec2.pem`.
 
 You'll be able to use this key for any future inlets tunnel server VMs that you created on EC2.
 
@@ -72,6 +72,8 @@ inletsctl create \
   --letsencrypt-domain blog.example.com \
   --letsencrypt-email webmaster@example.com
 ```
+
+The region that you specify here, must match the region where you created your SSH Key Pair, otherwise it will not be found. The `--aws-key-name` flag is optional, but recommended.
 
 Give the path to the access key and secret key, along with the region you want to use and any domains via `--letsencrypt-domain`.
 
