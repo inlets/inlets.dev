@@ -29,6 +29,9 @@ jobs:
         run: |
           sudo mkdir -p /opt/hostedtoolcache
           sudo chown -R $(whoami) /opt/hostedtoolcache
+      - name: Add rubygems
+        run: |
+          sudo apt install rubygems -y
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7'
