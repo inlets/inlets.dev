@@ -32,7 +32,7 @@ Unlike DigitalOcean where a simple access key is all you need, AWS is designed f
 
 Follow the instructions to create an IAM user and credentials in the [inlets docs](https://docs.inlets.dev/reference/inletsctl/#example-usage-with-aws-ec2).
 
-Save the access key and secret key to local files i.e. `~/.inlets-ec2-access-key`, `~/.inlets-ec2-secret-key`.
+Save the access key and secret key to local files i.e. `~/.inlets/ec2-access-key`, `~/.inlets/ec2-secret-key`.
 
 ### Create a key-pair
 
@@ -64,7 +64,7 @@ The HTTPS tunnel server can support more than one domain, so you could expose fo
 
 ```bash
 inletsctl create \
-  -provider ec2 \
+  --provider ec2 \
   --secret-key-file ~/.inlets/ec2-secret-key \
   --access-token-file ~/.inlets/ec2-access-key \
   --region eu-west-1 \
@@ -143,7 +143,7 @@ Now create a tunnel server with the `--tcp` flag, and omit the Let's Encrypt fla
 
 ```bash
 inletsctl create \
-  -provider ec2 \
+  --provider ec2 \
   --secret-key-file ~/.inlets/ec2-secret-key \
   --access-token-file ~/.inlets/ec2-access-key \
   --region eu-west-1 \
@@ -259,7 +259,7 @@ ssh -i ~/.inlets/ec2.pem ubuntu@$IP_ADDRESS
 Check the service logs:
 
 ```
-sudo journalctl -u inlets
+sudo journalctl -u inlets-pro
 ```
 
 Edit the settings for the token or Let's Encrypt domain in `/etc/default/inlets`.
