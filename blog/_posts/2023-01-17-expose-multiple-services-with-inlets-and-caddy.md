@@ -133,6 +133,24 @@ Make sure to move the caddy binary you downloaded or compiled with xcaddy into y
 sudo mv caddy /usr/bin/
 ```
 
+Create a group named `caddy`:
+
+```bash
+sudo groupadd --system caddy
+```
+
+Create the `caddy` user with a writeable home directory:
+
+```bash
+sudo useradd --system \
+    --gid caddy \
+    --create-home \
+    --home-dir /var/lib/caddy \
+    --shell /usr/sbin/nologin \
+    --comment "Caddy web server" \
+    caddy
+```
+
 Create a systemd service file for caddy named `/etc/systemd/system/caddy.service`:
 
 ```ini
