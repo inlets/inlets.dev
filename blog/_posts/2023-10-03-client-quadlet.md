@@ -5,8 +5,7 @@ description: As a Kubernetes user, you can use the same YAML file to expose your
 author: Ygal Blum & Valentin Rothberg
 tags: podman quadlet containers
 author_img: ygalblum
-#image: /images/2021-09-compose/writing.jpg
-date: 2023-09-06
+date: 2023-10-03
 ---
 
 This tutorial is inspired by a previous post from Alex Ellis's on [running inlets with compose](https://inlets.dev/blog/2021/09/09/compose-and-inlets.html).
