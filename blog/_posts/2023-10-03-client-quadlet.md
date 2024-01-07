@@ -57,6 +57,7 @@ However, because these secrets are consumed by a Kubernetes Pod, they also must 
 3. Generate the secret
     ```bash
     j2 inlets-token-secret.yml.j2 token_data.json | podman kube play -
+    ```
 
 #### Inlets License Secret
 
