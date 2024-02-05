@@ -23,6 +23,12 @@ SSH is a bespoke protocol which is usually multiplexed by having to use differen
 
 The `sshmux` feature acts just like a reverse proxy, and reads a TLS header to determine which server to forward the connection to. It's SNI for SSH.
 
+![Conceptual diagram of sshmux](/images/2024-02-sshmux/conceptual.png)
+
+> You have a Raspberry Pi 5, Proxmox and Octoprint running on different machines on your private network at home or in your lab. You want to be able to SSH into any of these, or to do things that SSH enables like port-forwarding and file transfers using (scp/sftp).
+
+**Just want to expose a single SSH server?**
+
 If you'd like to learn how to expose a SSH server only, then see this tutorial: [Tutorial: Expose a private SSH server over a TCP tunnel](https://docs.inlets.dev/tutorial/ssh-tcp-tunnel/).With this tutorial, since the tunnel VM itself had SSH installed on port 22, you needed to add an extra port on your private SSH server's configuration. That's no longer needed with `sshmux`.
 
 ### Disclaimer
@@ -108,7 +114,44 @@ ssh nuc.inlets "uname -a && uptime"
 ssh rpi.inlets "uname -a && uptime"
 ```
 
+You can also use `scp` and `sftp` to transfer files.
+
+Here's an example of sending and then receiving a 10MB file from the Raspberry Pi to your laptop:
+
+```bash
+dd if=/dev/urandom of=10MB.bin bs=1M count=10
+
+# Sending the file to the Raspberry Pi
+scp 10MB.bin rpi.inlets:~/10MB.bin
+
+# Copying the same file back from the Raspberry Pi to your laptop
+scp rpi.inlets:~/10MB.bin 10MB.bin
+```
+
+If you want to tunnel a remote service back from your Octoprint server like port 8080, you can do it like this:
+
+```bash
+ssh -L 8080:127.0.0.1:8080 octoprint.inlets
+```
+
+Then access it via `http://127.0.0.1:8080` in your web browser.
+
 ## Wrapping up
 
 In a very short period of time, a prototype written over the FOSDEM weekend has made it into the inlets-pro product. It's not the only way to connect to various machines with your local network, but it's a very simple and effective way to do it if you're already using inlets.
 
+How does this compare to a VPN? It's much simpler, and fully under your own control and privacy. It doesn't need any Kernel privileges and runs just as well in containers as a static binary. It's tempting to think that the new generation of "SaaS VPNs" are somehow innately simple, but it doesn't take long browsing the codebase to realise how complex they are. 
+
+There are tradeoffs between tunnels like inlets and SaaS VPNs. Inlets tries to keep things as simple and minimal as possible, whilst remaining completely under your control. In our testing it was more reliable, and a little quicker to transfer files and run commands remotely when away from home on captive portals, hotel WiFi and mobile hotspots.
+
+See also: [Inlets FAQ & comparison](https://docs.inlets.dev/reference/faq/)
+
+You may also like:
+
+* [A quick HTTPS tunnel with unlimited rate-limit, bandwidth, domains and connections allowed](https://docs.inlets.dev/tutorial/automated-http-server/)
+
+Other home-lab and remote access tutorials:
+
+* [Exposing a private SSH server over a TCP tunnel](https://docs.inlets.dev/tutorial/ssh-tcp-tunnel/) - the use-case for a single SSH server only
+* [Exposing Kubernetes Ingress](https://docs.inlets.dev/tutorial/kubernetes-ingress/)
+* [Accessing your Kubernetes API server remotely via kubectl](https://docs.inlets.dev/tutorial/kubernetes-api-server/)
