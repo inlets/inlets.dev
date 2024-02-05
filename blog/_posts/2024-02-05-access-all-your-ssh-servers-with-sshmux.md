@@ -77,6 +77,8 @@ upstreams:
 
 I've used the IP addresses of my machines on my local network in the `upstream` field. You can also use a DNS name here like `raspberrypi.local`, so long as you first add an extra in `/etc/hosts` such as `raspberrypi.local  172.10.0.101`.
 
+Update inlets-pro on both your jump box and wherever you are going to run the client. You can use `inletsctl download` or `arakde get inlets-pro` to get the latest version. Alternatively, there's the [GitHub releases page](https://github.com/inlets/inlets-pro/releases).
+
 Run the `sshmux server` on the jump box:
 
 ```bash
