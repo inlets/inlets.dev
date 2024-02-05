@@ -63,7 +63,7 @@ Add `--proxy-protocol="v2"` to the `ExecStart` line as an additional argument.
 
 Then restart the server with `sudo systemctl daemon-reload && sudo systemctl restart inlets-pro`.
 
-Next create a config.yaml file on a computer in your private network. You can think of this machine as being like a jump box, or a bastion host. The `sshmux server` will run here in order to forward connections to your other servers.
+Next create a config.yaml file on a computer in your private network. You can think of this machine as being like a jumpbox, or a bastion host. The `sshmux server` will run here in order to forward connections to your other servers.
 
 ```yaml
 # config.yaml
@@ -77,9 +77,11 @@ upstreams:
 
 I've used the IP addresses of my machines on my local network in the `upstream` field. You can also use a DNS name here like `raspberrypi.local`, so long as you first add an extra in `/etc/hosts` such as `raspberrypi.local  172.10.0.101`.
 
-Update inlets-pro on both your jump box and wherever you are going to run the client. You can use `inletsctl download` or `arakde get inlets-pro` to get the latest version. Alternatively, there's the [GitHub releases page](https://github.com/inlets/inlets-pro/releases).
+If you also want to expose the jumpbox in the list of upstreams, that's fine, but don't use the value `127.0.0.1`, instead use its local network IP address.
 
-Run the `sshmux server` on the jump box:
+Update inlets-pro on both your jumpbox and wherever you are going to run the client. You can use `inletsctl download` or `arakde get inlets-pro` to get the latest version. Alternatively, there's the [GitHub releases page](https://github.com/inlets/inlets-pro/releases).
+
+Run the `sshmux server` on the jumpbox:
 
 ```bash
 inlets-pro \
@@ -113,7 +115,7 @@ Host *.inlets
 
 Just update TUNNEL_IP to the IP address of the exit server VM.
 
-Now you can use the `nuc.inlets` and `rpi.inlets` hostnames to connect to your servers.
+Now you can use the `nuc.inlets` and `rpi.inlets` aliases to connect to your servers just like if you were addressing them on your home network as `nuc` and `rpi`.
 
 ```bash
 ssh nuc.inlets "uname -a && uptime"
@@ -141,6 +143,12 @@ ssh -L 8080:127.0.0.1:8080 octoprint.inlets
 ```
 
 Then access it via `http://127.0.0.1:8080` in your web browser.
+
+## Do you need to use this TCP tunnel server for other things?
+
+If you also want to use the same TCP tunnel server for other things in addition to SSH like the kubectl API server, then make sure they support and are configured to expect PROXY protocol v2.
+
+If not, you can either run two separate TCP tunnel servers, or turn off PROXY protocol on both the tunnel server by adding `--proxy-protocol=""` to the `inlets-pro tcp server` command and on sshmux server by adding `--disable-proxy-proto` to `inlets-pro sshmux server`.
 
 ## Wrapping up
 
