@@ -46,7 +46,7 @@ These settings are very well documented and you can find them in `/etc/ssh/sshd_
 
 ## How it works
 
-First off, you'll want to create a new TCP tunnel server so that you can play with it and not worry about breaking anything:
+First off, you'll want to create a new TCP tunnel server with [inletsctl](https://docs.inlets.dev/reference/inletsctl/) so that you can play with it and not worry about breaking anything:
 
 ```bash
 inletsctl create \
@@ -54,6 +54,8 @@ inletsctl create \
     --region lon1 \
     --tcp
 ```
+
+Fill in the other fields as prompted such as your access token. You can see the full [reference for inletsctl here](https://docs.inlets.dev/reference/inletsctl/).
 
 DigitalOcean will email you an initial root password. Use it to log in and then change the `/etc/defaults/inlets` file and edit the line `--proxy-protocol=""` to `"--proxy-protocol=v2"`. We do this to ensure we get the remote IP address of the client send to sshmux.
 
