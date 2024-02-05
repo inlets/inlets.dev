@@ -57,9 +57,11 @@ inletsctl create \
 
 Fill in the other fields as prompted such as your access token. You can see the full [reference for inletsctl here](https://docs.inlets.dev/reference/inletsctl/).
 
-DigitalOcean will email you an initial root password. Use it to log in and then change the `/etc/defaults/inlets` file and edit the line `--proxy-protocol=""` to `"--proxy-protocol=v2"`. We do this to ensure we get the remote IP address of the client send to sshmux.
+DigitalOcean will email you an initial root password. Use it to log in and edit the `/etc/systemd/system/inlets-pro.service` file.
 
-Restart the server with `sudo systemctl daemon-reload && sudo systemctl restart inlets-pro`.
+Add `--proxy-protocol="v2"` to the `ExecStart` line as an additional argument.
+
+Then restart the server with `sudo systemctl daemon-reload && sudo systemctl restart inlets-pro`.
 
 Next create a config.yaml file on a computer in your private network. You can think of this machine as being like a jump box, or a bastion host. The `sshmux server` will run here in order to forward connections to your other servers.
 
