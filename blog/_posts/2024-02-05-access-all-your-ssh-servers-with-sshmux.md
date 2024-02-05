@@ -6,7 +6,7 @@ author: Alex Ellis
 tags: ssh sshmux tls remote tcp
 author_img: alex
 image: /images/2024-02-sshmux/background.png
-date: 2023-09-01
+date: 2024-02-05
 ---
 
 Access all your remote SSH servers on your network from a single TCP tunnel using the new sshmux feature in inlets-pro 0.9.24.
