@@ -140,9 +140,51 @@ ssh -L 8080:127.0.0.1:8080 octoprint.inlets
 
 Then access it via `http://127.0.0.1:8080` in your web browser.
 
+### What if you also want to access Kubernetes?
+
+In addition to SSH, sshmux can also multiplex Kubernetes API traffic, so you can use one single TCP server to access your SSH servers and your Kubernetes API server.
+
+Log into your K3s server and add an extra `--tls-san`, make sure you use this exact format and wrapping:
+
+```diff
+ExecStart=/usr/local/bin/k3s \
+    server \
++        '--tls-san' \
++        'k3s.inlets' \
+```
+
+> If installing Kubernetes with [k3sup](https://k3sup.dev/), you can simply add the flag: `--tls-san k3s.inlets` to the `k3sup install` command.
+
+Restart the k3s service with `sudo systemctl daemon-reload && sudo systemctl restart k3s`.
+
+Then add an entry to sshmux's config.yaml file:
+
+```diff
++ - name: k3s.inlets
++   upstream: https://raspberrypi.local:6443
++   passthrough: true
+```
+
+The `passthrough` flag is required to ensure that Kubernetes does the TLS handshake and not sshmux.
+
+Finally, edit your kubeconfig file, usually found at `~/.kube/config` and add the following:
+
+```diff
+-   server: https://raspberrypi.local:6443
++   server: https://EXIT_SERVER_IP:8443
++   tls-server-name: k3s.inlets
+  name: rpi
+```
+
+Make sure to replace the `EXIT_SERVER_IP` with the IP address of your exit server VM. The `tls-server-name` must match the value used for the `name` in the config.yaml.
+
+After that you can now run `kubectl get nodes`, run `helm`, `arkade`, `k9s` and anything else that you'd like to do with your Kubernetes cluster from wherever you like.
+
 ## Wrapping up
 
 In a very short period of time, a prototype written over the FOSDEM weekend has made it into the inlets-pro product. It's not the only way to connect to various machines with your local network, but it's a very simple and effective way to do it if you're already using inlets.
+
+As an extra layer of security, you may also want to configure an allowed range or list of IP addresses on the TCP tunnel server for the data plane. See also: [Restrict your tunnels with IP allow lists](http://127.0.0.1:4000/blog/2021/10/15/allow-lists.html)
 
 How does this compare to a VPN? It's much simpler, and fully under your own control and privacy. It doesn't need any Kernel privileges and runs just as well in containers as a static binary. It's tempting to think that the new generation of "SaaS VPNs" are somehow innately simple, but it doesn't take long browsing the codebase to realise how complex they are. 
 
