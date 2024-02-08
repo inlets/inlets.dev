@@ -57,11 +57,7 @@ inletsctl create \
 
 Fill in the other fields as prompted such as your access token. You can see the full [reference for inletsctl here](https://docs.inlets.dev/reference/inletsctl/).
 
-DigitalOcean will email you an initial root password. Use it to log in and edit the `/etc/systemd/system/inlets-pro.service` file.
-
-Add `--proxy-protocol="v2"` to the `ExecStart` line as an additional argument.
-
-Then restart the server with `sudo systemctl daemon-reload && sudo systemctl restart inlets-pro`.
+DigitalOcean will email you an initial root password, which is handy if you need to log in to debug things or make any edits.
 
 Next create a config.yaml file on a computer in your private network. You can think of this machine as being like a jumpbox, or a bastion host. The `sshmux server` will run here in order to forward connections to your other servers.
 
@@ -143,12 +139,6 @@ ssh -L 8080:127.0.0.1:8080 octoprint.inlets
 ```
 
 Then access it via `http://127.0.0.1:8080` in your web browser.
-
-## Do you need to use this TCP tunnel server for other things?
-
-If you also want to use the same TCP tunnel server for other things in addition to SSH like the kubectl API server, then make sure they support and are configured to expect PROXY protocol v2.
-
-If not, you can either run two separate TCP tunnel servers, or turn off PROXY protocol on both the tunnel server by adding `--proxy-protocol=""` to the `inlets-pro tcp server` command and on sshmux server by adding `--disable-proxy-proto` to `inlets-pro sshmux server`.
 
 ## Wrapping up
 
