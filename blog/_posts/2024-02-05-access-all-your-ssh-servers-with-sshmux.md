@@ -9,7 +9,7 @@ image: /images/2024-02-sshmux/background.png
 date: 2024-02-05
 ---
 
-Access all your remote SSH servers on your network from a single TCP tunnel using the new sshmux feature in inlets-pro 0.9.24.
+Access all your remote SSH servers on your network from a single TCP tunnel using the new sshmux feature in inlets-pro 0.9.28.
 
 ## Introduction
 
