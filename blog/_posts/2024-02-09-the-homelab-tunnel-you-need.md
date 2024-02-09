@@ -55,7 +55,7 @@ So let's create a TCP tunnel VM using our cloud of preference and a region close
 
 I'm going to use DigitalOcean for this example, but you can use any cloud you like.
 
-The [inletsctl](https://github.com/inlets/inletsctl) tool can automate the VM creation and installation of the inlets-pro server for you. But if you like to do things the hard way, there's [also instructions for that](https://docs.inlets.dev/tutorial/dual-tunnels/).
+The [inletsctl](https://github.com/inlets/inletsctl) tool can automate the VM creation and installation of the inlets-pro server for you. But if you like to do things the hard way, there's [also instructions for that](https://docs.inlets.dev/tutorial/manual-tcp-server).
 
 ```bash
 inletsctl create --provider digitalocean \
@@ -133,6 +133,10 @@ Next, edit kubeconfig, and change the local IP address you had such as `https://
 ```
 
 ### Add access for HTTPS
+
+The following instructions assume a Kubernetes IngressController paired with cert-manager, and one of their [supported DNS01 issuers](https://cert-manager.io/docs/configuration/acme/dns01/#supported-dns01-providers).
+
+[Caddy](https://caddyserver.com/) will also work with the approach outlined below using a DNS01 challenge (uses a DNS TXT record) or an TLS-ALPN challenge (only uses port 443). Han from the inlets team has a separate write-up that might be worth checking out if you only want to host HTTPS domains: [How to expose multiple domains on a single server with Caddy and inlets](https://inlets.dev/blog/2023/01/17/expose-multiple-services-with-inlets-and-caddy.html).
 
 You could create a separate tunnel VM in HTTPS mode, which can use a HTTP01 challenge (the simplest) to obtain a certificate from Let's Encrypt.
 
