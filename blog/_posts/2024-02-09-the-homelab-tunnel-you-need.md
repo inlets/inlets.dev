@@ -33,6 +33,22 @@ What's involved:
 
 As a bonus, I'll also include full instructions to get a HTTPS domain for OpenFaaS over the tunnel, so that you have something interesting to test out before moving on to customising the setup for your own applications.
 
+## A quick preamble on tunnels vs VPNs
+
+A VPN is a way to bridge networks, usually on a low layer of the OSI model, we're talking about hosts being able to reach each other over IP, on all ports, with no restrictions. They can be tricky to set up and manage, and require every host to be fully enrolled onto the VPN, every device needs run run the VPN client, usually with elevated privileges to manage TUN/TAP devices.
+
+A network tunnel can be used in a similar way to a VPN, like we do here for SSH and kubectl, but it's primarily designed for Ingress from the public Internet.
+
+You don't get Ingress from the public Internet with a VPN, and you do not want it either.
+
+Some VPNs are operated on a SaaS model, which makes them particular intrusive and centrally controlled. Tunnels can also be bought on this basis, but come with stringent rate limits, you have to pay for every domain you want to use, and you're locked into a single provider. For instance, Ngrok and Cloudflared only have their own Kubernetes Ingress Controllers, with inlets, you can use any IngressController you like including Istio or Caddy.
+
+Your mileage may vary, some people will love self-managed VPNs, some adore "free" SaaS VPNs, others can just about get away with the rate limits and restrictions of a SaaS tunnel.
+
+Inlets is for those of us who want to run their own tunnels, with no rate limits, and no restrictions.
+
+Find out more in the [Inlets FAQ](https://docs.inlets.dev/reference/faq/).
+
 ## A single tunnel VM
 
 So let's create a TCP tunnel VM using our cloud of preference and a region close by. DigitalOcean, AWS and GCE are all quite quick to provision, have a good selection of regions and are relatively cost effective.
