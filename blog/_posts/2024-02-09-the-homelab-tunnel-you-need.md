@@ -55,6 +55,8 @@ So let's create a TCP tunnel VM using our cloud of preference and a region close
 
 I'm going to use DigitalOcean for this example, but you can use any cloud you like.
 
+The [inletsctl](https://github.com/inlets/inletsctl) tool can automate the VM creation and installation of the inlets-pro server for you. But if you like to do things the hard way, there's [also instructions for that](https://docs.inlets.dev/tutorial/dual-tunnels/).
+
 ```bash
 inletsctl create --provider digitalocean \
   --region lon1 \
