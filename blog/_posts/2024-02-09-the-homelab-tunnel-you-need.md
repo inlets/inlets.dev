@@ -94,6 +94,8 @@ If you have multiple clusters, that's no problem, just add them with different `
 
 Now log into your K3s servers, and modify the `/etc/systemd/system/k3s.service` file.
 
+If you haven't installed K3s yet, then you can just use [k3sup's](https://k3sup.dev) `install` command and pass along the `--tls-san` flag to get the same effect.
+
 ```diff
 ExecStart=/usr/local/bin/k3s \
     server \
@@ -221,9 +223,11 @@ Make sure you create a DNS A record between the domain and the tunnel server's I
 Given that the domain is being served with a staging certificate, you can use `faas-cli` with `--tls-no-verify` to bypass the certificate verification.
 
 ```bash
-# Get $PASSWORD from `arkade info openfaas`
+$ arkade get faas-cli
 
 $ export OPENFAAS_URL=https://faas.example.com
+
+# Populate $PASSWORD via `arkade info openfaas`
 
 $ echo -n $PASSWORD | faas-cli login --tls-no-verify --password-stdin
 
