@@ -254,6 +254,12 @@ inlets-pro sshmux \
 
 You could also create a simple `systemd` unit file to run the `sshmux` and keep it running, monitored, and restarted if you reboot or it crashes for some reason.
 
+When binding to port 443, you may need to run as sudo, or allow the unprivileged user to bind to a low port with `setcap`.
+
+```bash
+sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/inlets-pro
+```
+
 ## Connect the tunnel client to expose the lab
 
 This is the final part, just run the `inlets-pro tcp client` and make the upstream `127.0.0.1` exposing port (443) which is where the sshmux is running.
