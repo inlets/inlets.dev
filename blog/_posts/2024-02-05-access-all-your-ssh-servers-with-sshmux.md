@@ -184,7 +184,7 @@ After that you can now run `kubectl get nodes`, run `helm`, `arkade`, `k9s` and 
 
 In a very short period of time, a prototype written over the FOSDEM weekend has made it into the inlets-pro product. It's not the only way to connect to various machines with your local network, but it's a very simple and effective way to do it if you're already using inlets.
 
-As an extra layer of security, you may also want to configure an allowed range or list of IP addresses on the TCP tunnel server for the data plane. See also: [Restrict your tunnels with IP allow lists](http://127.0.0.1:4000/blog/2021/10/15/allow-lists.html)
+As an extra layer of security, you may also want to configure an allowed range or list of IP addresses on the TCP tunnel server for the data plane. See also: [Restrict your tunnels with IP allow lists](http://inlets.dev/blog/2021/10/15/allow-lists.html)
 
 How does this compare to a VPN? It's much simpler, and fully under your own control and privacy. It doesn't need any Kernel privileges and runs just as well in containers as a static binary. It's tempting to think that the new generation of "SaaS VPNs" are somehow innately simple, but it doesn't take long browsing the codebase to realise how complex they are. 
 
