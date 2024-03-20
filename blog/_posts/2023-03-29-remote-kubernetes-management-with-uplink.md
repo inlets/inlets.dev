@@ -339,4 +339,4 @@ We met with Kubiya's team, and after a few days of testing the new solution they
 
 If you'd like to talk to our team about inlets uplink or remote service management for customers, please get in touch.
 
-* [Get in touch with us](/contact/)
+* [Get in touch with us](/contact)

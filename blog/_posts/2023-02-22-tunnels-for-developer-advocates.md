@@ -160,4 +160,4 @@ Or check out the code for the [inlets-operator](https://github.com/inlets/inlets
 
 ## Want to talk to us?
 
-Feel free to [reach out for a call to talk more](/contact/), or check out the links I've included above to see how other customers are using inlets today.
+Feel free to [reach out for a call to talk more](/contact), or check out the links I've included above to see how other customers are using inlets today.

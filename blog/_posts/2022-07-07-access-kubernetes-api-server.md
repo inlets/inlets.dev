@@ -150,4 +150,4 @@ Inlets can also be used for HTTP tunnels to serve a number of different domains,
 
 ## Questions, comments & suggestions
 
-If you'd like to chat, feel free to reach out to us via [our contact page](/contact/)
+If you'd like to chat, feel free to reach out to us via [our contact page](/contact)

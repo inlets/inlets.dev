@@ -518,4 +518,4 @@ I suspect that configuring ingress-nginx may be a lot simpler, see also: [Ingres
 
 Before setting up K3s, I also tested Nginx running on my local machine, and with some additional configuration in the `http` and `server` block, managed to get it to print out the real source IP address for tunneled HTTP calls. You can find out how here: [Nginx: Accepting the PROXY Protocol](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
 
-Would you like to talk to us about Cloud Native tunnels? [Contact us here](/contact/)
+Would you like to talk to us about Cloud Native tunnels? [Contact us here](/contact)

@@ -481,6 +481,6 @@ This technique applies to all kinds of services. Take the example of collecting 
 
 Further resources:
 
-* Did you enjoy this article? pGet in touch with us](https://inlets.dev/contact/) with your comments & questions, we'd love to help.
+* Did you enjoy this article? pGet in touch with us](https://inlets.dev/contact) with your comments & questions, we'd love to help.
 * [Read tutorials and documentation for inlets](https://docs.inlets.dev/)
 * [Follow @inletsdev on Twitter](https://twitter.com/inletsdev/)

@@ -134,7 +134,7 @@ These are my top five highlights of inlets features and developments over the pa
 
 There have been other features added throughout the year like support for [IP address ACLs](https://inlets.dev/blog/2021/10/15/allow-lists.html) and [deploying from GitHub Actions](https://inlets.dev/blog/2021/12/06/private-deploy-from-github-actions.html). There's also been customer testimonials on the website, live stream video demos and case-studies from customers like [How Riskfuel is using Inlets to build machine learning models at scale](https://inlets.dev/blog/2021/07/22/riskfuel.html).
 
-For 2022 - inlets will continue on this path of securely and privately connecting Cloud Native applications as simply as possible. If you have comments, questions or suggestions, don't hesitate to [get in touch with me directly](https://inlets.dev/contact/) and follow [@inletsdev](https://twitter.com/inletsdev) on Twitter to keep up to date with news and features.
+For 2022 - inlets will continue on this path of securely and privately connecting Cloud Native applications as simply as possible. If you have comments, questions or suggestions, don't hesitate to [get in touch with me directly](https://inlets.dev/contact) and follow [@inletsdev](https://twitter.com/inletsdev) on Twitter to keep up to date with news and features.
 
 As we close out the year, let me leave you with a couple of demos of inlets so you can see inlets in action.
 

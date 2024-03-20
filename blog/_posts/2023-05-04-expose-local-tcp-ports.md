@@ -159,7 +159,7 @@ Whilst working with Richard, he told us that inletsctl was creating VMs with a p
 
 Unlike with a SaaS tunnel product - inlets is much more versatile, but that also means that you may benefit from being pointed at the right tutorial for your use-case.
 
-You can browse the [docs](https://docs.inlets.dev/) and [blog](https://inlets.dev/blog), but feel free to reach out via our [contact form](https://inlets.dev/contact/)
+You can browse the [docs](https://docs.inlets.dev/) and [blog](https://inlets.dev/blog), but feel free to reach out via our [contact form](https://inlets.dev/contact)
 
 Pricing is very competitive vs. SaaS solutions, with two tunnels included by default and the option to add more - hosted options only allow you to purchase one tunnel, or force you to upgrade to a higher tier. Bear in mind that our annual pricing has a saving of around 5 USD / mo vs paying monthly and you can switch at any time.
 
