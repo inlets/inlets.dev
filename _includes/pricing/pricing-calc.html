@@ -1,0 +1,56 @@
+<div class="py-8 bg-gray-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
+
+      <div class="text-base max-w-prose mx-auto lg:max-w-none">
+        <p class="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl">How many licenses do we need?</p>
+      </div>
+
+      <div class="relative z-10 text-base max-w-prose mx-auto lg:max-w-5xl lg:mx-0 lg:pr-72">
+        <p class="text-md text-gray-500 leading-7 text-justify mb-2">
+          A license is needed for each inlets TCP or HTTP client that you intend to run, however a single tunnel can multiplex many different services.
+        </p>
+        <p class="text-md text-gray-500 leading-7 text-justify mb-2">
+          There two ways to multiple different sites or domains:
+          <ul>
+            <li class="mt-4 flex items-start text-md text-gray-500 leading-7 text-justify mb-2">1. With an inlets HTTP tunnel server/client, you can specify different domains for different services.</li>
+            <li class="mt-4 flex items-start text-md text-gray-500 leading-7 text-justify mb-2">2. With an inlets TCP tunnel you can expose ports 80 and 443 from a reverse proxy or Ingress Controller to act like a cloud load-balancer.</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:py-6 lg:px-8">
+          <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+            <div class="mt-12 lg:mt-0 lg:col-span-2">
+              <dl class="space-y-10">
+                <div>
+                  <dt class="text-lg leading-6 font-medium text-gray-900">How many domains or sites can I expose over a single tunnel?</dt>
+                  <dd class="mt-2 text-base text-gray-500">If you expose a reverse proxy or a Kubernetes Ingress Controller using a TCP tunnel, then you can expose as many sites as you want.</dd>
+                </div>
+                <div>
+                  <dt class="text-lg leading-6 font-medium text-gray-900">When do I need multiple HTTP tunnels clients?</dt>
+                  <dd class="mt-2 text-base text-gray-500">You can expose as many HTTP endpoints as you like so long as they are reachable by the tunnel client. If your sites are spread across isolated networks, then you would need one per network.</dd>
+                </div>
+                <div>
+                  <dt class="text-lg leading-6 font-medium text-gray-900">Can I connect multiple clients to the same HTTP tunnel server?</dt>
+                  <dd class="mt-2 text-base text-gray-500">Yes, this is possible, even if the tunnel clients are in different networks. Make sure you specify the domain name to use for routing. When the same name is given by multiple clients, the server will load balance</dd>
+                </div>
+                <div>
+                  <dt class="text-lg leading-6 font-medium text-gray-900">Do I need to pay to have high-availability of tunnel clients?</dt>
+                  <dd class="mt-2 text-base text-gray-500">You can have up to three identical replicas of the same inlets tunnel client connected to the same tunnel server, at no additional cost.</dd>
+                </div>
+                <div>
+                    <dt class="text-lg leading-6 font-medium text-gray-900">When should we consider uplink over the stand-alone version?</dt>
+                    <dd class="mt-2 text-base text-gray-500">Inlets uplink is for service providers and SaaS companies who need to create tunnels on a dynamic basis.</dd>
+                </div>
+                <div>
+                    <dt class="text-lg leading-6 font-medium text-gray-900">When do I need multiple TCP tunnels clients?</dt>
+                    <dd class="mt-2 text-base text-gray-500">As a default, a TCP tunnel can only expose ports from a single upstream, however the <pre class="text-gray-800" style="display: inline-block;">inlets-pro sshmux</pre> command can be used to multiplex multiple SSH endpoints or TLS endpoints over one TCP tunnel.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

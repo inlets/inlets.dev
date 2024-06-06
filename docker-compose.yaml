@@ -1,0 +1,11 @@
+version: "3"
+services:
+  inlets-dev-jekyll:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alexellis2/inlets-dev:latest
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - 4000:4000

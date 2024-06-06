@@ -22,7 +22,26 @@ If you use any copyrighted material such as text, code, or images, then you must
 
 ## Usage
 
-## Initial installation
+### Running with docker, when Ruby 2.x is not installed
+
+For live-reloading, you may need to alter the inotify settings for Linux:
+
+```bash
+echo 2048 | sudo tee /proc/sys/fs/inotify/max_user_instances
+sudo sysctl -p
+```
+
+Then bring the site up with:
+
+```bash
+docker-compose up --build
+```
+
+Access the site at: http://127.0.0.1:4000/
+
+When you're finished, run: `docker-compose down`.
+
+### Initial installation to run locally, if Ruby 2.x is installed
 
 You will need node.js in order to install yarn:
 
