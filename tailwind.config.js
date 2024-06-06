@@ -6,6 +6,10 @@ module.exports = {
     typography: {
       default: {
         css: {
+          'p': {
+            'margin-top': '0.75em',
+            'margin-bottom': '0.75em'
+          },
           'code::before': { // Stop quoting inline code blocks
             content: '""',
           },
