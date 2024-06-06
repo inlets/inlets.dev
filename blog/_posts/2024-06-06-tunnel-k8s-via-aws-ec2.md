@@ -15,6 +15,9 @@ Learn how to install an inlets tunnel server to AWS EC2 and expose services from
 
 There are several ways to expose services from Kubernetes with inlets, and there are a number of ways to create inlets tunnel servers. In this guide, we're going back to basics, and will use as little automation as possible, so you can learn how each step works to create a tunnel server and expose a service from within Kubernetes.
 
+![Conceptual architecture](/images/2024-06-k8s-ec2/conceptual.png)
+> Above: exposing Keycloak and Grafana from a private Kubernetes cluster over a single tunnel client and server.
+
 ## Prerequisites
 
 * A Kubernetes cluster running locally or in a private network
