@@ -1,11 +1,12 @@
-name: publish
+name: build
 
 on:
-  push:
-    tags:
-      - '*'
+  pull_request:
     branches:
-    - 'master'
+    - '*'
+  push:
+    branches:
+    - master
 
 permissions:
   contents: read
@@ -14,7 +15,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages-publish"
+  group: "pages-build"
   cancel-in-progress: true
 
 jobs:
@@ -45,17 +46,3 @@ jobs:
       - name: Build site
         run: |
           JEKYLL_ENV=production bundle exec jekyll build -d _site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: actuated-4cpu-8gb
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
