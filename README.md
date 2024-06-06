@@ -31,6 +31,14 @@ echo 2048 | sudo tee /proc/sys/fs/inotify/max_user_instances
 sudo sysctl -p
 ```
 
+Run a `yarn install` locally:
+
+```bash
+sudo npm i -g yarn
+yarn install
+```
+
+
 Then bring the site up with:
 
 ```bash
