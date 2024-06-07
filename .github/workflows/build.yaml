@@ -1,48 +1,50 @@
-name: build
+# AE: Not needed since any push is already build and published automatically.
 
-on:
-  pull_request:
-    branches:
-    - '*'
-  push:
-    branches:
-    - master
+# name: build
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# on:
+#   pull_request:
+#     branches:
+#     - '*'
+#   push:
+#     branches:
+#     - master
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages-build"
-  cancel-in-progress: true
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
-jobs:
-  build:
-    runs-on: actuated-4cpu-8gb
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: inlets/inlets.dev
-          fetch-depth: 1
-      - name: Reset hostedtoolcache permissions
-        run: |
-          sudo mkdir -p /opt/hostedtoolcache
-          sudo chown -R $(whoami) /opt/hostedtoolcache
-      - name: Add rubygems
-        run: |
-          sudo apt install rubygems -y
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.7'
-          bundler-cache: true
-      - name: Add bundler
-        run: |
-          sudo gem install bundler:2.2.13
-      - name: Install deps
-        run: |
-          bundle install && yarn install
-      - name: Build site
-        run: |
-          JEKYLL_ENV=production bundle exec jekyll build -d _site
+# # Allow one concurrent deployment
+# concurrency:
+#   group: "pages-build"
+#   cancel-in-progress: true
+
+# jobs:
+#   build:
+#     runs-on: actuated-4cpu-8gb
+#     steps:
+#       - uses: actions/checkout@v4
+#         with:
+#           repository: inlets/inlets.dev
+#           fetch-depth: 1
+#       - name: Reset hostedtoolcache permissions
+#         run: |
+#           sudo mkdir -p /opt/hostedtoolcache
+#           sudo chown -R $(whoami) /opt/hostedtoolcache
+#       - name: Add rubygems
+#         run: |
+#           sudo apt install rubygems -y
+#       - uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: '2.7'
+#           bundler-cache: true
+#       - name: Add bundler
+#         run: |
+#           sudo gem install bundler:2.2.13
+#       - name: Install deps
+#         run: |
+#           bundle install && yarn install
+#       - name: Build site
+#         run: |
+#           JEKYLL_ENV=production bundle exec jekyll build -d _site
