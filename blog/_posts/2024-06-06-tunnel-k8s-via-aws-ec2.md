@@ -13,7 +13,9 @@ Learn how to install an inlets tunnel server to AWS EC2 and expose services from
 
 ## Introduction
 
-There are several ways to expose services from Kubernetes with inlets, and there are a number of ways to create inlets tunnel servers. In this guide, we're going back to basics, and will use as little automation as possible, so you can learn how each step works to create a tunnel server and expose a service from within Kubernetes.
+There are several ways to expose services from Kubernetes with inlets, and there are a number of ways to create inlets tunnel servers. In this guide, we're going back to basics, and will use as little [automation](https://github.com/inlets/inlets-operator) as possible, so you can learn how each step works to create a tunnel server and expose a service from within Kubernetes.
+
+At the end of the page you can also watch a [walk-through on my YouTube channel](https://www.youtube.com/watch?v=SdKsy35sRNw).
 
 ![Conceptual architecture](/images/2024-06-k8s-ec2/conceptual.png)
 > Above: exposing Keycloak and Grafana from a private Kubernetes cluster over a single tunnel client and server.
@@ -294,5 +296,16 @@ You've now learned how to install an inlets tunnel server to AWS EC2 instance an
 
 If you have multiple Kubernetes clusters, then we would suggest creating one tunnel server per cluster.
 
+There's also a video walk-through available on my YouTube channel, so you can see each step you'll need to take to make this work:
+
+{% include youtube.html id="SdKsy35sRNw" %}
+
 The EC2 instances can be created with automation tools like our [inletsctl](https://docs.inlets.dev/reference/inletsctl/) command-line, or via Terraform, by passing commands into user-data/cloud-init.
+
+In addition to inletsctl, there's a Kubernetes operator for inlets that will automate creating the tunnel server VM, and the tunnel client Deployment within your cluster. It is called the [inlets-operator](https://github.com/inlets/inlets-operator/).
+
+When you use inlets-operator, it manages the lifecycle of the tunnel server and client for you, which means your tunnel server will be deleted if you delete your services or your Kubernetes cluster. For development I find it really quick and easy to use, however for production-quality tunnels, I prefer to set them up with inletsctl or even manually, so that the tunnel server VM will survive the cluster deletion.
+
+![inlets-operator](https://pbs.twimg.com/media/GP3z6QiXoAA1da-?format=jpg&name=large)
+> Pictured: It took around 30s to get a working Load Balancer using Hetzner cloud.
 
