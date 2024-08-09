@@ -25,6 +25,8 @@ One option may be to try and join the node on your home network as a worker in t
 
 So whilst it might look cool to run "kubectl get nodes" and see one that's in your home, and a bunch that are on the cloud, there are more reasons against it than for it.
 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Nothing to see here. Only 65GB of bandwidth consumption from an idle k3s cluster running embedded etcd.<br><br>Anyone else noticed similar? <a href="https://t.co/Q4BVIIHJ7n">pic.twitter.com/Q4BVIIHJ7n</a></p>&mdash; Alex Ellis (@alexellisuk) <a href="https://twitter.com/alexellisuk/status/1583467517670195200?ref_src=twsrc%5Etfw">October 21, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 **So how is inlets different?**
 
 Inlets is well known for exposing local HTTP and TCP services on the Internet, but it can also be used for private tunnels.
