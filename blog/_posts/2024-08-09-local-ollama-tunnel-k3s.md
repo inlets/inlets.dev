@@ -248,13 +248,13 @@ $ kubectl get svc -w
 NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
 kubernetes             ClusterIP      10.245.0.1      <none>           443/TCP          12m
 ollama-tunnel-server   LoadBalancer   10.245.26.4     <pending>        8123:32458/TCP   8s
-ollama-tunnel-server   LoadBalancer   10.245.26.4     68.183.252.239   8123:32458/TCP   2m30s
+ollama-tunnel-server   LoadBalancer   10.245.26.4     157.245.29.186   8123:32458/TCP   2m30s
 ```
 
 Now input the value into the following command run on your workstation:
 
 ```bash
-export EXTERNAL_IP="68.183.252.239"
+export EXTERNAL_IP="157.245.29.186"
 export TOKEN=$(openssl rand -base64 32)
 
 echo $TOKEN > inlets-token.txt
@@ -278,6 +278,19 @@ You can check that the tunnel server has started up properly with:
 
 ```bash
 kubectl logs deploy/ollama-tunnel-server
+```
+
+At this stage, you should have the following on your public cluster:
+
+```
+$ kubectl get service,deploy
+NAME                                   TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
+service/kubernetes                     ClusterIP      10.245.0.1      <none>           443/TCP          110m
+service/ollama-tunnel-server-control   LoadBalancer   10.245.7.92     157.245.29.186   8123:31581/TCP   76m
+service/ollama-tunnel-server-data      ClusterIP      10.245.40.138   <none>           8000/TCP         76m
+
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ollama-tunnel-server   1/1     1            1           88m
 ```
 
 ## 5. Create a HTTPS tunnel client using inlets
@@ -319,8 +332,23 @@ inlets-pro HTTP client. Version: 0.9.32
 Copyright OpenFaaS Ltd 2024.
 2024/08/09 11:49:02 Licensed to: alex <alex@openfaas.com>, expires: 47 day(s)
 Upstream:  => http://ollama-phi3:11434
-time="2024/08/09 11:49:02" level=info msg="Connecting to proxy" url="wss://68.183.252.239:8123/connect"
+time="2024/08/09 11:49:02" level=info msg="Connecting to proxy" url="wss://157.245.29.186:8123/connect"
 time="2024/08/09 11:49:03" level=info msg="Connection established" client_id=91612bca9c0f41c4a313424db9b6a0c7
+```
+
+There will be no way to access the tunneled Ollama service from the Internet, this is by design, only the control-plane is made available to the client on port 8123.
+
+Your local Kubernetes cluster should have the following:
+
+```bash
+$ kubectl get svc,deploy
+NAME                  TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)     AGE
+service/kubernetes    ClusterIP   10.96.0.1     <none>        443/TCP     110m
+service/ollama-phi3   ClusterIP   10.96.128.9   <none>        11434/TCP   106m
+
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/ollama-phi3            1/1     1            1           106m
+deployment.apps/ollama-tunnel-client   1/1     1            1           83m
 ```
 
 ## 6. Invoke the model from the public cluster
