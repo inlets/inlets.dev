@@ -405,6 +405,10 @@ You can now integrate the model into your applications, or develop your own UI o
 
 We exposed the control-plane for the tunnel server over a cloud Load Balancer, however if you have multiple tunnels, you can use a Kubernetes Ingress Controller instead, and direct traffic to the correct tunnel based on the hostname and an Ingress record. If you take this route, just remove the `--auto-tls-san` flags from the inlets-pro command as they will no longer be needed. You can use cert-manager to terminate TLS instead.
 
+If you'd like to see a live demo, watch the video below:
+
+{% include youtube.html id="F_2IIxrGurI" %}
+
 If you enjoyed this post, you can find similar examples in the [inlets docs](https://docs.inlets.dev/), or on the [inlets blog](https://inlets.dev/blog/).
 
 You may also like:
