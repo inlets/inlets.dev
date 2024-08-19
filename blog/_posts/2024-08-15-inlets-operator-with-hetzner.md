@@ -13,11 +13,11 @@ There are two ways to configure inlets to expose an Ingress Controller or Istio 
 
 For teams that are new to inlets, and set up most of their configuration with clicking buttons, installing Helm charts and applying YAML from their workstation or a CI pipeline, then the inlets-operator keeps things simple. Whenever you install the inlets-operator, it searches for LoadBalancer resources and provisions VMs for them with the inlets-pro TCP server preinstalled. It then creates a Deployment in the same namespace with an inlets TCP client pointing to the remote VM, and everything just works.
 
-The downside to the inlets-operator is that if you delete the exposed resource, i.e. ingress-nginx, then the tunnel will be deleted too, and when recreated it will have a different IP address. That means you will need to update your DNS records accordingly.
+The downside to the [inlets-operator](https://github.com/inlets/inlets-operator) is that if you delete the exposed resource, i.e. [ingress-nginx](https://github.com/kubernetes/ingress-nginx), then the tunnel will be deleted too, and when recreated it will have a different IP address. That means you will need to update your DNS records accordingly.
 
 What if you're heavily invested in GitOps, and regularly delete and re-create your cluster's configuration? Then you may want a more stable IP address and set of DNS records, in that case, you can create the VM for the inlets tunnel server manually or semi-automatically with Terraform, Pulumi or our own provisioning CLI called [inletsctl](https://docs.inlets.dev/reference/inletsctl/).
 
-With the inlets-operator, you need to pick a region and supported provider such as AWS EC2, DigitalOcean, or Hetzner Cloud and provide those options via the Helm chart. For a manual tunnel server, you can use any tooling or cloud/VPS provider you wish. We'll be using Hetzner Cloud in this example, which is particularly good value and fast to provision.  
+With the inlets-operator, you need to pick a region and supported provider such as AWS EC2, [DigitalOcean](https://m.do.co/c/2962aa9e56a1), or [Hetzner Cloud](https://www.hetzner.com/cloud/) and provide those options via the Helm chart. For a manual tunnel server, you can use any tooling or cloud/VPS provider you wish. We'll be using Hetzner Cloud in this example, which is particularly good value and fast to provision.  
 
 ## A quick video demo of the operator
 
@@ -29,7 +29,7 @@ In this animation by [Ivan Velichko](https://iximiuz.com/en/posts/kubernetes-ope
 
 <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">About 30s from creating a Service with type LoadBalancer, to a fully working endpoint. And I&#39;m sat in a cafe running KinD with WiFi. <a href="https://t.co/zUV9US7OM0">pic.twitter.com/zUV9US7OM0</a></p>&mdash; Alex Ellis (@alexellisuk) <a href="https://twitter.com/alexellisuk/status/1800863973581136340?ref_src=twsrc%5Etfw">June 12, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-I work from home, and once per week, if work allows, I try to get out to a coffee shop and to work on a blog post there, in different surroundings. On this occasion I decided to update the inlets-operator's support for Hetzner Cloud, and to give it a quick test. You can see from the screenshot that a KinD cluster running on my MacBook Air M2 was able to get a public IP address in about 30 seconds flat.
+I work from home, and once per week, if work allows, I try to get out to a coffee shop and to work on a blog post there, in different surroundings. On this occasion I decided to update the inlets-operator's support for Hetzner Cloud, and to give it a quick test. You can see from the screenshot that a [KinD](https://kind.sigs.k8s.io/) cluster running on my MacBook Air M2 was able to get a public IP address in about 30 seconds flat.
 
 So what's needed? First you'll need an account with Hetzner Cloud, bear in mind Hetzner Robot is the dedicated server offering and needs a different login and account.
 
