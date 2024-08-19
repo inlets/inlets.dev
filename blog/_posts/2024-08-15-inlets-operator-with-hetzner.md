@@ -9,19 +9,19 @@ image: /images/2024-08-15-kubernetes-ingress-hetzner/background.png
 date: 2024-08-15
 ---
 
-There are two ways to configure inlets to expose an Ingress Controller or Istio Gateway to the public Internet, both are very similar, only the lifecycle of the tunnel differs.
+There are two ways to configure inlets to expose an Ingress Controller or Istio Gateway to the public Internet, both are very similar; only the lifecycle of the tunnel differs.
 
 For teams that are new to inlets, and set up most of their configuration with clicking buttons, installing Helm charts and applying YAML from their workstation or a CI pipeline, then the inlets-operator keeps things simple. Whenever you install the inlets-operator, it searches for LoadBalancer resources and provisions VMs for them with the inlets-pro TCP server preinstalled. It then creates a Deployment in the same namespace with an inlets TCP client pointing to the remote VM, and everything just works.
 
-The down-side to the inlets-operator is that if you delete the exposed resource, i.e. ingress-nginx, then the tunnel will be deleted too, and when recreated it will have a different IP address. That means you will need to update your DNS records accordingly.
+The downside to the inlets-operator is that if you delete the exposed resource, i.e. ingress-nginx, then the tunnel will be deleted too, and when recreated it will have a different IP address. That means you will need to update your DNS records accordingly.
 
 What if you're heavily invested in GitOps, and regularly delete and re-create your cluster's configuration? Then you may want a more stable IP address and set of DNS records, in that case, you can create the VM for the inlets tunnel server manually or semi-automatically with Terraform, Pulumi or our own provisioning CLI called [inletsctl](https://docs.inlets.dev/reference/inletsctl/).
 
-With the inlets-operator, you need to pick a region and supported provider such as AWS EC2, DigitalOcean, or Hetzner Cloud and input those options via the Helm chart. For a manual tunnel server, you can use any tooling or cloud/VPS provider you wish. We'll be using Hetzner Cloud in this example, which is particularly good value and fast to provision.  
+With the inlets-operator, you need to pick a region and supported provider such as AWS EC2, DigitalOcean, or Hetzner Cloud and provide those options via the Helm chart. For a manual tunnel server, you can use any tooling or cloud/VPS provider you wish. We'll be using Hetzner Cloud in this example, which is particularly good value and fast to provision.  
 
 ## A quick video demo of the operator
 
-In this animation by [Ivan Velichko](https://iximiuz.com/en/posts/kubernetes-operator-pattern), you see the operator in action. As it detects a new Service of type LoadBalancer, provisions a VM in the cloud, and then updates the Service with the IP address of the VM.
+In this animation by [Ivan Velichko](https://iximiuz.com/en/posts/kubernetes-operator-pattern), you see the operator in action. As it detects a new Service of type LoadBalancer, provisions a VM in the cloud, then updates the Service with the IP address of the VM.
 
 [![Demo GIF](https://iximiuz.com/kubernetes-operator-pattern/kube-operator-example-opt.gif)](https://iximiuz.com/en/posts/kubernetes-operator-pattern)
 
@@ -86,7 +86,7 @@ That will create a service of type LoadBalancer in the default namespace, watch 
 kubectl get service --watch
 ```
 
-How quick was your public IP displayed here?
+How quickly did your public IP appear?
 
 There's also a Custom Resource Definition (CRD) for the inlets-operator, you can view it with:
 
@@ -118,11 +118,11 @@ Using a single tunnel and a single license, you can expose dozens, if not hundre
 
 The inlets-operator works with [different clouds](https://docs.inlets.dev/reference/inlets-operator) and can expose any TCP LoadBalancer, not just Ingress Controllers and Istio.
 
-Bear in mind that the tunnel IP and DNS records will be tied to the lifecycle of your LoadBalancer services, so if you delete them, the VMs will be deleted too, and if you re-create them, then they'll be re-created with a new IP addresses. For that reason, you may want to [create the tunnel servers manually](https://docs.inlets.dev/tutorial/manual-tcp-server/), or separately from the inlets-operator.
+Bear in mind that the tunnel IP and DNS records will be tied to the lifecycle of your LoadBalancer services, so if you delete them, the VMs will be deleted too, and if you re-create them, then they'll be re-created with a new IP address. For that reason, you may want to [create the tunnel servers manually](https://docs.inlets.dev/tutorial/manual-tcp-server/), or separately from the inlets-operator.
 
 The `inlets-pro tcp server --generate=systemd` and `inlets-pro tcp client --generate=k8s_yaml` are two utility commands to make it easier to set up both parts of the tunnel without needing the operator.
 
-The operator will also need credentials to provision and clean-up VMs, that's another thing to consider when deciding which approach to use.
+The operator will also need credentials to provision and clean up VMs, that's another thing to consider when deciding which approach to use.
 
 The code for the inlets-operator is open source under the MIT license and available on GitHub: [inlets/inlets-operator](https://github.com/inlets/inlets-operator/).
 
