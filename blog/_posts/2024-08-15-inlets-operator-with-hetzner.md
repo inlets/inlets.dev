@@ -124,7 +124,7 @@ The `inlets-pro tcp server --generate=systemd` and `inlets-pro tcp client --gene
 
 The operator will also need credentials to provision and clean-up VMs, that's another thing to consider when deciding which approach to use.
 
-The code for the inlets-operator is open source under the MIT license and available on GitHub: [inlets/inlets-operator](https://github.com/inlets/inlets-operator/)
+The code for the inlets-operator is open source under the MIT license and available on GitHub: [inlets/inlets-operator](https://github.com/inlets/inlets-operator/).
 
 ### Watch a video walk-through
 
