@@ -68,6 +68,20 @@ Imagine that you'd forwarded Postgres database from a customer site `acmeco` to 
 psql -U postgres -h prod.acmeco -p 25060 -d finance --set=sslmode=require
 ```
 
+### Two or more HTTP tunnels over the same tunnel
+
+You can now tunnel multiple HTTP services over the same tunnel, just make sure the HTTP host header is sent to port 8000 when you access the tunnel server's ClusterIP service from within Kubernetes.
+
+Kubiya.ai uses this approach to command & control remote OpenFaaS installations. The REST API is exposed via one Host header, and the Prometheus metrics are accessed via another.
+
+Here's how it looks:
+
+```bash
+inlets-pro uplink client \
+  --upstream prometheus.tenant1=http://127.0.0.1:9090 \
+  --upstream openfaas.tenant1=http://127.0.0.1:8080
+```
+
 ### Multiple TCP hosts and port remapping
 
 You can now tunnel multiple TCP upstream hosts over one tunnel, publishing different ports:
