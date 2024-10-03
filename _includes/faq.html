@@ -22,17 +22,18 @@
                     {% include faq/section.html heading="Can I try before I buy?" text="You can purchase a monthly subscription on a month-by-month basis and convert to yearly later for a discount." %}
                     {% include faq/section.html heading="Do I have to expose my applications on the Internet?" text="No, inlets Pro can bind to a private or local ethernet adapter. In that case, only the control-plane for the inlets client is available." %}
                     {% include faq/section.html heading="How does the license work?" text="For Gumroad subscriptions, you will receive a license token from Gumroad and need connectivity to validate the license upon startup. For an offline license, you will receive a JWT." %}
-                    {% include faq/section.html heading="What happens when my license expires?" text="For personal users and small businesses the client will continue to run until restarted, you should renew with ample notice." %}
+                    {% include faq/section.html heading="What happens when my license expires?" text="The client will crash after an initial grace period, or if restarted will not come up again. Renew in advance for static licenses, or keep your credit card up to date with Gumroad." %}
                     {% include faq/section.html heading="What is a tunnel-pair?" text="A \"tunnel-pair\" is an inlets Pro client and server - both parts form a tunnel. inlets Pro is self-hosted software." %}
                     {% include faq/section.html heading="Can I use my personal license at work and at home?" text="You can use your personal license at work for ad-hoc tunnels for webhooks and collaboration, but not as a part of the business or product. <a class=\"underline inlets-blue-900\" href=\"/pricing\">Read more</a>." %}
                 </div>
                 <div class="mt-12 md:mt-0">
                     {% include faq/section.html heading="How do I pay for inlets Pro?" text="You may can purchase a subscription from the <a class=\"underline inlets-blue-900\" href=\"/pricing\">Pricing page</a>." %}
                     {% include faq/section.html heading="Where can I use inlets Pro?" text="inlets Pro can be used in any network because the client makes an outbound connection first to establish its link. This includes: NAT, Carrier Grade NAT (CGN), VPCs, containers, Kubernetes and even hotel WiFi." %}
-                    {% include faq/section.html heading="Is inlets Open Source?" text="inlets Pro has a commercial license. <a href=\"https://github.com/inlets/\" class=\"underline inlets-blue-900\">inlets-operator and inletsctl</a> are all licensed as MIT." %}
+                    {% include faq/section.html heading="Is inlets Open Source?" text="inlets Pro has a commercial license. <a href=\"https://github.com/inlets/\" class=\"underline inlets-blue-900\">inlets-operator and inletsctl automation tools</a> are both licensed as MIT." %}
                     {% include faq/section.html heading="Can I pay for inlets Pro monthly?" text="Yes, or pay annually for a discount." %}
                     {% include faq/section.html heading="What if I want to add more \"tunnel-pairs\" during a period?" text="You can upgrade your subscription to the correct amount of tunnels at any time." %}
-                    {% include faq/section.html heading="Does inlets Pro \"call home\"?" text="We trust our users to purchase the correct license, and upgrade if they exceed the tier usage. There is no \"call home\" mechanism at present." %}
+                    {% include faq/section.html heading="Does inlets Pro \"call home\"?" text="We trust our users to purchase the correct license, and upgrade if they exceed the tier usage. There is no \"call home\" mechanism in the stand-alone version. Inlets Uplink reports the total amount of tunnels." %}
+                    {% include faq/section.html heading="What is the End User License Agreement for inlets?" text="<a href=\"https://github.com/inlets/inlets-pro/blob/master/EULA.md\" class=\"underline inlets-blue-900\">View EULA.</a>" %}
                 </div>
             </dl>
         </div>
