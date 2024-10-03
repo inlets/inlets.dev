@@ -356,7 +356,7 @@ If you'd like to know moreabout inlets-cloud, or try a demo, then get in touch a
 
 Want to try inlets Pro for yourself?
 
-Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
+Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more about the options on the [pricing page](https://inlets.dev/pricing).
 
 Use-cases:
 

@@ -225,7 +225,7 @@ We've now set up a self-hosted tunnel server and can use it whenever we like. in
 
 > What did you expose? Tweet to [@inletsdev](https://twitter.com/inletsdev) and we'll give the first 5 people 10% off a personal license.
 
-Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more or take out a free trial on [the homepage](https://inlets.dev/).
+Did you know that the personal license can now be used at work? inlets Pro has two options for licensing - either a personal license or a commercial license. You can learn more on the [pricing page](https://inlets.dev/pricing).
 
 Use-cases:
 
