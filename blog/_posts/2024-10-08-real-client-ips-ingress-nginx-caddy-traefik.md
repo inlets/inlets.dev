@@ -29,7 +29,11 @@ Add `--proxy-protocol=v2` to the `ExecStart` line, if it's already present with 
 
 The v2 protocol is widely supported and more efficient than v1, since it sends text in a binary format, not in a human-readable format.
 
+This article assumes that you are running the `inlets-pro tcp server` process directly on an Internet-facing host. If you are running it behind a cloud load-balancer, you'll need to add the `--lb-proxy-protocol` flag to the inlets-pro server specifying the protocol version sent by the load-balancer. The rest of the article applies in the same way.
+
 ## Real IPs for Caddy
+
+Caddy can be installed quickly, including its systemd unit file, special caddy user, and extra directories with the `arkade system install caddy` command. You can also use a custom build, or run through all the manual steps yourself from the [Caddy documentation](https://caddyserver.com/docs/getting-started).
 
 I've included this section for when you want to run a reverse proxy in a VM, container, or directly on your machine. The other examples are focused on running a reverse proxy in Kubernetes, called an Ingress Controller. For instance, you may be running OpenFaaS via [faasd CE](https://github.com/openfaas/faasd). In that case, Caddy is a quick way to get TLS termination for your OpenFaaS functions, and anything else you are running in your setup like Grafana.
 
@@ -66,6 +70,8 @@ You'll see I've also included an upstream for `orders.example.com` which is a pl
 
 
 ## Real IPs for ingress-nginx
+
+I sent to install ingress-nginx via arkade, with `arkade install ingress-nginx`. This is similar to applying the static YAML that is available in the [project's documentation](https://kubernetes.github.io/ingress-nginx/deploy/).
 
 The [ingress-nginx documentation site](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-proxy-protocol) explains the various settings that can be configured for an installation of ingress-nginx. One of those options is for Proxy Protocol. You don't need to set a version, just set it to `true` and either version will be accepted.
 
@@ -138,5 +144,15 @@ kubectl delete -n kube-system service traefik
 
 I wanted this article to be a short and sweet reference for you, on how to configure the most popular reverse proxies to accept the Proxy Protocol header, so that your applications can get the real client IP.
 
+If you're running an alternative Kubernetes Ingress Controller, [Istio Gateway](https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/#proxy-protocol), or a stand-alone proxy, all you need to do after configuring the `inlets-pro tcp server` is to enable the Proxy Protocol support using the appropriate settings.
+
 If you have any questions or suggestions, please feel free to reach out. Whenever you sign up for a subscription for inlets, you'll get an invite to our Discord community. If you signed up some time, ago reach out via the form on the website and we'll get you an invite.
 
+See also:
+
+* [K3sup - install K3s remotely via SSH](https://k3sup.dev)
+* [inletsctl - automate cloud hosts for inlets-pro servers](https://inlets.dev/docs/inletsctl/)
+* [arkade - Open Source Marketplace For Developer Tools](https://github.com/alexellis/arkade)
+* [Caddy - the HTTP/2 web server with automatic HTTPS](https://caddyserver.com)
+* [Ingress Nginx - Ingress controller for Kubernetes](https://kubernetes.github.io/ingress-nginx/)
+* [Traefik - The Cloud Native Edge Router](https://traefik.io)
