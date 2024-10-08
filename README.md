@@ -121,3 +121,14 @@ arch -arch x86_64 $GEM_HOME/bin/bundle install
 arch -arch x86_64 $GEM_HOME/bin/bundle exec jekyll serve
 ```
 
+## Running in Docker
+
+If you have had some issues installing the various gems, then you can use Docker instead:
+
+```bash
+docker-compose up
+```
+
+Then access the site at http://127.0.0.1:4000
+
+
