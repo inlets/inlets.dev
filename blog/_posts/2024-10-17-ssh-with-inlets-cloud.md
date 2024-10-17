@@ -141,6 +141,25 @@ For instance, if you were running a Node.js application on port 3000 on the remo
 ssh -L 3000:127.0.0.1:3000 nuc.example.com
 ```
 
+If you have a Kubernetes cluster on the remote machine, you can port-forward services from it to your local machine, whilst on a different network. For instance, if the remote cluster is running [OpenFaaS CE](http://openfaas.com), and you wanted to access its Prometheus dashboard, you could do this:
+
+```bash
+ssh -L 9090:127.0.0.1:9090 nuc.example.com
+# kubectl port-forward -n openfaas svc/prometheus 9090:9090
+```
+
+Then open a browser to `http://localhost:9090` to access the Prometheus dashboard.
+
+You can specify multiple hosts and ports, i.e. for both Prometheus and the OpenFaaS gateway:
+
+```bash
+ssh -L 9090:127.0.0.1:9090 \
+    -L 8080:127.0.0.1:8080 \
+    nuc.example.com
+# kubectl port-forward -n openfaas svc/prometheus 9090:9090 &
+# kubectl port-forward -n openfaas svc/gateway 8080:8080 &
+```
+
 Of course you can also copy files with `scp` or use `rsync` over the SSH connection.
 
 Copy a single remote file to your host:
