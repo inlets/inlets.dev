@@ -180,9 +180,13 @@ The port override for `443` is not necessary since the .ssh/config file will han
 
 You've now got a secure way to access any host on your network, without needing to host a tunnel server, or to set up a VPN. This is a great way to access your home network, or to provide support to friends and family.
 
+**Adding extra hosts**
+
 Any time you want to add or remove a host, you can do so via the inlets-cloud dashboard, by navigating to the "Tunnels" page and editing the list of domains. Then make sure you have an entry in your sshmux config file, and restart it with the new configuration.
 
 Access is completely private, there is no way to decrypt the SSH traffic, and it gets passed directly on to your own machine inside your local network.
+
+**IP filtering/allow list**
 
 For taking things further, sshmux also supports an IP allow list, which will be available in inlets-cloud shortly, or which you can use already today with the self-hosted version of inlets-pro.
 
@@ -196,3 +200,6 @@ upstreams:
     - 35.202.222.154
 ```
 
+Watch a video walk-through of this tutorial:
+
+{% include youtube.html id="ws3-VlL2884" %}
