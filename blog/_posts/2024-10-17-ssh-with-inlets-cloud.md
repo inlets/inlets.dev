@@ -190,7 +190,7 @@ Access is completely private, there is no way to decrypt the SSH traffic, and it
 
 **IP filtering/allow list**
 
-For taking things further, sshmux also supports an IP allow list, which will be available in inlets-cloud shortly, or which you can use already today with the self-hosted version of inlets-pro.
+For taking things further, sshmux also supports an IP allow list, which is available for inlets-cloud and self-hosted tunnels.
 
 If the IP for your mobile hotspot was 35.202.222.154, you could write the following to restrict access to `nuc.example.com` to only yourself:
 
@@ -201,6 +201,8 @@ upstreams:
     allowed:
     - 35.202.222.154
 ```
+
+Then just add a `--proxy-protocol` argument to the `inlets-pro sshmux` command before restarting the command. You can use `v1` or `v2` as the argument, just make sure it is the same as the one you selected for the tunnel server.
 
 Watch a video walk-through of this tutorial:
 
