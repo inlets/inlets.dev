@@ -110,6 +110,8 @@ inlets-pro sshmux server \
     config.yaml
 ```
 
+Now switch to a machine you'll use to connect to the SSH services. This can be the same host for the sake of testing, but would probably be your laptop.
+
 SSH does not support using a SNI header, or a TLS hostname, so we use sshmux to wrap the traffic with this header.
 
 You can use the `openssl` tool for this, or our convenience command `inlets-pro sshmux connect`.
