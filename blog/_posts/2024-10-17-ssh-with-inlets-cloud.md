@@ -44,6 +44,20 @@ You will of course need to follow the general security advise on hardening SSH, 
 * OpenSSH set up on one or more machines in your private network, follow the usual security precautions like disabling *Root access* and *Password authentication*
 * An inlets cloud account, you can sign up for free at [cloud.inlets.dev](https://cloud.inlets.dev)
 
+## Install the inlets-pro client
+
+Since the inlets-pro tunnel server will be hosted for us, we only need to download the inlets-pro client.
+
+If you haven't already, install the inlets-pro client:
+
+```bash
+curl -sLSf https://get.arkade.dev | sudo sh
+
+arkade get inlets-pro
+```
+
+Alternatively, download the binary from the [inlets-pro releases page](https://github.com/inlets/inlets-pro/releases).
+
 ## Create a tunnel on inlets-cloud
 
 Create a new tunnel, the name is not important, but the list of sub-domains is, this is where you add one entry for each host you want to access.
@@ -70,19 +84,7 @@ inlets-pro uplink client \
 
 We remap any incoming requests to the hosted server on port 443, to port 8443, which is the default port for sshmux.
 
-Run the command to start the tunnel, it should day "Connection established".
-
-## Install the inlets-pro client
-
-If you haven't already, install the inlets-pro client:
-
-```bash
-curl -sLSf https://get.arkade.dev | sudo sh
-
-arkade install inlets-pro
-```
-
-Alternatively, download the binary from the [inlets-pro releases page](https://github.com/inlets/inlets-pro/releases).
+Run the command to start the tunnel, when connected, you'll see the text: "Connection established".
 
 ## Start sshmmux
 
