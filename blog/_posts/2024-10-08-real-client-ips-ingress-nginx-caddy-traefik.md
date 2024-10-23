@@ -4,6 +4,8 @@ title: Get Real Client IPs with Ingress Nginx, Caddy or Traefik
 description: Whether you're running a reverse proxy directly on a host, or an Ingress Controller in Kubernetes, you can get the real client IP with inlets.
 author: Alex Ellis
 tags: load-balancer ingress-controller reverse-proxy proxy-protocol
+category: tutorial
+rollup: true
 author_img: alex
 image: /images/2024-10-real-ips/background.png
 date: 2024-10-08
