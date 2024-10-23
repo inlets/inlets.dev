@@ -1,7 +1,10 @@
 FROM ruby:2.7
-
-RUN curl -sLS https://get.arkade.dev | sh && \
-    arkade system install node
+ENV PATH=$PATH:/usr/local/bin/
+USER root 
+# RUN curl -sLS https://get.arkade.dev | sh
+RUN curl -SLs https://github.com/alexellis/arkade/releases/download/0.11.28/arkade-arm64 -o /usr/local/bin/arkade && find /usr/local/bin/ \
+    && chmod +x /usr/local/bin/arkade
+RUN arkade system install node
 
 WORKDIR /srv/jekyll
 

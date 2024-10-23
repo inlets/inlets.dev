@@ -24,12 +24,16 @@ If you use any copyrighted material such as text, code, or images, then you must
 
 ### Running with docker, when Ruby 2.x is not installed
 
-For live-reloading, you may need to alter the inotify settings for Linux:
+For Linux:
+
+Update the inotify settings:
 
 ```bash
 echo 2048 | sudo tee /proc/sys/fs/inotify/max_user_instances
 sudo sysctl -p
 ```
+
+For MacOS/Linux:
 
 Run a `yarn install` locally:
 
@@ -37,7 +41,6 @@ Run a `yarn install` locally:
 sudo npm i -g yarn
 yarn install
 ```
-
 
 Then bring the site up with:
 
