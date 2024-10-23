@@ -4,6 +4,8 @@ title: SSH Into Any Private Host With Inlets Cloud
 description: Inlets Cloud is a SaaS hosted version of inlets that can give you SSH access to any host on your network.
 author: Alex Ellis
 tags: ssh remoteaccess inletscloud support
+category: tutorial
+rollup: true
 author_img: alex
 image: /images/2024-10-inlets-cloud-ssh/background.jpg
 date: 2024-10-17

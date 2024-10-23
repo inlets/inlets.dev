@@ -4,6 +4,8 @@ title: Create Highly Available Tunnels With A Load Balancer
 description: Learn how to create a highly available inlets tunnel with a load balancer, and Proxy Protocol support, to get source IP addresses.
 author: Alex Ellis
 tags: ha architecture reference load-balancer
+category: tutorial
+rollup: true
 author_img: alex
 image: /images/2024-09-ha-tunnels/background.png
 date: 2024-09-02
