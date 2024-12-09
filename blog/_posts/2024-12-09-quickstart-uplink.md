@@ -218,7 +218,8 @@ Then get the connection string, you can format this as a CLI command or as Kuber
 ```sh
 inlets-pro tunnel connect \
     fileserver \
-    --domain us1.uplink.example.com
+    --namespace inlets \
+    --domain https://$CLIENT_ROUTER_DOMAIN
 ```
 
 The default output is for a CLI command you can run on your machine:
@@ -290,17 +291,20 @@ docker run --rm --name postgres \
   -ti postgres:latest
 ```
 
-*Connect with an inlets uplink client*
+**Connect with an inlets uplink client**
 
 ```bash
-inlets-pro connect \
-    --url wss://us1.uplink.example.com/inlets/db1 \
+inlets-pro tunnel connect db1 \
+    --namespace inlets \
+    --domain https://$CLIENT_ROUTER_DOMAIN \
     --upstream 127.0.0.1:5432
 ```
 
-Run the above command on your local machine.
+Run the above command on your local machine to generate the tunnel client command.
 
-*Access the customer database from within Kubernetes*
+Then run it on your local machine to connect to the tunnel.
+
+**Access the customer database from within Kubernetes**
 
 Now that the tunnel is established, you can connect to the customer's Postgres database from within Kubernetes using its ClusterIP `db1.inlets.svc.cluster.local`:
 
@@ -386,9 +390,9 @@ You can build a connection command using the `inlets-pro tunnel connect` command
 export CLIENT_ROUTER=us1.uplink.example.com
 
 inlets-pro tunnel connect kube1 \
-    --domain $CLIENT_ROUTER \
-    --format k8s_yaml \
     --namespace inlets \
+    --domain https://$CLIENT_ROUTER_DOMAIN \
+    --format k8s_yaml \
     --upstream kubernetes.default.svc:443 > kube1-client.yaml
 ```
 
