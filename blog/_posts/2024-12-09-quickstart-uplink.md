@@ -459,12 +459,15 @@ Once you have services such as Postgresql, SSH, Ollama, the Kubernetes API serve
 
 This means that all CLIs, tools, and products that work with whatever you've tunneled can be used without modification.
 
-* Perhaps you manage many databases? Use pgdump and pgrestore to backup and restore databases.
-* Do you deploy to Kubernetes? Use kubectl, Helm, ArgoCD, or Flux to deploy applications, just run them in-cluster
-* Do you write your own Kubernetes operators for customers? Just provide the updated KUBECONFIG to your Kubernetes operators and controllers
-* Do you want to access GPUs hosted on Lambda Labs, Paperspace, or your own datacenter? Command and control your GPU instances from your management cluster
-* Do you have a powerful GPU somewhere and want to infer against it using your central cluster? Run ollama remotely, and tunnel its REST API back
-* Do you have many different edge devices? Tunnel SSHD and run Ansible, Puppet, or bash scripts against them just as if they were on your local network
+**Common uses-cases for inlets-uplink**
+
+* Do you have an agent for your SaaS product, that customers need to run on private networks? Access it via a tunnel.
+* Perhaps you manage a number of remote databases? Use pgdump and pgrestore to backup and restore databases.
+* Do you deploy to Kubernetes? Use kubectl, Helm, ArgoCD, or Flux to deploy applications, just run them in-cluster.
+* Do you write your own Kubernetes operators for customers? Just provide the updated KUBECONFIG to your Kubernetes operators and controllers.
+* Do you want to access GPUs hosted on Lambda Labs, Paperspace, or your own datacenter? Command and control your GPU instances from your management cluster.
+* Do you have a powerful GPU somewhere and want to infer against it using your central cluster? Run ollama remotely, and tunnel its REST API back.
+* Do you have many different edge devices? Tunnel SSHD and run Ansible, Puppet, or bash scripts against them just as if they were on your local network.
 
 In the documentation you can learn more about managing, monitoring and automating tunnels.
 
