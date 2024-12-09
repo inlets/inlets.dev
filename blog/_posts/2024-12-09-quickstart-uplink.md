@@ -317,6 +317,8 @@ Try a command such as `CREATE database websites (url TEXT)`, `\dt` or `\l`.
 
 ### Create a TCP tunnel using the REST API
 
+You can view the reference documentation for the REST API for Inlets Uplink here: [REST API](https://docs.inlets.dev/uplink/rest-api/)
+
 This example will tunnel a private Kubernetes cluster to your management cluster for administration or automation through tools such as kubectl, ArgoCD, Helm, Flux, or your own Kubernetes operators.
 
 If you don't use Kubernetes, you can still try out the commands, then delete the tunnel without connecting to it.
@@ -468,7 +470,8 @@ Would you like a demo, or to speak to our team? [Reach out here for a meeting](h
 
 See also:
 
-* [Inlets Uplink docs](https://docs.inlets.dev/uplink/)
+* [Inlets Uplink documentation](https://docs.inlets.dev/uplink/)
+* [Inlets Uplink REST API](https://docs.inlets.dev/uplink/rest-api/)
 * [Monitor Inlets Uplink tunnels](https://docs.inlets.dev/uplink/monitoring-tunnels/)
 * [Expose a Kubernetes API Server via inlets](https://docs.inlets.dev/tutorial/kubernetes-api-server/)
 * [Expose Inlets Uplink tunnels publicly for Ingress](https://docs.inlets.dev/uplink/ingress-for-tunnels/)
