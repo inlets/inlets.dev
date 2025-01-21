@@ -40,7 +40,11 @@ By default, each HTTP and TCP endpoint is kept private, and can only be accessed
 
 This approach is ideal for managing customer endpoints or internal services that are hosted in private or hard to reach environments.
 
-For hosting providers, like [inlets cloud](https://inlets.dev/cloud), additional features can be enabled to make the data plane for tunnels available on the public Internet.
+For hosting providers, where you want some or all of the tunnels to be publicly accessible, you can turn on the "data router" component and use Kubernetes Ingress or Istio to route traffic from your custom domains to the tunnel server.
+
+When exposing tunnels to the Internet, you can create a new Ingress record for each domain, or use a wildcard domain so that a single Ingress record and TLS certificate can serve all tunnels. Learn more in: [Ingress for Tunnels](https://docs.inlets.dev/uplink/ingress-for-tunnels/).
+
+Our [inlets cloud](https://inlets.dev/cloud) product is built on top of multiple inlets uplink installations in different regions around the world. Our UI makes use of the REST API (client-api) that's built into inlets uplink.
 
 ## Quick start
 
