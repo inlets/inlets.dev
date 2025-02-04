@@ -256,7 +256,9 @@ Exposing an application behind inlets requires no additional effort or changes t
 
 The majority of the steps we covered were due to the need to turn off the self-signed certificate within ArgoCD, and to obtain a certificate from Let's Encrypt instead. This is a good practice for any application that is exposed to the Internet. The certificates are trusted by most PCs already, are free to obtain, and rotated regularly.
 
-We tend to prefer ingress-nginx for its simplicity and ease of use. The ArgoCD covers how to use ingress-nginx and other Ingress controllers: [Docs: ArgoCD Ingress Configuration](https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/).
+Both Istio and Ingress are common options for routing traffic and managing TLS termination. We covered Istio here to help customers who are already using Istio. We tend to prefer ingress-nginx ourselves for its simplicity and ease of use.
+
+The ArgoCD documentation covers how to use ingress-nginx and other Ingress controllers: [Docs: ArgoCD Ingress Configuration](https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/).
 
 [Arkade](https://github.com/alexellis/arkade) was used to install various Helm charts and CLIs purely for brevity, but you can use whatever tools you prefer to install them including Helm, brew or curl.
 
