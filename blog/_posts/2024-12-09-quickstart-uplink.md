@@ -42,7 +42,7 @@ This approach is ideal for managing customer endpoints or internal services that
 
 For hosting providers, where you want some or all of the tunnels to be publicly accessible, you can turn on the "data router" component and use Kubernetes Ingress or Istio to route traffic from your custom domains to the tunnel server.
 
-When exposing tunnels to the Internet, you can create a new Ingress record for each domain, or use a wildcard domain so that a single Ingress record and TLS certificate can serve all tunnels. Learn more in: [Ingress for Tunnels](https://docs.inlets.dev/uplink/ingress-for-tunnels/).
+When exposing tunnels to the Internet, you can create a new Ingress record for each domain, or use a wildcard domain so that a single Ingress record and TLS certificate can serve all tunnels. Learn more in: [Expose Tunnels to the Internet](https://docs.inlets.dev/uplink/expose-tunnels/).
 
 Our [inlets cloud](https://inlets.dev/cloud) product is built on top of multiple inlets uplink installations in different regions around the world. Our UI makes use of the REST API (client-api) that's built into inlets uplink.
 
@@ -76,12 +76,21 @@ kubectl get svc ingress-nginx-controller -n ingress-nginx
 
 This will be an IP address or a DNS name, some provides such as AWS EKS will provide a DNS name. Create DNS A records in the next step if you received an IP address, otherwise create CNAME records.
 
+### What needs to be public?
+
+The only service that needs to be public is the client-router, which is used by the `inlets-pro uplink client` command via its `--url wss://` flag.
+
+The client-api can be kept private and accessed from within the cluster over HTTP, or it can be turned off completely. If you only intend to manage tunnels via the `inlets-pro tunnel` CLI, or the Kubernetes CRD (with Helm, ArgoCD, or kubectl), then the client-api can be disabled.
+
+Tunneled services will only be accessible via ClusterIP from within the Kubernetes cluster, so they are private by default. If needed, you can [Expose them on the Internet](https://docs.inlets.dev/uplink/expose-tunnels/) by following separate instructions.
+
 ### Configure the uplink Helm chart
 
 Create two DNS A or CNAME records to the IP or DNS name given in the previous step:
 
 1. The first is for the client-api, this is the REST API that can be used to manage tunnels - `us1.uplink.example.com`
 2. The second is for the client-router, this is the public endpoint that the inlets client will use - `clientapi.us1.uplink.example.com`
+
 
 Next, edit values.yaml:
 
@@ -485,5 +494,5 @@ See also:
 * [Inlets Uplink REST API](https://docs.inlets.dev/uplink/rest-api/)
 * [Monitor Inlets Uplink tunnels](https://docs.inlets.dev/uplink/monitoring-tunnels/)
 * [Expose a Kubernetes API Server via inlets](https://docs.inlets.dev/tutorial/kubernetes-api-server/)
-* [Expose Inlets Uplink tunnels publicly for Ingress](https://docs.inlets.dev/uplink/ingress-for-tunnels/)
+* [Expose Inlets Uplink tunnels publicly for Ingress](https://docs.inlets.dev/uplink/expose-tunnels/)
 
