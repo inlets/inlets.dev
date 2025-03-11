@@ -47,7 +47,7 @@ For the tunnel client make sure you have the [`inlets-pro` binary](https://githu
 
 ## Connect the tunnel client
 
-In this example we will be exposing a Prometheus server so people can access the UI and HTTP API to explore metrics. 
+In this example we will be exposing [Prometheus](https://prometheus.io/), which is a popular open source tool for monitoring and alerting. We chose it because it has a web interface, and an API exposed over the same port. It does have some of its own built-in options for authentication, but when we use it with inlets, we can bypass authentication for our own local use, and only enforce it for remote users.
 
 Expose the Prometheus upstream without any authentication enabled:
 
