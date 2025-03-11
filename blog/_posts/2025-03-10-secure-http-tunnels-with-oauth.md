@@ -94,7 +94,7 @@ When trying to access the URl of the tunnel service, users will be asked to logi
 
 The simplest form of authentication supported by Inlets is basic authentication. Enabling basic authentication on the tunnel will protect the HTTP service with a username and password.
 
-When a user visits the URl of the tunneled service they will be prompted for a username and password before they are able to access the application.
+When a user visits the URL of the tunneled service they will be prompted for a username and password before they are able to access the application.
 
 Basic auth can be enabled for a tunnel by setting the basic auth flags when connecting the tunnel client.
 
