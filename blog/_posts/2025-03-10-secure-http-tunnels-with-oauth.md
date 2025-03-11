@@ -22,6 +22,22 @@ At the moment of writing Inlets support three forms of authentication:
 
 We will be showing you how to configure each of these authentication methods.
 
+## When would you want to secure your tunnel?
+
+If you're exposing an application for production, you may want to build authentication directly into your application.
+
+However, during development and whilst collaborating with others, you may want to restrict access to a limited audience.
+
+* You're working on a blog post draft, but only want your team mates to view it due to an embargo or because it contains confidential information.
+* You're iterating on an API, and a reverse proxy usually provides authentication. It doesn't make sense to run that locally, but you still need to restrict access.
+* When someone's helping you with remote support. You want to expose your router's admin interface, but need to restrict access to certain people.
+* You're running internal development tools like Grafana dashboards or staging environments that shouldn't be publicly accessible
+* You need to demo work to clients or stakeholders, but want to ensure only they can access it
+* You're exposing temporary debugging endpoints or admin interfaces that need to be secured
+* You're sharing access to local development environments like an IDE with remote team members but need to maintain security
+
+In addition to all of the above, you can also restrict access by IP address using an [IP allow list](https://docs.inlets.dev/tutorial/ip-filtering/).
+
 ## Prerequisites
 
 We assume you have an Inlets HTTP tunnel server deployed. If you don't have a tunnel yet follow our docs to [create a new HTTP tunnel server](https://docs.inlets.dev/tutorial/automated-http-server/).
