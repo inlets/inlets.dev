@@ -48,6 +48,10 @@ For Grafana, that is likely going to be: `http://127.0.0.1:3000`, but if that we
 
 You'll then be able to access your service at `https://prickly-hedgehog.try-inlets.dev` or whatever name you chose.
 
+I recorded a quick video walk-through to show you just how quick and easy this approach can be:
+
+{% include youtube.html id="oZ_Pph-Go2U" %}
+
 ### 2. HTTP to HTTPS with your own custom domain
 
 First of all, create a new domain and verify it by creating a TXT record in your DNS provider. If you don't have a domain yet, we'd recommend trying out Cloudflare or Namecheap, both of which are easy to set up and have a free tier.
