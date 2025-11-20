@@ -64,7 +64,7 @@ It also has automation to get a TLS certificate set-up, as nobody really wants t
 And if you're running on your own hardware, or on-premises, you can use the [inlets-operator](https://github.com/inlets/inlets-operator) to expose it on the Internet securely.
 
 ```bash
-export LICENSE="INLETS_PRO_LICENSE_JWT"
+export LICENSE="INLETS_PRO_LICENSE_TEXT"
 
 arkade install inlets-operator \
  --provider digitalocean \
