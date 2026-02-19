@@ -59,8 +59,7 @@ inletsctl create \
     --region lon1 \
     --access-token-file $HOME/.config/doctl/access-token \
     --tunnel-name keycloak \
-    --letsencrypt-domain $DOMAIN \
-    --letsencrypt-email webmaster@$DOMAIN
+    --letsencrypt-domain $DOMAIN
 ```
 
 I used an access token from DigitalOcean above, but you can also create tunnels on AWS, Azure, Google Cloud, Linode and others, just see the reference guide for how to create an access token for each.

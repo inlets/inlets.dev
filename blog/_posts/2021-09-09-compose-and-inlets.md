@@ -78,7 +78,6 @@ inletsctl create \
   --provider linode \
   --region us-east \
   --access-token-file $HOME/linode-key.txt \
-  --letsencrypt-email webmaster@$DOMAIN \
   --letsencrypt-domain $DOMAIN
 ```
 

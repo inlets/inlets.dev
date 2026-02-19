@@ -50,7 +50,6 @@ By using our open source [inletsctl](https://github.com/inlets/inletsctl) tool, 
 inletsctl create --provider digitalocean \
   --region lon1 \
   --letsencrypt-domain blog.example.com \
-  --letsencrypt-email webmaster@example.com \
   --access-token-file ~/do-token
 ```
 

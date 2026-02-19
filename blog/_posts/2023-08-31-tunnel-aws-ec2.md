@@ -69,8 +69,7 @@ inletsctl create \
   --access-token-file ~/.inlets/ec2-access-key \
   --region eu-west-1 \
   --aws-key-name inlets \
-  --letsencrypt-domain blog.example.com \
-  --letsencrypt-email webmaster@example.com
+  --letsencrypt-domain blog.example.com
 ```
 
 The region that you specify here, must match the region where you created your SSH Key Pair, otherwise it will not be found. The `--aws-key-name` flag is optional, but recommended.

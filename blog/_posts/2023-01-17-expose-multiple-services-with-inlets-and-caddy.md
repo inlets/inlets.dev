@@ -105,10 +105,6 @@ Both records should point to the IP address of the server you created in the ear
 Next create the caddy configuration file `/etc/caddy/Caddyfile`:
 
 ```
-{
-    email email@inlets.example.com
-}
-
 inlets.example.com {
     reverse_proxy localhost:8123
 }
@@ -121,11 +117,11 @@ inlets.example.com {
 }
 ```
 
-We define three blocks in the caddy configuration file. The first block on the top of the file can be used to define the email to use for the renewal notifications on the domains.
+We define two blocks in the caddy configuration file.
 
-In the second we configure caddy to reverse proxy the control-plane for the tunnel server using the domain `inlets.example.com`. Caddy will automatically obtain a valid TLS certificate for this domain.
+In the first block we configure caddy to reverse proxy the control-plane for the tunnel server using the domain `inlets.example.com`. Caddy will automatically obtain a valid TLS certificate for this domain.
 
-In the third block we configure a wildcard domain `*.inlets.example.com` and point it to the data-plane of the tunnel. To generate a wildcard certificate you will need to use the DNS-01 challenge type which requires using a supported DNS provider. This is defined with a `tls { }` block added below the domain definition. The configuration might be different depending on you DNS provider. You can find the specific configuration info and instructions to configure authentication for your provider in the [repo of you DNS provider plugin](https://github.com/orgs/caddy-dns/repositories?type=all).
+In the second block we configure a wildcard domain `*.inlets.example.com` and point it to the data-plane of the tunnel. To generate a wildcard certificate you will need to use the DNS-01 challenge type which requires using a supported DNS provider. This is defined with a `tls { }` block added below the domain definition. The configuration might be different depending on you DNS provider. You can find the specific configuration info and instructions to configure authentication for your provider in the [repo of you DNS provider plugin](https://github.com/orgs/caddy-dns/repositories?type=all).
 
 Make sure to move the caddy binary you downloaded or compiled with xcaddy into your path:
 

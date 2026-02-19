@@ -34,8 +34,7 @@ inletsctl create \
     --region fra1 \
     --provider digitalocean \
     --access-token-file ~/.do/access-token \
-    --letsencrypt-domain app.example.com \
-    --letsencrypt-email webmaster@example.com
+    --letsencrypt-domain app.example.com
 ```
 
 This command will create a VM in your DigitalOcean account. Once the tunnel server has been created it will print out: the ip address, the inlets token and the endpoint for inlets client to connect to.

@@ -38,7 +38,6 @@ HTTPS example
 # Setup a server in HTTPS mode
 $ inlets-pro http server --auto-tls --auto-tls-san "178.62.70.130" \
   --letsencrypt-domain "api.example.com" \
-  --letsencrypt-email "mail@example.com" \
   --token $AUTH
 
 # Connect a client and instruct the server which address to use 

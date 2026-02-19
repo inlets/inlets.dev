@@ -79,7 +79,6 @@ export DOMAIN=tunnel.example.com
 
 inletsctl create \
   --letsencrypt-domain $DOMAIN \
-  --letsencrypt-email contact@$DOMAIN \
   --letsencrypt-issuer prod \
   --provider digitalocean \
   --region lon1 \
