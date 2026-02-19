@@ -93,7 +93,6 @@ inlets-pro http server \
     --token-file `pwd`/token.txt \
     --letsencrypt-domain $DOMAIN1 \
     --letsencrypt-domain $DOMAIN2 \
-    --letsencrypt-email $EMAIL \
     --generate=systemd > inlets-server.service
 
 sudo mv inlets-server.service /etc/systemd/system/inlets-server.service

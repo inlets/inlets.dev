@@ -68,7 +68,6 @@ export DOMAIN="alexellis.inlets.dev"
 
 inlets-pro http server \
   --letsencrypt-domain $DOMAIN \
-  --letsencrypt-email webmaster@$DOMAIN \
   --letsencrypt-issuer prod \
   --token $TOKEN \
   --auto-tls \
@@ -78,7 +77,6 @@ inlets-pro http server \
 Here's what each flag does:
 
 * `--letsencrypt-domain` - gets a TLS cert for each domain given, you can provide this flag multiple times
-* `--letsencrypt-email` - required for renewal notifications and for accepting the Let's Encrypt Terms of Service
 * `--letsencrypt-issuer` - use the value `prod` or `staging` to switch between the two options
 
 The `--token` is used by the inlets client to authenticate to the server.
@@ -90,7 +88,6 @@ You can keep the inlets server process running by generating a systemd unit file
 ```bash
 inlets-pro http server \
   --letsencrypt-domain $DOMAIN \
-  --letsencrypt-email webmaster@$DOMAIN \
   --letsencrypt-issuer prod \
   --token $TOKEN \
   --auto-tls \
