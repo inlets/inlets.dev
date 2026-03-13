@@ -9,17 +9,17 @@
             </p>
         </div>
 
-        <div class="mt-8 rounded-3xl border border-gray-800 bg-gray-900 shadow-2xl p-3 sm:p-4">
+        <div class="mt-8 rounded-3xl border border-gray-200 bg-white shadow-xl p-3 sm:p-4">
             <div class="flex flex-wrap justify-center gap-3" data-cli-tabs>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-indigo-500 bg-indigo-500 text-white text-sm font-medium" data-cli-tab="uplink">Uplink</button>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-700 bg-gray-800 text-gray-300 text-sm font-medium hover:text-white" data-cli-tab="https">HTTPS</button>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-700 bg-gray-800 text-gray-300 text-sm font-medium hover:text-white" data-cli-tab="tcp">TCP</button>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-700 bg-gray-800 text-gray-300 text-sm font-medium hover:text-white" data-cli-tab="kubernetes">Kubernetes</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-900 bg-gray-900 text-white text-sm font-medium" data-cli-tab="uplink">Uplink</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="https">HTTPS</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="tcp">TCP</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="kubernetes">Kubernetes</button>
             </div>
 
             <div class="mt-4">
-            <section class="cli-panel rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-950" data-cli-panel="uplink">
-                <div class="px-5 py-3 border-b border-gray-800 bg-gray-900 flex items-center justify-between">
+            <section class="cli-panel rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="uplink">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <span class="h-3 w-3 rounded-full bg-red-400"></span>
                         <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
@@ -27,13 +27,10 @@
                     </div>
                     <div class="text-xs font-mono text-gray-400">uplink.example.com</div>
                 </div>
-                <div class="px-6 py-5 border-b border-gray-800">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                        <div>
-                            <h4 class="text-2xl font-extrabold text-white">Connect a customer environment to your SaaS</h4>
-                            <p class="mt-2 text-base leading-7 text-gray-300">Create a tenant-scoped tunnel, hand the customer a command, then consume the service privately from inside your cluster.</p>
-                        </div>
-                        <a href="https://docs.inlets.dev/uplink/become-a-provider/" class="text-sm font-medium text-indigo-300 hover:text-white">Read the Uplink docs →</a>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Connect a customer environment to your SaaS</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Create a tenant-scoped tunnel, hand the customer a command, then consume the service privately from inside your cluster.</p>
                     </div>
                 </div>
                 <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># tunnel resource
@@ -53,11 +50,17 @@ inlets-pro uplink client \
   --token-file ./token.txt
 
 # private access from inside the cluster
+kubectl run -t -i curl --rm \
+  --image ghcr.io/openfaas/curl:latest /bin/sh
+
 curl -i http://acmeco.tunnels:8000</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://docs.inlets.dev/uplink/become-a-provider/" class="text-sm font-medium text-indigo-300 hover:text-white">Read the Uplink docs →</a>
+                </div>
             </section>
 
-            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-950" data-cli-panel="https">
-                <div class="px-5 py-3 border-b border-gray-800 bg-gray-900 flex items-center justify-between">
+            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="https">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <span class="h-3 w-3 rounded-full bg-red-400"></span>
                         <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
@@ -65,13 +68,10 @@ curl -i http://acmeco.tunnels:8000</code></pre>
                     </div>
                     <div class="text-xs font-mono text-gray-400">api.example.com</div>
                 </div>
-                <div class="px-6 py-5 border-b border-gray-800">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                        <div>
-                            <h4 class="text-2xl font-extrabold text-white">Self-host HTTPS for a local app</h4>
-                            <p class="mt-2 text-base leading-7 text-gray-300">Provision a public tunnel server with inletsctl, then connect your local HTTP service using your own domain.</p>
-                        </div>
-                        <a href="https://docs.inlets.dev/tutorial/automated-http-server/" class="text-sm font-medium text-indigo-300 hover:text-white">HTTP tunnel guide →</a>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Self-host HTTPS for a local app</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Provision a public tunnel server with inletsctl, then connect your local HTTP service using your own domain.</p>
                     </div>
                 </div>
                 <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code>$ inletsctl create \
@@ -86,10 +86,13 @@ $ inlets-pro http client \
   --upstream "api.example.com=http://127.0.0.1:3000"
 
 $ curl "https://api.example.com/v1/import"</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://docs.inlets.dev/tutorial/automated-http-server/" class="text-sm font-medium text-indigo-300 hover:text-white">HTTP tunnel guide →</a>
+                </div>
             </section>
 
-            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-950" data-cli-panel="tcp">
-                <div class="px-5 py-3 border-b border-gray-800 bg-gray-900 flex items-center justify-between">
+            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="tcp">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <span class="h-3 w-3 rounded-full bg-red-400"></span>
                         <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
@@ -97,13 +100,10 @@ $ curl "https://api.example.com/v1/import"</code></pre>
                     </div>
                     <div class="text-xs font-mono text-gray-400">178.62.70.130</div>
                 </div>
-                <div class="px-6 py-5 border-b border-gray-800">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                        <div>
-                            <h4 class="text-2xl font-extrabold text-white">Expose multiple TCP ports without SaaS tunnel limits</h4>
-                            <p class="mt-2 text-base leading-7 text-gray-300">Provision a TCP tunnel VM with inletsctl, then connect local services such as webhooks or SSH over the same tunnel.</p>
-                        </div>
-                        <a href="https://inlets.dev/blog/2023/05/04/expose-local-tcp-ports.html" class="text-sm font-medium text-indigo-300 hover:text-white">TCP use-case →</a>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Expose multiple TCP ports without SaaS tunnel limits</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Provision a TCP tunnel VM with inletsctl, then connect local services such as webhooks or SSH over the same tunnel.</p>
                     </div>
                 </div>
                 <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code>$ inletsctl create \
@@ -119,10 +119,13 @@ $ inlets-pro tcp client --url wss://178.62.70.130:8123 \
 
 $ curl "http://178.62.70.130:8080/function/webhook"
 $ ssh -p 2222 "pi@178.62.70.130"</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://inlets.dev/blog/2023/05/04/expose-local-tcp-ports.html" class="text-sm font-medium text-indigo-300 hover:text-white">TCP use-case →</a>
+                </div>
             </section>
 
-            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-950" data-cli-panel="kubernetes">
-                <div class="px-5 py-3 border-b border-gray-800 bg-gray-900 flex items-center justify-between">
+            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="kubernetes">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <span class="h-3 w-3 rounded-full bg-red-400"></span>
                         <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
@@ -130,13 +133,10 @@ $ ssh -p 2222 "pi@178.62.70.130"</code></pre>
                     </div>
                     <div class="text-xs font-mono text-gray-400">kubernetes / loadbalancer</div>
                 </div>
-                <div class="px-6 py-5 border-b border-gray-800">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-                        <div>
-                            <h4 class="text-2xl font-extrabold text-white">Expose a local Kubernetes service</h4>
-                            <p class="mt-2 text-base leading-7 text-gray-300">Install the inlets-operator Helm chart, then create a LoadBalancer service and wait for a public IP.</p>
-                        </div>
-                        <a href="https://github.com/inlets/inlets-operator/" class="text-sm font-medium text-indigo-300 hover:text-white">inlets-operator →</a>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Expose a local Kubernetes service</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Install the inlets-operator Helm chart, then create a LoadBalancer service and wait for a public IP.</p>
                     </div>
                 </div>
                 <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># Install the inlets-operator Helm chart, then:
@@ -149,6 +149,9 @@ service/nginx-1   LoadBalancer   192.168.226.216    <pending>     80/TCP    78s
 service/nginx-1   LoadBalancer   192.168.226.216    104.248.163.242   80/TCP    78s
 
 $ curl -s "http://104.248.163.242:80/"</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://github.com/inlets/inlets-operator/" class="text-sm font-medium text-indigo-300 hover:text-white">inlets-operator →</a>
+                </div>
             </section>
             </div>
         </div>

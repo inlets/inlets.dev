@@ -46,12 +46,12 @@ function initCliTabs() {
         buttons.forEach(function(button) {
             var isActive = button.getAttribute('data-cli-tab') === name;
 
-            button.classList.toggle('bg-indigo-500', isActive);
-            button.classList.toggle('border-indigo-500', isActive);
+            button.classList.toggle('bg-gray-900', isActive);
+            button.classList.toggle('border-gray-900', isActive);
             button.classList.toggle('text-white', isActive);
-            button.classList.toggle('bg-gray-800', !isActive);
-            button.classList.toggle('border-gray-700', !isActive);
-            button.classList.toggle('text-gray-300', !isActive);
+            button.classList.toggle('bg-white', !isActive);
+            button.classList.toggle('border-gray-300', !isActive);
+            button.classList.toggle('text-gray-700', !isActive);
         });
 
         panels.forEach(function(panel) {
