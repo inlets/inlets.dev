@@ -11,6 +11,58 @@ body {
 	line-height: 1;
 }
 
+summary {
+	list-style: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+details[open] .faq-marker {
+	transform: rotate(45deg);
+}
+
+.faq-marker {
+	display: inline-block;
+	transition: transform 0.15s ease;
+}
+
+.hero-headline-line {
+	min-height: 1.2em;
+}
+
+.hero-headline-shell {
+	position: relative;
+	display: block;
+}
+
+.hero-headline-sizer {
+	display: block;
+	visibility: hidden;
+}
+
+.hero-headline-live {
+	position: absolute;
+	inset: 0;
+}
+
+.hero-headline-caret {
+	display: inline-block;
+	width: 0.08em;
+	height: 0.95em;
+	margin-left: 0.08em;
+	vertical-align: -0.08em;
+	background: currentColor;
+	animation: hero-caret-blink 1s steps(1) infinite;
+}
+
+@keyframes hero-caret-blink {
+	50% {
+		opacity: 0;
+	}
+}
+
 // Syntax highlighting @import is at the bottom of this file
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

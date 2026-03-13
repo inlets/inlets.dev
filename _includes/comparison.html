@@ -2,53 +2,81 @@
 
     <div class="relative pb-10">
         <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-            Feature Comparison
+            Two ways to use inlets
         </h3>
         <p class="mt-4 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-            To save you time, we've already compared inlets Pro to VPNs and managed SaaS tunnels.
+            Pick the one that matches your use case.
         </p>
     </div>
     <div class="flex flex-col">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border border-gray-200">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead>
                     <tr>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-
+                            Category
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             inlets Pro
                         </th>
                         <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            SaaS Tunnel
-                        </th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            VPN
+                            Uplink
                         </th>
                     </tr>
                     </thead>
-                    <tbody>
-                        {% include table/row.html words="" feature="Setup Cost" inlets="Low" saas="Low" vpn="High" %}
-                        {% include table/row.html even="1" feature="" feature="Self-hosting" inlets="1" vpn="" %}
-                        {% include table/row.html even="1" words="" feature="Scope" inlets="One or more ports or domains" saas="Single domain" vpn="Entire subnets or host" %}
-
-                        {% include table/row.html words="" feature="Public TCP Ports" inlets="Any" saas="Randomly Allocated/High ports" vpn="None" %}
-                        {% include table/row.html even="1" words="" feature="Connection Rate-limiting " inlets="Unlimited" saas="60-260/min" vpn="Unlimited" %}
-                        {% include table/row.html feature="Expose with a Domain" inlets="" saas="" %}
-                        {% include table/row.html even="1" words="" feature="Custom Domains" inlets="1" saas="(extra cost)" %}
-                        {% include table/row.html feature="Connect Services Without Exposing Them" inlets="" vpn="" %}
-                        {% include table/row.html even="1" feature="Kubernetes LoadBalancer integration" inlets="" %}
-                        {% include table/row.html feature="" feature="Data Sovereignty" inlets="1" vpn="" %}
-                        {% include table/row.html even="1" words="" feature="Terms of Service" inlets="Simple EULA" vpn="Varies" saas="Strict terms" %}
-
-                        {% include table/row.html even="1" words="" feature="Compatible Network Configurations" inlets="HTTP_PROXY, NAT and Captive Portals" saas="HTTP_PROXY, NAT and Captive Portals" vpn="NAT" %}
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Best for</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Webhooks, previews, homelabs</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Connect to customers, hybrid cloud, service providers</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Server</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel server hosted in a public cloud VM</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Your own Kubernetes cluster</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Client</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Scale</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Small numbers of tunnels</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">10+ tunnels, scales to thousands</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Endpoints</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Public or private</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Private by default</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Multi-tenant</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">No</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Yes</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Management</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Manual / self-service</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Managed control plane</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Provisioning</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">CLI</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel CLI, REST API, Kubernetes Custom Resource</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Starting price</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">25 USD / mo per tunnel</td>
+                            <td class="px-6 py-4 text-base leading-6 text-gray-500">250 USD / mo, includes 10 tunnels</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <p class="mt-10 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-            Feel free to <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="/contact">get in touch with us</a> with comments and questions.
+            Read the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/">inlets Pro docs</a> or the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/uplink/">Uplink docs</a>.
         </p>
     </div>
 </div>
