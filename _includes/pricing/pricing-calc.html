@@ -18,43 +18,15 @@
         </p>
       </div>
 
-      <div class="bg-white">
-        <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:py-6 lg:px-8">
-          <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-            <div class="mt-12 lg:mt-0 lg:col-span-2">
-              <dl class="space-y-10">
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray-900">How many domains or sites can I expose over a single tunnel?</dt>
-                  <dd class="mt-2 text-base text-gray-500">If you expose a reverse proxy or a Kubernetes Ingress Controller using a TCP tunnel, then you can expose as many sites as you want.</dd>
-                </div>
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray-900">When do I need multiple HTTP tunnels clients?</dt>
-                  <dd class="mt-2 text-base text-gray-500">You can expose as many HTTP endpoints as you like so long as they are reachable by the tunnel client. If your sites are spread across isolated networks, then you would need one per network.</dd>
-                </div>
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray-900">Can I connect multiple clients to the same HTTP tunnel server?</dt>
-                  <dd class="mt-2 text-base text-gray-500">Yes, this is possible, even if the tunnel clients are in different networks. Make sure you specify the domain name to use for routing. When the same name is given by multiple clients, the server will load balance</dd>
-                </div>
-                <div>
-                  <dt class="text-lg leading-6 font-medium text-gray-900">Do I need to pay to have high-availability of tunnel clients?</dt>
-                  <dd class="mt-2 text-base text-gray-500">You can have up to two identical replicas of the same inlets tunnel client connected to the same tunnel server, at no additional cost.</dd>
-                </div>
-                <div>
-                    <dt class="text-lg leading-6 font-medium text-gray-900">When should we consider Uplink over inlets Pro?</dt>
-                    <dd class="mt-2 text-base text-gray-500">Use Uplink when your product needs to create and manage tunnels for customers on a dynamic basis.</dd>
-                </div>
-                <div>
-                    <dt class="text-lg leading-6 font-medium text-gray-900">How does licensing work for Inlets Uplink?</dt>
-                    <dd class="mt-2 text-base text-gray-500">A subscription is required for each Kubernetes cluster, which includes 10 tunnels. Additional tunnels come in bundles of 5 at 25 USD / mo per tunnel. Volume pricing available for high quantities.</dd>
-                </div>
-                <div>
-                    <dt class="text-lg leading-6 font-medium text-gray-900">How do we pay for dev or test installations of Inlets Uplink?</dt>
-                    <dd class="mt-2 text-base text-gray-500">For dev and testing clusters, we are currently offering a promotion. Get a perpetual 50% discount on non-production installations subject to case-study being published on our blog.</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
+      <div class="relative mt-8 max-w-5xl space-y-3 lg:pr-72">
+        {% include faq/item.html heading="How many domains or sites can I expose over a single tunnel?" text="Inlets HTTP tunnels can multiplex many different domains over a single client. If you expose a reverse proxy or a Kubernetes Ingress Controller using a TCP tunnel, then you can expose as many sites as you want." %}
+        {% include faq/item.html heading="When do I need multiple HTTP tunnels clients?" text="You can expose as many HTTP endpoints as you like so long as they are reachable by the tunnel client. If your sites are spread across isolated networks, then you would need one per network." %}
+        {% include faq/item.html heading="Can I connect multiple clients to the same HTTP tunnel server?" text="Yes, this is possible, even if the tunnel clients are in different networks. Make sure you specify the domain name to use for routing. When the same name is given by multiple clients, the server will load balance." %}
+        {% include faq/item.html heading="Does Uplink charge extra for high-availability of tunnel clients?" text="For Uplink, you can have up to two identical replicas of the same tunnel client connected to the same tunnel server, at no additional cost." %}
+        {% include faq/item.html heading="When should we consider Uplink over inlets Pro?" text="Use Uplink when your product needs to create and manage tunnels for customers on a dynamic basis. Uplink also supports high bandwidth and throughput use-cases through an additional stream per connection, called demux mode." %}
+        {% include faq/item.html heading="How does licensing work for Inlets Uplink?" text="A subscription is required for each Kubernetes cluster, which includes 10 tunnels. Additional tunnels come in bundles of 5 at 25 USD / mo per tunnel. Volume pricing available for high quantities." %}
+        {% include faq/item.html heading="How do we update seat count as we provision new tunnels?" text="For inlets Pro standalone and inlets Uplink, an API can be enabled subject to approval to update the seat count for a subscription as new tunnels are provisioned." %}
+        {% include faq/item.html heading="How do we pay for dev or test installations of Inlets Uplink?" text="Every cluster requires a license, whether used for testing, non-production, or live customer traffic. For dev and testing clusters, we are currently offering a promotion. Get a perpetual 50% discount on non-production installations subject to case-study being published on our blog." %}
       </div>
     </div>
 </div>

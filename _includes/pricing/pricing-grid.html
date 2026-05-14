@@ -41,29 +41,28 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel HTTPs, websockets & REST.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel HTTP." tip="Expose multiple HTTP services over a single tunnel" %}</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
+              <span class="block text-sm text-gray-700 text-right">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel TCP services.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel TCP." tip="Expose non-HTTP services over a single tunnel" %}</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
+              <span class="block text-sm text-gray-700 text-right">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Rate limits.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="TCP multiplexing." tip="Control how TCP ports map to upstream services" %}</th>
+            <td class="py-5 pr-4">
+              <span class="block text-sm text-gray-700 text-right">Multiple TCP ports to one upstream host</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="High-throughput mode." tip="Opens a separate connection for each remote connection to reduce head-of-line blocking and improve throughput." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: minus -->
               <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -74,7 +73,18 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Remote forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Rate limits." tip="Unlike SaaS based tunnel solutions, there are no restrictive rate-limits on connections or requests/second" %}</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: minus -->
+              <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">No</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Remote forwarding" tip="Expose a private service using an inlets client" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -85,7 +95,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Local forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Local forwarding" tip="Access a remote service through a local port using an inlets client" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -96,14 +106,14 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">OAuth for HTTP tunnels</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="OAuth for HTTP tunnels" tip="Authenticate tunnelled HTTP services that you expose to the Internet" %}</th>
             <td class="py-5 pr-4">
               <span class="block text-sm text-gray-700 text-right">GitHub (username, email)</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">IP Whitelist/ACL</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="IP Whitelist/ACL" tip="Restrict which client IPs can connect to tunnels for defense in depth" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -114,7 +124,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Kubernetes Integration.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Kubernetes Integration." tip="Wire up TCP LoadBalancers using inlets-operator. For Uplink, tunnels are defined via a CRD." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -127,6 +137,17 @@
 
           <tr class="border-t border-gray-200">
             <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Commercial use.</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: minus -->
+              <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">No</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Update seat count via API." tip="Standard REST API, requires approval for access" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: minus -->
               <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -202,7 +223,7 @@
       <div class="px-4 mt-16">
         <h2 class="text-lg leading-6 font-medium text-gray-900">inlets Pro Commercial</h2>
         <p class="mt-4">
-          <span class="text-4xl font-extrabold text-gray-900">$25.00</span>
+          <span class="text-4xl font-extrabold text-gray-900">$125.00</span>
           <span class="text-base font-medium text-gray-500">/mo</span>
         </p>
         <p class="mt-4 text-sm text-gray-500">For work, shared environments and commercial use.</p>
@@ -224,7 +245,7 @@
           <tr class="border-t border-gray-200">
             <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnels included.</th>
             <td class="py-5 pr-4">
-              <span class="block text-sm text-gray-700 text-right">1 tunnel</span>
+              <span class="block text-sm text-gray-700 text-right">5 tunnels</span>
             </td>
           </tr>
 
@@ -236,40 +257,28 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel HTTPs, websockets & REST.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel HTTP." tip="Expose multiple HTTP services over a single tunnel" %}</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
+              <span class="block text-sm text-gray-700 text-right">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel TCP services.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel TCP." tip="Expose non-HTTP services over a single tunnel" %}</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
+              <span class="block text-sm text-gray-700 text-right">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Kubernetes Integration.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="TCP multiplexing." tip="Control how TCP ports map to upstream services" %}</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
+              <span class="block text-sm text-gray-700 text-right">Multiple TCP ports to one upstream host</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Rate limits.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="High-throughput mode." tip="Opens a separate connection for each remote connection to reduce head-of-line blocking and improve throughput." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: minus -->
               <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -280,7 +289,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Remote forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Kubernetes Integration." tip="Wire up TCP LoadBalancers using inlets-operator. For Uplink, tunnels are defined via a CRD." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -291,7 +300,18 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Local forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Rate limits." tip="Unlike SaaS based tunnel solutions, there are no restrictive rate-limits on connections or requests/second" %}</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: minus -->
+              <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">No</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Remote forwarding" tip="Expose a private service using an inlets client" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -302,14 +322,25 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">OAuth for HTTP tunnels</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Local forwarding" tip="Access a remote service through a local port using an inlets client" %}</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: check -->
+              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Yes</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="OAuth for HTTP tunnels" tip="Authenticate tunnelled HTTP services that you expose to the Internet" %}</th>
             <td class="py-5 pr-4">
               <span class="block text-sm text-gray-700 text-right">Google or GitHub (username, email, organisation)</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">IP Whitelist/ACL</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="IP Whitelist/ACL" tip="Restrict which client IPs can connect to tunnels for defense in depth" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -321,6 +352,17 @@
 
           <tr class="border-t border-gray-200">
             <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Commercial use.</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: check -->
+              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Yes</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Update seat count via API." tip="Standard REST API, requires approval for access" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -377,11 +419,11 @@
           <tr class="border-t border-gray-200">
             <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Free onboarding call.</th>
             <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              <!-- Heroicon name: minus -->
+              <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
               </svg>
-              <span class="sr-only">Yes</span>
+              <span class="sr-only">No</span>
             </td>
           </tr>
 
@@ -429,14 +471,35 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Cost per Kubernetes cluster.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Cost per Kubernetes cluster." tip="The inlets Uplink control plane runs inside Kubernetes" %}</th>
             <td class="py-5 pr-4">
               <span class="block text-sm text-gray-700 text-right">250 USD / mo</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel HTTPs, websockets & REST.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel HTTP." tip="Expose multiple HTTP services over a single tunnel" %}</th>
+            <td class="py-5 pr-4">
+              <span class="block text-sm text-gray-700 text-right">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel TCP." tip="Expose non-HTTP services over a single tunnel" %}</th>
+            <td class="py-5 pr-4">
+              <span class="block text-sm text-gray-700 text-right">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="TCP multiplexing." tip="Control how TCP ports map to upstream services" %}</th>
+            <td class="py-5 pr-4">
+              <span class="block text-sm text-gray-700 text-right">Multiple upstream hosts with port remapping</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="High-throughput mode." tip="Opens a separate connection for each remote connection to reduce head-of-line blocking and improve throughput." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -447,7 +510,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel TCP services.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Kubernetes Integration." tip="Wire up TCP LoadBalancers using inlets-operator. For Uplink, tunnels are defined via a CRD." %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -458,18 +521,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Kubernetes Integration.</th>
-            <td class="py-5 pr-4">
-              <!-- Heroicon name: check -->
-              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Yes</span>
-            </td>
-          </tr>
-
-          <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Rate limits.</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Rate limits." tip="Unlike SaaS based tunnel solutions, there are no restrictive rate-limits on connections or requests/second" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: minus -->
               <svg class="ml-auto h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -480,7 +532,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Remote forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Remote forwarding" tip="Expose a private service using an inlets client" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -491,7 +543,7 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Local forwarding</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Local forwarding" tip="Access a remote service through a local port using an inlets client" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -502,14 +554,14 @@
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">OAuth for HTTP tunnels</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="OAuth for HTTP tunnels" tip="Authenticate tunnelled HTTP services that you expose to the Internet" %}</th>
             <td class="py-5 pr-4">
               <span class="block text-sm text-gray-400 text-right">n/a</span>
             </td>
           </tr>
 
           <tr class="border-t border-gray-200">
-            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">IP Whitelist/ACL</th>
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="IP Whitelist/ACL" tip="Restrict which client IPs can connect to tunnels for defense in depth" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -521,6 +573,17 @@
 
           <tr class="border-t border-gray-200">
             <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">Commercial use.</th>
+            <td class="py-5 pr-4">
+              <!-- Heroicon name: check -->
+              <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Yes</span>
+            </td>
+          </tr>
+
+          <tr class="border-t border-gray-200">
+            <th class="py-5 px-4 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Update seat count via API." tip="Standard REST API, requires approval for access" %}</th>
             <td class="py-5 pr-4">
               <!-- Heroicon name: check -->
               <svg class="ml-auto h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -634,7 +697,7 @@
             <td class="h-full py-8 px-6 align-top">
               <div class="relative h-full table">
                 <p>
-                  <span class="text-4xl font-extrabold text-gray-900">$25</span>
+                  <span class="text-4xl font-extrabold text-gray-900">$125</span>
                   <span class="text-base font-medium text-gray-500">/mo</span>
                 </p>
                 <p class="mt-4 mb-16 text-sm text-gray-500">For work, shared environments and commercial use.</p>
@@ -664,7 +727,7 @@
               <span class="block text-sm text-gray-700">5 tunnels</span>
             </td>
             <td class="py-5 px-6">
-              <span class="block text-sm text-gray-700">1 tunnel</span>
+              <span class="block text-sm text-gray-700">5 tunnels</span>
             </td>
             <td class="py-5 px-6">
               <span class="block text-sm text-gray-700">10 tunnels</span>
@@ -685,7 +748,7 @@
           </tr>
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Cost per Kubernetes cluster.</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Cost per Kubernetes cluster." tip="The inlets Uplink control plane runs inside Kubernetes" %}</th>
             <td class="py-5 px-6">
               <span class="block text-sm text-gray-400">n/a</span>
             </td>
@@ -698,7 +761,72 @@
           </tr>
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel HTTPs, websockets & REST.</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel HTTP." tip="Expose multiple HTTP services over a single tunnel" %}</th>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">HTTP, REST, gRPC, WebSockets, SSE, etc</span>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Tunnel TCP." tip="Expose non-HTTP services over a single tunnel" %}</th>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">TLS, databases, RTSP, SSH, Kubernetes, etc</span>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="TCP multiplexing." tip="Control how TCP ports map to upstream services" %}</th>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">Multiple TCP ports to one upstream host</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">Multiple TCP ports to one upstream host</span>
+            </td>
+            <td class="py-5 px-6">
+              <span class="block text-sm text-gray-700">Multiple upstream hosts with port remapping</span>
+            </td>
+          </tr>
+
+          <tr>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="High-throughput mode." tip="Opens a separate connection for each remote connection to reduce head-of-line blocking and improve throughput." %}</th>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: minus -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Not included in Personal</span>
+            </td>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: minus -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Not included in Commercial</span>
+            </td>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: check -->
+              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Included in Uplink</span>
+            </td>
+          </tr>
+
+
+          <tr>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Kubernetes Integration." tip="Wire up TCP LoadBalancers using inlets-operator. For Uplink, tunnels are defined via a CRD." %}</th>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
               <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -722,60 +850,9 @@
             </td>
           </tr>
 
-          <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Tunnel TCP Services.</th>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Personal</span>
-            </td>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Commercial</span>
-            </td>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Uplink</span>
-            </td>
-          </tr>
-
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Kubernetes Integration.</th>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Personal</span>
-            </td>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Commercial</span>
-            </td>
-            <td class="py-5 px-6">
-              <!-- Heroicon name: check -->
-              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
-              <span class="sr-only">Included in Uplink</span>
-            </td>
-          </tr>
-
-
-          <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Rate limits.</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Rate limits." tip="Unlike SaaS based tunnel solutions, there are no restrictive rate-limits on connections or requests/second" %}</th>
             <td class="py-5 px-6">
               <!-- Heroicon name: minus -->
               <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -800,7 +877,7 @@
           </tr>
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Remote forwarding</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Remote forwarding" tip="Expose a private service using an inlets client" %}</th>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
               <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -825,7 +902,7 @@
           </tr>
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Local forwarding</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Local forwarding" tip="Access a remote service through a local port using an inlets client" %}</th>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
               <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -850,7 +927,7 @@
           </tr>
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">OAuth for HTTP tunnels</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="OAuth for HTTP tunnels" tip="Authenticate tunnelled HTTP services that you expose to the Internet" %}</th>
             <td class="py-5 px-6">
               <span class="block text-sm text-gray-700">GitHub (username, email)</span>
             </td>
@@ -864,7 +941,7 @@
 
 
           <tr>
-            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">IP Whitelist/ACL</th>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="IP Whitelist/ACL" tip="Restrict which client IPs can connect to tunnels for defense in depth" %}</th>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
               <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -940,6 +1017,31 @@
           </tr>
 
           <tr>
+            <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">{% include pricing/tooltip-label.html label="Update seat count via API." tip="Standard REST API, requires approval for access" %}</th>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: minus -->
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Not included in Personal</span>
+            </td>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: check -->
+              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Included in Commercial</span>
+            </td>
+            <td class="py-5 px-6">
+              <!-- Heroicon name: check -->
+              <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <span class="sr-only">Included in Uplink</span>
+            </td>
+          </tr>
+
+          <tr>
             <th class="py-5 px-6 text-sm font-normal text-gray-500 text-left" scope="row">Payment method.</th>
             <td class="py-5 px-6">
               <span class="block text-sm text-gray-700">Personal card only.</span>
@@ -988,7 +1090,7 @@
               <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
               </svg>
-              <span class="sr-only">Not included in Personal</span>
+              <span class="sr-only">Not included in Commercial</span>
             </td>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
@@ -1020,7 +1122,7 @@
               <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
               </svg>
-              <span class="sr-only">Not included in Personal</span>
+              <span class="sr-only">Not included in Commercial</span>
             </td>
             <td class="py-5 px-6">
               <!-- Heroicon name: check -->
