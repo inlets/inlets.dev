@@ -1,12 +1,12 @@
 <div
-  id="modal"
+  id="uplink-modal"
   class="relative z-10 hidden"
-  aria-labelledby="modal-title"
+  aria-labelledby="uplink-modal-title"
   role="dialog"
   aria-modal="true"
 >
   <div
-    id="modal-backdrop"
+    id="uplink-modal-backdrop"
     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity opacity-100 hidden"
     aria-hidden="true"
   ></div>
@@ -16,12 +16,12 @@
       class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
     >
       <div
-        id="modal-panel"
+        id="uplink-modal-panel"
         class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 opacity-100 translate-y-4 sm:translate-y-0 sm:scale-95"
       >
         <div class="absolute top-0 right-0 pt-4 pr-4 sm:block">
           <button
-            id="close-modal-button"
+            id="uplink-close-modal-button"
             type="button"
             class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
           >
@@ -44,26 +44,29 @@
           </button>
         </div>
         <div>
-          <h3 class="text-lg font-semibold text-gray-900" id="modal-title">
-            Inlets tunnel (commercial use)
+          <h3 class="text-lg font-semibold text-gray-900" id="uplink-modal-title">
+            Inlets Uplink
           </h3>
           <div class="mt-2">
             <p class="text-sm text-gray-500">
-              Deploy inlets tunnels for commercial and/or business use. Each subscription includes 2 tunnels.
+              Each subscription is for one Uplink installation and includes 10 tunnels, with additional tunnels at 25 USD / mo each.
+            </p>
+            <p class="mt-2 text-sm font-medium text-gray-700">
+              A subscription is required for each installation, including non-production (dev, test and staging) environments.
             </p>
           </div>
         </div>
-        <form id="checkout-form" class="mt-3 space-y-4">
+        <form id="uplink-checkout-form" class="mt-3 space-y-4">
           <div class="flex items-center">
-            <label for="quantity" class="text-sm font-medium text-gray-700"
-              >Quantity</label
+            <label for="uplink-quantity" class="text-sm font-medium text-gray-700"
+              >Tunnels</label
             >
             <input
-              id="quantity"
+              id="uplink-quantity"
               name="quantity"
               type="number"
-              value="2"
-              min="2"
+              value="10"
+              min="10"
               class="mt-1 ml-3 px-1 w-16 block border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
@@ -90,49 +93,49 @@
 </div>
 
 <script>
-  // Function to show the modal
-  function showModal() {
-    const modal = document.getElementById("modal");
-    const backdrop = document.getElementById("modal-backdrop");
+  // Function to show the Uplink modal
+  function showUplinkModal() {
+    const modal = document.getElementById("uplink-modal");
+    const backdrop = document.getElementById("uplink-modal-backdrop");
 
     // Add classes for showing the modal
     modal.classList.remove("hidden");
     backdrop.classList.remove("hidden");
   }
 
-  function hideModal() {
-    const modal = document.getElementById("modal");
-    const backdrop = document.getElementById("modal-backdrop");
+  function hideUplinkModal() {
+    const modal = document.getElementById("uplink-modal");
+    const backdrop = document.getElementById("uplink-modal-backdrop");
 
     // Add classes for hiding the modal
     modal.classList.add("hidden");
     backdrop.classList.add("hidden");
   }
 
-  function handleSubmit(event) {
+  function handleUplinkSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
     const formData = new FormData(form);
 
     const quantity = formData.get("quantity");
-    const checkoutURL = `https://subscribe.openfaas.com/buy/ee8d2048-884f-4a9a-9186-048e8810a8f7?quantity=${quantity}`;
+    const checkoutURL = `https://subscribe.openfaas.com/checkout/buy/89ca2ba2-a7f3-4563-a872-01836f9c5a0d?quantity=${quantity}`;
 
     window.location.href = checkoutURL;
   }
 
   // Attach event listeners
-  const checkoutButtons = document.querySelectorAll(".checkout-button");
+  const uplinkCheckoutButtons = document.querySelectorAll(".uplink-checkout-button");
 
-  checkoutButtons.forEach((button) => {
-    button.addEventListener("click", showModal);
+  uplinkCheckoutButtons.forEach((button) => {
+    button.addEventListener("click", showUplinkModal);
   });
 
   document
-    .getElementById("close-modal-button")
-    .addEventListener("click", hideModal);
+    .getElementById("uplink-close-modal-button")
+    .addEventListener("click", hideUplinkModal);
 
   document
-    .getElementById("checkout-form")
-    .addEventListener("submit", handleSubmit);
+    .getElementById("uplink-checkout-form")
+    .addEventListener("submit", handleUplinkSubmit);
 </script>
