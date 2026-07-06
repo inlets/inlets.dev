@@ -1,14 +1,14 @@
 ---
 layout: post
-title: Expose llama.cpp over Inlets Cloud
+title: How to Expose Llama.cpp over Inlets Cloud
 description: Learn how to securely expose a local llama.cpp inference server to the Internet with authentication using Inlets Cloud.
 author: Han Verstraete
 tags: ai llm llama-cpp authentication tunnel
 category: tutorial
 rollup: true
 author_img: welteki
-# image: /images/2026-07-inlets-cloud-llama-cpp/background.png
-date: 2026-07-01
+image: /images/2026-07-llama-cpp/background.png
+date: 2026-07-06
 ---
 
 With Inlets Cloud, you can quickly get a URL with authentication for an LLM server running locally, making it easy to use that model outside the machine it is running on.
