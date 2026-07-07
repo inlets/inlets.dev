@@ -1,0 +1,280 @@
+---
+layout: default
+title: Inlets Uplink - customer and fleet connectivity
+---
+
+<!-- Hero: show the product, not a stock photo -->
+<div class="bg-gray-50 overflow-hidden">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600">Inlets Uplink</p>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          Reach private customer networks from a control plane you own.
+        </h1>
+        <p class="mt-6 text-xl leading-8 text-gray-500">
+          A multi-tenant tunnel layer that runs inside your own Kubernetes cluster, so your product can reach customer services, fleets, and devices over a single outbound connection. No VPNs, no inbound firewall rules.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-indigo-700">
+            Request a demo
+          </a>
+          <a href="https://docs.inlets.dev/uplink/" class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-base font-semibold text-indigo-600 shadow-sm ring-1 ring-gray-200 hover:bg-gray-50">
+            Read the docs
+          </a>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Outbound-only</span>
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Multi-tenant</span>
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Runs in your cluster</span>
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Your data plane</span>
+        </div>
+      </div>
+
+      <div>
+        <img class="w-full rounded-xl shadow-2xl ring-1 ring-gray-200" src="/images/uplink-cli.png" alt="Creating a per-customer tunnel with the inlets-pro CLI and handing the customer a connect command">
+        <p class="mt-4 text-sm leading-6 text-gray-500">
+          Create a namespace and a tunnel per customer, then hand them one connect command. You reach the service privately from inside your cluster.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works: the topology is the signature, with an honest 3-step sequence -->
+<section class="bg-white py-16 lg:py-20">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600">How it works</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">One control plane, one tunnel per tenant.</h2>
+      <p class="mt-4 text-lg leading-8 text-gray-500">
+        Install Uplink once, then provision an isolated tunnel for every customer, cluster, or device. Clients dial home outbound, and you reach their private services from inside your own cluster.
+      </p>
+    </div>
+
+    <div class="mt-10 overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+      <button type="button" class="group relative block w-full text-left focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" data-uplink-zoom-open data-uplink-zoom-title="Inlets Uplink architecture" data-uplink-zoom-src="/images/2024-12-uplink-quickstart/conceptual-uplink.png" data-uplink-zoom-alt="Expanded conceptual diagram of Inlets Uplink connecting customer networks to a central Kubernetes cluster" aria-label="Zoom the Inlets Uplink architecture diagram">
+        <img class="w-full p-4 transition duration-150 group-hover:opacity-90 sm:p-8" src="/images/2024-12-uplink-quickstart/conceptual-uplink.png" alt="A private network dials outbound to an Inlets Uplink management cluster, where each tenant has its own namespace">
+        <span class="absolute bottom-4 right-4 rounded-md bg-gray-900 bg-opacity-80 px-3 py-2 text-xs font-semibold text-white">Click to zoom</span>
+      </button>
+    </div>
+
+    <div class="mt-12 grid gap-10 sm:grid-cols-3">
+      <div>
+        <p class="text-4xl font-extrabold text-indigo-600">1</p>
+        <h3 class="mt-3 text-lg font-bold text-gray-900">Install the control plane</h3>
+        <p class="mt-2 text-base leading-7 text-gray-500">Run Uplink in your Kubernetes cluster with Helm, ArgoCD, or Flux.</p>
+      </div>
+      <div>
+        <p class="text-4xl font-extrabold text-indigo-600">2</p>
+        <h3 class="mt-3 text-lg font-bold text-gray-900">Create a tunnel per tenant</h3>
+        <p class="mt-2 text-base leading-7 text-gray-500">One namespace and one command generate an isolated tunnel and its own token.</p>
+      </div>
+      <div>
+        <p class="text-4xl font-extrabold text-indigo-600">3</p>
+        <h3 class="mt-3 text-lg font-bold text-gray-900">Hand over a connect string</h3>
+        <p class="mt-2 text-base leading-7 text-gray-500">The customer runs a client outbound, and you reach the service privately by ClusterIP.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-gray-100 pt-6 text-sm text-gray-500">
+      <span class="font-semibold text-gray-700">Also included</span>
+      <a href="https://docs.inlets.dev/uplink/billing-management-api/" class="hover:text-indigo-600">Billing Management API</a>
+      <a href="https://docs.inlets.dev/uplink/tutorials/high-throughput-tunnels/" class="hover:text-indigo-600">High-throughput demux tunnels</a>
+      <span>Client handoff as a CLI command, systemd unit, or Kubernetes YAML</span>
+    </div>
+  </div>
+</section>
+
+<!-- Two ways to use it -->
+<section class="bg-gray-50 py-16 lg:py-20">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600">Where Uplink fits</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Two ways to package private connectivity.</h2>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <article class="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400">Embed Uplink</p>
+        <h3 class="mt-3 text-xl font-bold text-gray-900">Private access inside your SaaS product</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">
+          Create per-tenant tunnels so your product can reach customer Kubernetes APIs, Windows apps, IdPs, databases, and devices from one control plane.
+        </p>
+      </article>
+      <article class="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400">Build on Uplink</p>
+        <h3 class="mt-3 text-xl font-bold text-gray-900">A foundation for a managed tunnel service</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">
+          Use Uplink as the regional substrate for instant HTTPS, custom-domain, and BYO-TLS tunnels across Kubernetes ingress, Caddy, Nginx, and Traefik.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Use cases with real customer logos, trimmed copy -->
+<section class="bg-white py-16 lg:py-20">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600">In production</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">What teams build on Uplink.</h2>
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <img class="h-9 w-auto self-start" src="/images/customers/lambda.svg" alt="Lambda Labs">
+        <h3 class="mt-6 text-lg font-bold text-gray-900">Operate Kubernetes fleets from one ArgoCD</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">Manage internal, tenant, or customer clusters from a single control plane.</p>
+      </article>
+      <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <img class="h-9 w-auto self-start" src="/images/customers/essentry.svg" alt="Essentry">
+        <h3 class="mt-6 text-lg font-bold text-gray-900">Connect customer hardware without inbound access</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">Run a client beside a Windows program on customer hardware and dial home.</p>
+      </article>
+      <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <img class="h-9 w-auto self-start" src="/images/customers/radiantlogic.png" alt="Radiant Logic">
+        <h3 class="mt-6 text-lg font-bold text-gray-900">Reach private IdPs and databases for sync services</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">Sync from on-prem identity providers and databases without exposing them.</p>
+      </article>
+      <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <img class="h-9 w-auto self-start" src="/images/logo.svg" alt="Inlets Cloud">
+        <h3 class="mt-6 text-lg font-bold text-gray-900">Power a managed tunnel service</h3>
+        <p class="mt-3 text-base leading-7 text-gray-500">Inlets Cloud runs on Uplink regions for one-click HTTPS tunnels and managed TLS.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison: a table, not another card grid -->
+<section class="bg-gray-50 py-16 lg:py-20">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600">Why not a VPN?</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Built for repeatable service access, not one-off connections.</h2>
+      <p class="mt-4 text-lg leading-8 text-gray-500">
+        Anyone can make a single connection work. The hard part is making precise service access repeatable across tenants, regions, and customer networks.
+      </p>
+    </div>
+
+    <div class="mt-10 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      <div class="hidden grid-cols-12 gap-4 border-b border-gray-200 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-gray-400 sm:grid">
+        <div class="col-span-3">Instead of</div>
+        <div class="col-span-5">The limitation</div>
+        <div class="col-span-4">With Uplink</div>
+      </div>
+      <div class="divide-y divide-gray-100">
+        <div class="grid gap-2 px-6 py-5 sm:grid-cols-12 sm:gap-4 sm:items-center">
+          <p class="font-bold text-gray-900 sm:col-span-3">A VPN</p>
+          <p class="text-sm leading-6 text-gray-500 sm:col-span-5">Grants whole-network access and needs inbound setup on every site.</p>
+          <p class="text-sm font-semibold leading-6 text-green-800 sm:col-span-4">Service-level tunnels, outbound-only.</p>
+        </div>
+        <div class="grid gap-2 px-6 py-5 sm:grid-cols-12 sm:gap-4 sm:items-center">
+          <p class="font-bold text-gray-900 sm:col-span-3">An OSS tunnel</p>
+          <p class="text-sm leading-6 text-gray-500 sm:col-span-5">Useful primitives, but you still build tenancy, lifecycle, and support.</p>
+          <p class="text-sm font-semibold leading-6 text-green-800 sm:col-span-4">Multi-tenant, monitored, and commercially supported.</p>
+        </div>
+        <div class="grid gap-2 px-6 py-5 sm:grid-cols-12 sm:gap-4 sm:items-center">
+          <p class="font-bold text-gray-900 sm:col-span-3">A DIY agent</p>
+          <p class="text-sm leading-6 text-gray-500 sm:col-span-5">Cheap to prototype, expensive to secure, observe, and operate.</p>
+          <p class="text-sm font-semibold leading-6 text-green-800 sm:col-span-4">Set up in ~30 minutes, in production for years.</p>
+        </div>
+        <div class="grid gap-2 px-6 py-5 sm:grid-cols-12 sm:gap-4 sm:items-center">
+          <p class="font-bold text-gray-900 sm:col-span-3">Cloud tunnels</p>
+          <p class="text-sm leading-6 text-gray-500 sm:col-span-5">Metered bandwidth, per-seat pricing, and EULA limits add up.</p>
+          <p class="text-sm font-semibold leading-6 text-green-800 sm:col-span-4">Pay per tunnel, on your own data plane and logs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Zoom modal for the architecture diagram -->
+<div class="fixed inset-0 z-50 hidden overflow-y-auto bg-gray-900 bg-opacity-90 p-4 sm:p-8" data-uplink-zoom role="dialog" aria-modal="true" aria-labelledby="uplink-zoom-title">
+  <div class="mx-auto flex min-h-full max-w-7xl flex-col justify-center" data-uplink-zoom-panel>
+    <div class="mb-4 flex items-center justify-between gap-4">
+      <h3 id="uplink-zoom-title" class="text-lg font-semibold text-white">Inlets Uplink architecture</h3>
+      <button type="button" class="rounded-md border border-white px-3 py-2 text-sm font-semibold text-white hover:bg-white hover:text-gray-900" data-uplink-zoom-close>Close</button>
+    </div>
+    <div class="overflow-auto rounded-lg bg-white p-3 shadow-2xl">
+      <img class="mx-auto max-w-none sm:max-w-full" data-uplink-zoom-image src="/images/2024-12-uplink-quickstart/conceptual-uplink.png" alt="Expanded conceptual diagram of Inlets Uplink connecting customer networks to a central Kubernetes cluster">
+    </div>
+  </div>
+</div>
+
+<!-- Final CTA -->
+<section class="bg-indigo-700 py-14">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <div>
+      <h2 class="text-3xl font-extrabold tracking-tight text-white">Talk to us about your tenant model.</h2>
+      <p class="mt-3 max-w-2xl text-lg leading-7 text-indigo-100">
+        Tell us the customer networks you need to reach and the services behind them.
+      </p>
+    </div>
+    <div class="mt-8 flex gap-3 lg:mt-0 lg:flex-shrink-0">
+      <a href="/contact" class="inline-flex items-center justify-center rounded-md bg-white px-5 py-3 text-base font-semibold text-indigo-700 hover:bg-indigo-50">Contact us</a>
+      <a href="https://docs.inlets.dev/uplink/" class="inline-flex items-center justify-center rounded-md border border-indigo-200 px-5 py-3 text-base font-semibold text-white hover:bg-indigo-600">Uplink docs</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function initUplinkZoom() {
+  var modal = document.querySelector('[data-uplink-zoom]');
+  var panel = document.querySelector('[data-uplink-zoom-panel]');
+  var openButtons = document.querySelectorAll('[data-uplink-zoom-open]');
+  var closeButton = document.querySelector('[data-uplink-zoom-close]');
+  var title = document.querySelector('#uplink-zoom-title');
+  var image = document.querySelector('[data-uplink-zoom-image]');
+  var activeButton = null;
+
+  if (!modal || !panel || !openButtons.length || !closeButton || !title || !image) {
+    return;
+  }
+
+  function openZoom(button) {
+    activeButton = button;
+    title.textContent = button.getAttribute('data-uplink-zoom-title');
+    image.src = button.getAttribute('data-uplink-zoom-src');
+    image.alt = button.getAttribute('data-uplink-zoom-alt');
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+    closeButton.focus();
+  }
+
+  function closeZoom() {
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+    if (activeButton) {
+      activeButton.focus();
+    }
+  }
+
+  openButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      openZoom(button);
+    });
+  });
+
+  closeButton.addEventListener('click', closeZoom);
+
+  modal.addEventListener('click', function(event) {
+    if (event.target === modal || event.target === panel || !panel.contains(event.target)) {
+      closeZoom();
+    }
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeZoom();
+    }
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initUplinkZoom);
+} else {
+  initUplinkZoom();
+}
+</script>
