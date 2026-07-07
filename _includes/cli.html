@@ -5,61 +5,21 @@
                 How it works
             </h3>
             <p class="mt-4 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-                Explore common setups for Uplink, HTTPS, TCP and Kubernetes.
+                Explore common setups for HTTPS, TCP, Kubernetes, Cloud, and Uplink.
             </p>
         </div>
 
         <div class="mt-8 rounded-3xl border border-gray-200 bg-white shadow-xl p-3 sm:p-4">
             <div class="flex flex-wrap justify-center gap-3" data-cli-tabs>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-900 bg-gray-900 text-white text-sm font-medium" data-cli-tab="uplink">Uplink</button>
-                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="https">HTTPS</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-900 bg-gray-900 text-white text-sm font-medium" data-cli-tab="https">HTTPS</button>
                 <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="tcp">TCP</button>
                 <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="kubernetes">Kubernetes</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="cloud">Cloud</button>
+                <button type="button" class="cli-tab-button px-4 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium hover:border-gray-400 hover:text-gray-900" data-cli-tab="uplink">Uplink</button>
             </div>
 
             <div class="mt-4">
-            <section class="cli-panel rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="uplink">
-                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <span class="h-3 w-3 rounded-full bg-red-400"></span>
-                        <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
-                        <span class="h-3 w-3 rounded-full bg-green-400"></span>
-                    </div>
-                    <div class="text-xs font-mono text-gray-400">uplink.example.com</div>
-                </div>
-                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
-                    <div>
-                        <h4 class="text-2xl font-extrabold text-white">Connect a customer environment to your SaaS</h4>
-                        <p class="mt-2 text-base leading-7 text-gray-300">Create a tenant-scoped tunnel, hand the customer a command, then consume the service privately from inside your cluster.</p>
-                    </div>
-                </div>
-                <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># tunnel resource
-apiVersion: uplink.inlets.dev/v1alpha1
-kind: Tunnel
-metadata:
-  name: acmeco
-  namespace: tunnels
-spec:
-  tcpPorts:
-    - 8080
-
-# customer connects to the router
-inlets-pro uplink client \
-  --url wss://uplink.example.com/tunnels/acmeco \
-  --upstream http://127.0.0.1:8080 \
-  --token-file ./token.txt
-
-# private access from inside the cluster
-kubectl run -t -i curl --rm \
-  --image ghcr.io/openfaas/curl:latest /bin/sh
-
-curl -i http://acmeco.tunnels:8000</code></pre>
-                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
-                    <a href="https://docs.inlets.dev/uplink/become-a-provider/" class="text-sm font-medium text-indigo-300 hover:text-white">Read the Uplink docs →</a>
-                </div>
-            </section>
-
-            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="https">
+            <section class="cli-panel rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="https">
                 <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
                     <div class="flex items-center gap-2">
                         <span class="h-3 w-3 rounded-full bg-red-400"></span>
@@ -151,6 +111,77 @@ service/nginx-1   LoadBalancer   192.168.226.216    104.248.163.242   80/TCP    
 $ curl -s "http://104.248.163.242:80/"</code></pre>
                 <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
                     <a href="https://github.com/inlets/inlets-operator/" class="text-sm font-medium text-indigo-300 hover:text-white">inlets-operator →</a>
+                </div>
+            </section>
+
+            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="cloud">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="h-3 w-3 rounded-full bg-red-400"></span>
+                        <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+                        <span class="h-3 w-3 rounded-full bg-green-400"></span>
+                    </div>
+                    <div class="text-xs font-mono text-gray-400">tryinlets.dev</div>
+                </div>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Get a managed HTTPS tunnel</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Install the Cloud plugin, authenticate once, create a generated tunnel, then connect it to a local service.</p>
+                    </div>
+                </div>
+                <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code>$ inlets-pro plugin get cloud
+$ inlets-pro cloud auth login \
+  --token "$(cat ~/.inlets/cloud-access-token)"
+
+$ inlets-pro cloud tunnel create http inlets-landing
+
+$ inlets-pro cloud tunnel connect inlets-landing \
+  --upstream http://127.0.0.1:4000
+
+inlets-pro uplink client --url=wss://cambs1.uplink.inlets.dev/user/inlets-landing --token=REDACTED --upstream=moyona.cambs1.tryinlets.dev=http://127.0.0.1:4000</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://cloud.inlets.dev" class="text-sm font-medium text-indigo-300 hover:text-white">Open Inlets Cloud →</a>
+                </div>
+            </section>
+
+            <section class="cli-panel hidden rounded-2xl shadow-2xl overflow-hidden border border-gray-800 bg-gray-900" data-cli-panel="uplink">
+                <div class="px-5 py-3 border-b border-gray-700 bg-gray-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="h-3 w-3 rounded-full bg-red-400"></span>
+                        <span class="h-3 w-3 rounded-full bg-yellow-400"></span>
+                        <span class="h-3 w-3 rounded-full bg-green-400"></span>
+                    </div>
+                    <div class="text-xs font-mono text-gray-400">uplink.example.com</div>
+                </div>
+                <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
+                    <div>
+                        <h4 class="text-2xl font-extrabold text-white">Connect a customer environment to your SaaS</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Create a tenant-scoped tunnel, hand the customer a command, then consume the service privately from inside your cluster.</p>
+                    </div>
+                </div>
+                <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># tunnel resource
+apiVersion: uplink.inlets.dev/v1alpha1
+kind: Tunnel
+metadata:
+  name: acmeco
+  namespace: tunnels
+spec:
+  tcpPorts:
+    - 8080
+
+# customer connects to the router
+inlets-pro uplink client \
+  --url wss://uplink.example.com/tunnels/acmeco \
+  --upstream http://127.0.0.1:8080 \
+  --token-file ./token.txt
+
+# private access from inside the cluster
+kubectl run -t -i curl --rm \
+  --image ghcr.io/openfaas/curl:latest /bin/sh
+
+curl -i http://acmeco.tunnels:8000</code></pre>
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                    <a href="https://docs.inlets.dev/uplink/become-a-provider/" class="text-sm font-medium text-indigo-300 hover:text-white">Read the Uplink docs →</a>
                 </div>
             </section>
             </div>
