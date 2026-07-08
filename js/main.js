@@ -75,6 +75,8 @@ function initHeroHeadline() {
         return;
     }
 
+    var live = headline.closest('.hero-headline-live') || headline;
+
     var frames = [
         'Self-hosted tunnels with full control and privacy.',
         'Connect to customer services without a VPN.',
@@ -84,58 +86,20 @@ function initHeroHeadline() {
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-        var index = 0;
-        window.setInterval(function() {
-            index = (index + 1) % frames.length;
-            headline.textContent = frames[index];
-        }, 3500);
         return;
     }
 
-    var frameIndex = 0;
-    var charIndex = 0;
-    var deleting = false;
-    var pause = false;
-    var currentText = frames[0];
-
-    headline.textContent = currentText;
-
-    function tick() {
-        if (pause) {
-            window.setTimeout(function() {
-                pause = false;
-                deleting = true;
-                tick();
-            }, 1800);
-            return;
-        }
-
-        if (!deleting) {
-            charIndex += 1;
-
-            headline.textContent = currentText.slice(0, charIndex);
-
-            if (charIndex >= currentText.length) {
-                pause = true;
-            }
-
-            window.setTimeout(tick, 36);
-            return;
-        }
-
-        charIndex -= 1;
-        headline.textContent = currentText.slice(0, Math.max(charIndex, 0));
-
-        if (charIndex <= 0) {
-            deleting = false;
-            frameIndex = (frameIndex + 1) % frames.length;
-            currentText = frames[frameIndex];
-        }
-
-        window.setTimeout(tick, 18);
-    }
-
-    tick();
+    // Gentle crossfade between headlines so it does not compete with the
+    // terminal animation next to it.
+    var index = 0;
+    window.setInterval(function() {
+        live.style.opacity = '0';
+        window.setTimeout(function() {
+            index = (index + 1) % frames.length;
+            headline.textContent = frames[index];
+            live.style.opacity = '1';
+        }, 500);
+    }, 5500);
 }
 
 

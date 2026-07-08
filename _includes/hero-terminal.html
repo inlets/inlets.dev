@@ -1,0 +1,141 @@
+<!-- Self-contained terminal-cast animation of the self-hosted inlets Pro flow:
+     provision a server with automated TLS, create a DNS record, connect a local
+     app, and receive a GitHub webhook. Vanilla JS, no dependencies. -->
+<div id="hero-terminal" class="relative w-full max-w-full">
+  <div class="rounded-xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900 w-full max-w-full">
+    <div class="bg-gray-800 px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+      <div class="flex gap-2">
+        <div class="w-3 h-3 rounded-full bg-red-400"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+        <div class="w-3 h-3 rounded-full bg-green-400"></div>
+      </div>
+      <div class="flex-1 text-center text-xs font-mono text-gray-400">bash &mdash; blog.example.com</div>
+      <button type="button" id="hero-terminal-replay" class="inline-flex items-center justify-center h-6 w-6 rounded-md border border-gray-600 bg-gray-700 text-gray-300 hover:bg-gray-600" title="Replay" aria-label="Replay animation">
+        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" /></svg>
+      </button>
+    </div>
+    <div id="hero-terminal-body" class="hero-terminal-scroll h-72 sm:h-80 w-full overflow-y-auto overflow-x-hidden p-4 bg-gray-900">
+      <div id="hero-terminal-lines" class="font-mono text-xs sm:text-sm leading-6 min-h-full"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #hero-terminal .hero-cursor {
+    display: inline-block; width: 0.5rem; height: 0.95rem; margin-left: 0.125rem;
+    vertical-align: text-bottom; background: #cbd5e1;
+    animation: hero-term-blink 1s steps(2, start) infinite;
+  }
+  @keyframes hero-term-blink { to { visibility: hidden; } }
+  #hero-terminal .hero-terminal-scroll { scrollbar-width: thin; scrollbar-color: #4b5563 #1f2937; }
+  #hero-terminal .hero-terminal-scroll::-webkit-scrollbar { width: 8px; }
+  #hero-terminal .hero-terminal-scroll::-webkit-scrollbar-track { background: #1f2937; }
+  #hero-terminal .hero-terminal-scroll::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+  #hero-terminal .hero-term-line { white-space: pre-wrap; word-break: break-word; }
+</style>
+
+<script>
+(function () {
+  var body = document.getElementById('hero-terminal-body');
+  var lines = document.getElementById('hero-terminal-lines');
+  var replay = document.getElementById('hero-terminal-replay');
+  if (!body || !lines) return;
+
+  // A self-hosted inlets Pro run: provision with automated TLS, add DNS, connect,
+  // and receive a webhook. Mirrors the automated-http-server tutorial.
+  var sequence = [
+    { type: 'comment', text: "# 1. Provision a tunnel server with automated HTTPS" },
+    { type: 'cmd', text: "inletsctl create --provider digitalocean --region lon1 \\\n  --letsencrypt-domain blog.example.com", delay: 500 },
+    { type: 'out', lines: ["Provisioning tunnel server... done", "Server IP: 178.62.70.130"], delay: 550 },
+    { type: 'comment', text: "# 2. Point your domain at the server" },
+    { type: 'cmd', text: "doctl compute domain records create example.com \\\n  --record-type A --record-name blog --record-data 178.62.70.130", delay: 500 },
+    { type: 'out', lines: ["blog.example.com  A  178.62.70.130"], delay: 450 },
+    { type: 'comment', text: "# 3. Connect your local app on port 3000" },
+    { type: 'cmd', text: "inlets-pro http client --url wss://178.62.70.130:8123 \\\n  --token $TOKEN --upstream blog.example.com=http://127.0.0.1:3000", delay: 500 },
+    { type: 'out', lines: ["client connected", "TLS certificate issued for blog.example.com"], delay: 2200 },
+    { type: 'comment', text: "# 4. Your app is now live on public HTTPS" },
+    { type: 'cmd', text: "curl -s https://blog.example.com/", delay: 500 },
+    { type: 'out', lines: ["Hello from 127.0.0.1:3000, served over inlets"], delay: 900 },
+    { type: 'done', text: "✓ Public HTTPS in minutes. Self-hosted, yours, no rate limits.", delay: 9000 }
+  ];
+
+  var timers = [];
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+  function later(fn, ms) { var t = setTimeout(fn, ms); timers.push(t); return t; }
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function el(tag, cls, html) { var n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; }
+  function scrollDown() { body.scrollTop = body.scrollHeight; }
+
+  function renderComment(text) { return el('div', 'hero-term-line text-gray-500', esc(text)); }
+  function renderOut(outLines) {
+    var wrap = el('div', '');
+    outLines.forEach(function (l) { wrap.appendChild(el('div', 'hero-term-line text-gray-400', esc(l))); });
+    return wrap;
+  }
+  function renderDone(text) { return el('p', 'hero-term-line text-green-400 font-medium pt-2', esc(text)); }
+
+  function typeCmd(step, done) {
+    var row = el('div', 'hero-term-line text-gray-100');
+    var prompt = el('span', 'text-green-400', '$ ');
+    var textEl = el('span', '');
+    var cursor = el('span', 'hero-cursor');
+    row.appendChild(prompt); row.appendChild(textEl); textEl.appendChild(cursor);
+    lines.appendChild(row); scrollDown();
+    var full = step.text, i = 0;
+    (function tick() {
+      if (i < full.length) {
+        cursor.insertAdjacentText('beforebegin', full[i]);
+        i++; scrollDown();
+        later(tick, 8 + Math.random() * 12);
+      } else {
+        textEl.removeChild(cursor);
+        later(done, step.delay);
+      }
+    })();
+  }
+
+  function reducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+  function append(step) {
+    if (step.type === 'comment') lines.appendChild(renderComment(step.text));
+    else if (step.type === 'out') lines.appendChild(renderOut(step.lines));
+    else if (step.type === 'done') lines.appendChild(renderDone(step.text));
+  }
+  function renderStatic() {
+    clearTimers(); lines.innerHTML = '';
+    sequence.forEach(function (step) {
+      if (step.type === 'cmd') {
+        var row = el('div', 'hero-term-line text-gray-100');
+        row.appendChild(el('span', 'text-green-400', '$ '));
+        row.appendChild(el('span', '', esc(step.text)));
+        lines.appendChild(row);
+      } else append(step);
+    });
+    scrollDown();
+  }
+  function play() {
+    clearTimers(); lines.innerHTML = '';
+    var idx = 0;
+    function next() {
+      if (idx >= sequence.length) { later(play, 0); return; }
+      var step = sequence[idx++];
+      if (step.type === 'cmd') { typeCmd(step, next); return; }
+      append(step); scrollDown();
+      later(next, step.delay || 250);
+    }
+    next();
+  }
+
+  if (replay) replay.addEventListener('click', function () { if (!reducedMotion()) play(); });
+
+  var started = false;
+  function start() { if (started) return; started = true; if (reducedMotion()) renderStatic(); else play(); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(document.getElementById('hero-terminal'));
+  } else { start(); }
+})();
+</script>

@@ -1,79 +1,43 @@
 <!-- Taken from the second example here -> https://tailwindui.com/components/marketing/sections/heroes -->
 <div class="bg-gray-50 overflow-hidden">
-  <main class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-screen-xl">
-      <div class="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div class="text-center lg:text-left">
+        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
+          <span class="hero-headline-shell">
+            <span class="hero-headline-sizer" aria-hidden="true">A public HTTPS endpoint in seconds, no rate limits.</span>
+            <span class="hero-headline-live">
+              <span id="hero-headline" class="hero-headline-line">Self-hosted tunnels with full control and privacy.</span>
+            </span>
+          </span>
+        </h1>
 
-        <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-            <span class="hero-headline-shell">
-              <span class="hero-headline-sizer" aria-hidden="true">A public HTTPS endpoint in seconds, no rate limits.</span>
-              <span class="hero-headline-live">
-                <span id="hero-headline" class="hero-headline-line">Self-hosted tunnels with full control and privacy.</span><span class="hero-headline-caret text-indigo-600" aria-hidden="true"></span>
-              </span>
-            </span>
-          </h1>
+        <p class="mt-6 max-w-2xl mx-auto lg:mx-0 leading-8 text-lg text-gray-500 sm:text-xl">
+          Self-hosted HTTP and TCP tunnels with full control, privacy, and no rate limits. Run them yourself, use our managed cloud, or embed them in your product. Your traffic and data always stay yours.
+        </p>
 
-          <p class="mt-4 max-w-2xl leading-7 mx-auto text-lg text-gray-500 sm:text-xl md:mt-6 md:max-w-3xl">
-            Self-hosted HTTP and TCP tunnels with full control, privacy, and no rate limits. Run them yourself, use our managed cloud, or embed them in your product. Your traffic and data always stay yours.
-          </p>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Webhooks and previews</span>
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Ingress to local Kubernetes</span>
+          <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Customer on-prem</span>
+          <span class="hidden sm:inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Edge devices</span>
+          <span class="hidden sm:inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Hybrid cloud</span>
+          <span class="hidden sm:inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">Multi-cluster ArgoCD</span>
+        </div>
 
-          <div class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Webhooks and previews
-            </span>
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Ingress to local Kubernetes
-            </span>
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Customer on-prem
-            </span>
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Edge devices
-            </span>
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Hybrid cloud
-            </span>
-            <span class="inline-flex items-center rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm ring-1 ring-gray-200">
-              Multi-cluster ArgoCD
-            </span>
-          </div>
-
-          <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-              <a href="/pricing/" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                 View pricing
-              </a>
-            </div>
-            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-              <a href="https://docs.inlets.dev/" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
-                Read the docs
-              </a>
-            </div>
-          </div>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+          <a href="/pricing/" class="inline-flex items-center justify-center rounded-md bg-indigo-600 px-8 py-3 text-base font-semibold text-white shadow-sm hover:bg-indigo-700 md:py-4 md:text-lg">View pricing</a>
+          <a href="https://docs.inlets.dev/" class="inline-flex items-center justify-center rounded-md bg-white px-8 py-3 text-base font-semibold text-indigo-600 shadow-sm ring-1 ring-gray-200 hover:bg-gray-50 md:py-4 md:text-lg">Read the docs</a>
         </div>
       </div>
 
-<!-- 
-      <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="video-modal">
-        Toggle modal
-      </button> -->
-
-      <div class="relative w-full lg:absolute lg:inset-y-60 lg:right-0 lg:left-180 lg:w-1/2 lg:h-full">
-        
-          <a href="#" onClick="showModal()">
-
-            <video width="700" height="450" autoplay muted loop preload="false" class="pb-10" poster="/media/preview.jpg">
-              <source src="/media/preview.mp4" type="video/mp4" />
-              <img class="absolute inset-0 w-full h-full object-cover" style="-webkit-transform: scaleX(-1);" src="/images/hero-human.jpg" alt="inlets Pro is fast and easy to use">
-            </video>
-          </a>
-          <a href="#" onClick="showModal()" class="font-medium text-indigo-600 hover:text-indigo-500"> Create your first tunnel with Alex <span aria-hidden="true">→</span></a>
-
-        </div>
-
+      <div>
+        {% include hero-terminal.html %}
+        <p class="mt-4 text-center lg:text-left text-sm leading-6 text-gray-500">
+          Prefer a walkthrough? <a href="#" onClick="showModal(); return false;" class="font-semibold text-indigo-600 hover:text-indigo-700">Create your first tunnel with Alex <span aria-hidden="true">&rarr;</span></a>
+        </p>
+      </div>
     </div>
-    </main>
-
   </div>
 
 
