@@ -156,33 +156,34 @@ inlets-pro uplink client --url=wss://cambs1.uplink.inlets.dev/user/inlets-landin
                 </div>
                 <div class="px-6 py-5 border-b border-gray-700 bg-gray-900">
                     <div>
-                        <h4 class="text-2xl font-extrabold text-white">Connect a customer environment to your SaaS</h4>
-                        <p class="mt-2 text-base leading-7 text-gray-300">Create a tenant-scoped tunnel, hand the customer a command, then consume the service privately from inside your cluster.</p>
+                        <h4 class="text-2xl font-extrabold text-white">Manage a customer's Kubernetes cluster centrally</h4>
+                        <p class="mt-2 text-base leading-7 text-gray-300">Tunnel a customer's API server back to your control plane, then drive it with kubectl or ArgoCD like any other cluster.</p>
                     </div>
                 </div>
-                <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># tunnel resource
+                <pre class="px-6 py-6 overflow-x-auto font-mono text-[13px] leading-7 text-gray-100 whitespace-pre-wrap"><code># A tunnel for the customer's Kubernetes API server
 apiVersion: uplink.inlets.dev/v1alpha1
 kind: Tunnel
 metadata:
-  name: acmeco
-  namespace: tunnels
+  name: kubernetes
+  namespace: customer1
 spec:
   tcpPorts:
-    - 8080
+    - 6443
 
-# customer connects to the router
+# The customer runs a client inside their cluster
 inlets-pro uplink client \
-  --url wss://uplink.example.com/tunnels/acmeco \
-  --upstream http://127.0.0.1:8080 \
+  --url wss://uplink.example.com/customer1/kubernetes \
+  --upstream 6443=kubernetes.default.svc:443 \
   --token-file ./token.txt
 
-# private access from inside the cluster
-kubectl run -t -i curl --rm \
-  --image ghcr.io/openfaas/curl:latest /bin/sh
+# Reach the API privately from your control plane
+$ kubectl --server https://kubernetes.customer1:6443 get nodes
+NAME     STATUS   ROLES           AGE   VERSION
+kube-1   Ready    control-plane   40d   v1.31.2
 
-curl -i http://acmeco.tunnels:8000</code></pre>
+# ArgoCD can now manage it like any other cluster</code></pre>
                 <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
-                    <a href="https://docs.inlets.dev/uplink/become-a-provider/" class="text-sm font-medium text-indigo-300 hover:text-white">Read the Uplink docs →</a>
+                    <a href="https://docs.inlets.dev/uplink/tutorials/argo-cd/" class="text-sm font-medium text-indigo-300 hover:text-white">ArgoCD with Uplink →</a>
                 </div>
             </section>
             </div>
