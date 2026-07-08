@@ -46,8 +46,9 @@ $ inlets-pro http client \
   --upstream "api.example.com=http://127.0.0.1:3000"
 
 $ curl "https://api.example.com/v1/import"</code></pre>
-                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800">
+                <div class="px-6 py-4 border-t border-gray-700 bg-gray-800 flex flex-wrap gap-x-6 gap-y-2">
                     <a href="https://docs.inlets.dev/tutorial/automated-http-server/" class="text-sm font-medium text-indigo-300 hover:text-white">HTTP tunnel guide →</a>
+                    <a href="https://docs.inlets.dev/tutorial/http-authentication/" class="text-sm font-medium text-indigo-300 hover:text-white">Add authentication →</a>
                 </div>
             </section>
 
@@ -187,4 +188,35 @@ curl -i http://acmeco.tunnels:8000</code></pre>
             </div>
         </div>
     </div>
+
+    <script>
+    (function () {
+      function esc(t) {
+        return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+      function highlight() {
+        var blocks = document.querySelectorAll('#examples [data-cli-panel] pre code');
+        blocks.forEach(function (el) {
+          if (el.dataset.hl) return;
+          el.dataset.hl = '1';
+          var out = el.textContent.split('\n').map(function (line) {
+            if (/^\s*#/.test(line)) {
+              return '<span class="text-gray-500">' + esc(line) + '</span>';
+            }
+            var s = esc(line);
+            s = s.replace(/^(\s*)(\$)(\s)/, '$1<span class="text-green-400">$2</span>$3');
+            s = s.replace(/(^|\s)(--[A-Za-z0-9][A-Za-z0-9-]*)/g, '$1<span class="text-indigo-300">$2</span>');
+            s = s.replace(/(&quot;[^&]*?&quot;)/g, '<span class="text-yellow-300">$1</span>');
+            return s;
+          }).join('\n');
+          el.innerHTML = out;
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', highlight);
+      } else {
+        highlight();
+      }
+    })();
+    </script>
 </div>

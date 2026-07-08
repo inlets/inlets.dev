@@ -76,8 +76,9 @@ function initHeroHeadline() {
     }
 
     var frames = [
+        'Self-hosted tunnels with full control and privacy.',
         'Connect to customer services without a VPN.',
-        'Expose local endpoints with full control.'
+        'A public HTTPS endpoint in seconds, no rate limits.'
     ];
 
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -1,82 +1,135 @@
-<div id="comparison" class="max-w-screen-xl mx-auto py-8 px-4">
+<div id="comparison" class="max-w-screen-xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 
     <div class="relative pb-10">
         <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-            inlets for yourself or your product
+            Which inlets is right for you?
         </h3>
         <p class="mt-4 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-            Use inlets Pro for your own services and environments. Use Uplink when your product needs to connect to customer networks.
+            Self-host with inlets Pro, get managed tunnels with Inlets Cloud, or embed private connectivity in your product with Uplink.
         </p>
     </div>
-    <div class="flex flex-col">
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border border-gray-200">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead>
-                    <tr>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Category
-                        </th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            inlets Pro
-                        </th>
-                        <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Uplink
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Best for</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Webhooks, previews, homelabs</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Connect to customers, hybrid cloud, service providers</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Server</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel server hosted in a public cloud VM</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Your own Kubernetes cluster</td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Client</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Scale</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Small numbers of tunnels</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">10+ tunnels, scales to thousands</td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Endpoints</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Public or private</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Private by default</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Multi-tenant</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">No</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Yes</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Management</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Manual / self-service</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Managed control plane</td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Provisioning</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">CLI</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel CLI, REST API, Kubernetes Custom Resource</td>
-                        </tr>
-                        <tr class="bg-white">
-                            <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Starting price</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">25 USD / mo for Personal, 50 USD / mo for Commercial</td>
-                            <td class="px-6 py-4 text-base leading-6 text-gray-500">250 USD / mo, includes 10 tunnels</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+    <!-- Mobile: one stacked card per product -->
+    <div class="space-y-6 lg:hidden">
+        <div class="rounded-lg border border-gray-200 overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3"><h4 class="text-base font-bold text-gray-900">inlets Pro</h4></div>
+            <dl class="divide-y divide-gray-100">
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Webhooks, previews, homelabs</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Tunnel server hosted in a public cloud VM</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Client</dt><dd class="mt-1 text-sm text-gray-700">Windows, macOS, Linux, containers, Kubernetes</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Scale</dt><dd class="mt-1 text-sm text-gray-700">Small numbers of tunnels</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Endpoints</dt><dd class="mt-1 text-sm text-gray-700">Public or private</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Multi-tenant</dt><dd class="mt-1 text-sm text-gray-700">No</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Management</dt><dd class="mt-1 text-sm text-gray-700">Manual / self-service</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">CLI</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">25 USD / mo for Personal, 50 USD / mo for Commercial</dd></div>
+            </dl>
         </div>
-        <p class="mt-10 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
-            Read the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/">inlets Pro docs</a> or the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/uplink/">Uplink docs</a>.
-        </p>
+
+        <div class="rounded-lg border border-indigo-200 overflow-hidden">
+            <div class="bg-indigo-50 border-b border-indigo-100 px-5 py-3"><h4 class="text-base font-bold text-gray-900">Inlets Cloud</h4></div>
+            <dl class="divide-y divide-gray-100">
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Public HTTPS and SSH endpoints, sharing, remote access</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Managed by inlets, in EU and US regions</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Client</dt><dd class="mt-1 text-sm text-gray-700">Windows, macOS, Linux, containers, Kubernetes</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Scale</dt><dd class="mt-1 text-sm text-gray-700">A few tunnels per account</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Endpoints</dt><dd class="mt-1 text-sm text-gray-700">Public HTTPS and SSH</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Multi-tenant</dt><dd class="mt-1 text-sm text-gray-700">No</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Management</dt><dd class="mt-1 text-sm text-gray-700">Fully managed</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">CLI, dashboard, or Kubernetes YAML</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">Included with an Inlets Pro subscription</dd></div>
+            </dl>
+        </div>
+
+        <div class="rounded-lg border border-gray-200 overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3"><h4 class="text-base font-bold text-gray-900">Inlets Uplink</h4></div>
+            <dl class="divide-y divide-gray-100">
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Connect to customers, hybrid cloud, service providers</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Your own Kubernetes cluster</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Client</dt><dd class="mt-1 text-sm text-gray-700">Windows, macOS, Linux, containers, Kubernetes</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Scale</dt><dd class="mt-1 text-sm text-gray-700">10+ tunnels, scales to thousands</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Endpoints</dt><dd class="mt-1 text-sm text-gray-700">Private by default</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Multi-tenant</dt><dd class="mt-1 text-sm text-gray-700">Yes</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Management</dt><dd class="mt-1 text-sm text-gray-700">Managed control plane</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">Tunnel CLI, REST API, Kubernetes Custom Resource</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">250 USD / mo, includes 10 tunnels</dd></div>
+            </dl>
+        </div>
     </div>
+
+    <!-- Desktop: full comparison table -->
+    <div class="hidden lg:block">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden rounded-lg border border-gray-200">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead>
+                <tr>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">inlets Pro</th>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Inlets Cloud</th>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Inlets Uplink</th>
+                </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="bg-white">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Best for</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Webhooks, previews, homelabs</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Public HTTPS and SSH endpoints, sharing, remote access</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Connect to customers, hybrid cloud, service providers</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Server</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel server hosted in a public cloud VM</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Managed by inlets, in EU and US regions</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Your own Kubernetes cluster</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Client</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Windows, macOS, Linux, containers, Kubernetes</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Scale</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Small numbers of tunnels</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">A few tunnels per account</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">10+ tunnels, scales to thousands</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Endpoints</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Public or private</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Public HTTPS and SSH</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Private by default</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Multi-tenant</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">No</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">No</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Yes</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Management</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Manual / self-service</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Fully managed</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Managed control plane</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Provisioning</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">CLI</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">CLI, dashboard, or Kubernetes YAML</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Tunnel CLI, REST API, Kubernetes Custom Resource</td>
+                    </tr>
+                    <tr class="bg-white">
+                        <td class="px-6 py-4 text-base leading-6 font-medium text-gray-900">Starting price</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">25 USD / mo for Personal, 50 USD / mo for Commercial</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">Included with an Inlets Pro subscription</td>
+                        <td class="px-6 py-4 text-base leading-6 text-gray-500">250 USD / mo, includes 10 tunnels</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="mt-10 max-w-3xl mx-auto text-center text-xl leading-7 text-gray-500">
+        Read the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/">inlets Pro docs</a>, explore <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="/cloud/">Inlets Cloud</a>, or read the <a class="font-medium text-gray-500 hover:text-gray-900 transition duration-150 ease-in-out underline" href="https://docs.inlets.dev/uplink/">Uplink docs</a>.
+    </p>
 </div>
