@@ -1,5 +1,12 @@
 <div id="comparison" class="max-w-screen-xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
 
+    <style>
+      #comparison details > summary { list-style: none; cursor: pointer; }
+      #comparison details > summary::-webkit-details-marker { display: none; }
+      #comparison .cmp-chevron { transition: transform .15s ease; }
+      #comparison details[open] .cmp-chevron { transform: rotate(180deg); }
+    </style>
+
     <div class="relative pb-10">
         <h3 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
             Which inlets is right for you?
@@ -9,10 +16,13 @@
         </p>
     </div>
 
-    <!-- Mobile: one stacked card per product -->
-    <div class="space-y-6 lg:hidden">
-        <div class="rounded-lg border border-gray-200 overflow-hidden">
-            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3"><h4 class="text-base font-bold text-gray-900">inlets Pro</h4></div>
+    <!-- Mobile: collapsible card per product -->
+    <div class="space-y-4 lg:hidden">
+        <details class="rounded-lg border border-gray-200 overflow-hidden" open>
+            <summary class="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-5 py-4">
+                <h4 class="text-base font-bold text-gray-900">inlets Pro</h4>
+                <svg class="cmp-chevron h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </summary>
             <dl class="divide-y divide-gray-100">
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Webhooks, previews, homelabs</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Tunnel server hosted in a public cloud VM</dd></div>
@@ -24,10 +34,13 @@
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">CLI</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">25 USD / mo for Personal, 50 USD / mo for Commercial</dd></div>
             </dl>
-        </div>
+        </details>
 
-        <div class="rounded-lg border border-indigo-200 overflow-hidden">
-            <div class="bg-indigo-50 border-b border-indigo-100 px-5 py-3"><h4 class="text-base font-bold text-gray-900">Inlets Cloud</h4></div>
+        <details class="rounded-lg border border-indigo-200 overflow-hidden">
+            <summary class="flex items-center justify-between bg-indigo-50 border-b border-indigo-100 px-5 py-4">
+                <h4 class="text-base font-bold text-gray-900">Inlets Cloud</h4>
+                <svg class="cmp-chevron h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </summary>
             <dl class="divide-y divide-gray-100">
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Public HTTPS and SSH endpoints, sharing, remote access</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Managed by inlets, in EU and US regions</dd></div>
@@ -39,22 +52,25 @@
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">CLI, dashboard, or Kubernetes YAML</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">Included with an Inlets Pro subscription</dd></div>
             </dl>
-        </div>
+        </details>
 
-        <div class="rounded-lg border border-gray-200 overflow-hidden">
-            <div class="bg-gray-50 border-b border-gray-200 px-5 py-3"><h4 class="text-base font-bold text-gray-900">Inlets Uplink</h4></div>
+        <details class="rounded-lg border border-gray-200 overflow-hidden">
+            <summary class="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-5 py-4">
+                <h4 class="text-base font-bold text-gray-900">Inlets Uplink</h4>
+                <svg class="cmp-chevron h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </summary>
             <dl class="divide-y divide-gray-100">
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Best for</dt><dd class="mt-1 text-sm text-gray-700">Connect to customers, hybrid cloud, service providers</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Server</dt><dd class="mt-1 text-sm text-gray-700">Your own Kubernetes cluster</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Client</dt><dd class="mt-1 text-sm text-gray-700">Windows, macOS, Linux, containers, Kubernetes</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Scale</dt><dd class="mt-1 text-sm text-gray-700">10+ tunnels, scales to thousands</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Endpoints</dt><dd class="mt-1 text-sm text-gray-700">Private by default</dd></div>
-                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Multi-tenant</dt><dd class="mt-1 text-sm text-gray-700">Yes</dd></div>
+                <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Multi-tenant</dt><dd class="mt-1 text-sm text-gray-700">Yes, you host many</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Management</dt><dd class="mt-1 text-sm text-gray-700">Managed control plane</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Provisioning</dt><dd class="mt-1 text-sm text-gray-700">Tunnel CLI, REST API, Kubernetes Custom Resource</dd></div>
                 <div class="px-5 py-3"><dt class="text-xs uppercase tracking-wider text-gray-400">Starting price</dt><dd class="mt-1 text-sm text-gray-700">250 USD / mo, includes 10 tunnels</dd></div>
             </dl>
-        </div>
+        </details>
     </div>
 
     <!-- Desktop: full comparison table -->
