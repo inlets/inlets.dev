@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }}</title>
+    {% include meta.html %}
+    <link rel="icon" type="image/svg+xml" href="/images/inlets-icon.svg" />
+    <link rel="stylesheet" href="/css/site.css?v={{ site.time | date: '%s' }}">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+      body { margin: 0; font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div class="flex items-center justify-center py-6">
+      <a href="/" aria-label="inlets home">
+        <img style="height: 48px; width: auto" alt="inlets" src="/images/logo.svg">
+      </a>
+    </div>
+    {{ content }}
+    <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+      <p class="text-sm text-gray-400">
+        Inlets&reg; is a trademark of OpenFaaS Ltd. All rights reserved, registered company in the UK: 11076587
+      </p>
+    </footer>
+  </body>
+</html>
