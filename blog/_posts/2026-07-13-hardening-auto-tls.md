@@ -18,11 +18,31 @@ Practically speaking, the current version could be subject to a complex man-in-t
 
 As of inlets-pro 0.11.14, we've added belt and braces against MITM vectors: the client now verifies the CA belongs to the server it's connecting to, using the tunnel's token for an extra layer of hardening.
 
+```
+┌──────────┐              ┌──────────┐
+│  Client  │─────────────▶│  Server  │
+│          │◀─── CA ──────│          │
+│ trust    │              │          │
+└──────────┘              └──────────┘
+  Before: Client trusts any CA it receives.
+
+┌──────────┐              ┌──────────┐
+│  Client  │─────────────▶│  Server  │
+│          │  nonce       │          │
+│          │─────────────▶│          │
+│          │              │    CA    │
+│          │◀─────────────│◀── HMAC  │
+│          │  CA + proof  │          │
+│ verify   │              │          │
+└──────────┘              └──────────┘
+  After: Client verifies CA before trusting.
+```
+
 ## How it works
 
 The client and server already share a token. We've now added a step where the client verifies the CA using that token.
 
-The client generates a random value and sends it to the server. The server signs it along with the CA using the shared token. The client checks the signature. If it matches, the CA is trusted.
+The client generates a random value and sends it to the server. The server computes an HMAC over it and the CA using the shared token. The client checks the result. If it matches, the CA is trusted.
 
 The random value means an old CA from a previous server run can't be reused. And the token is never sent in plaintext during this exchange.
 
