@@ -161,3 +161,16 @@ We captured all of the screenshots in this blog post from a microVM running head
 To see a comparison of the stand-alone vs inlets uplink version, see the [Inlets pricing page](https://inlets.dev/pricing), or [browse the Inlets Cloud documentation](https://docs.inlets.dev).
 
 For anything else - you should have received a Discord invite, so log in - say hi, and let us know what you need.
+
+## Addendum: the full skill set
+
+The [inlets/agent-skills](https://github.com/inlets/agent-skills) repository covers more than Inlets Cloud - here's what's in the box, and when to ask your agent for each:
+
+* **use-inlets-cloud** - what we used in this post. Creates, connects, and manages hosted HTTP and ingress tunnels with the `inlets-pro cloud` CLI, including access-token login, generated `tryinlets.dev` domains, Bearer-protected upstreams, and one-command directory sharing.
+* **use-inlets-pro** - standalone HTTP and TCP tunnel servers and clients. Use it for raw TCP forwarding, multiple HTTP upstreams, automated TLS with DNS challenges, or anything you host on your own exit-server.
+* **use-inletsctl** - provisions and manages tunnel exit-servers on cloud VMs (DigitalOcean, AWS EC2, GCE, Azure, Linode and more) with one command each.
+* **setup-uplink** - installs, configures, and upgrades the self-hosted Inlets Uplink control plane on a Kubernetes cluster with its Helm chart.
+* **use-inlets-uplink** - the day-two Uplink skill: creates, connects, inspects, and removes tunnels through the Kubernetes Tunnel CRD or REST API, with TCP and HTTP upstreams.
+* **use-inlets-operator** - installs and operates the inlets-operator for Kubernetes LoadBalancer Services - point it at a private cluster Service and it gets a public IP via a cloud VM.
+
+Give your agent the URL to the repository and it can pull down whichever skill it needs, just like we did in this post.
