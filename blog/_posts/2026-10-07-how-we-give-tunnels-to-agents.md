@@ -12,7 +12,7 @@ date: 2026-10-07
 
 There is no shortage of options for exposing local services to the Internet, but none have been designed to be as quick and AI native as Inlets Cloud. One prompt gives your agent a public HTTPS URL for any local service, and once you have the CLI configured, a new tunnel is up in less than a second.
 
-I'll show you how I work with my agents in [OpenCode](https://opencode.ai), [Codex](https://openai.com/codex) and [Claude Code](https://claude.ai) to get preview URLs, for e2e testing, and for our various self-hosted services. We'll start off with having the agent create a demo HTTP server in Python, then I'll show you how to expose Grafana. All the prompts have been run through [GLM 5.3 Flash](https://z.ai/blog/glm-5.3-flash) - a local model, so cloud models will work just as well, if not better.
+I'll show you how I work with my agents in [OpenCode](https://opencode.ai), [Codex](https://openai.com/codex) and [Claude Code](https://claude.ai) to get preview URLs, for e2e testing, and for our various self-hosted services. We'll start off with having the agent create a demo HTTP server in Python, then I'll show you how to expose [Grafana](https://grafana.com). All the prompts have been run through [GLM 5.3 Flash](https://z.ai/blog/glm-5.3-flash) - a local model, so cloud models will work just as well, if not better.
 
 ## Set that up, then give me a URL I can access from my phone
 
@@ -107,7 +107,7 @@ Of course, you can also expose any existing services you're running like PiHole,
 
 ## Run Grafana and put it on the Internet
 
-The same flow works for a brand new service too. Grafana needs Docker, a container, and a tunnel - that's three things I'd rather not do by hand. So I asked for exactly what I wanted:
+The same flow works for a brand new service too. [Grafana](https://grafana.com) needs [Docker](https://www.docker.com), a container, and a tunnel - that's three things I'd rather not do by hand. So I asked for exactly what I wanted:
 
 ```
 Run Grafana with Docker CE, and expose it publicly, then give me
