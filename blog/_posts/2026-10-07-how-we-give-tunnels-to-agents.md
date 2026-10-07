@@ -7,6 +7,8 @@ tags: inlets-cloud ai agents tunnel opencode
 category: release
 rollup: true
 author_img: alex
+image: /images/2026-10-tunnels-to-agents/background.png
+image_alt: The tunnel prompt typed into the opencode composer, on an Inlets Cloud branded background.
 date: 2026-10-07
 ---
 
@@ -140,13 +142,19 @@ Clean up the tunnel now - delete it from Inlets Cloud and stop the local client.
 
 ## Next steps
 
+**Fast, AI-native tunnel management**
+
 The reason Inlets Cloud is so fast is that it is already running - the whole thing is a permanent SaaS, and when you send an API request to create a new tunnel server, it's available within milliseconds with a valid generated HTTPS certificate. That makes it a perfect match for AI agents which do not want to be kept waiting around for Terraform, or VM provisioning.
 
 Inlets Cloud also supports Bring Your Own (BYO) domains, so if you have something permanent like a [Superterm.dev](https://superterm.dev) installation to manage your AI agents, and chats, you can use that option too.
 
+**Self-hosted tunnels that only you manage**
+
 The other option is to self-host a tunnel server, and that's included with your subscription already. You can host a HTTPS or TCP tunnel server on a VM on public cloud. This takes 5-30 seconds depending on the cloud provider, and is best suited for permanent endpoints where you want to control the availability. Stand-alone tunnels also support [various authentication methods](https://docs.inlets.dev/tutorial/http-authentication/), including a built-in OAuth flow that works with GitHub logins, and with standard OIDC providers.
 
 The tunnel client itself is very similar whether you're using Inlets Cloud or a self-hosted tunnel server. The client can run as a Linux, Windows, or macOS process, as a Docker container, in systemd, in a microVM (like SlicerVM), or as a Kubernetes Pod.
+
+**How we captured the screenshots**
 
 We captured all of the screenshots in this blog post from a microVM running headless X11 on my MacBook using [SlicerVM](https://slicervm.com/) for Mac.
 
