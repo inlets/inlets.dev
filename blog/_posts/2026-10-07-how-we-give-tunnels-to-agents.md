@@ -24,7 +24,7 @@ We started [OpenFaaS](https://openfaas.com) back in 2016, and it itself manages 
 
 VPNs like Wireguard or Tailscale are good enough solutions for sharing entire hosts, but Inlets itself is designed to only expose a single port, or upstream destination. Think of it as a finer-grained, faster, and more targeted solution.
 
-We've also spent a lot of time tuning skills for AI agents to use, to make effective use of inlets itself, whether that's the *Inlets Cloud* hosted version, or self-hosted tunnels. The [inlets/agents-skills](https://github.com/inlets/agents-skills) repository covers it all.
+We've also spent a lot of time tuning skills for AI agents to use, to make effective use of inlets itself, whether that's the *Inlets Cloud* hosted version, or self-hosted tunnels. The [inlets/agent-skills](https://github.com/inlets/agent-skills) repository covers it all.
 
 ```
 ┌─────────────┐  HTTPS    ┌───────────────┐   tunnel    ┌──────────────────────┐
